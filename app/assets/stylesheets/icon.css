@@ -1,0 +1,22 @@
+.fi-blind {
+	font-size: 7rem;
+	color: #EEEEEE;
+	width: 100%;
+	height: 100px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	padding-left: 40px;
+	padding-right: 40px;
+	border-radius: 100px;
+	background-image: -webkit-radial-gradient(0, transparent, #80CBC4, transparent);
+    background-image: radial-gradient(to right, transparent, #80CBC4, transparent);
+}
+.fi-social-facebook, .fi-social-twitter{
+	font-size: 2rem;
+}
+.badge.chbtn{
+	padding-left: .8rem;
+	padding-right: .8rem;
+	padding-top: .1rem;
+	padding-bottom: .1rem;
+}

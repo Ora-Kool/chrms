@@ -1,0 +1,33 @@
+<header id="header" class="header fixed" itemscope="" itemtype="http://schema.org/WPHeader">
+	<div class="top-bar">
+  		<div class="top-bar-title" style="margin-top: 5px;">
+    		<span data-responsive-toggle="responsive-menu" data-hide-for="medium">
+     			<button class="menu-icon white" type="button" data-toggle></button>
+    		</span>
+    		<strong>CHRMS</strong>
+  </div>
+  <div id="responsive-menu">
+   
+    <div class="top-bar-right">
+      <ul class="menu">
+        <li><%=  link_to 'LOGIN', managers_session_login_path, class: 'fi-arrow-right'%></li>
+        
+      </ul>
+    </div>
+     <div class="menu-centered">
+      <ul class="menu main">
+        <li><%= link_to 'About', about_path %></li>
+        <li><%= link_to 'Contact', contact_path%></li>
+      </ul>
+    </div>
+  </div>
+</div>
+</header>
+<div class="features">
+  <div class="feature-intro">
+    <h1 class="text-center">
+      Why you should use CHRMS
+    </h1>
+  </div>
+</div>
+
