@@ -1,14 +1,14 @@
 module LoginSessionsHelper
 	 #log a given user
-  def log_in(doctor)
+  def log_doctor(doctor)
     session[:doctor_id] = doctor.id
   end
 
   #remember a user in a session
   def remember(doctor)
     doctor.remember
-    cookies.permanent.signed[:doctor_id] = user.id
-    cookies.permanent[:remember_token] = user.remember_token
+    cookies.permanent.signed[:doctor_id] = doctor.id
+    cookies.permanent[:remember_token] = doctor.remember_token
   end
 
   #returns true if the given user is the current user

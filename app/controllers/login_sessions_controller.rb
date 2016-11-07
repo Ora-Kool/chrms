@@ -3,15 +3,17 @@ class LoginSessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(name: params[:session][:name].downcase)
-    if user && user.authenticate(params[:session][:password])
+    doctor = Doctor.find_by(name: params[:session][:name].downcase)
+    hospital = Doctor.find_by(hospital_id: params[:session][:hospital_id])
+
+    if doctor && doctor.authenticate(params[:session][:password]) && hospital
       flash[:secondary] = "Welcome back!"
-      log_doctor(user)
-      params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-      redirect_back_or(user)
+      log_doctor(doctor)
+      params[:session][:remember_me] == '1' ? remember(doctor) : forget(doctor)
+      redirect_to chrms_doctors_dashboard_path
 
     else
-      flash.now[:alert] = 'Sorry! Invalid name/password combination'
+      flash.now[:warning] = 'Sorry! Access denied'
       render 'new'
     end
 

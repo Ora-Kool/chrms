@@ -1,0 +1,52 @@
+<%provide(:title, "Manager's - Dashboard") %>
+<div>
+      <div class="large-3 columns">
+         <h1>Left Links</h1>
+         
+         <ul class="menu vertical">
+            <li><%= link_to 'Add new doctor', manager_dashboard_doctor_add_path, class: "site-links" %></li>
+            <li><%= link_to 'Add new staff', manager_dashboard_staff_add_path, class: "site-links"%></li>
+         </ul>
+         
+   </div>
+</div> 
+   
+<div class="row">
+   
+   <div class="large-5 columns">
+   		<table>
+            <tr>
+               <th>Doctor's Names </th>
+
+            </tr>
+
+              <% @doctors.each do |doctor| %>
+                <tr>
+                     <td><%= doctor.name %></td>
+
+                </tr>
+              <% end %>
+            
+
+         </table>
+   </div>
+   <div class="large-4 columns">
+         <table>
+            <tr>
+               <th>Staffs Names</th>
+            </tr>
+            <% if @staffs.nil? %>
+               <td>no staff</td>
+            <%else%>
+              <% for staff in @staffs %>
+                <tr>
+                     <td><%= staff.name %></td>
+                </tr>
+              <% end %>
+
+
+            <% end %>   
+
+         </table>
+   </div>
+</div>

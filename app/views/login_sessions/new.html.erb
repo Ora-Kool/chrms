@@ -1,2 +1,8 @@
-<h1>LoginSessions#new</h1>
-<p>Find me in app/views/login_sessions/new.html.erb</p>
+<%provide(:title, "Login Doctor - CHRMS") %>
+<%provide(:button_text, 'Login') %>
+<div class="row">
+	<div class="large-6 large-offset-3 columns">
+		<h1 class="text-center">Login</h1>
+		<%= render 'doctors/shared/login_form' %>
+	</div>
+</div>

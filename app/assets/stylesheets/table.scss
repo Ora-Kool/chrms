@@ -1,0 +1,18 @@
+table {
+	margin-top: 10px;
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+td > a {
+	color: #335C7D
+}

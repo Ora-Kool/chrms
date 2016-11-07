@@ -20,9 +20,9 @@ module ManagerSessionsHelper
   #return the current login user
   def current_manager
     if (manager_id = session[:manager_id])
-      @current_manager ||= Doctor.find_by(id: session[:manager_id])
+      @current_manager ||= Manager.find_by(id: session[:manager_id])
     elsif (manager_id = cookies.signed[:manager_id])
-      manager = Doctor.find_by(id: manager_id)
+      manager = Manager.find_by(id: manager_id)
       if manager && manager.authenticated?(cookies[:remember_token])
         log_manager(manager)
         @current_manager = manager

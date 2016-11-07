@@ -4,14 +4,15 @@ class ManagerSessionsController < ApplicationController
 
   def create
     manager = Manager.find_by(name: params[:session][:name].downcase)
+    hospital = Manager.find_by(hospital_id: params[:session][:hospital_id])
     if manager && manager.authenticate(params[:session][:password])
       flash[:secondary] = "Welcome back!"
       log_manager(manager)
-      #params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-      redirect_back_or(manager)
+      params[:session][:remember_me] == '1' ? remember(manager) : forget(manager)
+      redirect_to manager_dashboard_path
 
     else
-      flash.now[:alert] = 'Sorry! Invalid name/password combination'
+      flash.now[:alert] = 'Access denied'
       render 'new'
     end
 

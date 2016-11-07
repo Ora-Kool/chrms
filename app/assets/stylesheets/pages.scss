@@ -28,10 +28,14 @@ header.fixed.sticky {
 .features > div {
     padding-top: 5%;
     padding-bottom: 5%;
+
 }
 .feature-intro {
     background: #00897B;
     color: white;
+    h1{
+      margin-top: 2rem;
+    }
 }
 .text-center {
     text-align: center;
@@ -45,6 +49,5 @@ header.fixed.sticky {
     margin: 22px 0;
 }
 #inner {
-  margin-top: 30px;
 }
 

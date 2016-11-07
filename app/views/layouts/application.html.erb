@@ -13,6 +13,7 @@
 
   <body>
   <%= render "layouts/shared/main_header" %>
+  <%= render 'layouts/shared/alert' %>
     <%= yield %>
 
     <%= render "layouts/shared/footer" %>
@@ -29,9 +30,11 @@
        if (scroll >= headPos + 1 && $("header.header").hasClass("fixed")) {
         $("header.fixed").addClass("sticky");
             $("body").css("padding-top", headHeight + "px");
+            
        }else{
           $("header.fixed").removeClass("sticky");
           $("body").css("padding-top", "0");
+          
        }
 
       /*if ($(this).scrollTop() < 815 ){  

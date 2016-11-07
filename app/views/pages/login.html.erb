@@ -1,0 +1,32 @@
+<%provide(:title, 'Login Panel - CHRMS')%>
+<div class="row">
+	<div class="row">
+		<div class="large-12 columns text-center" style="margin-bottom: 2rem">
+			<h1>Login Panel CHRMS</h1>
+		</div>
+	</div>
+
+	<div class="large-6 columns text-center">
+		<div class="card">
+          <div class="content">
+          	<p>
+            	All doctors who have accounts in the system should login here
+            </p>
+            <h1><%= link_to 'DOCTORS', login_panel_doctors_login_path %></h1>
+          </div><!--end card class here-->
+
+        </div>
+	</div>
+	<div class="large-6 columns text-center">
+		<div class="card">
+          <div class="content">
+          	<p>
+            	All staffs who have accounts in the system should login here
+            </p>
+            <h1><%= link_to 'STAFFS' %></h1>
+
+          </div><!--end card class here-->
+
+        </div>
+	</div>
+</div>

@@ -10,12 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161104224900) do
+ActiveRecord::Schema.define(version: 20161105191529) do
 
   create_table "doctors", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "password_digest"
+    t.string   "remember_digest"
+    t.string   "email"
+    t.integer  "hospital_id"
+    t.index ["email"], name: "index_doctors_on_email", unique: true
+    t.index ["hospital_id"], name: "index_doctors_on_hospital_id"
+  end
+
+  create_table "hospitals", force: :cascade do |t|
+    t.string   "hospital_name"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "hospital_city"
   end
 
   create_table "managers", force: :cascade do |t|
@@ -23,6 +36,23 @@ ActiveRecord::Schema.define(version: 20161104224900) do
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "email"
+    t.string   "remember_digest"
+    t.integer  "hospital_id"
+    t.index ["email"], name: "index_managers_on_email", unique: true
+    t.index ["hospital_id"], name: "index_managers_on_hospital_id"
+  end
+
+  create_table "staffs", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "remember_digest"
+    t.string   "password_digest"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "hospital_id"
+    t.index ["email"], name: "index_staffs_on_email", unique: true
+    t.index ["hospital_id"], name: "index_staffs_on_hospital_id"
   end
 
 end

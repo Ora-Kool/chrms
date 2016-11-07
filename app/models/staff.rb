@@ -1,33 +1,44 @@
-class Manager < ApplicationRecord
-  belongs_to :hospital
+class Staff < ApplicationRecord
+	belongs_to :hospital
 	attr_accessor :remember_token
 	validates :name, presence: true
+
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   
-  	validates :email, presence: true, length: { maximum: 255 },
+  	validates :email, presence: false, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
-                    uniqueness: { case_sensitive: false }
-	before_save { self.email = email.downcase }
+                    uniqueness: { case_sensitive: false }, allow_nil: true
 
-	has_secure_password
+    before_save {
+    	if email == '' || email.nil?
+
+    	else
+    		self.email = email.downcase
+    	end
+     
+
+      }
+
+    has_secure_password
   	validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
+
   	# Returns the hash digest of the given string.
-  def Manager.digest(string)
+  def Staff.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
         BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
   end
 
   #this method returns a random user token
-  def Manager.new_token
+  def Staff.new_token
     SecureRandom.urlsafe_base64
   end
 
   #this instance method helps to remember a user in the database
   def remember
-    self.remember_token = Manager.new_token
-    update_attribute(:remember_digest, Manager.digest(remember_token))
+    self.remember_token = Staff.new_token
+    update_attribute(:remember_digest, Staff.digest(remember_token))
   end
 
   #check if a given token matches that stored one and return true else false
