@@ -1,11 +1,13 @@
+<div class="login-design">
 <%= form_for(:session, url: login_panel_doctors_login_path) do |f| %>
 	<%= f.collection_select :hospital_id, Hospital.all, :id, :hospital_name , prompt: "Select Hospital"  %>
-	<%= f.label "doctor's name" %>
-	<%= f.text_field :name %>
+	<%= f.label "doctor's username" %>
+	<%= f.text_field :name, placeholder: "Username"%>
 
-	<%= f.label "doctor's password" %>
-	<%= f.password_field :password %>
+	<%= f.label "password" %>
+	<%= f.password_field :password, placeholder: "Password" %>
 
 	<%= f.submit yield(:button_text), class: 'button chrms radius large-4' %>
 
 <%end%>
+</div>

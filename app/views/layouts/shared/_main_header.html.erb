@@ -9,7 +9,7 @@
   <div id="responsive">
    
     <div class="top-bar-right">
-      <ul class="menu" style="background: #00695C">
+      <ul class="menu top" style="background: #00695C">
         <% if logged_manager? %>
           <li><%=  link_to 'Dashboard', manager_dashboard_path %></li>
           <li><%=  link_to 'Logout', managers_session_logout_path, method: :delete %></li>

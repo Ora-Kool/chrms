@@ -13,7 +13,7 @@ class LoginSessionsController < ApplicationController
       redirect_to chrms_doctors_dashboard_path
 
     else
-      flash.now[:warning] = 'Sorry! Access denied'
+      flash.now[:warning] = 'Access denied'
       render 'new'
     end
 

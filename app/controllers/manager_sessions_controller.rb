@@ -11,7 +11,7 @@ class ManagerSessionsController < ApplicationController
       redirect_to manager_dashboard_path
 
     else
-      flash.now[:alert] = 'Access denied'
+      flash.now[:warning] = 'Access denied'
       render 'new'
     end
 

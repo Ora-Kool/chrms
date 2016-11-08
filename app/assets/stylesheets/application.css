@@ -19,5 +19,13 @@
 
  body {
  	height: auto;
- 	font-family: Helvetica Roboto,Arial,sans-serif; 
+ 	font-family: Helvetica "Roboto", Arial, sans-serif; 
+ 	font-weight: normal;
+ }
+ p {
+ 	font-size: .9rem;
+
+ }
+ h1 {
+ 	font-size: 3rem;
  }

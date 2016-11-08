@@ -1,7 +1,8 @@
 <% flash.each do |message_type, message| %>
+<center>
     <div class="<%=message_type %> text-center" data-closable>
-  		<button class="close-button" data-close>&times;</button>
-  		
-  		<p><%= message %>. <i style="color: #000000; font-size: 12px">close me at the top right corner</i></p>
+  		<!--<button class="close-button" data-close>&times;</button>-->
+  		<p><%= message %>. <!--<i style="color: #000000; font-size: 12px">close me at the top right corner</i>--></p>
 	</div>
+</center>
 <% end %>

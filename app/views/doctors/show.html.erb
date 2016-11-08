@@ -36,24 +36,15 @@
    					</div>
 
    					<div class="large-3 columns">
-   						
-
-
-						<%= form_tag chrms_doctors_dashboard_path, :method => 'get' do %>
-						  <p style="margin-top: 5px">
-						    <%= text_field_tag :search, params[:search],
-						     placeholder: "search token here" %>
-						    <!--<%= submit_tag "Search", :name => nil %>-->
-						  </p>
-						<% end %>
-
+                     <!-- Search box rendering here-->
+                     <%= render "doctors/shared/search" %>
    					</div>
    					
    				</div>
    				
    			</div>
    			<div style="width: 100%">
-   			<div class="large-12 columns">
+   			<div class="large-12 columns" data-hide="medium">
    				<table>
    					<tr>
    						<th>Referral's Name/Contact</th>
