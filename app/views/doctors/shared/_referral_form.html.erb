@@ -1,3 +1,4 @@
+<div  style="font-family: courier">
 <%= form_for(@referral, url: chrms_doctors_dashboard_request_referral_path) do |f| %>
 	<%= render "layouts/shared/error_messages", object: @referral %>
 		
@@ -35,6 +36,7 @@
 	<%= f.label :signature %>
 	<%= f.text_field :signature, placeholder: "my names" %>
 
-	<%= f.submit yield(:button_text), class: "button chrms large-3"%>
+	<%= f.submit yield(:button_text), class: "button chrms large-4 radius"%>
 <%end%>
+</div>
 
