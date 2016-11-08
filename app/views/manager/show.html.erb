@@ -17,15 +17,27 @@
    		<table>
             <tr>
                <th>Doctor's Names </th>
+               <th>Contact</th>
 
             </tr>
+              <% if @doctors.present? %>
 
               <% @doctors.each do |doctor| %>
                 <tr>
                      <td><%= doctor.name %></td>
-
+                      <td>No contact</td>
                 </tr>
               <% end %>
+                
+              <%else%>
+               
+              <tr>
+                    
+                  <td>No doctor</td>
+                  <td>No contact</td>
+
+                </tr>
+            <%end%>
             
 
          </table>
@@ -35,15 +47,18 @@
             <tr>
                <th>Staffs Names</th>
             </tr>
-            <% if @staffs.nil? %>
-               <td>no staff</td>
-            <%else%>
-              <% for staff in @staffs %>
+            <% if @staffs.present? %>
+               <% @staffs.each do |staff| %>
                 <tr>
                      <td><%= staff.name %></td>
                 </tr>
               <% end %>
-
+            <%else%>
+              
+              <tr>
+                  <td>no staff</td>
+              </tr>
+                
 
             <% end %>   
 

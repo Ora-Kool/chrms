@@ -4,7 +4,6 @@ class ManagerSessionsController < ApplicationController
 
   def create
     manager = Manager.find_by(name: params[:session][:name].downcase)
-    hospital = Manager.find_by(hospital_id: params[:session][:hospital_id])
     if manager && manager.authenticate(params[:session][:password])
       flash[:secondary] = "Welcome back!"
       log_manager(manager)

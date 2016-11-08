@@ -1,7 +1,7 @@
 <%provide(:title, "Doctor's Dashboard - CHRMS") %>
 <div class="large-3 columns">
 	<table>
-<td><h4>Etinge</h4></td>
+		<td><h4>Dr. <%= current_doctor.name.capitalize %></h4></td>
 		<tr>
 
 			<td>
@@ -9,11 +9,11 @@
 			</td>
 		</tr>
 		<tr>
-			<td>Add to homepage</td>
-		</tr>
-		<tr>
 			<td>View my account</td>
 		</tr>
+      <tr>
+         <td><%= link_to 'Request Referral', chrms_doctors_dashboard_request_referral_path %></td>
+      </tr>
 		<tr>
 			<td>Patient</td>
 		</tr>
@@ -30,8 +30,58 @@
    <div class="large-9 columns">
    		<div class="row">
    			<div class="large-12 columns">
-   				<h4>Guick Links</h4>
+   				<div class="row">
+   					<div class="large-9 columns">
+   						<h4>Referrals Box</h4>
+   					</div>
+
+   					<div class="large-3 columns">
+   						
+
+
+						<%= form_tag chrms_doctors_dashboard_path, :method => 'get' do %>
+						  <p style="margin-top: 5px">
+						    <%= text_field_tag :search, params[:search],
+						     placeholder: "search token here" %>
+						    <!--<%= submit_tag "Search", :name => nil %>-->
+						  </p>
+						<% end %>
+
+   					</div>
+   					
+   				</div>
+   				
    			</div>
+   			<div style="width: 100%">
+   			<div class="large-12 columns">
+   				<table>
+   					<tr>
+   						<th>Referral's Name/Contact</th>
+   						<th>Patient Name</th>
+   						<th>Referral Type</th>
+   						<th>Referral Date</th>
+   					</tr>
+   					<% if @referrals.present? %>
+   					<% @referrals.each do |referral| %>
+   						<tr>
+   							<td><%= referral.signature %><br>email or contact</td>
+   							<td>
+   								<%= referral.patient_full_names%>
+   							</td>
+   							<td><%=referral.referral_type %><br>
+                           status-urgent</td>
+   							<td><%= referral.created_at.strftime("%B %d, %Y") %></td>
+   						</tr>
+   						
+   					<% end %>
+   					
+   					<%else%>
+   					<p>No match found</p>
+   					
+   					<%end%>
+   				</table>
+   			</div>
+   		</div>
    		</div>
    </div>
 </div>

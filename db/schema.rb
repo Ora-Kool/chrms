@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161105191529) do
+ActiveRecord::Schema.define(version: 20161108012221) do
 
   create_table "doctors", force: :cascade do |t|
     t.string   "name"
@@ -20,6 +20,9 @@ ActiveRecord::Schema.define(version: 20161105191529) do
     t.string   "remember_digest"
     t.string   "email"
     t.integer  "hospital_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "surname"
     t.index ["email"], name: "index_doctors_on_email", unique: true
     t.index ["hospital_id"], name: "index_doctors_on_hospital_id"
   end
@@ -41,6 +44,20 @@ ActiveRecord::Schema.define(version: 20161105191529) do
     t.integer  "hospital_id"
     t.index ["email"], name: "index_managers_on_email", unique: true
     t.index ["hospital_id"], name: "index_managers_on_hospital_id"
+  end
+
+  create_table "referrals", force: :cascade do |t|
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "patientID"
+    t.string   "patient_full_names"
+    t.string   "patient_contact"
+    t.string   "referral_type"
+    t.text     "reasons_for_referrals"
+    t.string   "referred_doctor"
+    t.string   "referred_hospital_name"
+    t.string   "signature"
+    t.string   "doctors_name"
   end
 
   create_table "staffs", force: :cascade do |t|

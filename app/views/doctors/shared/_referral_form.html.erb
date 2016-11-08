@@ -1,0 +1,40 @@
+<%= form_for(@referral, url: chrms_doctors_dashboard_request_referral_path) do |f| %>
+	<%= render "layouts/shared/error_messages", object: @referral %>
+		
+		<div class="row">
+			<div class="large-12 columns">
+				<legend><b>Patient's information</b></legend>
+				<%= f.label "patient id" %>
+				<%= f.text_field :patientID %>
+				<%= f.label "patient full names"%>
+				<%= f.text_field :patient_full_names %>
+				<%= f.label :patient_contact %>
+				<%= f.text_field :patient_contact %>
+				<hr>
+			</div>
+		</div>
+			<div class="row">
+				<div class="large-12 columns">
+					<legend><b>Referral information</b></legend>
+						<%= f.label "Referral type"%>
+						<%= f.text_field :referral_type %>	
+
+						<%= f.label :referred_hospital_name %>
+						<%= f.text_field :referred_hospital_name, placeholder: "to which hospital?" %>
+
+						<%= f.label :referred_doctor %>
+						<%= f.text_field :referred_doctor, placeholder: "to which doctor?" %>
+
+						<%= f.label :reasons_for_referrals %>
+						<%= f.text_area :reasons_for_referrals, size: "5x5"%>
+				</div>
+			</div>
+			<hr>
+	
+
+	<%= f.label :signature %>
+	<%= f.text_field :signature, placeholder: "my names" %>
+
+	<%= f.submit yield(:button_text), class: "button chrms large-3"%>
+<%end%>
+

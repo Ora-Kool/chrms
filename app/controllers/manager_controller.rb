@@ -3,7 +3,7 @@ class ManagerController < ApplicationController
 		:new_staff, :create_staff]
   def show
     @doctors = Doctor.all
-    @staff = Staff.all
+    @staffs = Staff.all
   end
 
   def new_doctor

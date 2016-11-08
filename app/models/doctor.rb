@@ -50,4 +50,8 @@ class Doctor < ApplicationRecord
   def forget
     update_attribute(:remember_digest, nil)
   end
+
+  def self.search(search)
+    where("name LIKE ? OR email LIKE ?", "%#{search}%", "%#{search}%")
+  end
 end

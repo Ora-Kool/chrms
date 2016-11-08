@@ -39,4 +39,7 @@ class Manager < ApplicationRecord
   def forget
     update_attribute(:remember_digest, nil)
   end
+  def self.search(search)
+    where("name LIKE ? OR hospital_id LIKE ?", "%#{search}%", "%#{search}%")
+  end
 end
