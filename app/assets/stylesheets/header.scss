@@ -1,5 +1,5 @@
 .main{
- a:hover{
+ .main a:hover{
 	border-bottom: 1px solid #ffffff;
 	padding: 0.6rem 1rem;
  }
@@ -16,4 +16,7 @@
 }
 .site-links:hover {
 	color: #616161;
+}
+.menu-centered {
+	margin-left: 15%;
 }
