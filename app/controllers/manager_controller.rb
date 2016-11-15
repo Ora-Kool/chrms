@@ -13,6 +13,7 @@ class ManagerController < ApplicationController
   def create_doctor
     @doctor = Doctor.new(doctors_params)
     @doctor.hospital_id = current_manager.hospital.id
+    #@doctor.city = current_manager.hospital.hospital_city
     if @doctor.save
         flash[:secondary] = "Doctor successfully added"
         redirect_to manager_dashboard_path

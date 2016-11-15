@@ -1,7 +1,7 @@
 <%provide(:title, "Doctor's Dashboard - CHRMS") %>
 <div class="large-3 columns">
 	<table>
-		<td><h4>Dr. <%= current_doctor.name.capitalize %></h4></td>
+		<td><h4>Dr. <%= current_doctor.surname.capitalize %></h4></td>
 		<tr>
 
 			<td>
@@ -9,19 +9,19 @@
 			</td>
 		</tr>
 		<tr>
-			<td>View my account</td>
+			<td><%= link_to 'Account Settings', doctor_dashboard_edit_path(current_doctor.name) %></td>
 		</tr>
       <tr>
-         <td><%= link_to 'Request Referral', chrms_doctors_dashboard_request_referral_path %></td>
+         <td><%= link_to 'Request Referral', doctor_dashboard_request_referral_path %></td>
       </tr>
 		<tr>
-			<td>Patient</td>
+			<td><%= link_to 'Patient', doctors_dashboard_patients_all_path(current_doctor.name) %></td>
 		</tr>
 		<tr>
 			<td><%= link_to 'Messages' %></td>
 		</tr>
 		<tr>
-			<td>Setup Notifications</td>
+			<td><%= link_to 'Setup Notifications' %></td>
 		</tr>
 	</table>
 
@@ -44,21 +44,26 @@
    				
    			</div>
    			<div style="width: 100%">
-   			<div class="large-12 columns" data-hide="medium">
-   				<table>
+   			   
+   				<table class="large-12 columns">
    					<tr>
-   						<th>Referral's Name/Contact</th>
-   						<th>Patient Name</th>
+   						<th>Referral's Name / Contact</th>
+                     <th>Patient Name</th>
+   						<th>Patient ID</th>
    						<th>Referral Type</th>
    						<th>Referral Date</th>
    					</tr>
    					<% if @referrals.present? %>
+                  <p style="font-family: courier; margin-bottom: 0">Results found</p>
    					<% @referrals.each do |referral| %>
    						<tr>
-   							<td><%= referral.signature %><br>email or contact</td>
+   							<td><%= referral.doctors_name %><br>email or contact</td>
    							<td>
    								<%= referral.patient_full_names%>
    							</td>
+                        <td>
+                           <%= referral.patientID%>
+                        </td>
    							<td><%=referral.referral_type %><br>
                            status-urgent</td>
    							<td><%= referral.created_at.strftime("%B %d, %Y") %></td>
@@ -67,50 +72,15 @@
    					<% end %>
    					
    					<%else%>
-   					<p style="font-family: courier; color: red">No records found</p>
+   					<p style="font-family: courier; color: red">No records found for patient ID :<%=params[:search]   %></p>
+
    					<%end%>
    				</table>
-   			</div>
+   			
    		</div>
    		</div>
    </div>
-   <div class="row">
-      <div class="large-12 columns">
-         <div class="row collapse">
-  <div class="medium-3 columns">
-    <ul class="tabs vertical" id="example-vert-tabs" data-tabs>
-      <li class="tabs-title is-active"><a href="#panel1v" aria-selected="true">Tab 1</a></li>
-      <li class="tabs-title"><a href="#panel2v">Tab 2</a></li>
-      <li class="tabs-title"><a href="#panel3v">Tab 3</a></li>
-      <li class="tabs-title"><a href="#panel4v">Tab 4</a></li>
-      <li class="tabs-title"><a href="#panel5v">Tab 5</a></li>
-      <li class="tabs-title"><a href="#panel6v">Tab 6</a></li>
-    </ul>
-    </div>
-    <div class="medium-9 columns">
-    <div class="tabs-content vertical" data-tabs-content="example-vert-tabs">
-      <div class="tabs-panel is-active" id="panel1v">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      </div>
-      <div class="tabs-panel" id="panel2v">
-        <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
-      </div>
-      <div class="tabs-panel" id="panel3v">
-        <img class="thumbnail" src="assets/img/generic/rectangle-3.jpg">
-      </div>
-      <div class="tabs-panel" id="panel4v">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      </div>
-      <div class="tabs-panel" id="panel5v">
-        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      </div>
-      <div class="tabs-panel" id="panel6v">
-        <img class="thumbnail" src="assets/img/generic/rectangle-5.jpg">
-      </div>
-    </div>
-  </div>
+  
 </div>
-      </div>
-   </div>
-</div>
+
 

@@ -1,0 +1,71 @@
+<%provide(:title, "Account Settings - CHRMS") %>
+<%provide(:button_text, "Update") %>
+<div class="medium-3 columns">
+<!-- left site navigation that houses the links-->
+
+	<ul class="tabs vertical" id="target" data-tabs>
+		<li class="tabs-title"><a href="#account-summary" aria-selected="false">Account Summary</a></li>
+
+		<li class="tabs-title is-active"><%=link_to 'Account Settings', '#profile-settings' %></li>
+		
+	</ul>
+	<table>
+		<tr>
+			<td class="back">
+				<%=link_to 'Dashboard', doctor_dashboard_path %>
+			</td>
+		</tr>
+	</table>
+	
+</div>
+
+ <div class="row">
+      	<div class="large-9 columns">
+         <div class="row collapse">        
+		    <!--Container that displays the pages-->
+		    <div class="large-12 columns">
+			    <div class="tabs-content vertical" data-tabs-content="target">
+			      	<div class="tabs-panel" id="account-summary">
+			      		<h4>Account Summary</h>
+				        	<p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
+				        	<hr class="horizontal-line">
+				        	
+				        	<div class="row">
+				        		<div class="medium-3 columns">
+				        			<h2>
+				        				<%=image_tag('doctor.jpg') %>
+				        			</h2>
+				        		</div>
+				        		<div class="medium-9 columns">
+				        			<%= render "doctors/shared/details_profile" %>
+				        		</div>
+				        		<hr class="horizontal-line">
+				        	</div>
+			      	</div>
+			      
+			      <div class="tabs-panel is-active" id="profile-settings">
+			      	<h4>Account Settings</h4>
+			      	 <p class="rules">
+			        	Control your account information, both what other colleagues see. 
+			        	To understand what's acceptable to display on profile, please see 
+			        	<a data-open="rule">these rule</a>
+			        <div class="reveal" id="rules" data-reveal>
+						<h1>Information Needed.</h1>
+						<hr class="horizontal-line">
+							<p class="lead">Your couch. It is mine.</p>
+							  <p>I'm a cool paragraph that lives inside of an even coolmodal. Wins!</p>
+			<button class="float-right top" data-close aria-label="Clomodal" type="button">
+							  <span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+				     </p>
+				        <hr class="horizontal-line">
+				        <%= render "doctors/shared/edit_form" %>
+			      </div>
+			      
+			      
+			    </div>
+			  </div>
+		</div>
+     </div>
+</div>

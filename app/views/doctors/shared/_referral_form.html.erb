@@ -1,30 +1,33 @@
-<div  style="font-family: courier">
-<%= form_for(@referral, url: chrms_doctors_dashboard_request_referral_path) do |f| %>
+<div>
+<%= form_for(@referral, url: doctor_dashboard_request_referral_path) do |f| %>
 	<%= render "layouts/shared/error_messages", object: @referral %>
 		
 		<div class="row">
+		<legend><b>Patient's information</b></legend>
 			<div class="large-12 columns">
-				<legend><b>Patient's information</b></legend>
-				<%= f.label "patient id" %>
+				
+				<label> Patient ID</label>
 				<%= f.text_field :patientID %>
 				<%= f.label "patient full names"%>
 				<%= f.text_field :patient_full_names %>
 				<%= f.label :patient_contact %>
-				<%= f.text_field :patient_contact %>
+				<%= telephone_field(:referral, :patient_contact) %>
+				
 				<hr>
 			</div>
 		</div>
 			<div class="row">
+			<legend><b>Referred information</b></legend>
 				<div class="large-12 columns">
-					<legend><b>Referral information</b></legend>
-						<%= f.label "Referral type"%>
-						<%= f.text_field :referral_type %>	
-
+					
 						<%= f.label :referred_hospital_name %>
 						<%= f.text_field :referred_hospital_name, placeholder: "to which hospital?" %>
 
 						<%= f.label :referred_doctor %>
 						<%= f.text_field :referred_doctor, placeholder: "to which doctor?" %>
+						<%= f.label "Referral type"%>
+						<%= f.select :referral_type, ["Option 1","Option 2"], prompt: "Select referral type" %>	
+
 
 						<%= f.label :reasons_for_referrals %>
 						<%= f.text_area :reasons_for_referrals, size: "5x5"%>
@@ -33,8 +36,8 @@
 			<hr>
 	
 
-	<%= f.label :signature %>
-	<%= f.text_field :signature, placeholder: "my names" %>
+	<!--<%= f.label :signature %>
+	<%= f.text_field :signature%> -->
 
 	<%= f.submit yield(:button_text), class: "button chrms large-4 radius"%>
 <%end%>

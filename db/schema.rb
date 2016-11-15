@@ -10,19 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161108012221) do
+ActiveRecord::Schema.define(version: 20161111113553) do
 
   create_table "doctors", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.string   "password_digest"
     t.string   "remember_digest"
     t.string   "email"
     t.integer  "hospital_id"
-    t.string   "first_name"
-    t.string   "last_name"
     t.string   "surname"
+    t.string   "country"
+    t.string   "region"
+    t.string   "mobile_number"
+    t.string   "city"
+    t.string   "gender"
+    t.string   "education"
+    t.text     "educational_summary"
+    t.string   "mobile_number2"
+    t.string   "speciality"
+    t.integer  "id_card_number"
+    t.string   "given_names"
     t.index ["email"], name: "index_doctors_on_email", unique: true
     t.index ["hospital_id"], name: "index_doctors_on_hospital_id"
   end

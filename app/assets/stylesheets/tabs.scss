@@ -1,0 +1,48 @@
+.tabs.vertical li a{
+	color: #335C7D;
+	border-bottom: .001rem solid #fafafa;
+	width: auto;
+
+}
+.tabs.vertical li a:hover{
+	color: #000000;
+}
+.tabs{
+	margin-top: .4rem;
+	border-radius: .2rem;
+	font-family: "Times New Roman", Times, serif;
+	border: .1rem solid #e0e0e0;
+}
+
+.collapse {
+	border: .1rem solid #e0e0e0;
+	width: auto;
+	height: auto;
+	margin-top: .4rem;
+	border-radius: .2rem;
+	margin-bottom: 2rem;
+}
+.collapse-incomplete {
+	border: .1rem solid #e0e0e0;
+	width: auto;
+	
+	padding-left: 1rem;
+	padding-right: 3rem;
+	padding-bottom: 3rem;
+	height: auto;
+	margin-top: .4rem;
+	border-radius: .2rem;
+	margin-bottom: 2rem;
+}
+.tabs-content{
+	background: rgb(254, 254, 254);
+	width: auto;
+	height: auto;
+	border-radius: .2rem;
+}
+.rules a{
+	color: #0097a7;
+}
+.rules a:hover{
+	color: #b2ebf2;
+}

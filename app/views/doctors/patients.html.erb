@@ -1,0 +1,26 @@
+<%provide(:title, 'My Patients - CHRMS') %>
+<div class="row">
+	<div class="large-12 columns">
+		<h4 class="text-center">Displaying the list of all my reffered patients</h4>
+		<table>
+			<tr>
+				<th>Patient Full Names</th>
+				<th>Patient Address</th>
+				<th>Patient Contact</th>
+			</tr>
+			<% if @patients.present? %>
+			<% @patients.each do |patient| %>
+
+				<tr>
+					<td><%= patient.patient_full_names%></td>
+					<td></td>
+					<td></td>
+				</tr>
+			<%end%>
+
+			<% else %>
+				<p>You have no patient at this time</p>
+			<%end%>
+		</table>
+	</div>
+</div>

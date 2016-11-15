@@ -7,13 +7,13 @@ class LoginSessionsController < ApplicationController
     hospital = Doctor.find_by(hospital_id: params[:session][:hospital_id])
 
     if doctor && doctor.authenticate(params[:session][:password]) && hospital
-      flash[:secondary] = "Welcome back!"
+      flash[:secondary] = "Welcome!"
       log_doctor(doctor)
       params[:session][:remember_me] == '1' ? remember(doctor) : forget(doctor)
-      redirect_to chrms_doctors_dashboard_path
+      redirect_to doctor_dashboard_path
 
     else
-      flash.now[:warning] = 'Access denied'
+      flash.now[:warning] = 'Access denied / wrong credentials'
       render 'new'
     end
 

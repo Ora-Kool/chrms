@@ -1,0 +1,13 @@
+input{
+   &[type=text], &[type=email], &[type=password], &[type=submit], &[type=textarea], &[type=select] {
+     border-radius: 3px;
+   }
+}
+.checkbox {
+  margin-top: -1px;
+  margin-bottom: 10px;
+  span {
+    margin-left: 20px;
+    font-weight: normal;
+  }
+}
