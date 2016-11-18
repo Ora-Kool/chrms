@@ -11,9 +11,9 @@ class Doctor < ApplicationRecord
   validates :education, presence: true, allow_nil: true
   validates :speciality, presence: true, allow_nil: true
   validates :educational_summary, presence: true, allow_nil: true
+  validate  :validate_phone1
 
-  validates :mobile_number, phone: { possible: false, allow_blank: true, types: [:mobile] },
-                                    uniqueness: true, allow_nil: true
+  
   validates :mobile_number2, phone: { possible: false, allow_blank: true, types: [:mobile] },
                                                   allow_nil: true
   
@@ -47,7 +47,8 @@ class Doctor < ApplicationRecord
       }
 
       
-
+    has_attached_file :photo, styles: {large: "600x600>", medium: "300x300>", thumbnail: "100x100>" }, default_url: "/images/doctor.jpg"
+    validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/
 
     has_secure_password
   	validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
@@ -90,11 +91,11 @@ class Doctor < ApplicationRecord
      phone = mobile_number
      if phone.nil?
       self.mobile_number = mobile_number
-      elsif self.mobile_number == phone && phone.length == 9
-         self.mobile_number = phone
-     elsif phone[0, 1].to_i >= "4".to_i && phone[0, 1] != "" && phone.length == 9
+     elsif phone[0, 1].to_i >= 5 && phone[0, 1] != "" && phone.length == 9 && isnumeric?(phone)
        self.mobile_number = mobile_number
 
+      elsif phone.length < 9
+        errors.add(:mobile_number, 'should have not less than 9 digits')
      else
       errors.add(:mobile_number, 'is invalid')
      end
@@ -104,12 +105,17 @@ class Doctor < ApplicationRecord
      phone2 = mobile_number2
      if phone2.nil?
       self.mobile_number2 = nil
-     elsif phone2[0, 1].to_i >= "4".to_i && phone2[0, 1] != "" && phone2.length == 9
+     elsif phone2[0, 1].to_i >= 5 && phone2[0, 1] != "" && phone2.length == 9 && isnumeric?(phone2)
        self.mobile_number2 = mobile_number2
      else
       self.mobile_number2 = nil
      end
    end
+
+   def isnumeric?(object)
+      true if Integer(object) rescue false
+   end
+
 
    
    

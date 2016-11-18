@@ -57,7 +57,7 @@
 								<h6><strong>Contact Details</strong></h6>
 							<div class="large-5 columns">
 								<%=f.label :country %>
-								<%=f.text_field :country %>
+								<%=f.select :country, ["Cameroon"], prompt: "select country" %>
 							</div>
 							<div class="large-5 columns">
 								<%=f.label :region %>
@@ -84,7 +84,7 @@
 						<div class="row">
 							<div class="large-4 columns">	
 								<%=f.label :email %>
-								<%=f.text_field :email %>
+								<%=f.email_field :email %>
 							</div>
 						</div>
 						
@@ -98,7 +98,7 @@
 		<%end%>
 		<div class="large-4 columns">
 	 	
-		<h4 style="margin-top: 1rem">Why complete my registration</h4>
+		<h4 style="margin-top: 1rem">Why complete my registration?</h4>
 		<hr class="horizontal-line">
 		<p><strong>CHRMS</strong> doesnot assume his users information by so doing he ask you to provide the information for yourself by completing the form at the <strong>LEFT</strong> side of the screen so he can better understand you and ease the communication with your colleague.
 		Without you completing this process.

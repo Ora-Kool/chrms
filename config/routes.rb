@@ -21,8 +21,10 @@ Rails.application.routes.draw do
   get 'doctor/:name/incomplete-profile', to: 'doctors#incomplete', as: 'doctor/dashboard/incomplete'
   patch 'doctor/:name/incomplete_update', to: 'doctors#incomplete_update', as: 'doctor/incomplete_update'
 
-  get 'doctor/dashboard/request_referral', to: 'doctors#request_referral', as: 'doctor/dashboard/request_referral'
-  post 'doctor/dashboard/request_referral', to: 'doctors#create_referral'
+  get 'doctor/dashboard/request_referral/hospitals/doctors/:id', to: 'doctors#request_referral',
+   as: 'doctor/dashboard/request_referral/hospitals/doctors'
+  post 'doctor/dashboard/request_referral/hospitals/doctors/:id', to: 'doctors#create_referral'
+  get 'doctor/dashboard/request_referral/hospitals', to: 'doctors#hospitals', as: 'doctor/dashboard/request_referral/hospitals'
 
   get 'doctor/dashboard/request_referral_confirmation/:id', to: 'doctors#referral_confirmation',
   as: 'doctor/dashboard/request_referral_confirmation'

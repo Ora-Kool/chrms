@@ -1,24 +1,23 @@
 class DoctorsController < ApplicationController
-  before_filter :set_cache_headers, only: [:show, :edit, :update]
-  before_filter :find_doctor, only: [:incomplete, :create_referral,
+  before_action :set_cache_headers, only: [:show, :edit, :update]
+  before_action :find_doctor, only: [:incomplete, :create_referral,
                                      :incomplete_update, :edit, :update]
 
 	before_action :logged_in_doctor, only: [:show, :request_referral,
                                           :create_referral, :referral_confirmation,
-                                          :edit, :incomplete, :incomplete_update]
+                                          :edit, :incomplete, :incomplete_update, :hospitals]
 
   before_action :correct_doctor, only: [:edit, :update, :show,:request_referral,
                                           :create_referral, :referral_confirmation,
-                                          :edit, :incomplete, :incomplete_update]
+                                          :edit, :incomplete, :incomplete_update, :hospitals]
   def show
-    if current_doctor.surname.nil? || current_doctor.given_names.nil? || current_doctor.email.nil? || current_doctor.mobile_number.nil?
+    if (current_doctor.surname.nil? || current_doctor.given_names.nil? || current_doctor.email.nil? || current_doctor.mobile_number.nil?)
       redirect_to  doctor_dashboard_incomplete_path(current_doctor.name)
     
     elsif params[:search]
-        @referrals = Referral.search(params[:search], current_doctor.name).order("created_at DESC")
+        @referrals = ReferralForm.search(params[:search], current_doctor.name).order("created_at DESC")
        else
-        @referrals = Referral.my_referrals(current_doctor.name).order("created_at DESC")
-          #@referrals = Referral.my_referrals(current_doctor.name).order("created_at DESC")
+        @referrals = ReferralForm.my_referrals(current_doctor.name).order("created_at DESC")
       end
 
   end
@@ -53,12 +52,14 @@ class DoctorsController < ApplicationController
 
   
   def request_referral
-    @referral = Referral.new
+    @referral = ReferralForm.new
+    @referred_doctor = Doctor.find(params[:id])
   end
 
   def create_referral
-    @referral = Referral.new(referrals_params)
-
+    @referral = ReferralForm.new(referrals_params)
+    @referred_doctor = Doctor.find(params[:id])
+    
     @referral.doctors_name = "#{current_doctor.surname}"
     @referral.signature = current_doctor.name
     if @referral.save
@@ -77,21 +78,40 @@ class DoctorsController < ApplicationController
     @patients = Referral.my_referrals(current_doctor.name)
   end
 
+  def hospitals
+    @doctors = Doctor.all
+  end
+
 
 
   private
 
   def referrals_params
-    params.require(:referral).permit(:patientID, :patient_full_names,
-                                     :patient_contact, :referral_type,
-                                     :reasons_for_referrals,
-                                     :referred_doctor,
-                                     :referred_hospital_name,
-                                     :signature)
+    params.require(:referral_forms).permit(:type_of_referral,
+                                           :initiating_facility_name,
+                                           :patient_contact,
+                                           :date_of_referral,
+                                           :referring_doctors_name,
+                                           :referring_doctors_speciality,
+                                           :referring_doctors_mobile_number,
+                                           :patient_full_names,
+                                           :patient_identity_number,
+                                           :patient_age,
+                                           :patient_gender,
+                                           :patient_address,
+                                           :patient_mobile_number,
+                                           :patient_clinical_history,
+                                           :findings,
+                                           :treatment_given,
+                                           :reasons_for_referral,
+                                           :referred_facility_name,
+                                           :address_of_referred_facility,
+                                           :optional_message)
   end
 
   def doctor_update
-    params.require(:doctor).permit(:surname,
+    params.require(:doctor).permit(:photo,
+                                   :surname,
                                    :first_name,
                                    :last_name,
                                    :gender,

@@ -1,0 +1,2 @@
+class ReferralForm < ApplicationRecord
+end

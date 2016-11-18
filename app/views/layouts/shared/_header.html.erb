@@ -15,7 +15,7 @@
           <li><%=  link_to 'Logout', managers_session_logout_path, method: :delete%></li>
         <%elsif logged_doctor?%>
           <li><%=  link_to 'Dashboard', doctor_dashboard_path %></li>
-          <li><%=  link_to 'Logout', doctor_logout_path, method: :delete%></li>
+          <li><%=  link_to 'Logout', doctor_logout_path, method: :delete %></li>
         <%else%>
           <li><%=  link_to 'Login', login_panel_path, class: 'fi-arrow-right'%></li>
         <%end%>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161111113553) do
+ActiveRecord::Schema.define(version: 20161118140611) do
 
   create_table "doctors", force: :cascade do |t|
     t.string   "name"
@@ -32,6 +32,10 @@ ActiveRecord::Schema.define(version: 20161111113553) do
     t.string   "speciality"
     t.integer  "id_card_number"
     t.string   "given_names"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
     t.index ["email"], name: "index_doctors_on_email", unique: true
     t.index ["hospital_id"], name: "index_doctors_on_hospital_id"
   end
@@ -55,18 +59,29 @@ ActiveRecord::Schema.define(version: 20161111113553) do
     t.index ["hospital_id"], name: "index_managers_on_hospital_id"
   end
 
-  create_table "referrals", force: :cascade do |t|
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.string   "patientID"
+  create_table "referral_forms", force: :cascade do |t|
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.string   "type_of_referral"
+    t.string   "initiating_facility_name"
+    t.string   "date_of_referral"
+    t.string   "referring_doctors_name"
+    t.string   "referring_doctors_speciality"
     t.string   "patient_full_names"
-    t.string   "patient_contact"
-    t.string   "referral_type"
-    t.text     "reasons_for_referrals"
-    t.string   "referred_doctor"
-    t.string   "referred_hospital_name"
-    t.string   "signature"
-    t.string   "doctors_name"
+    t.integer  "patient_identity_number"
+    t.integer  "patient_age"
+    t.string   "patient_gender"
+    t.string   "patient_address"
+    t.string   "patient_mobile_number"
+    t.text     "patient_clinical_history"
+    t.text     "findings"
+    t.text     "treatment_given"
+    t.text     "reasons_for_referral"
+    t.string   "referred_facility_name"
+    t.string   "address_of_referred_facility"
+    t.string   "referred_facility_doctors_name"
+    t.string   "referring_doctors_mobile_number"
+    t.text     "optional_message"
   end
 
   create_table "staffs", force: :cascade do |t|

@@ -5,14 +5,14 @@
 		<tr>
 
 			<td>
-				<%=image_tag('doctor.jpg', style: 'width: 100%; height: 10rem') %>
+				<%=image_tag(current_doctor.photo.url, style: 'width: 100%; height: 10rem') %>
 			</td>
 		</tr>
 		<tr>
 			<td><%= link_to 'Account Settings', doctor_dashboard_edit_path(current_doctor.name) %></td>
 		</tr>
       <tr>
-         <td><%= link_to 'Request Referral', doctor_dashboard_request_referral_path %></td>
+         <td><%= link_to 'Request Referral', doctor_dashboard_request_referral_hospitals_path %></td>
       </tr>
 		<tr>
 			<td><%= link_to 'Patient', doctors_dashboard_patients_all_path(current_doctor.name) %></td>
@@ -32,7 +32,7 @@
    			<div class="large-12 columns">
    				<div class="row">
    					<div class="large-9 columns">
-   						<h4>Referrals Box</h4>
+   						<h4 style="text-decoration: underline">Referrals Inbox</h4>
    					</div>
 
    					<div class="large-3 columns">
@@ -44,7 +44,7 @@
    				
    			</div>
    			<div style="width: 100%">
-   			   
+   			   <% if @referrals.present? %>
    				<table class="large-12 columns">
    					<tr>
    						<th>Referral's Name / Contact</th>
@@ -53,7 +53,7 @@
    						<th>Referral Type</th>
    						<th>Referral Date</th>
    					</tr>
-   					<% if @referrals.present? %>
+   					
                   <p style="font-family: courier; margin-bottom: 0">Results found</p>
    					<% @referrals.each do |referral| %>
    						<tr>
@@ -71,9 +71,11 @@
    						
    					<% end %>
    					
-   					<%else%>
+   					<%elsif params[:search].nil?%>
+                     <h1>hello doctor! i am chrmss</h1>
+                  <%else%>
    					<p style="font-family: courier; color: red">No records found for patient ID :<%=params[:search]   %></p>
-
+                     <%= link_to 'View All', doctor_dashboard_path, class: "button chrms radius large-2"%>
    					<%end%>
    				</table>
    			

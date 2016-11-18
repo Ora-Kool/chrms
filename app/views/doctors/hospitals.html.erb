@@ -1,0 +1,107 @@
+<%provide(:title, "Referral Hospitals - CHRMS") %>
+<div class="large-2 columns">
+	<table>
+		<td><h6>Referral Doctors</h6></td>
+		<tr>
+			<td>
+				<i class="fi-clipboard"></i><%= link_to "Dashboard", doctor_dashboard_path, style: "padding-left: .3rem"%>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<ul class="hospital_filter dropdown menu" data-dropdown-menu >
+  					<li>
+  						<a style="background: inherit; padding-left: .1rem"><i class="fi-filter" style="margin-right: .4rem"></i>Filter Hospitals</a>
+  						<ul class="menu">
+      						<li><a href="#" class="back">Hospital A</a></li>
+      						<li><a href="#" class="back">Hospital B</a></li>
+      						<li><a href="#" class="back">Hospital C</a></li>
+      						<li><a href="#" class="back">Hospital D</a></li>
+      
+    						</ul>
+  					</li>
+ 						
+				</ul>
+			</td>
+		</tr>
+		
+		
+	</table>
+</div>
+<div class="row">
+	
+	<div class="large-10 columns" style="margin-top: .5rem">
+		<div class="text-center">
+			<p>Displaying doctors from selected filtered hospital</p>
+		</div>
+		<% for i in 1..5 do %>
+		
+		
+			<div class="large-4 small-12 medium-6 columns end">
+
+                    <div class="card">
+
+                      <div class="image">
+
+                        <!--<img src="http://images.freeimages.com/images/previews/cf6/bird-1394216.jpg">-->
+                        <%= image_tag(current_doctor.photo.url) %>
+
+
+                        <span class="title">
+
+                  	<strong>Dr. <%=current_doctor.given_names %></strong>
+                    </span>
+
+                      </div>
+
+                      <div class="content">
+	                      <h4 style="padding-bottom: 0">Details</h4>
+	                      <hr class="horizontal-line" style="margin-top: 0; margin-bottom: .6rem">
+	                        <p style="padding-top: 0">
+	                          Hospital: <strong>General Hospital Yde</strong> 
+	                        </p>
+
+	                        <p>
+	                          Department: <strong>Cardiology</strong>
+	                        </p>
+
+	                        <p>
+	                          Contact: <strong>7655467876</strong>
+	                        </p>
+                      </div>
+
+                      <div class="action">
+							<%= link_to 'Book Referral', doctor_dashboard_request_referral_hospitals_doctors_path(current_doctor.id) %>
+                      </div>
+
+                    </div>
+
+            </div>
+
+                  <!-- profession section
+                  <div class="large-4 medium-7 columns end">
+
+                    <div class="card">
+
+                      <div class="content">
+
+                        <span>About Me</span>
+
+                        <p>
+                          
+                        </p>
+
+                      </div>
+
+                      <div class="action">
+                        
+                      </div>
+
+                    </div>
+
+                  </div>-->
+
+	<%end%>
+                 
+	</div>
+</div>

@@ -1,45 +1,159 @@
-<div>
-<%= form_for(@referral, url: doctor_dashboard_request_referral_path) do |f| %>
-	<%= render "layouts/shared/error_messages", object: @referral %>
-		
-		<div class="row">
-		<legend><b>Patient's information</b></legend>
-			<div class="large-12 columns">
-				
-				<label> Patient ID</label>
-				<%= f.text_field :patientID %>
-				<%= f.label "patient full names"%>
-				<%= f.text_field :patient_full_names %>
-				<%= f.label :patient_contact %>
-				<%= telephone_field(:referral, :patient_contact) %>
-				
-				<hr>
-			</div>
-		</div>
+<%= form_for(@referral, url: doctor_dashboard_request_referral_hospitals_doctors_path(current_doctor)) do |f| %>
+<h2 class="text-center" style="font-family: courier">Referral Form</h2>
+		<%= render "layouts/shared/error_messages", object: @referral %>
+			
 			<div class="row">
-			<legend><b>Referred information</b></legend>
-				<div class="large-12 columns">
+			<table>
+				<tr>
+					<td>
+						<label>Type of referral</label>
+						<div class="large-6">
+							<%=f.select :type_of_referral, ["Option A", "Option B", "Option C"], prompt: "select type" %>
+						</div>
+					</td>
+				</tr>
+			</table>
+			<table>
+			<h5><strong>Initiating Facility Information</strong></h5>
+				<tr>
+					<th>Initiating Facility Name<br> and Date</th>
+					<td>
+						<label>Name</label>
+						<%=f.text_field :initiating_facility_name %>
+					</td>
+
+					<td>
+						<label>Date of referral</label>
+						<%=f.text_field :date_of_referral%>
+					</td>
+				</tr>
+				
+			</table>
+			<table>
+				<h5><strong>Referring Doctor Information</strong></h5>
+				<tr>
+					<td>
+						<label>Reffering Doctor's Name</label>
+						<%=f.text_field :referring_doctors_name %>
+					</td>
+					<td>
+						<label>Referring doctor's speciality</label>
+						<%=f.text_field :referring_doctors_speciality %>
+					</td>
+					<td>
+						<label>Referring doctor's mobile number</label>
+						<%=f.text_field :referring_doctors_mobile_number %>
+					</td>
+				</tr>
+				<tr>
 					
-						<%= f.label :referred_hospital_name %>
-						<%= f.text_field :referred_hospital_name, placeholder: "to which hospital?" %>
+				</tr>
+			</table>
+			<table style="margin-bottom: 0">
+			<h5><strong>Patient Information</strong></h5>
+				<tr>
+					<td>
+						<label>Patient full names</label>
+						<div class="large-6">
+							<%=f.text_field :patient_full_names%>
+						</div>
+						
+					</td>
+				</tr>
+			</table>
+			<table style="margin: 0">
+				<tr>				
+					<td>
+						<label>Identity Number</label>
+						<%=f.text_field :patient_identity_number %>
+					</td>
+					<td>
+						<label>Age</label>
+						<%=f.text_field :patient_age%>
+					</td>
+					<td>
+						<label>Sex</label>
+						<%=f.select :patient_gender, ["male", "female"], prompt: "select sex"%>
+					</td>
+				</tr>
+			</table>
+			<table style="margin: 0">
+				<tr>
+					<td>
+						<label>Patient Address</label>
+						<%=f.text_field :patient_address %>
+					</td>
+					<td>
+						<label>Patient mobile number</label>
+						<%=f.text_field :patient_mobile_number %>
+					</td>
+				</tr>
+			</table>
+			<table style="margin: 0">
+				<tr>
+					<td>
+						<label>Patient clinical history</label>
+						<%=f.text_area :patient_clinical_history, size: '5x5' %>
+					</td>
+					<td>
+						<label>Findings</label>
+						<%=f.text_area :findings, size: '5x5' %>
+					</td>
+					<td>
+						<label>Treatment given</label>
+						<%=f.text_area :treatment_given, size: '5x5' %>
+					</td>
+					
+				</tr>
+			</table>
+		
+			<table style="margin-top: 0">
+				<tr>
+					<td>
+						<label>Reason for referral</label>
+						<%=f.text_area :reasons_for_referral, size: '5x5' %>
+					</td>
+					
+				</tr>
+			</table>
 
-						<%= f.label :referred_doctor %>
-						<%= f.text_field :referred_doctor, placeholder: "to which doctor?" %>
-						<%= f.label "Referral type"%>
-						<%= f.select :referral_type, ["Option 1","Option 2"], prompt: "Select referral type" %>	
 
+			<table>
+			<h5><strong>Referred Hospital Information</strong></h5>
+				<tr>
+					<th>Referred to Facility Name<br> and Address</th>
+					<td>
+						<label>Referred facility name</label>
+						<%=f.text_field :referred_facility_name %>
+					</td>
+					<td>
+						<label>Address of the Facility</label>
+						<%=f.text_field :address_of_referred_facility%>
+					</td>
+				</tr>
+				<tr>
+					
+				</tr>
+			</table>
+			<%= f.text_area :optional_message, size: "2x2", placeholder: "optional message" %>
+			<p>
+				Note to receiving facility: On completion of patient management please fill in and print the referral back slip and send with patient or simple just reply.
+			</p>
+			
+			
+			
+			<div class="row">
+				<div class="large-8 columns">
+					<%= f.submit yield(:button_text), class: "button chrms large-5 small-12 radius"%>
+				</div>
 
-						<%= f.label :reasons_for_referrals %>
-						<%= f.text_area :reasons_for_referrals, size: "5x5"%>
+				<div class="large-4 columns">
+					<%= link_to 'Cancel', doctor_dashboard_request_referral_hospitals_path, class: "button alert large-5 small-12 radius"%>
 				</div>
 			</div>
-			<hr>
-	
+			</div>
 
-	<!--<%= f.label :signature %>
-	<%= f.text_field :signature%> -->
-
-	<%= f.submit yield(:button_text), class: "button chrms large-4 radius"%>
 <%end%>
-</div>
+
+
 
