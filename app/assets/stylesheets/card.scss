@@ -168,3 +168,76 @@ html,body { // for demo only
     margin-top: 10px;
   }
 }
+
+
+.picture {
+
+  font-family: 'Roboto', sans-serif;
+
+  overflow: hidden;
+  padding: 0;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+
+  color: #272727;
+
+  border-radius: 2px;
+
+  margin-bottom: 0px;
+  height: auto;
+
+  .title {
+    line-height: .1rem;
+
+    font-size: 1rem;
+
+    font-weight: 300;
+    z-index: 0;
+
+  }
+
+  a {
+
+    color: #004D40;
+
+    margin-right: 1.3rem;
+
+    transition: color 0.3s ease;
+
+    text-decoration: none;
+
+  }
+
+  .image {
+    position: relative;
+    width: 100%;
+    .title {
+
+      position: absolute;
+
+      bottom: 0;
+
+      left: 0;
+
+      padding: 1.3rem;
+      background: rgba(235, 235, 235, 0.80);
+      color: #0a0a0a;
+      opacity: 10;
+      z-index: 1;
+      width: 100%;
+
+    }
+
+    img {
+      margin: 0;
+      border-radius: 2px 2px 0 0;
+
+    }
+
+  }
+  span{
+    color: inherit;
+    font-size: 30px;
+  }
+  
+
+}

@@ -1,0 +1,122 @@
+<%provide(:title, "Patient Referral Details - CHRMS") %>
+<div class="row">
+	<div class="large-12 columns">
+		<h4 style="text-decoration: underline">Initiated Facility Name: <strong><%= @patient.initiating_facility_name %></strong></h4>
+		<h4>by : Dr. <%= @patient.referring_doctors_name%></h4>
+
+		<table>
+			<tr>
+				<th>
+					Patient Names
+				</th>
+				<th>
+					Patient Mobile Number
+				</th>
+				<th>
+					Patient gender
+				</th>
+
+				<th>
+					Patient age
+				</th>
+				<th>
+					Patient address
+				</th>
+				
+			</tr>
+			<tr>
+				<td>
+					<%=@patient.patient_full_names%>
+				</td>
+				<td>
+					(+237) <%=@patient.patient_mobile_number%>
+				</td>
+				<td>
+					<%=@patient.patient_gender.capitalize %>
+				</td>
+
+				<td>
+					<%= @patient.patient_age %> years old
+				</td>
+				<td>
+					<%= @patient.patient_address%>
+				</td>
+				
+			</tr>
+			
+		</table>
+		<table>
+			<tr>
+				<td>
+					<h5>
+						<strong>Patient Clinical History</strong>
+					</h5>
+					<%=@patient.patient_clinical_history %>
+				</td>
+			</tr>
+
+		</table>
+		<table>
+			<tr>
+				<td>
+					<h5>
+						<strong>Patient Findings</strong>
+					</h5>
+					<%=@patient.findings %>
+				</td>
+			</tr>
+
+		</table>
+		<table>
+			<tr>
+				<td>
+					<h5>
+						<strong>Treatments Given</strong>
+					</h5>
+					<%=@patient.treatment_given %>
+				</td>
+			</tr>
+
+		</table>
+		<table>
+			<tr>
+				<td>
+					<h5>
+						<strong>Reasons For This Referral</strong>
+					</h5>
+					<%=@patient.reasons_for_referral %>
+				</td>
+			</tr>
+
+		</table>
+		<table>
+			<tr>
+				<td>
+					<h5>
+						<strong>Message from Dr. <%="#{@patient.referring_doctors_name}" %></strong>
+					</h5>
+					<%=@patient.optional_message %>
+				</td>
+			</tr>
+
+		</table>
+
+		<p style="color: red"><span style="color: red">*</span><strong>
+			Note to receiving facility: On completion of patient management please fill in the referral back slip below and send copy with patient or just reply directly.</strong>
+		</p>
+
+			<div class="row">
+				<div class="large-6 columns">
+					<%=link_to ' Click Here To Reply Directly', doctor_dashboard_read_referral_patient_referral_back_slip_path(@patient.id),
+					 class: "button chrms large-12 radius"%>
+				</div>
+				<div class="large-6 columns">
+					<%= link_to 'Back', doctor_dashboard_path, class: "button radius secondary large-12"%>
+				</div>
+				
+				
+			</div>
+	
+
+	</div>
+</div>

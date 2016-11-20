@@ -5,24 +5,51 @@
 		<tr>
 
 			<td>
-				<%=image_tag(current_doctor.photo.url, style: 'width: 100%; height: 10rem') %>
+            <div class="picture">
+               <div class="image">
+                  <% if current_doctor.photo.url.nil?%>
+                        <%= image_tag('doctor.jpg', style: 'width: 100%; height: 10rem')%>
+
+                     <%else%>
+                     <%=image_tag(current_doctor.photo.url, style: 'width: 100%; height: 10rem') %>
+                        
+                  <%end%> 
+                  <span class="title">
+                     
+                  </span>
+                  <!--Pop up for changing profile photo-->
+                  <div class="reveal" id="change_photo" data-reveal>
+                  <h1>Information Needed.</h1>
+                  <hr class="horizontal-line">
+                     <p class="lead">Your couch. It is mine.</p>
+                       <p>I'm a cool paragraph that lives inside of an even coolmodal. Wins!</p>
+                        <button class="float-right top" data-close aria-label="Clomodal" type="button">
+                       <span aria-hidden="true">&times;</span>
+                  </button>
+               </div>
+               </div>
+            </div>
+         
+				
 			</td>
 		</tr>
 		<tr>
-			<td><%= link_to 'Account Settings', doctor_dashboard_edit_path(current_doctor.name) %></td>
+			<td><%= link_to 'Account Settings', doctor_dashboard_edit_path(current_doctor.name) %><i class="fi-widget float-right"></i></td>
 		</tr>
       <tr>
-         <td><%= link_to 'Request Referral', doctor_dashboard_request_referral_hospitals_path %></td>
+         <td><%= link_to 'Request Referral', doctor_dashboard_request_referral_hospitals_path %><i class="badge float-right chrms"><%=ReferralForm.count%></i></td>
+      </tr>
+      <tr>
+         <td>
+            <%= link_to 'Unapproved Referrals' %><i class="badge float-right ">0</i></td>
       </tr>
 		<tr>
-			<td><%= link_to 'Patient', doctors_dashboard_patients_all_path(current_doctor.name) %></td>
+			<td><%= link_to 'Patients', doctors_dashboard_patients_all_path(current_doctor.name) %><i class="badge float-right success">1</i></td>
 		</tr>
 		<tr>
-			<td><%= link_to 'Messages' %></td>
+			<td><%= link_to 'Messages' %><i class="badge float-right alert">0</i></td>
 		</tr>
-		<tr>
-			<td><%= link_to 'Setup Notifications' %></td>
-		</tr>
+		
 	</table>
 
 </div>
@@ -47,26 +74,47 @@
    			   <% if @referrals.present? %>
    				<table class="large-12 columns">
    					<tr>
-   						<th>Referral's Name / Contact</th>
+   						<th>Doctor's Name / Contact</th>
                      <th>Patient Name</th>
    						<th>Patient ID</th>
-   						<th>Referral Type</th>
-   						<th>Referral Date</th>
+                     <th>Referral Type</th>
+   						<th>Referral Status</th>
+                     <th>Date received</th>
+   						
    					</tr>
    					
-                  <p style="font-family: courier; margin-bottom: 0">Results found</p>
+                  <p style="font-family: courier; margin-bottom: 0; color: #294f42">Results found</p>
    					<% @referrals.each do |referral| %>
    						<tr>
-   							<td><%= referral.doctors_name %><br>email or contact</td>
+   							<td><%= "#{referral.referring_doctors_name}" %>
+                        <br>Tel: (+237) <%= "#{referral.referring_doctors_mobile_number}"%>
+                        </td>
    							<td>
-   								<%= referral.patient_full_names%>
+                           
+      								 <%= link_to "#{referral.patient_full_names}", doctor_dashboard_read_referrals_patient_referral_details_path(referral.id)%><br>
+                               <span>click to view</span>
+                         
    							</td>
                         <td>
-                           <%= referral.patientID%>
+                           <%= referral.patient_identity_number%>
                         </td>
-   							<td><%=referral.referral_type %><br>
-                           status-urgent</td>
-   							<td><%= referral.created_at.strftime("%B %d, %Y") %></td>
+   							<td>
+                           <%=referral.type_of_referral %><br>
+                        </td>
+                        <td>
+                            <% if referral.referral_status == "pending" %>
+                              <label><%= link_to "Pending", doctor_dashboard_read_referrals_patient_referral_details_path(referral.id), class: "pending" %></label>
+                            <% elsif referral.referral_status == "received" %>
+                                 <label><%= link_to "Received", doctor_dashboard_read_referrals_patient_referral_details_path(referral.id), class: "received" %> </label>
+                            <%else%>
+                                 <label><%= link_to "Completed", doctor_dashboard_read_referrals_patient_referral_details_path(referral.id), class: "completed " %><i class="fi-check"></i></label>
+                            <%end%>
+                           
+                        </td>
+   							<td>
+                           <%= referral.created_at.strftime("%B %d, %Y") %>
+                              
+                        </td>
    						</tr>
    						
    					<% end %>

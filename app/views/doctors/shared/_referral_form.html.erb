@@ -13,8 +13,8 @@
 					</td>
 				</tr>
 			</table>
-			<table>
-			<h5><strong>Initiating Facility Information</strong></h5>
+			<table style="margin-bottom: 0">
+			<h5><strong>Initiating Facility Information / Referring Doctor Information</strong></h5>
 				<tr>
 					<th>Initiating Facility Name<br> and Date</th>
 					<td>
@@ -29,8 +29,7 @@
 				</tr>
 				
 			</table>
-			<table>
-				<h5><strong>Referring Doctor Information</strong></h5>
+			<table style="margin-top: 0">
 				<tr>
 					<td>
 						<label>Reffering Doctor's Name</label>
@@ -95,10 +94,14 @@
 						<label>Patient clinical history</label>
 						<%=f.text_area :patient_clinical_history, size: '5x5' %>
 					</td>
+				</tr>
+				<tr>
 					<td>
 						<label>Findings</label>
 						<%=f.text_area :findings, size: '5x5' %>
 					</td>
+				</tr>
+				<tr>
 					<td>
 						<label>Treatment given</label>
 						<%=f.text_area :treatment_given, size: '5x5' %>

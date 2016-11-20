@@ -3,6 +3,10 @@ table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
+    font-size: .9rem;
+}
+th{
+	font-size: .9rem;
 }
 
 td, th {
@@ -13,10 +17,58 @@ td, th {
 tr:nth-child(even) {
     background-color: #dddddd;
 }
+td span{
+	color: #2198af;
+	margin-left: 1.9rem;
+}
 
 td > a {
-	color: #335C7D
+	color: #2198af;
 }
+td > a:hover {
+	color: #116272;
+}
+
+td  a.pending {
+	color: #e53434;
+	letter-spacing: .1rem;
+	padding-left: .6rem;
+	font-size: 1rem;
+	text-transform: uppercase;
+}
+td  a.pending:hover {
+	color: red;
+	font-style: bold;
+	letter-spacing: .1rem;
+}
+td  a.received {
+	color: #2e4184;
+	letter-spacing: .1rem;
+	padding-left: .6rem;
+	font-size: 1rem;
+	text-transform: uppercase;
+}
+td  a.received:hover {
+	color: #2e4184;
+	letter-spacing: .1rem;
+	padding-left: .6rem;
+	font-size: 1rem;
+	text-transform: uppercase;
+}
+td  a.completed {
+	color: #21af61;
+	letter-spacing: .1rem;
+	font-size: 1rem;
+	text-transform: uppercase;
+}
+td  a.completed:hover {
+	color: #328249;
+	letter-spacing: .1rem;
+	font-size: 1rem;
+	text-transform: uppercase;
+}
+
+
 
 .back{
 	padding-left: 1.7rem;

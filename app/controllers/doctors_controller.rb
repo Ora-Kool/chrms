@@ -15,9 +15,9 @@ class DoctorsController < ApplicationController
       redirect_to  doctor_dashboard_incomplete_path(current_doctor.name)
     
     elsif params[:search]
-        @referrals = ReferralForm.search(params[:search], current_doctor.name).order("created_at DESC")
+        @referrals = ReferralForm.search(params[:search], "#{current_doctor.surname} #{current_doctor.given_names}").order("created_at DESC")
        else
-        @referrals = ReferralForm.my_referrals(current_doctor.name).order("created_at DESC")
+        @referrals = ReferralForm.my_referrals("#{current_doctor.surname} #{current_doctor.given_names}").order("created_at DESC")
       end
 
   end
@@ -58,11 +58,9 @@ class DoctorsController < ApplicationController
 
   def create_referral
     @referral = ReferralForm.new(referrals_params)
-    @referred_doctor = Doctor.find(params[:id])
-    
-    @referral.doctors_name = "#{current_doctor.surname}"
-    @referral.signature = current_doctor.name
+
     if @referral.save
+      @referral.update_pending
       flash[:secondary] = "Your request has being submitted"
       redirect_to doctor_dashboard_request_referral_confirmation_path(@referral)
     else
@@ -71,15 +69,58 @@ class DoctorsController < ApplicationController
   end
 
   def referral_confirmation
-    @referral = Referral.find(params[:id])
+    @referral = ReferralForm.find(params[:id])
   end
 
   def patients
-    @patients = Referral.my_referrals(current_doctor.name)
+    @patients = ReferralForm.my_referrals("#{current_doctor.surname} #{current_doctor.given_names}")
+  end
+
+  def read_referral
+    @patient = ReferralForm.find(params[:id])
+    if @patient.referral_status == "pending"
+          @patient.update_received
+    end
+  end
+
+  def referral_back_slip
+     @patient = ReferralForm.find(params[:id])
+     @patient_referral_back_slip = ReferralBackSlip.new
+  end
+  def submit_referral_back_slip
+     @patient = ReferralForm.find(params[:id])
+
+     @patient_referral_back_slip = ReferralBackSlip.new(referral_back_slip_params)
+     @patient_referral_back_slip.received_facility_name = @patient.referred_facility_name
+     @patient_referral_back_slip.received_doctors_number = current_doctor.mobile_number
+     @patient_referral_back_slip.doctor_replying_names = "#{current_doctor.surname} #{current_doctor.given_names}"
+     @patient_referral_back_slip.doctors_speciality = current_doctor.speciality
+     @patient_referral_back_slip.replying_date = Date.today
+     @patient_referral_back_slip.initiated_facility_name = @patient.initiating_facility_name
+     @patient_referral_back_slip.initiated_facility_address = @patient.initiating_facility_address
+     @patient_referral_back_slip.patient_identity_number = @patient.patient_identity_number
+     @patient_referral_back_slip.patient_age = @patient.patient_age
+     @patient_referral_back_slip.patient_gender = @patient.patient_gender
+     @patient_referral_back_slip.patient_address = @patient.patient_address
+     @patient_referral_back_slip.refer_back_to = @patient.referring_doctors_name
+
+     if @patient_referral_back_slip.save
+         @patient.update_completed
+        flash[:secondary] = "Thanks for sending #{@patient.patient_full_names} back for follow up"
+        redirect_to doctor_dashboard_path
+     else
+        render 'referral_back_slip'
+     end
   end
 
   def hospitals
-    @doctors = Doctor.all
+    if params[:hospital].blank?
+      @doctors = Doctor.all
+    else
+      @hospital_id = Hospital.find_by(hospital_name: params[:hospital])
+      @filtered_doctors = Doctor.where(hospital_id: @hospital_id)
+    end
+    
   end
 
 
@@ -87,9 +128,8 @@ class DoctorsController < ApplicationController
   private
 
   def referrals_params
-    params.require(:referral_forms).permit(:type_of_referral,
+    params.require(:referral_form).permit(:type_of_referral,
                                            :initiating_facility_name,
-                                           :patient_contact,
                                            :date_of_referral,
                                            :referring_doctors_name,
                                            :referring_doctors_speciality,
@@ -118,6 +158,7 @@ class DoctorsController < ApplicationController
                                    :given_names,  
                                    :id_card_number,
                                    :education,
+                                   :city,
                                    :educational_summary,
                                    :speciality,
                                    :country,
@@ -125,6 +166,18 @@ class DoctorsController < ApplicationController
                                    :mobile_number,
                                    :mobile_number2,
                                    :email)
+  end
+
+  def referral_back_slip_params
+    params.require(:referral_back_slip).permit(:patient_was_seen_by,
+                                               :special_investigation,
+                                               :special_findings,
+                                               :diagnosis,
+                                               :treatments,
+                                               :operation,
+                                               :medications_prescribed,
+                                               :please_continue_with,
+                                               :referral_back_slip_message)
   end
 
   def logged_in_doctor

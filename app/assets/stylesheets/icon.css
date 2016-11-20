@@ -17,6 +17,13 @@
 .fi-social-facebook{
 	font-size: 1.9rem;
 }
+.fi-widget{
+	font-size: 1.3rem;
+}
+
+.fi-check{
+	color: #21af61;
+}
 .badge.chbtn{
 	padding-left: .8rem;
 	padding-right: .8rem;

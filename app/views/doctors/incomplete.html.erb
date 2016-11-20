@@ -61,11 +61,11 @@
 							</div>
 							<div class="large-5 columns">
 								<%=f.label :region %>
-								<%=f.select :region, ["Adamawa","Centre","East","Far North","Littoral","North","Northwest","South","Southwest","West"], prompt: 'select region' %>
+								<%=f.select :region, ["Adamawa","Centre","East", "Littoral","Far North","North","Northwest","South","Southwest","West"], prompt: 'select region' %>
 							</div>
 							<div class="large-5 columns">
-								<!--<%=f.label "city" %>
-								<%=f.text_field :city %>-->
+								<%=f.label "city" %>
+								<%=f.select :city, ["Yaounde", "Douala", "Buea"] %>
 							</div>
 						</div>
 

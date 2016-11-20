@@ -1,22 +1,23 @@
 <%provide(:title, 'My Patients - CHRMS') %>
 <div class="row">
 	<div class="large-12 columns">
-		<h4 class="text-center">Displaying the list of all my reffered patients</h4>
+		<h4 class="text-center">Displaying the list of all my referred patients</h4>
 
 		<table>
 			<tr>
 				<th>Patient's Full Names</th>
 				<th>Patient's Address</th>
 				<th>Patient's Contact</th>
-				<th>Patient's DOB</th>
+				<th>Patient's YOB / Age</th>
 			</tr>
 			<% if @patients.present? %>
 			<% @patients.each do |patient| %>
 
 				<tr>
 					<td><%= patient.patient_full_names%></td>
-					<td></td>
-					<td></td>
+					<td><%= patient.patient_address%></td>
+					<td>(+237) <%= patient.patient_mobile_number %></td>
+					<td><%= Date.today.year - patient.patient_age.to_i%> / <%=patient.patient_age%></td>
 				</tr>
 			<%end%>
 

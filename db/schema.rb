@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161118140611) do
+ActiveRecord::Schema.define(version: 20161120221635) do
 
   create_table "doctors", force: :cascade do |t|
     t.string   "name"
@@ -59,6 +59,34 @@ ActiveRecord::Schema.define(version: 20161118140611) do
     t.index ["hospital_id"], name: "index_managers_on_hospital_id"
   end
 
+  create_table "referral_back_slips", force: :cascade do |t|
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.string   "received_facility_name"
+    t.string   "received_doctors_number"
+    t.string   "doctor_replying_names"
+    t.string   "doctors_speciality"
+    t.string   "replying_date"
+    t.string   "initiated_facility_name"
+    t.string   "initiated_facility_address"
+    t.integer  "patient_identity_number"
+    t.integer  "patient_age"
+    t.string   "patient_gender"
+    t.string   "patient_address"
+    t.string   "patient_was_seen_by"
+    t.string   "when_patient_was_seen"
+    t.text     "special_investigation"
+    t.text     "special_findings"
+    t.text     "diagnosis"
+    t.text     "treatments"
+    t.string   "operation"
+    t.text     "medications_prescribed"
+    t.string   "please_continue_with"
+    t.string   "refer_back_to"
+    t.string   "on_date"
+    t.text     "referral_back_slip_message"
+  end
+
   create_table "referral_forms", force: :cascade do |t|
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
@@ -82,6 +110,8 @@ ActiveRecord::Schema.define(version: 20161118140611) do
     t.string   "referred_facility_doctors_name"
     t.string   "referring_doctors_mobile_number"
     t.text     "optional_message"
+    t.string   "initiating_facility_address"
+    t.string   "referral_status"
   end
 
   create_table "staffs", force: :cascade do |t|

@@ -2,14 +2,9 @@
 <div class="row">
 	<div class="large-12 columns">
 		<h2>Referrals Details</h2>
-		<p><%=@referral.patientID%></p>
+		
 		<p><%=@referral.patient_full_names%></p>
-		<p><%=@referral.patient_contact%></p>
-		<p><%=@referral.referral_type%></p>
-		<p><%=@referral.reasons_for_referrals%></p>
-		<p><%=@referral.referred_doctor%></p>
-		<p><%=@referral.referred_hospital_name%></p>
-		<p><%=@referral.signature%></p>
+		
 	</div>
 	<p><%= link_to "Confirmed", doctor_dashboard_path,  class: "button chrms large-4" %></p>
 </div>

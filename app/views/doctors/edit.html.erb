@@ -6,7 +6,7 @@
 	<ul class="tabs vertical" id="target" data-tabs>
 		<li class="tabs-title"><a href="#account-summary" aria-selected="false">Account Summary</a></li>
 
-		<li class="tabs-title is-active"><%=link_to 'Account Settings', '#profile-settings', class: "fi-page-edit" %></li>
+		<li class="tabs-title is-active"><%=link_to 'Account Settings', '#profile-settings', class: "fi-widget" %></li>
 		
 	</ul>
 	<table>
@@ -40,6 +40,14 @@
 				        			<%= render "doctors/shared/details_profile" %>
 				        		</div>
 				        		<hr class="horizontal-line">
+				        	</div>
+				        	<div class="row">
+				        		<div class="large-12 columns">
+				        			<h5>Mobile Number:(+237) <%=@doctor.mobile_number %></h5>
+				        			<h5>Country: <%=@doctor.country %></h5>
+				        			<h5>Region: <%=@doctor.region %></h5>
+				        			<h5>City: <%=@doctor.city %></h5>
+				        		</div>
 				        	</div>
 			      	</div>
 			      

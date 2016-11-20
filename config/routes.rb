@@ -30,6 +30,13 @@ Rails.application.routes.draw do
   as: 'doctor/dashboard/request_referral_confirmation'
 
   get 'doctor/:name/dashboard/patients/all', to: 'doctors#patients', as: 'doctors/dashboard/patients/all'
+
+  get 'doctor/dashboard/read_referrals/patient/:id', to: 'doctors#read_referral',
+  as: 'doctor/dashboard/read_referrals/patient_referral_details'
+
+  get 'doctor/dashboard/read_referral/patient/:id/referral_back_slip', to: 'doctors#referral_back_slip',
+  as: 'doctor/dashboard/read_referral/patient/referral_back_slip'
+  post 'doctor/dashboard/read_referral/patient/:id/referral_back_slip', to: 'doctors#submit_referral_back_slip'
   
 
 
