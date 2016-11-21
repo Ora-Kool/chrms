@@ -39,4 +39,8 @@ class ReferralForm < ApplicationRecord
     def update_completed
         update_attribute(:referral_status, "completed")
     end
+
+    def self.count_current_referrals
+        ReferralForm.count
+    end
 end

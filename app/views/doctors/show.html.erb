@@ -8,7 +8,7 @@
             <div class="picture">
                <div class="image">
                   <% if current_doctor.photo.url.nil?%>
-                        <%= image_tag('doctor.jpg', style: 'width: 100%; height: 10rem; padding: 0')%>
+                        <%= image_tag('images.jpg', style: 'width: 100%; height: 10rem; padding: 0')%>
 
                      <%else%>
                      <%=image_tag(current_doctor.photo.url, style: 'width: 100%; height: 16rem; padding: 0') %>
@@ -37,7 +37,9 @@
 			<td><%= link_to 'Account Settings', doctor_dashboard_edit_path(current_doctor.name), class: 'account-settings' %><i class="fi-widget float-right"></i></td>
 		</tr>
       <tr>
-         <td><%= link_to 'Request Referral', doctor_dashboard_request_referral_hospitals_path %><i class="badge float-right chrms"><%=ReferralForm.count%></i></td>
+         <td><%= link_to 'Request Referral', doctor_dashboard_request_referral_hospitals_path %>
+         <i class="badge float-right chrms"><%=@referrals.count%></i>
+         </td>
       </tr>
       <tr>
          <td>

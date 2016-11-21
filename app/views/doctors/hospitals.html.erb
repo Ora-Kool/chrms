@@ -45,12 +45,12 @@
                       <div class="image">
 
                         <!--<img src="http://images.freeimages.com/images/previews/cf6/bird-1394216.jpg">-->
-                        <%= image_tag(current_doctor.photo.url) %>
+                        <%= image_tag(doctor.photo.url) %>
 
 
                         <span class="title">
 
-                  	<strong>Dr. <%=current_doctor.given_names %></strong>
+                  	<strong>Dr. <%=doctor.given_names %></strong>
                     </span>
 
                       </div>
@@ -59,20 +59,20 @@
 	                      <h4 style="padding-bottom: 0">Details</h4>
 	                      <hr class="horizontal-line" style="margin-top: 0; margin-bottom: .6rem">
 	                        <p style="padding-top: 0">
-	                          Hospital: <strong>General Hospital Yde</strong> 
+	                          Hospital: <strong></strong><%= doctor.hospital.hospital_name %></strong> 
 	                        </p>
 
 	                        <p>
-	                          Department: <strong>Cardiology</strong>
+	                          Speciality: <strong><%=doctor.speciality %></strong>
 	                        </p>
 
 	                        <p>
-	                          Contact: <strong>7655467876</strong>
+	                          Contact: <strong><%= doctor.mobile_number%></strong>
 	                        </p>
                       </div>
 
                       <div class="action">
-							<%= link_to 'Book Referral', doctor_dashboard_request_referral_hospitals_doctors_path(current_doctor.id) %>
+							<%= link_to 'Book Referral', doctor_dashboard_request_referral_hospitals_doctors_path(doctor.id) %>
                       </div>
 
                     </div>
@@ -117,12 +117,12 @@
                       <div class="image">
 
                         <!--<img src="http://images.freeimages.com/images/previews/cf6/bird-1394216.jpg">-->
-                        <%= image_tag(current_doctor.photo.url) %>
+                        <%= image_tag(doctor.photo.url) %>
 
 
                         <span class="title">
 
-                  	<strong>Dr. <%=current_doctor.given_names %></strong>
+                  	<strong>Dr. <%=doctor.given_names %></strong>
                     </span>
 
                       </div>
@@ -131,15 +131,15 @@
 	                      <h4 style="padding-bottom: 0">Details</h4>
 	                      <hr class="horizontal-line" style="margin-top: 0; margin-bottom: .6rem">
 	                        <p style="padding-top: 0">
-	                          Hospital: <strong>General Hospital Yde</strong> 
+	                          Hospital: <strong><%= doctor.hospital.hospital_name %></strong> 
 	                        </p>
 
 	                        <p>
-	                          Department: <strong>Cardiology</strong>
+	                          Speciality: <strong></strong><%= doctor.speciality%></strong>
 	                        </p>
 
 	                        <p>
-	                          Contact: <strong>7655467876</strong>
+	                          Contact: <strong><%= doctor.mobile_number %></strong>
 	                        </p>
                       </div>
 
