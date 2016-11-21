@@ -103,6 +103,7 @@ class DoctorsController < ApplicationController
      @patient_referral_back_slip.patient_gender = @patient.patient_gender
      @patient_referral_back_slip.patient_address = @patient.patient_address
      @patient_referral_back_slip.refer_back_to = @patient.referring_doctors_name
+     @patient_referral_back_slip.patient_full_names = @patient.patient_full_names
 
      if @patient_referral_back_slip.save
          @patient.update_completed
@@ -111,6 +112,11 @@ class DoctorsController < ApplicationController
      else
         render 'referral_back_slip'
      end
+  end
+
+  def submitted_back_slips
+      @patient = ReferralBackSlip.find_by(patient_identity_number: params[:id])
+      @back_slips = ReferralBackSlip.where(patient_identity_number: params[:id])
   end
 
   def hospitals
@@ -177,6 +183,7 @@ class DoctorsController < ApplicationController
                                                :operation,
                                                :medications_prescribed,
                                                :please_continue_with,
+                                               :patient_full_names,
                                                :referral_back_slip_message)
   end
 

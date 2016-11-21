@@ -5,8 +5,16 @@ table {
     width: 100%;
     font-size: .9rem;
 }
+td .doctors_name{
+	padding: 0;
+	margin: 0;
+}
 th{
 	font-size: .9rem;
+}
+
+td .picture {
+	background-color: #dddddd;
 }
 
 td, th {
@@ -68,7 +76,10 @@ td  a.completed:hover {
 	text-transform: uppercase;
 }
 
-
+td .fi-widget{
+	height: auto;
+	margin-bottom: -8px;
+}
 
 .back{
 	padding-left: 1.7rem;

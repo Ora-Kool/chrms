@@ -1,24 +1,24 @@
 <%provide(:title, "Doctor's Dashboard - CHRMS") %>
 <div class="large-3 columns">
 	<table>
-		<td><h4>Dr. <%= current_doctor.surname.capitalize %></h4></td>
+		<td><h5 class="doctors_name">Dr. <%= current_doctor.surname.capitalize %></h5></td>
 		<tr>
 
 			<td>
             <div class="picture">
                <div class="image">
                   <% if current_doctor.photo.url.nil?%>
-                        <%= image_tag('doctor.jpg', style: 'width: 100%; height: 10rem')%>
+                        <%= image_tag('doctor.jpg', style: 'width: 100%; height: 10rem; padding: 0')%>
 
                      <%else%>
-                     <%=image_tag(current_doctor.photo.url, style: 'width: 100%; height: 10rem') %>
+                     <%=image_tag(current_doctor.photo.url, style: 'width: 100%; height: 16rem; padding: 0') %>
                         
                   <%end%> 
-                  <span class="title">
-                     
-                  </span>
+                  <!--<span class="title">
+                     hello
+                  </span>-->
                   <!--Pop up for changing profile photo-->
-                  <div class="reveal" id="change_photo" data-reveal>
+                  <!--<div class="reveal" id="change_photo" data-reveal>
                   <h1>Information Needed.</h1>
                   <hr class="horizontal-line">
                      <p class="lead">Your couch. It is mine.</p>
@@ -26,7 +26,7 @@
                         <button class="float-right top" data-close aria-label="Clomodal" type="button">
                        <span aria-hidden="true">&times;</span>
                   </button>
-               </div>
+               </div>-->
                </div>
             </div>
          
@@ -34,7 +34,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td><%= link_to 'Account Settings', doctor_dashboard_edit_path(current_doctor.name) %><i class="fi-widget float-right"></i></td>
+			<td><%= link_to 'Account Settings', doctor_dashboard_edit_path(current_doctor.name), class: 'account-settings' %><i class="fi-widget float-right"></i></td>
 		</tr>
       <tr>
          <td><%= link_to 'Request Referral', doctor_dashboard_request_referral_hospitals_path %><i class="badge float-right chrms"><%=ReferralForm.count%></i></td>
@@ -107,7 +107,11 @@
                             <% elsif referral.referral_status == "received" %>
                                  <label><%= link_to "Received", doctor_dashboard_read_referrals_patient_referral_details_path(referral.id), class: "received" %> </label>
                             <%else%>
-                                 <label><%= link_to "Completed", doctor_dashboard_read_referrals_patient_referral_details_path(referral.id), class: "completed " %><i class="fi-check"></i></label>
+                              <%if referral.patient_identity_number.present? %>
+                                 <label><%= link_to "Completed", doctor_dashboard_submitted_back_slips_patient_path(referral.patient_identity_number), class: "completed " %><i class="fi-check"></i></label>
+                              <%else %>
+                                  <label><%= link_to "Completed", doctor_dashboard_submitted_back_slips_patient_path(referral.patient_full_names), class: "completed " %><i class="fi-check"></i></label>
+                              <%end%>
                             <%end%>
                            
                         </td>

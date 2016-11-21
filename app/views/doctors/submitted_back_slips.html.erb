@@ -1,0 +1,23 @@
+<%provide(:title, "All #{@patient.patient_identity_number} Back Slips - CHRMS" ) %>
+<div class="row">
+	<div class="large-12 columns">
+		<h6>Patient ID number <%=@patient.patient_identity_number%> Submitted Back Slips</h6>
+	</div>
+	<div class="large-12 columns">
+	<% if @back_slips.present?%>
+
+		<% @back_slips.each do |back_slip| %>
+		<div class="row">
+			<div class="large-12 columns">
+				<div class="card">
+					<h4>ID number: <%= back_slip.patient_identity_number %></h4>
+				</div>
+			</div>
+		</div>
+		 
+		<%end%>
+
+	<%end%>
+	 
+	</div>
+</div>

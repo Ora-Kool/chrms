@@ -7,5 +7,6 @@ class ReferralBackSlip < ApplicationRecord
     	validates :operation, presence: true
     	validates :medications_prescribed, presence: true
     	validates :please_continue_with, presence: true
+    	validates :patient_full_names, presence: true
     	validates :referral_back_slip_message, presence: false
 end
