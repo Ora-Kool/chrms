@@ -9,7 +9,13 @@
 						<label>Type of referral</label>
 						<div class="large-6">
 							<%=f.select :type_of_referral, ["Option A", "Option B", "Option C"], prompt: "select type" %>
+
 						</div>
+						<label>Referred Facility Doctors Name</label>
+						<%=f.text_field :referred_facility_doctors_name%>
+						
+						<label>Initiating facility address</label>
+						<%=f.text_field :initiating_facility_address%>
 					</td>
 				</tr>
 			</table>
@@ -18,7 +24,7 @@
 				<tr>
 					<th>Initiating Facility Name<br> and Date</th>
 					<td>
-						<label>Name</label>
+						<label>initiating_facility_name </label>
 						<%=f.text_field :initiating_facility_name %>
 					</td>
 

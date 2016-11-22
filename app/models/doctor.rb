@@ -13,6 +13,8 @@ class Doctor < ApplicationRecord
   validates :educational_summary, presence: true, allow_nil: true
   validate  :validate_phone1
 
+  before_save { self.name = name.downcase }
+
   
   validates :mobile_number2, phone: { possible: false, allow_blank: true, types: [:mobile] },
                                                   allow_nil: true

@@ -1,6 +1,7 @@
 class ReferralForm < ApplicationRecord
 		validates 	:type_of_referral, presence: true
     	validates	:initiating_facility_name, presence: true
+        validates   :initiating_facility_address, presence: true
     	validates	:date_of_referral, presence: true
     	validates	:referring_doctors_name, presence: true
     	validates	:referring_doctors_speciality, presence: true
@@ -17,15 +18,19 @@ class ReferralForm < ApplicationRecord
     	validates	:reasons_for_referral, presence: true
     	validates	:referred_facility_name, presence: true
     	validates	:address_of_referred_facility, presence: true
-    	validates	:optional_message, presence: false
+        validates   :optional_message, presence: false
+    	validates	:referred_facility_doctors_name, presence: true
 
 
 	def self.search(keyword, doctor)
 		where("patient_identity_number LIKE ? AND referring_doctors_name = ?", "%#{keyword}%", "#{doctor}")
 	end
 	def self.my_referrals(current_user)
-		where("referring_doctors_name LIKE ?", "%#{current_user}%")
+		where("referred_facility_doctors_name LIKE ?", "%#{current_user}%")
 	end
+    def self.total_referrals_made(current_doctor)
+        where("referring_doctors_name LIKE ?", "%#{current_doctor}%")
+    end
 
     def update_pending
 

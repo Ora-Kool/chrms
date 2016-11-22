@@ -40,6 +40,9 @@ Rails.application.routes.draw do
 
   get 'doctor/dashboard/submitted_referral_back_slips/patient/:id', to: 'doctors#submitted_back_slips',
   as: 'doctor/dashboard/submitted_back_slips/patient'
+
+  get 'doctor/dashboard/total_referrals_made', to: "doctors#total_referrals_made", 
+  as: 'doctor/dashboard/total_referrals_made'
   
 
 

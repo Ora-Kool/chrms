@@ -72,6 +72,10 @@ class DoctorsController < ApplicationController
     @referral = ReferralForm.find(params[:id])
   end
 
+  def total_referrals_made
+      @referrals = ReferralForm.total_referrals_made("#{current_doctor.surname} #{current_doctor.given_names}")
+  end
+
   def patients
     @patients = ReferralForm.my_referrals("#{current_doctor.surname} #{current_doctor.given_names}")
   end
@@ -136,6 +140,7 @@ class DoctorsController < ApplicationController
   def referrals_params
     params.require(:referral_form).permit(:type_of_referral,
                                            :initiating_facility_name,
+                                           :initiating_facility_address,
                                            :date_of_referral,
                                            :referring_doctors_name,
                                            :referring_doctors_speciality,
@@ -148,6 +153,7 @@ class DoctorsController < ApplicationController
                                            :patient_mobile_number,
                                            :patient_clinical_history,
                                            :findings,
+                                           :referred_facility_doctors_name,
                                            :treatment_given,
                                            :reasons_for_referral,
                                            :referred_facility_name,

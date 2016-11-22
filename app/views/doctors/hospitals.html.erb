@@ -1,4 +1,4 @@
-<%provide(:title, "Referral Hospitals - CHRMS") %>
+<%provide(:title, "Referred Doctors - CHRMS") %>
 <div class="large-2 columns">
 	<table>
 		<td><h6>Referral Doctors</h6></td>
@@ -36,8 +36,11 @@
 			<%if params[:hospital].blank? %>
 					<p>Displaying all doctors </p>
 			<% @doctors.each do  |doctor| %>
-		
-		
+
+			<% if doctor == current_doctor %>
+				<%next%>
+			<%else%>
+
 			<div class="large-4 small-12 medium-6 columns end">
 
                     <div class="card">
@@ -45,8 +48,8 @@
                       <div class="image">
 
                         <!--<img src="http://images.freeimages.com/images/previews/cf6/bird-1394216.jpg">-->
+                   
                         <%= image_tag(doctor.photo.url) %>
-
 
                         <span class="title">
 
@@ -101,78 +104,84 @@
                     </div>
 
                   </div>-->
+                  <%end%>
 
 				<%end%>
 
 				<%else%>
 					<%if @filtered_doctors.present?%>
-						<p>Displaying results found for <strong><u><%= params[:hospital] %></u></strong></p>
+						
 						<% @filtered_doctors.each do  |doctor| %>
-		
-		
-			<div class="large-4 small-12 medium-6 columns end">
+					
+					
+						<% if doctor == current_doctor %>
+						 <%next%>
+						<%else%>
+						<p>Displaying results found for <strong><u><%= params[:hospital] %></u></strong></p>
+				<div class="large-4 small-12 medium-6 columns end">
 
-                    <div class="card">
+	                    <div class="card">
 
-                      <div class="image">
+	                      <div class="image">
 
-                        <!--<img src="http://images.freeimages.com/images/previews/cf6/bird-1394216.jpg">-->
-                        <%= image_tag(doctor.photo.url) %>
+	                        <!--<img src="http://images.freeimages.com/images/previews/cf6/bird-1394216.jpg">-->
+	                        <%= image_tag(doctor.photo.url) %>
 
 
-                        <span class="title">
+	                        <span class="title">
 
-                  	<strong>Dr. <%=doctor.given_names %></strong>
-                    </span>
+	                  	<strong>Dr. <%=doctor.given_names %></strong>
+	                    </span>
 
-                      </div>
+	                      </div>
 
-                      <div class="content">
-	                      <h4 style="padding-bottom: 0">Details</h4>
-	                      <hr class="horizontal-line" style="margin-top: 0; margin-bottom: .6rem">
-	                        <p style="padding-top: 0">
-	                          Hospital: <strong><%= doctor.hospital.hospital_name %></strong> 
-	                        </p>
+	                      <div class="content">
+		                      <h4 style="padding-bottom: 0">Details</h4>
+		                      <hr class="horizontal-line" style="margin-top: 0; margin-bottom: .6rem">
+		                        <p style="padding-top: 0">
+		                          Hospital: <strong><%= doctor.hospital.hospital_name %></strong> 
+		                        </p>
+
+		                        <p>
+		                          Speciality: <strong></strong><%= doctor.speciality%></strong>
+		                        </p>
+
+		                        <p>
+		                          Contact: <strong><%= doctor.mobile_number %></strong>
+		                        </p>
+	                      </div>
+
+	                      <div class="action">
+								<%= link_to 'Book Referral', doctor_dashboard_request_referral_hospitals_doctors_path(current_doctor.id) %>
+	                      </div>
+
+	                    </div>
+
+	            </div>
+
+	                  <!-- profession section
+	                  <div class="large-4 medium-7 columns end">
+
+	                    <div class="card">
+
+	                      <div class="content">
+
+	                        <span>About Me</span>
 
 	                        <p>
-	                          Speciality: <strong></strong><%= doctor.speciality%></strong>
+	                          
 	                        </p>
 
-	                        <p>
-	                          Contact: <strong><%= doctor.mobile_number %></strong>
-	                        </p>
-                      </div>
+	                      </div>
 
-                      <div class="action">
-							<%= link_to 'Book Referral', doctor_dashboard_request_referral_hospitals_doctors_path(current_doctor.id) %>
-                      </div>
+	                      <div class="action">
+	                        
+	                      </div>
 
-                    </div>
+	                    </div>
 
-            </div>
-
-                  <!-- profession section
-                  <div class="large-4 medium-7 columns end">
-
-                    <div class="card">
-
-                      <div class="content">
-
-                        <span>About Me</span>
-
-                        <p>
-                          
-                        </p>
-
-                      </div>
-
-                      <div class="action">
-                        
-                      </div>
-
-                    </div>
-
-                  </div>-->
+	                  </div>-->
+	                  <%end%>
 
 				<%end%>
 					<%else%>
