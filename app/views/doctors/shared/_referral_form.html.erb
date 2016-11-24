@@ -1,7 +1,6 @@
-<%= form_for(@referral, url: doctor_dashboard_request_referral_hospitals_doctors_path(current_doctor)) do |f| %>
+<%= form_for(@referral, url: doctor_dashboard_request_referral_hospitals_doctors_path(@referred_doctor.id)) do |f| %>
 <h2 class="text-center" style="font-family: courier">Referral Form</h2>
 		<%= render "layouts/shared/error_messages", object: @referral %>
-			
 			<div class="row">
 			<table>
 				<tr>
@@ -11,15 +10,15 @@
 							<%=f.select :type_of_referral, ["Option A", "Option B", "Option C"], prompt: "select type" %>
 
 						</div>
-						<label>Referred Facility Doctors Name</label>
-						<%=f.text_field :referred_facility_doctors_name%>
+						
 						
 						<label>Initiating facility address</label>
 						<%=f.text_field :initiating_facility_address%>
+						<%=f.hidden_field :referred_facility_doctors_name, value: "#{@referred_doctor.surname} #{@referred_doctor.given_names}"%>
 					</td>
 				</tr>
 			</table>
-			<table style="margin-bottom: 0">
+			<!--<table style="margin-bottom: 0">
 			<h5><strong>Initiating Facility Information / Referring Doctor Information</strong></h5>
 				<tr>
 					<th>Initiating Facility Name<br> and Date</th>
@@ -34,8 +33,8 @@
 					</td>
 				</tr>
 				
-			</table>
-			<table style="margin-top: 0">
+			</table>-->
+			<!--<table style="margin-top: 0">
 				<tr>
 					<td>
 						<label>Reffering Doctor's Name</label>
@@ -53,7 +52,7 @@
 				<tr>
 					
 				</tr>
-			</table>
+			</table>-->
 			<table style="margin-bottom: 0">
 			<h5><strong>Patient Information</strong></h5>
 				<tr>
@@ -104,39 +103,38 @@
 				<tr>
 					<td>
 						<label>Findings</label>
-						<%=f.text_area :findings, size: '5x5' %>
+						<%=f.trix_editor :findings, size: '10x5' %>
 					</td>
 				</tr>
 				<tr>
 					<td>
 						<label>Treatment given</label>
-						<%=f.text_area :treatment_given, size: '5x5' %>
+						<%=f.trix_editor :treatment_given, size: '5x5' %>
+					</td>
+					
+				</tr>
+				<tr>
+					<td>
+						<label>Reason for referral</label>
+						<%=f.trix_editor :reasons_for_referral, size: '5x5' %>
 					</td>
 					
 				</tr>
 			</table>
 		
-			<table style="margin-top: 0">
-				<tr>
-					<td>
-						<label>Reason for referral</label>
-						<%=f.text_area :reasons_for_referral, size: '5x5' %>
-					</td>
-					
-				</tr>
-			</table>
+
 
 
 			<table>
 			<h5><strong>Referred Hospital Information</strong></h5>
 				<tr>
-					<th>Referred to Facility Name<br> and Address</th>
-					<td>
+				
+					<!--<td>
 						<label>Referred facility name</label>
 						<%=f.text_field :referred_facility_name %>
-					</td>
+					</td>-->
 					<td>
-						<label>Address of the Facility</label>
+						<label>Address of the referred facility</label>
 						<%=f.text_field :address_of_referred_facility%>
 					</td>
 				</tr>

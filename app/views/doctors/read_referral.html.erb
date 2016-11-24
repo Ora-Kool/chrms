@@ -22,6 +22,11 @@
 				<th>
 					Patient address
 				</th>
+				<%if @patient.referral_status == "completed" %>
+				<th>
+					Referral Status
+				</th>
+				<%end%>
 				
 			</tr>
 			<tr>
@@ -41,6 +46,11 @@
 				<td>
 					<%= @patient.patient_address%>
 				</td>
+				<%if @patient.referral_status == "completed" %>
+				<td>
+					<%=@patient.referral_status %>
+				</td>
+				<%end%>
 				
 			</tr>
 			
@@ -50,8 +60,11 @@
 				<td>
 					<h5>
 						<strong>Patient Clinical History</strong>
+						
 					</h5>
-					<%=@patient.patient_clinical_history %>
+					<%= @patient.patient_clinical_history %>
+					
+					
 				</td>
 			</tr>
 
@@ -62,7 +75,66 @@
 					<h5>
 						<strong>Patient Findings</strong>
 					</h5>
-					<%=@patient.findings %>
+
+					<% tag = @patient.treatment_given.downcase.include?("<ul>") ? "ul" : "ol" %>
+					<%if @patient.findings.include?("<ul>") || @patient.findings.include?("<ol>")%>
+							<%tags1 = @patient.findings.split("<li>") %>
+
+						<<%="#{tag}"%>>
+							<% tags1.each do |tags| %>
+								<% tags2 = tags.split("</li>") %>
+								 <% tags2.each do |tags| %>
+								 	<%tags3 = tags.split("<ul>") %>
+								 	<%tags3.each do |tags| %>
+								 		<% tags4 = tags.split("</ul>") %>
+								 		<% tags4.each do |tags| %>
+								 			<% tags5 = tags.split("<strong>") %>
+								 			<% tags5.each do |tags| %>
+								 				<%tags6 = tags.split("</strong>") %>
+								 				<%tags6.each do |tags| %>
+								 					<% tags7 = tags.split("<div>")%>
+								 					<% tags7.each do |tags|%>
+								 						<%tags8 = tags.split("</div>") %>
+								 						<%tags8.each do |tags| %>
+								 							<%tags9 = tags.split("<br>") %>
+								 							<%tags9.each do |tags| %>
+								 								<%tags10 = tags.split("&nbsp;") %>
+								 								<%tags10.each do |tags| %>
+								 								 <%tags11 = tags.split("<ol>") %>
+								 								 	<%tags11.each do |tags| %>
+								 								 		<% tags12 = tags.split("</ol>")%>
+								 								 		<% tags12.each do |tags| %>
+								 								 			<%tags13 = tags.split("<em>")%>
+								 								 			<%tags13.each do |tags| %>
+								 								 				<% tags14 = tags.split("</em>") %>
+								 								 				<%tags14.each do |tags| %>
+								 								 					<% tags15 = tags.split("<pre>") %>
+								 								 					<%tags15.each do |tags| %>
+								 								 						<% tags16 = tags.split("</pre>") %>
+								 								 						<%tags16.each do |tags| %>
+								 								 							<li><%= tags%></li>
+								 								 						<%end%>
+								 								 					<%end%>
+								 								 				<%end%>
+								 								 			<%end%>
+								 								 		<%end%>
+								 								 	<%end%>
+								 								<%end%>
+								 							<%end%>
+								 						<%end%>
+								 					<%end%>
+								 				<%end%>
+								 			<%end%>
+								 		<%end%>
+								 	<%end%>
+								 <%end%>
+							<%end%>
+							<%else%>
+							<li><%= @patient.findings %></li>
+
+						</ul>
+
+					<%end%>
 				</td>
 			</tr>
 
@@ -73,7 +145,68 @@
 					<h5>
 						<strong>Treatments Given</strong>
 					</h5>
-					<%=@patient.treatment_given %>
+					<% tag = @patient.treatment_given.downcase.include?("<ul>") ? "ul" : "ol" %>
+					
+					<%if @patient.treatment_given.downcase.include?("<ul>") || @patient.treatment_given.downcase.include?("<ol>")%>
+						
+						
+							<%tags1 = @patient.treatment_given.split("<li>") %>
+
+						<<%="#{tag}"%>>
+							<% tags1.each do |tags| %>
+								<% tags2 = tags.split("</li>") %>
+								 <% tags2.each do |tags| %>
+								 	<%tags3 = tags.split("<ul>") %>
+								 	<%tags3.each do |tags| %>
+								 		<% tags4 = tags.split("</ul>") %>
+								 		<% tags4.each do |tags| %>
+								 			<% tags5 = tags.split("<strong>") %>
+								 			<% tags5.each do |tags| %>
+								 				<%tags6 = tags.split("</strong>") %>
+								 				<%tags6.each do |tags| %>
+								 					<% tags7 = tags.split("<div>")%>
+								 					<% tags7.each do |tags|%>
+								 						<%tags8 = tags.split("</div>") %>
+								 						<%tags8.each do |tags| %>
+								 							<%tags9 = tags.split("<br>") %>
+								 							<%tags9.each do |tags| %>
+								 								<%tags10 = tags.split("&nbsp;") %>
+								 								<%tags10.each do |tags| %>
+								 								 <%tags11 = tags.split("<ol>") %>
+								 								 	<%tags11.each do |tags| %>
+								 								 		<% tags12 = tags.split("</ol>")%>
+								 								 		<% tags12.each do |tags| %>
+								 								 			<%tags13 = tags.split("<em>")%>
+								 								 			<%tags13.each do |tags| %>
+								 								 				<% tags14 = tags.split("</em>") %>
+								 								 				<%tags14.each do |tags| %>
+								 								 					<% tags15 = tags.split("<pre>") %>
+								 								 					<%tags15.each do |tags| %>
+								 								 						<% tags16 = tags.split("</pre>") %>
+								 								 						<%tags16.each do |tags| %>
+								 								 							<li><%= tags%></li>
+								 								 						<%end%>
+								 								 					<%end%>
+								 								 				<%end%>
+								 								 			<%end%>
+								 								 		<%end%>
+								 								 	<%end%>
+								 								<%end%>
+								 							<%end%>
+								 						<%end%>
+								 					<%end%>
+								 				<%end%>
+								 			<%end%>
+								 		<%end%>
+								 	<%end%>
+								 <%end%>
+							<%end%>
+							<%else%>
+							<li><%= @patient.treatment_given %> </li>
+
+						</ul>
+
+					<%end%>
 				</td>
 			</tr>
 
@@ -84,7 +217,65 @@
 					<h5>
 						<strong>Reasons For This Referral</strong>
 					</h5>
-					<%=@patient.reasons_for_referral %>
+					<% tag = @patient.reasons_for_referral.downcase.include?("<ul>") ? "ul" : "ol" %>
+					<%if @patient.reasons_for_referral.include?("<ul>") || @patient.reasons_for_referral.include?("<ol>")%>
+							<%tags1 = @patient.reasons_for_referral.split("<li>") %>
+
+						<<%="#{tag}"%>>
+							<% tags1.each do |tags| %>
+								<% tags2 = tags.split("</li>") %>
+								 <% tags2.each do |tags| %>
+								 	<%tags3 = tags.split("<ul>") %>
+								 	<%tags3.each do |tags| %>
+								 		<% tags4 = tags.split("</ul>") %>
+								 		<% tags4.each do |tags| %>
+								 			<% tags5 = tags.split("<strong>") %>
+								 			<% tags5.each do |tags| %>
+								 				<%tags6 = tags.split("</strong>") %>
+								 				<%tags6.each do |tags| %>
+								 					<% tags7 = tags.split("<div>")%>
+								 					<% tags7.each do |tags|%>
+								 						<%tags8 = tags.split("</div>") %>
+								 						<%tags8.each do |tags| %>
+								 							<%tags9 = tags.split("<br>") %>
+								 							<%tags9.each do |tags| %>
+								 								<%tags10 = tags.split("&nbsp;") %>
+								 								<%tags10.each do |tags| %>
+								 								 <%tags11 = tags.split("<ol>") %>
+								 								 	<%tags11.each do |tags| %>
+								 								 		<% tags12 = tags.split("</ol>")%>
+								 								 		<% tags12.each do |tags| %>
+								 								 			<%tags13 = tags.split("<em>")%>
+								 								 			<%tags13.each do |tags| %>
+								 								 				<% tags14 = tags.split("</em>") %>
+								 								 				<%tags14.each do |tags| %>
+								 								 					<% tags15 = tags.split("<pre>") %>
+								 								 					<%tags15.each do |tags| %>
+								 								 						<% tags16 = tags.split("</pre>") %>
+								 								 						<%tags16.each do |tags| %>
+								 								 							<li><%= tags%></li>
+								 								 						<%end%>
+								 								 					<%end%>
+								 								 				<%end%>
+								 								 			<%end%>
+								 								 		<%end%>
+								 								 	<%end%>
+								 								<%end%>
+								 							<%end%>
+								 						<%end%>
+								 					<%end%>
+								 				<%end%>
+								 			<%end%>
+								 		<%end%>
+								 	<%end%>
+								 <%end%>
+							<%end%>
+							<%else%>
+							<li><%= @patient.reasons_for_referral %></li>
+
+						</ul>
+
+					<%end%>
 				</td>
 			</tr>
 
@@ -102,17 +293,30 @@
 		</table>
 
 		<p style="color: red"><span style="color: red">*</span><strong>
-			Note to receiving facility: On completion of patient management please fill in the referral back slip below and send copy with patient or just reply directly.</strong>
+			<%if @patient.referral_status == "completed" %>
+					This patient has being referred back to <%= @patient.initiating_facility_name %>
+					<%=link_to "View Referral Back Slip", '', class: 'back', style: "color: #4e7799" %>
+				<%else%>
+				Note to receiving facility: On completion of patient management please fill in the referral back slip below and send copy with patient or just reply directly.</strong>
+			<%end%>
+			
 		</p>
 
 			<div class="row">
-				<div class="large-6 columns">
-					<%=link_to ' Click Here To Reply Directly', doctor_dashboard_read_referral_patient_referral_back_slip_path(@patient.id),
+			  <% if @patient.referral_status == "completed" %>
+			  	<div class="large-6 columns">
+					<%= link_to 'Back', doctor_dashboard_path, class: "button radius secondary large-12"%>
+				</div>
+			  	<%else%>
+			  	<div class="large-6 columns">
+					<%=link_to ' Click Here To For a Referral Back Slip', doctor_dashboard_read_referral_patient_referral_back_slip_path(@patient.id),
 					 class: "button chrms large-12 radius"%>
 				</div>
 				<div class="large-6 columns">
 					<%= link_to 'Back', doctor_dashboard_path, class: "button radius secondary large-12"%>
 				</div>
+			  <%end%>
+				
 				
 				
 			</div>

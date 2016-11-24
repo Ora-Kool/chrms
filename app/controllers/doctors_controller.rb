@@ -52,12 +52,23 @@ class DoctorsController < ApplicationController
 
   
   def request_referral
+     @referred_doctor = Doctor.find(params[:id])
     @referral = ReferralForm.new
-    @referred_doctor = Doctor.find(params[:id])
+   
   end
 
   def create_referral
+    @referred_doctor = Doctor.find(params[:id])
+
     @referral = ReferralForm.new(referrals_params)
+
+    @referral.referred_facility_doctors_name = "#{@referred_doctor.surname} #{@referred_doctor.given_names}"
+    @referral.initiating_facility_name = current_doctor.hospital.hospital_name
+    @referral.date_of_referral = Date.today
+    @referral.referring_doctors_name = "#{current_doctor.surname} #{current_doctor.given_names}"
+    @referral.referring_doctors_speciality = current_doctor.speciality
+    @referral.referring_doctors_mobile_number = current_doctor.mobile_number
+    @referral.referred_facility_name = @referred_doctor.hospital.hospital_name
 
     if @referral.save
       @referral.update_pending
@@ -73,7 +84,14 @@ class DoctorsController < ApplicationController
   end
 
   def total_referrals_made
+    if params[:search2]
+      @referrals = ReferralForm.search(params[:search2], "#{current_doctor.surname} #{current_doctor.given_names}")
+    else
       @referrals = ReferralForm.total_referrals_made("#{current_doctor.surname} #{current_doctor.given_names}")
+    end
+
+      
+
   end
 
   def patients
@@ -138,13 +156,8 @@ class DoctorsController < ApplicationController
   private
 
   def referrals_params
-    params.require(:referral_form).permit(:type_of_referral,
-                                           :initiating_facility_name,
-                                           :initiating_facility_address,
-                                           :date_of_referral,
-                                           :referring_doctors_name,
-                                           :referring_doctors_speciality,
-                                           :referring_doctors_mobile_number,
+    params.require(:referral_form).permit(:type_of_referral,                                        
+                                           :initiating_facility_address,                            
                                            :patient_full_names,
                                            :patient_identity_number,
                                            :patient_age,
@@ -153,10 +166,8 @@ class DoctorsController < ApplicationController
                                            :patient_mobile_number,
                                            :patient_clinical_history,
                                            :findings,
-                                           :referred_facility_doctors_name,
                                            :treatment_given,
                                            :reasons_for_referral,
-                                           :referred_facility_name,
                                            :address_of_referred_facility,
                                            :optional_message)
   end

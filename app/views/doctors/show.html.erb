@@ -69,9 +69,9 @@
    			   <% if @referrals.present? %>
    				<table class="large-12 columns">
    					<tr>
-   						<th>Doctor's Name / Contact</th>
-                     <th>Patient Name</th>
-   						<th>Patient ID</th>
+   						<th>Referral Request from</th>
+                     <th>Patient Names</th>
+   						<th>Patient ID No</th>
                      <th>Referral Type</th>
    						<th>Referral Status</th>
                      <th>Date received</th>
@@ -81,7 +81,8 @@
                   <p style="font-family: courier; margin-bottom: 0; color: #294f42">Results found</p>
    					<% @referrals.each do |referral| %>
    						<tr>
-   							<td><%= "#{referral.referring_doctors_name}" %>
+   							<td>
+                         Dr. <%= "#{referral.referring_doctors_name}" %>
                         <br>Tel: (+237) <%= "#{referral.referring_doctors_mobile_number}"%>
                         </td>
    							<td>

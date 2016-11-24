@@ -30,6 +30,8 @@ gem 'foundation-rails'
 gem 'foundation-icons-sass-rails'
 gem 'paperclip'
 gem "figaro"
+gem 'delayed_job_active_record'
+gem 'trix'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

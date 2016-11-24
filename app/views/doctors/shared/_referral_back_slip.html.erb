@@ -98,13 +98,13 @@
 			<tr>
 				<td>
 					<label>Special investigation</label>
-					<%=f.text_area :special_investigation, size: "5x5"%>
+					<%=f.trix_editor :special_investigation, size: "5x5"%>
 				</td>
 			</tr>
 			<tr>
 				<td>
 					<label>Findings</label>
-					<%=f.text_area :special_findings, size: "5x5" %>
+					<%=f.trix_editor :special_findings, size: "5x5" %>
 				</td>
 			</tr>
 </table>
@@ -112,7 +112,7 @@
 			<tr>
 				<td>
 					<label>Diagnosis</label>
-					<%=f.text_area :diagnosis, size: "5x5" %>
+					<%=f.trix_editor :diagnosis, size: "5x5" %>
 				</td>
 
 			</tr>
@@ -128,7 +128,7 @@
 			<tr>
 				<td>
 					<label>Treatments</label>
-					<%=f.text_area :treatments, size: "5x5" %>
+					<%=f.trix_editor :treatments, size: "5x5" %>
 				</td>
 			</tr>
 </table>
@@ -136,7 +136,7 @@
 			<tr>
 				<td>
 					<label>Medications prescribed</label>
-					<%=f.text_area :medications_prescribed, size: "5x5" %>
+					<%=f.trix_editor :medications_prescribed, size: "5x5" %>
 				</td>
 				
 			</tr>
@@ -145,7 +145,7 @@
 			<tr>
 				<td>
 					<label>Please continue with(meds, Rx, follow-up, care)</label>
-					<%=f.text_field :please_continue_with %>
+					<%=f.trix_editor :please_continue_with %>
 				</td>
 			</tr>
 </table>
