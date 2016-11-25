@@ -7,7 +7,7 @@ default from: "noreply@chrms.com"
   #
   def account_activation(doctor)
     @doctor = doctor
-    mail to: doctor.email, subject: "Account activation"
+    mail to: @doctor.email, subject: "Account activation"
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml
@@ -17,6 +17,6 @@ default from: "noreply@chrms.com"
   #
   def password_reset(doctor)
     @doctor = doctor
-    mail to: doctor.email, subject: "Password reset"
+    mail to: @doctor.email, subject: "Password reset"
   end
 end
