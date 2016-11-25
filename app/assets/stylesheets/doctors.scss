@@ -20,3 +20,22 @@ p a {
 p a:hover {
 	color: #116272;
 }
+
+.gravatar {
+	width: 100%;
+	height: 16rem;
+	padding: 0;
+}
+
+#error_explanation{
+  color: #e04a4a;
+  ul {
+    color: #e04a4a;
+    margin: 4px 0 20px 0;
+  }
+}
+ .field_with_errors {
+ 	border-left: .3rem solid #ffc6c6;
+ 	border-radius: 1rem;
+ 	
+ }

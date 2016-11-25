@@ -9,9 +9,9 @@
                <div class="image">
                   <% if current_doctor.photo_file_name.nil?%>
                        
-                        <%=image_tag('default.png', style: 'width: 100%; height: 16rem; padding: 0') %>
+                        <%=gravatar_for(current_doctor) %>
                      <%else%>
-                      <%= image_tag(current_doctor.photo.url, style: 'width: 100%; height: 16rem; padding: 0')%>
+                      <%= image_tag(current_doctor.photo.url, class: "gravatar")%>
                         
                   <%end%> 
                   <span class="title">
