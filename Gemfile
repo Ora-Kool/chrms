@@ -32,6 +32,7 @@ gem 'paperclip'
 gem "figaro"
 gem 'delayed_job_active_record'
 gem 'trix'
+gem 'sendgrid-ruby'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
