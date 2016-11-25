@@ -34,7 +34,7 @@
 				        		<div class="medium-3 columns">
 				        			<h2>
 				        				<%if current_doctor.photo_file_name.nil? %>
-				        					<%=image_tag("default.png") %>
+				        					<%= gravatar_for(current_doctor) %>
 				        					<%else%>
 				        					<%=image_tag(current_doctor.photo.url) %>
 				        				<%end%>
