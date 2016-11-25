@@ -27,6 +27,7 @@ class PasswordResetsController < ApplicationController
         render 'edit'
     elsif @doctor.update_attributes(doctor_params)
       log_doctor(@doctor)
+       @doctor.update_attribute(:reset_digest, nil)
       flash[:secondary] = "Password has been reset."
       redirect_to doctor_dashboard_path
     else
