@@ -90,7 +90,7 @@ class Doctor < ApplicationRecord
 
   #this method sends activation links to doctors emails accounts
   def send_activation_email
-    DoctorMailer.account_activation(self).deliver_now
+    DoctorMailer.account_activation(self).deliver
   end
 
   #sets the password reset attributes
@@ -101,8 +101,8 @@ class Doctor < ApplicationRecord
   end
 
   #Sends password reset email
-  def send_password_reset_email
-    DoctorMailer.password_reset(self).deliver_now
+  def send_password_reset_email(doctor)
+    DoctorMailer.password_reset(doctor).deliver
   end
 
   def password_reset_expired?
