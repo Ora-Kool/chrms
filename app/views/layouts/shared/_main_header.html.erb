@@ -4,33 +4,39 @@
   		<div class="top-bar-title" style="margin-top: 5px;">
     		<span data-responsive-toggle="responsive" data-hide-for="medium">
      			<button class="menu-icon black" type="button" data-toggle></button>
+          MENU
     		</span>
-    		<strong>MENU</strong>
-  </div>
-  <div id="responsive">
-   
-    <div class="top-bar-right">
-      <ul class="menu" style="background: #00695C">
-        <% if logged_manager? %>
-          <li><%=  link_to 'Dashboard', manager_dashboard_path %></li>
-          <li><%=  link_to 'Logout', managers_session_logout_path, method: :delete %></li>
-        <%elsif logged_doctor?%>
-          <li><%=  link_to 'Dashboard', doctor_dashboard_path %></li>
-          <li><%=  link_to 'Logout', doctor_logout_path, method: :delete%></li>
-        <%else%>
-          <li><%=  link_to 'Login', login_panel_path, class: 'fi-arrow-right'%></li>
-        <%end%>
+      </div>
+    <div id="responsive">
+     <div class="top-bar-left">
+       <ul class="menu">
+         <li><%= link_to 'CHRMS', root_path %></a></li>
+       </ul>
+     </div>
+      <div class="top-bar-right">
+        <ul class="menu" style="background: #00695C">
+          <% if logged_manager? %>
+            <li><%=  link_to 'Dashboard', manager_dashboard_path %></li>
+            <li><%=  link_to 'Logout', managers_session_logout_path, method: :delete %></li>
+          <%elsif logged_doctor?%>
+            <li><%=  link_to 'Dashboard', doctor_dashboard_path %></li>
+            <li><%=  link_to 'Logout', doctor_logout_path, method: :delete%></li>
+          <%else%>
+            <li><%=  link_to 'Login', login_panel_path, class: 'fi-arrow-right'%></li>
+          <%end%>
+          
+        </ul>
+      </div>
+      <div class="menu-centered">
+        <ul class="menu main">
         
-      </ul>
+          <li><%= link_to 'Home', root_path%></li>
+          <li><%= link_to 'About', about_path%></li>
+          <li><%= link_to 'Contact', contact_path%></li>
+        </ul>
+      </div>
     </div>
-    <div class="menu-centered">
-      <ul class="menu main">
-      
-        <li><%= link_to 'Home', root_path%></li>
-        <li><%= link_to 'About', about_path%></li>
-        <li><%= link_to 'Contact', contact_path%></li>
-      </ul>
-    </div>
-  </div>
+    <%= render 'layouts/shared/alert' %>
 </div>
+
 </main-header>

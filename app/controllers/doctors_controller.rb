@@ -30,7 +30,10 @@ class DoctorsController < ApplicationController
     #@doctor = Doctor.find_by(name: params[:name])
 
     if @doctor.update_attributes(doctor_update)
-      flash[:secondary] = "Welcome onboard, we hope you enjoy using our services"
+      #DoctorMailer.account_activation(@doctor).deliver_now
+      @doctor.send_activation_email
+      #flash[:secondary] = "Welcome onboard, we hope you enjoy using our services"
+      flash[:alert] = "Please check your email to activate your account."
       redirect_to doctor_dashboard_path
     else
       render 'incomplete'

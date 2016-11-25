@@ -219,8 +219,9 @@ html,body { // for demo only
       bottom: 0;
 
       left: 0;
-
-      padding-top: 1.3rem;
+      
+      padding-top: .8rem;
+      padding-left: .9rem;
       background: rgba(235, 235, 235, 0.80);
       color: #0a0a0a;
       opacity: 10;
@@ -240,7 +241,11 @@ html,body { // for demo only
   span{
     color: inherit;
     font-size: 30px;
+    padding-bottom: 1rem;
+
+
   }
+
   
 
 }

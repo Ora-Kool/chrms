@@ -1,7 +1,8 @@
 class Doctor < ApplicationRecord
 	belongs_to :hospital
   #has_many :referrals
-	attr_accessor :remember_token
+	attr_accessor :remember_token, :activation_token, :reset_token
+  before_save :create_activation_digest
   validates :name, presence: true
   validates :given_names, presence: true, allow_nil: true
   validates :surname, presence: true, allow_nil: true
@@ -75,9 +76,40 @@ class Doctor < ApplicationRecord
   end
 
   #check if a given token matches that stored one and return true else false
-  def authenticated?(remmber_token)
-    BCrypt::Password.new(remember_digest).is_password?(remmber_token)
+  def authenticated?(attribute, token)
+    digest = send("#{attribute}_digest")
+    return false if digest.nil?
+    BCrypt::Password.new(digest).is_password?(token)
   end
+
+  #this method activates doctors accounts
+  def activate
+    update_attribute(:activated, true)
+    update_attribute(:activated_at, Time.zone.now)
+  end
+
+  #this method sends activation links to doctors emails accounts
+  def send_activation_email
+    DoctorMailer.account_activation(self).deliver_now
+  end
+
+  #sets the password reset attributes
+  def create_reset_digest
+    self.reset_token = Doctor.new_token
+    update_attribute(:reset_digest, Doctor.digest(reset_token))
+    update_attribute(:reset_sent_at, Time.zone.now)
+  end
+
+  #Sends password reset email
+  def send_password_reset_email
+    DoctorMailer.password_reset(self).deliver_now
+  end
+
+  def password_reset_expired?
+    reset_sent_at < 2.hours.ago
+  end
+
+  
 
   #forget a user when logged out
   def forget
@@ -118,6 +150,12 @@ class Doctor < ApplicationRecord
       true if Integer(object) rescue false
    end
 
+   #Creates and assigns the activation token and digest
+   def create_activation_digest
+      #create the token and digest here
+      self.activation_token = Doctor.new_token
+      self.activation_digest = Doctor.digest(activation_token)
+   end
 
    
    

@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161121091708) do
+ActiveRecord::Schema.define(version: 20161125064411) do
 
   create_table "doctors", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.string   "password_digest"
     t.string   "remember_digest"
     t.string   "email"
@@ -36,6 +36,11 @@ ActiveRecord::Schema.define(version: 20161121091708) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.string   "activation_digest"
+    t.boolean  "activated",           default: false
+    t.datetime "activated_at"
+    t.string   "reset_digest"
+    t.datetime "reset_sent_at"
     t.index ["email"], name: "index_doctors_on_email", unique: true
     t.index ["hospital_id"], name: "index_doctors_on_hospital_id"
   end

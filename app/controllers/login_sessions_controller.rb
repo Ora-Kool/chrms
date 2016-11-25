@@ -7,10 +7,17 @@ class LoginSessionsController < ApplicationController
     hospital = Doctor.find_by(hospital_id: params[:session][:hospital_id])
 
     if doctor && doctor.authenticate(params[:session][:password]) && hospital
-      flash[:secondary] = "Welcome!"
-      log_doctor(doctor)
-      params[:session][:remember_me] == '1' ? remember(doctor) : forget(doctor)
-      redirect_to doctor_dashboard_path
+
+      #if doctor.activated?
+          log_doctor(doctor)
+          params[:session][:remember_me] == '1' ? remember(doctor) : forget(doctor)
+          redirect_to doctor_dashboard_path
+      #else
+         # message = "Account not activated. "
+          #message += "Check your email for the activation link."
+          #flash[:warning] = message
+          #redirect_to root_path
+      #end
 
     else
       flash.now[:warning] = 'Access denied / wrong credentials'

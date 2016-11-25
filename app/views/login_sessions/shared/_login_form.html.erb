@@ -1,0 +1,16 @@
+<div class="login-design">
+	<%= form_for(:session, url: login_panel_doctors_login_path) do |f| %>
+		<%= f.collection_select :hospital_id, Hospital.all, :id, :hospital_name , prompt: "Select Hospital"  %>
+		<%= f.label "doctor's username" %>
+		<%= f.text_field :name, placeholder: "Username"%>
+
+		<label>Password <%=link_to "(forgot password)", new_password_reset_path, class: "password_reset" %></label>
+		
+		<%= f.password_field :password, placeholder: "Password" %>
+
+		<%= f.submit yield(:button_text), class: 'button chrms radius large-4' %>
+
+	<%end%>
+	<p>Login as <%= link_to "Staff", "", class: "staff"%></p>
+	
+</div>

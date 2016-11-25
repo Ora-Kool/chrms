@@ -25,6 +25,7 @@ Rails.application.configure do
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
 
+
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
@@ -60,7 +61,19 @@ Rails.application.configure do
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
-  # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :stmp
+  host = 'chrms.herokuapp.com'
+  config.action_mailer.default_url_options = { host: host }
+  ActionMailer::Base.stmp_settings = {
+    :address          => 'stmp.sandgrid.net',
+    :port             => '587',
+    :authentication   => :plain,
+    :user_name        => ENV['SENDGRID_USERNAME'],
+    :password         => ENV['SENDGRID_PASSWORD'],
+    :domain           => 'heroku.com',
+    :enable_starttls_auto  => true
+  }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).

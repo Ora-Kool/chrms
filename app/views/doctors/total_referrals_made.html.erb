@@ -7,22 +7,22 @@
 			<td>
             <div class="picture">
                <div class="image">
-                  <% if current_doctor.photo.url.nil?%>
+                  <% if current_doctor.photo_file_name.nil?%>
+                       
                         <%=image_tag('default.png', style: 'width: 100%; height: 16rem; padding: 0') %>
                      <%else%>
-                     
-                        <%= image_tag(current_doctor.photo.url, style: 'width: 100%; height: 16rem; padding: 0')%>
-
+                      <%= image_tag(current_doctor.photo.url, style: 'width: 100%; height: 16rem; padding: 0')%>
+                        
                   <%end%> 
                   <span class="title">
-                     <%= link_to 'Account Settings', doctor_dashboard_edit_path(current_doctor.name), class: 'account-settings' %><i class="fi-widget"></i></td>
+                     <%= link_to 'Account Settings', doctor_dashboard_edit_path(current_doctor.name), class: 'account-settings' %><%= link_to "", doctor_dashboard_edit_path(current_doctor.name), class: "fi-widget spin" %>
                   </span>
                   
                </div>
             </div>
          
-				
-			</td>
+            
+         </td>
 		</tr>
       <tr>
          <td><%= link_to 'Dashboard', doctor_dashboard_path %></td>
@@ -72,7 +72,7 @@
    						<th>Patient ID</th>
                      <th>Referral Type</th>
    						<th>Referral Status</th>
-                     <th>Date received</th>
+                     <th>Date Sent</th>
    						
    					</tr>
    					

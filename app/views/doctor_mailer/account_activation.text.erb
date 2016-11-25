@@ -1,0 +1,3 @@
+Hi <%= @doctor.name %>,
+Welcome to CHRMS! Click on the link below to activate your account:
+<%= edit_account_activation_url(@doctor.activation_token, email: @doctor.email) %>

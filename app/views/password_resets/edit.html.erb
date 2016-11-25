@@ -1,0 +1,20 @@
+<% provide(:title, 'Reset password') %>
+
+<div class="row">
+  <div class="large-6  large-offset-3 columns">
+  <h1>Reset password</h1>
+    <%= form_for(@doctor, url: password_reset_path(params[:id])) do |f| %>
+      <%= render 'layouts/shared/error_messages', object: @doctor %>
+
+      <%= hidden_field_tag :email, @doctor.email %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'large-12' %>
+
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmation, class: 'large-12' %>
+
+      <%= f.submit "Update password", class: "button chrms large-12 radius" %>
+    <% end %>
+  </div>
+</div>

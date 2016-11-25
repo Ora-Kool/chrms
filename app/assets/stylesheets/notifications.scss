@@ -1,25 +1,30 @@
 .secondary {
   text-align: center;
   border-radius: 1px;
-  z-index: 4;
-  top: 0;
-  margin-bottom: 1rem;
-  .close-button{
-    color: #0277bd;
-  }
-
-}
-.secondary > p{
-  padding-top: 10px;
+  z-index: 10rem;
+  padding-left: .7rem;
+  padding-top: .6rem;
+  padding-bottom: .7rem;
+  margin-top: -1.3rem;
+  margin-bottom: -2rem; 
   color: #0277bd;
-  font-size: 1rem;
+  text-align: center;
+  background: inherit;
 
 }
-.warning, .close-button{
-	z-index: 4;
+
+
+.warning{
+	z-index: 10rem;
 	top: 0;
   color: red;
   width: 50%;
+  background: inherit;
+  
+  padding-top: .6rem;
+  padding-bottom: .7rem;
+  margin-top: -1.3rem;
+  margin-bottom: -2rem;  
   text-align: center;
   animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
   transform: translate3d(0, 0, 0);

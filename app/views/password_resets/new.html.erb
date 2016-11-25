@@ -1,0 +1,13 @@
+<% provide(:title, "Forgot password") %>
+
+<div class="row" style="margin-bottom: 3rem;">
+	  <div class="large-6 large-offset-3 columns">
+	  <h1 class="text-center">Forgot password</h1>
+	    <%= form_for(:password_reset, url: password_resets_path) do |f| %>
+	      <%= f.label :email %>
+	      <%= f.email_field :email, class: 'large-3' %>
+
+	      <%= f.submit "Submit", class: "button chrms large-12 radius" %>
+	    <% end %>
+	  </div>
+</div>

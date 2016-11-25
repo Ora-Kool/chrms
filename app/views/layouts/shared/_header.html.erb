@@ -3,11 +3,16 @@
   		<div class="top-bar-title" style="margin-top: 5px;">
     		<span data-responsive-toggle="responsive-menu" data-hide-for="medium">
      			<button class="menu-icon white" type="button" data-toggle></button>
+          MENU
     		</span>
-    		<strong>MENU</strong>
+    		<!--<strong>MENU</strong>-->
   </div>
   <div id="responsive-menu">
-   
+    <div class="top-bar-left">
+      <ul class="menu">
+        <li><%= link_to 'CHRMS', root_path %></a></li>
+      </ul>
+    </div>
     <div class="top-bar-right">
       <ul class="menu">
         <% if logged_manager? %>
@@ -31,6 +36,7 @@
       </ul>
     </div>
   </div>
+  <%= render 'layouts/shared/alert' %>
 </div>
 </header>
 

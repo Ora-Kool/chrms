@@ -1,3 +1,15 @@
 // Place all the styles related to the LoginSessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.password_reset {
+	color: #004D40;
+}
+.password_reset:hover {
+	color: #009688;
+}
+.staff {
+	color: #004D40;
+	font-size: 1rem;
+	padding: 0;
+	margin: 0;
+}

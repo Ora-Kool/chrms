@@ -27,13 +27,18 @@
 			    <div class="tabs-content vertical" data-tabs-content="target">
 			      	<div class="tabs-panel" id="account-summary">
 			      		<h4>Account Summary</h>
-				        	<p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
+				        	<p class="rules">Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
 				        	<hr class="horizontal-line">
 				        	
 				        	<div class="row">
 				        		<div class="medium-3 columns">
 				        			<h2>
-				        				<%=image_tag(current_doctor.photo.url) %>
+				        				<%if current_doctor.photo_file_name.nil? %>
+				        					<%=image_tag("default.png") %>
+				        					<%else%>
+				        					<%=image_tag(current_doctor.photo.url) %>
+				        				<%end%>
+				        				
 				        			</h2>
 				        		</div>
 				        		<div class="medium-9 columns">
@@ -47,6 +52,7 @@
 				        			<h5>Country: <%=@doctor.country %></h5>
 				        			<h5>Region: <%=@doctor.region %></h5>
 				        			<h5>City: <%=@doctor.city %></h5>
+				        			<h5>Email Address: <%=@doctor.email %></h5>
 				        		</div>
 				        	</div>
 			      	</div>
@@ -56,7 +62,8 @@
 			      	 <p class="rules">
 			        	Control your account information, both what other colleagues see. 
 			        	To understand what's acceptable to display on profile, please see 
-			        	<a data-open="rule">these rule</a>
+			        	<a data-open="rule">these rule.</a> 
+			        	<strong>Note</strong> that is a Medical Software Application, We will appreciate if you state your <strong>VALID</strong> information as a doctor, any <strong>INVALID</strong> information entered here will lead to <span style="text-decoration: line-through">account deactivation</span>.
 			        <div class="reveal" id="rules" data-reveal>
 						<h1>Information Needed.</h1>
 						<hr class="horizontal-line">

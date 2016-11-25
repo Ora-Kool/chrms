@@ -4,16 +4,16 @@
 		<td><h6>Referral Doctors</h6></td>
 		<tr>
 			<td>
-				<i class="fi-clipboard"></i><%= link_to "Dashboard", doctor_dashboard_path, style: "padding-left: .3rem"%>
+				<%= link_to "Dashboard", doctor_dashboard_path, style: "padding-left: .3rem"%>
 			</td>
 		</tr>
 		<tr>
 			<td>
 				<ul class="hospital_filter dropdown menu" data-dropdown-menu >
   					<li>
-  						<a style="background: inherit; padding-left: .1rem"><i class="fi-filter" style="margin-right: .4rem"></i>Filter Hospitals</a>
+  						<a style="background: inherit; padding-left: .1rem" class="large-12">Hospitals Categories</a>
   						<ul class="menu">
-  							<li><%= link_to "All Doctors",doctor_dashboard_request_referral_hospitals_path  %></li>
+  							<li><%= link_to "All Hospitals",doctor_dashboard_request_referral_hospitals_path  %></li>
   							<% Hospital.all.each do |hospital| %>
   								<li><%= link_to "#{hospital.hospital_name}", doctor_dashboard_request_referral_hospitals_path(hospital: "#{hospital.hospital_name}")%></li>
   							<%end%>
@@ -48,8 +48,14 @@
                       <div class="image">
 
                         <!--<img src="http://images.freeimages.com/images/previews/cf6/bird-1394216.jpg">-->
-                   
-                        <%= image_tag(doctor.photo.url) %>
+                   		<%if doctor.photo_file_name.nil? %>
+                   			
+                   			<%= image_tag("default.png") %>
+                   			<%else%>
+                   				<%= image_tag(doctor.photo.url) %>
+                   				
+                   		<%end%>
+                        
 
                         <span class="title">
 
@@ -62,16 +68,19 @@
 	                      <h4 style="padding-bottom: 0">Details</h4>
 	                      <hr class="horizontal-line" style="margin-top: 0; margin-bottom: .6rem">
 	                        <p style="padding-top: 0">
-	                          Hospital: <strong></strong><%= doctor.hospital.hospital_name %></strong> 
+	                          Hospital: <strong><%= doctor.hospital.hospital_name %></strong> 
 	                        </p>
 
 	                        <p>
 	                          Speciality: <strong><%=doctor.speciality %></strong>
 	                        </p>
-
 	                        <p>
-	                          Contact: <strong><%= doctor.mobile_number%></strong>
+	                          Current Town: <strong><%=doctor.city %></strong>
 	                        </p>
+
+	                       <!-- <p>
+	                          Contact: <strong><%= doctor.mobile_number%></strong>
+	                        </p> -->
                       </div>
 
                       <div class="action">
@@ -110,14 +119,14 @@
 
 				<%else%>
 					<%if @filtered_doctors.present?%>
-						
+						<p>Displaying results found for <strong><u><%= params[:hospital] %></u></strong></p>
 						<% @filtered_doctors.each do  |doctor| %>
 					
 					
-						<% if doctor == current_doctor %>
-						 <%next%>
-						<%else%>
-						<p>Displaying results found for <strong><u><%= params[:hospital] %></u></strong></p>
+						<% if doctor != current_doctor %>
+						 
+						
+						
 				<div class="large-4 small-12 medium-6 columns end">
 
 	                    <div class="card">
@@ -125,8 +134,13 @@
 	                      <div class="image">
 
 	                        <!--<img src="http://images.freeimages.com/images/previews/cf6/bird-1394216.jpg">-->
-	                        <%= image_tag(doctor.photo.url) %>
-
+	                        <%if doctor.photo_file_name.nil? %>
+                   			
+                   				<%= image_tag("default.png") %>
+                   			<%else%>
+                   				<%= image_tag(doctor.photo.url) %>
+                   				
+                   			<%end%>
 
 	                        <span class="title">
 

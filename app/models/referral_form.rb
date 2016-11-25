@@ -38,9 +38,7 @@ class ReferralForm < ApplicationRecord
         where("referring_doctors_name LIKE ?", "%#{current_doctor}%")
     end
 
-    def self.total_search(id, current_doctor)
-      where("patient_identity_number LIKE ? AND referring_doctors_name = ? ", "%#{id}%", "%#{current_doctor}%")
-    end
+   
 
     def update_pending
 
