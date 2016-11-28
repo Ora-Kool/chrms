@@ -163,7 +163,7 @@ span.triangle2 {
     background: #ffffff;
     /* Set a specific height */
     min-height: 500px; 
-    background-image: image-url("/assets/refer.png");
+    background-image: image-url(image-path('refer.png'));
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
     background-position: center;
