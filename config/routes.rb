@@ -49,7 +49,7 @@ Rails.application.routes.draw do
   get 'doctor/dashboard/total_referrals_made', to: "doctors#total_referrals_made", 
   as: 'doctor/dashboard/total_referrals_made'
 
-
+  post '/contact', to: "pages#send_message"
 
   
 
@@ -66,6 +66,8 @@ Rails.application.routes.draw do
  resources :account_activations, only: [:edit]
  #get 'doctor/password_resets/:id/edit', to: "password_resets#edit", as: "doctor/password_resets/edit"
  resources :password_resets, only: [:new, :edit, :create, :update]
+
+
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

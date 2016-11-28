@@ -4,6 +4,7 @@ header{
   color: #fff;
   background-color: #FAFAFA;
   top: 0;
+
 }
 main-header{
   font-size: 20px;
@@ -12,6 +13,7 @@ main-header{
   background-color: #FAFAFA;
   top: 0;
 }
+
 
 header.fixed.sticky {
   z-index: 999;
@@ -24,6 +26,8 @@ header.fixed.sticky {
 .header{
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
 }
+
+
 
 .features > div {
     padding-top: 5%;
@@ -153,5 +157,30 @@ span.triangle2 {
 .sliding-u-l-r:hover {
     border-bottom: 3px solid blue;
     width: 200px;
+}
+.image_background{
+    height: 610px;
+    background: #ffffff;
+    /* Set a specific height */
+    min-height: 500px; 
+    background-image: url("/assets/refer.png");
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.display{
+    position: relative;
+    display: table-cell;
+    vertical-align: bottom;
+    /*background-image: url("/assets/referralbg.jpg");*/
+    color: #ffffff;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: auto; 
+    background-attachment: fixed;
+
 }
 

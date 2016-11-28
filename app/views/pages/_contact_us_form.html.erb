@@ -1,0 +1,12 @@
+<div class="card" style="padding: 2rem;">
+<%= form_for(@message, url: contact_path)do |f| %>
+<%= render "layouts/shared/error_messages", object: @message %>
+	<%= f.label :name %>
+	<%= f.text_field :name %>
+	<%= f.label :subject %>
+	<%= f.text_field :subject %>
+	<%= f.label 'Message' %>
+	<%= f.text_area :content, size: '4x4'%>
+	<%= f.submit "Submit", class: "button chrms large-3 radius" %>
+<%end%>
+</div>

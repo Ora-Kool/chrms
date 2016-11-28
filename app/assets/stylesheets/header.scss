@@ -1,15 +1,19 @@
-.main{
- .main a:hover{
-	border-bottom: 1px solid #ffffff;
+.main a:hover{
+	/*border-bottom: 1px solid #ffffff;*/
 	padding: 0.6rem 1rem;
+	color: #828282;
  }
 
+
+.accordion-title:hover{
+	color: #ffffff;
 }
-.accordion-title{
-	
-}
+
 .vertical.footer, a{
 	color: #ffffff;
+}
+.vertical.footer, a:hover{
+	color: #828282;
 }
 .site-links {
 	color: #000000;

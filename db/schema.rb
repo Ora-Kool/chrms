@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161125064411) do
+ActiveRecord::Schema.define(version: 20161125160519) do
 
   create_table "doctors", force: :cascade do |t|
     t.string   "name"
@@ -62,6 +62,14 @@ ActiveRecord::Schema.define(version: 20161125064411) do
     t.integer  "hospital_id"
     t.index ["email"], name: "index_managers_on_email", unique: true
     t.index ["hospital_id"], name: "index_managers_on_hospital_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string   "name"
+    t.string   "subject"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "referral_back_slips", force: :cascade do |t|

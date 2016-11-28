@@ -8,7 +8,7 @@
     <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
 
     <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true%>
     <%= csrf_meta_tags %>
   </head>
 
@@ -25,21 +25,16 @@
 
       var headHeight = $("body > header.sticky").outerHeight(true);
       var headPos = $("header").offset().top;
+        $(window).scroll(function(){
+    if ($(window).scrollTop() >= headPos + 200 && $("header.header").hasClass("fixed")) {
+       $('header.fixed').addClass('sticky');
+    }
+    else {
+       $('header.fixed').removeClass('sticky');
+    }
+});
 
-    $(window).scroll(function() {
-
-      var scroll = $(window).scrollTop();
-       if (scroll >= headPos + 1 && $("header.header").hasClass("fixed")) {
-        $("header.fixed").addClass("sticky");
-            $("body").css("padding-top", headHeight + "px");
-            
-       }else{
-          $("header.fixed").removeClass("sticky");
-          $("body").css("padding-top", "0");
-          
-       }
-
-  });
+   
 
     </script>
   </body>
