@@ -29,7 +29,7 @@ class ReferralForm < ApplicationRecord
 
 
 	def self.search(keyword, doctor)
-		where("cast(patient_identity_number as string) LIKE ? AND referring_doctors_name  LIKE ?", "%#{keyword}%", "#{doctor}")
+		where("cast(patient_identity_number as text) LIKE ? AND referring_doctors_name  LIKE ?", "%#{keyword}%", "#{doctor}")
 	end
 	def self.my_referrals(current_user)
 		where("referred_facility_doctors_name LIKE ?", "%#{current_user}%")
