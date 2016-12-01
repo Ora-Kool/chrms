@@ -1,7 +1,7 @@
 <%provide(:title, "Doctor's Dashboard - CHRMS") %>
 <div class="large-3 columns">
-	<table>
-		<td><h5 class="doctors_name">Dr. <%= current_doctor.surname.capitalize %></h5></td>
+	<table class="large-12 medium-6 small-12 columns">
+		<td><h5 class="doctors_name chrms-font">Dr. <%= current_doctor.surname.capitalize %></h5></td>
 		<tr>
 
 			<td>
@@ -29,22 +29,12 @@
       </tr>
       <tr>
          <td><%= link_to 'Referred Doctors', doctor_dashboard_request_referral_hospitals_path %>
-         <!--<i class="badge float-right chrms"><%=@referrals.count%></i>-->
          </td>
       </tr>
       <tr>
-         <td><%= link_to 'Referrals Made', doctor_dashboard_total_referrals_made_path %><i class="badge float-right alert">0</i></td>
+         <td><%= link_to 'Referrals Made', doctor_dashboard_total_referrals_made_path %><i class="badge float-right alert"><%=@mades.count%></i></td>
       </tr>
-      
-      <tr>
-         <td>
-            <%= link_to 'Unapproved Referrals' %><i class="badge float-right ">0</i></td>
-      </tr>
-		<!--<tr>
-			<td><%= link_to 'Patients', doctors_dashboard_patients_all_path(current_doctor.name) %><i class="badge float-right success">0</i></td>
-		</tr>-->
-		
-		
+   
 	</table>
 
 </div>
@@ -54,20 +44,31 @@
    			<div class="large-12 columns">
    				<div class="row">
    					<div class="large-9 columns">
-   						<h4 style="text-decoration: underline">Referrals Inbox</h4>
+                  <% if @referrals.present?%>
+                  <h4 class="chrms-font" style="text-decoration: underline">Referrals Inbox</h4>
+                     <%else%>
+                        <h4 class="chrms-font" style="text-decoration: underline; color: #878787">Referrals Dashboard Is Empty</h4>
+
+                     <%end%>
+   						
    					</div>
 
    					<div class="large-3 columns">
                      <!-- Search box rendering here-->
-                     <%= render "doctors/shared/search" %>
+                     <%if @referrals.present? %>
+                        <%= render "doctors/shared/search" %>
+                     <%else%>
+                      <%= render "doctors/shared/search" %>
+                     <%end%>
    					</div>
    					
    				</div>
    				
    			</div>
    			<div style="width: 100%">
+            
    			   <% if @referrals.present? %>
-   				<table class="large-12 columns">
+   				  <table class="large-12 columns">
    					<tr>
    						<th>Referral Request from</th>
                      <th>Patient Names</th>
@@ -78,8 +79,10 @@
    						
    					</tr>
    					
-                  <p style="font-family: courier; margin-bottom: 0; color: #294f42">Results found</p>
+                    <p style="font-family: courier; margin-bottom: 0; color: #294f42">All results found</p>
+                     
    					<% @referrals.each do |referral| %>
+
    						<tr>
    							<td>
                          Dr. <%= "#{referral.referring_doctors_name}" %>
@@ -101,10 +104,10 @@
                             <% if referral.referral_status == "pending" %>
                               <label><%= link_to "Pending", doctor_dashboard_read_referrals_patient_referral_details_path(referral.id), class: "pending" %></label>
                             <% elsif referral.referral_status == "received" %>
-                                 <label><%= link_to "Received", doctor_dashboard_read_referrals_patient_referral_details_path(referral.id), class: "received" %> </label>
+                                 <label><%= link_to "Checked", doctor_dashboard_read_referrals_patient_referral_details_path(referral.id), class: "received" %> </label>
                             <%else%>
                               <%if referral.patient_identity_number.present? %>
-                                 <label><%= link_to "Completed", doctor_dashboard_submitted_back_slips_patient_path(referral.patient_identity_number), class: "completed " %><i class="fi-check"></i></label>
+                                 <label><%= link_to "Replied", doctor_dashboard_submitted_back_slips_patient_path(referral.patient_identity_number), class: "completed " %><i class="fi-check"></i></label>
                               <%else %>
                                   <label><%= link_to "Completed", doctor_dashboard_submitted_back_slips_patient_path(referral.patient_full_names), class: "completed " %><i class="fi-check"></i></label>
                               <%end%>
@@ -118,19 +121,28 @@
    						</tr>
    						
    					<% end %>
+
+
    					
-   					<%elsif params[:search].nil?%>
-                     <%if current_doctor.photo_file_name.nil?%>
-                        <p>please <strong>CHANGE</strong> the default profile picture using this link <%=link_to "upload profile picture", doctor_dashboard_edit_path(current_doctor.name)%></p>
-                           <%else%>
-                           <h1>hello doctor!</h1>
-                     <%end%>
-                     
-                  <%else%>
-   					<p style="font-family: courier; color: red">No records found for patient ID :<%=params[:search]%></p>
-                     <%= link_to 'View All', doctor_dashboard_path, class: "button chrms radius large-2"%>
+   					<%elsif params[:search].present?%>
+
+                    <%if @results.present? %>
+                     <%= render "doctors/shared/results" %>
+
+                        <%else%>
+                           <%= render 'doctors/shared/view_all' %>
+                    
+                    <%end%> <!-- ending inner elsif condition-->
+                    
+                  
+                  <%else%> <!--ending first if to check if there is nothing at all-->
+
+   					    <%= render "doctors/shared/welcome" %>
+
    					<%end%>
+
    				</table>
+              
    			
    		</div>
    		</div>

@@ -112,7 +112,13 @@
 								 								 					<%tags15.each do |tags| %>
 								 								 						<% tags16 = tags.split("</pre>") %>
 								 								 						<%tags16.each do |tags| %>
+								 								 						<%tags17 = tage.split("<div>")%>
+								 								 						<%tags17.each do |tags| %>
+								 								 							<%tags18 = tags.split('</div>') %>
+								 								 							<%tags18.each do |tags| %>
 								 								 							<li><%= tags%></li>
+								 								 								<%end%> 
+								 								 							<%end%>
 								 								 						<%end%>
 								 								 					<%end%>
 								 								 				<%end%>
@@ -129,9 +135,18 @@
 								 	<%end%>
 								 <%end%>
 							<%end%>
+							<%elsif @patient.findings.include?("<div>")%>
+								<ul>
+								<%divs = @patient.findings.split("<div>") %>
+								<%divs.each do |div|%>
+									<%divs = div.split("</div>") %>
+									 <%divs.each do |div| %>
+									 	<li><%= div %> </li>
+									 <%end%>
+								<%end%>
+								</ul>
 							<%else%>
 							<li><%= @patient.findings %></li>
-
 						</ul>
 
 					<%end%>
@@ -201,6 +216,16 @@
 								 	<%end%>
 								 <%end%>
 							<%end%>
+							<%elsif @patient.treatment_given.include?("<div>")%>
+								<ul>
+								<%divs = @patient.treatment_given.split("<div>") %>
+								<%divs.each do |div|%>
+									<%divs = div.split("</div>") %>
+									 <%divs.each do |div| %>
+									 	<li><%= div %> </li>
+									 <%end%>
+								<%end%>
+								</ul>
 							<%else%>
 							<li><%= @patient.treatment_given %> </li>
 
@@ -270,6 +295,16 @@
 								 	<%end%>
 								 <%end%>
 							<%end%>
+							<%elsif @patient.reasons_for_referral.include?("<div>")%>
+								<ul>
+								<%divs = @patient.reasons_for_referral.split("<div>") %>
+								<%divs.each do |div|%>
+									<%divs = div.split("</div>") %>
+									 <%divs.each do |div| %>
+									 	<li><%= div %> </li>
+									 <%end%>
+								<%end%>
+								</ul>
 							<%else%>
 							<li><%= @patient.reasons_for_referral %></li>
 
@@ -297,7 +332,7 @@
 					This patient has being referred back to <%= @patient.initiating_facility_name %>
 					<%=link_to "View Referral Back Slip", '', class: 'back', style: "color: #4e7799" %>
 				<%else%>
-				Note to receiving facility: On completion of patient management please fill in the referral back slip below and send copy with patient or just reply directly.</strong>
+				Note to receiving facility: On completion of patient management please fill in the referral back slip below and submit.</strong>
 			<%end%>
 			
 		</p>

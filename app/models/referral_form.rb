@@ -27,14 +27,18 @@ class ReferralForm < ApplicationRecord
         validates   :patient_identity_number, presence: true, length: {minimum: 9, maximum: 9},
                                         format: { with: VALID_ID_CARD_REGEX, message: 'is invalid'}
 
+        
+
+
+
 
 	def self.search(keyword, doctor)
-		where("cast(patient_identity_number as text) LIKE ? AND referring_doctors_name  LIKE ?", "%#{keyword}%", "#{doctor}")
+    where("patient_token LIKE ?", "%#{keyword.upcase}%")
 	end
 	def self.my_referrals(current_user)
 		where("referred_facility_doctors_name LIKE ?", "%#{current_user}%")
 	end
-    def self.total_referrals_made(current_doctor)
+    def self.total_referrals_made_by_current_doctor(current_doctor)
         where("referring_doctors_name LIKE ?", "%#{current_doctor}%")
     end
 
@@ -56,12 +60,14 @@ class ReferralForm < ApplicationRecord
     def self.count_current_referrals
         ReferralForm.count
     end
-
+   
     private
     def validate_phone
      phone = patient_mobile_number
      if phone.nil?
       errors.add(:patient_mobile_number, "can't be empty")
+    elsif phone == referring_doctors_mobile_number
+      errors.add(:patient_mobile_number, "has being taken")
      elsif phone[0, 1].to_i >= 5 && phone[0, 1] != "" && phone.length == 9 && isnumeric?(phone)
        self.patient_mobile_number = patient_mobile_number
       elsif phone.length < 9
@@ -74,5 +80,9 @@ class ReferralForm < ApplicationRecord
    def isnumeric?(object)
       true if Integer(object) rescue false
    end
+   def token(size = 6)
+      charset = %w{ 2 3 4 6 7 9 A B C D E F G H I J K  L M N O P Q R S T U V W X Y Z }
+      (0...size).map{ charset.to_a[rand(charset.size)] }.join
+    end
     
 end

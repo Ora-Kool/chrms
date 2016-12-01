@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161125160519) do
+ActiveRecord::Schema.define(version: 20161201123814) do
 
   create_table "doctors", force: :cascade do |t|
     t.string   "name"
@@ -47,9 +47,10 @@ ActiveRecord::Schema.define(version: 20161125160519) do
 
   create_table "hospitals", force: :cascade do |t|
     t.string   "hospital_name"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.string   "hospital_city"
+    t.string   "hospital_address"
   end
 
   create_table "managers", force: :cascade do |t|
@@ -82,7 +83,6 @@ ActiveRecord::Schema.define(version: 20161125160519) do
     t.string   "replying_date"
     t.string   "initiated_facility_name"
     t.string   "initiated_facility_address"
-    t.integer  "patient_identity_number"
     t.integer  "patient_age"
     t.string   "patient_gender"
     t.string   "patient_address"
@@ -110,7 +110,7 @@ ActiveRecord::Schema.define(version: 20161125160519) do
     t.string   "referring_doctors_name"
     t.string   "referring_doctors_speciality"
     t.string   "patient_full_names"
-    t.integer  "patient_identity_number"
+    t.string   "patient_identity_number"
     t.integer  "patient_age"
     t.string   "patient_gender"
     t.string   "patient_address"
@@ -126,6 +126,7 @@ ActiveRecord::Schema.define(version: 20161125160519) do
     t.text     "optional_message"
     t.string   "initiating_facility_address"
     t.string   "referral_status"
+    t.string   "patient_token"
   end
 
   create_table "staffs", force: :cascade do |t|

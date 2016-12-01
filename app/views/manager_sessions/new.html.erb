@@ -1,7 +1,7 @@
 <%provide(:title, 'Manager - CHRMS') %>
 <div class="row">
 	<div class="large-6 large-offset-3 columns">
-		<h1 class="text-center" style="font-family: courier">Manager</h1>
+		<h1 class="text-center chrms-font">Manager</h1>
 		<div class="login-design">
 			<%= form_for(:session,  url: managers_session_login_path) do |f| %>
 				<%= f.collection_select :hospital_id, Hospital.all, :id, :hospital_name , prompt: "Select Hospital"  %>

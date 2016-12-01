@@ -1,8 +1,9 @@
-
-<h5>Surname : <%= @doctor.surname %></h5>
-<h5>Full Names : <%= "#{@doctor.surname} #{@doctor.given_names}" %></h5>
-<h5>Gender : <%= @doctor.gender %></h5>
-<h5>Educational Level: <%= @doctor.education %></h5>
-<h5>Speciality: <%=@doctor.speciality.capitalize %></h5>
-<h5>Organization: <%=@doctor.hospital.hospital_name %></h5>
+<div class="content">
+	<h5>Surname: <strong><%= @doctor.surname %></strong></h5>
+	<h5>Full Names: <strong><%= "#{@doctor.surname} #{@doctor.given_names}" %></strong></h5>
+	<h5>Gender: <strong><%= @doctor.gender %></strong></h5>
+	<h5>Educational Level: <strong><%= @doctor.education %></strong></h5>
+	<h5>Speciality: <strong><%=@doctor.speciality.capitalize %></strong></h5>
+	<h5>Organization: <strong><%=@doctor.hospital.hospital_name %></strong></h5>
+</div>
 

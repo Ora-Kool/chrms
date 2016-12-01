@@ -33,6 +33,7 @@ gem "figaro"
 gem 'delayed_job_active_record'
 gem 'trix'
 gem 'geocoder'
+gem 'will_paginate-bootstrap'
 
 
 # Use Capistrano for deployment

@@ -3,13 +3,13 @@
 <div class="medium-3 columns">
 <!-- left site navigation that houses the links-->
 
-	<ul class="tabs vertical" id="target" data-tabs>
-		<li class="tabs-title"><a href="#account-summary" aria-selected="false">Account Summary</a></li>
+	<ul class="tabs vertical" style="margin-bottom: 0;" id="target" data-tabs>
+		<li class="tabs-title" style="border-bottom: 1px solid #e0e0e0"><a href="#account-summary" aria-selected="false">Account Summary</a></li>
 
-		<li class="tabs-title is-active"><%=link_to 'Account Settings', '#profile-settings', class: "fi-widget" %></li>
+		<li class="tabs-title is-active"><%=link_to 'Account Settings', '#profile-settings'%></li>
 		
 	</ul>
-	<table>
+	<table style="margin-top: 0; border-top: 0">
 		<tr>
 			<td class="back">
 				<%=link_to 'Dashboard', doctor_dashboard_path %>
@@ -27,7 +27,7 @@
 			    <div class="tabs-content vertical" data-tabs-content="target">
 			      	<div class="tabs-panel" id="account-summary">
 			      		<h4>Account Summary</h>
-				        	<p class="rules">Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
+				        	<p class="rules">Account summary gives you details of all your personal information, and can help you to edit where there is a mistake.</p>
 				        	<hr class="horizontal-line">
 				        	
 				        	<div class="row">
@@ -47,12 +47,23 @@
 				        		<hr class="horizontal-line">
 				        	</div>
 				        	<div class="row">
-				        		<div class="large-12 columns">
-				        			<h5>Mobile Number:(+237) <%=@doctor.mobile_number %></h5>
-				        			<h5>Country: <%=@doctor.country %></h5>
-				        			<h5>Region: <%=@doctor.region %></h5>
-				        			<h5>City: <%=@doctor.city %></h5>
-				        			<h5>Email Address: <%=@doctor.email %></h5>
+				        		<div class="large-12 columns content">
+				        			<h5>Mobile Number: <strong>(+237) <%=@doctor.mobile_number %></strong></h5>
+				        			<%if @doctor.mobile_number2.nil? %>
+				        				<h5>Mobile Number 2: <strong>(+237) <%=@doctor.mobile_number2%></strong></h5>
+				        				<%else%>
+
+				        			<%end%>
+				        			<h5>Country: <strong><%=@doctor.country %></strong></h5>
+				        			<h5>Region: <strong><%=@doctor.region %></strong></h5>
+				        			<h5>City: <strong><%=@doctor.city %></strong></h5>
+				        			<h5>Email Address: <strong><%=@doctor.email %></strong></h5>
+				        			<h5>Educational summary</h5>
+				        			<div style="border-top: 1px solid #2199e8">
+					        			<h6>
+					        				<%= @doctor.educational_summary %>
+					        			</h6>
+				        			</div>
 				        		</div>
 				        	</div>
 			      	</div>

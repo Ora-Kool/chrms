@@ -33,9 +33,10 @@ module LoginSessionsHelper
 
   #Returns the gravater for the given doctor
   def gravatar_for(doctor, size: 800 )
-    gravatar_id = Digest::MD5::hexdigest(doctor.email.downcase)
+    email = "default@chrms.com"
+    gravatar_id = doctor.email.nil? ? Digest::MD5::hexdigest(email) : Digest::MD5::hexdigest(doctor.email.downcase)
     gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}"
-    image_tag(gravatar_url, alt: doctor.name, class: "gravatar")
+    image_tag(gravatar_url, alt: "Dr. #{doctor.name.capitalize} image", class: "gravatar")
   end
 
 
@@ -70,5 +71,9 @@ module LoginSessionsHelper
   def store_location
     session[:forwarding_url] = request.original_url if request.get?
   end
-  
+  def token(size = 6, patient_name)
+      charset = %w{ C H R M S } + patient_name.gsub(/\s+/, '').upcase.split("")
+      (0...size).map{ charset.to_a[rand(charset.size)] }.join
+  end
+ 
 end

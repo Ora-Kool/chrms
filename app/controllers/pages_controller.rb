@@ -11,10 +11,9 @@ class PagesController < ApplicationController
   	@message  = Message.new(message_params)
     if @message.save
       flash[:secondary] = "Your message has been sent."
-       redirect_to root_path
+       redirect_to contact_path
     else
-      flash[:warning] = "Message not sent! please try again."
-      redirect_to contact_path
+      render "contact"
     end
   end
   def login
