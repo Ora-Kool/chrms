@@ -11,7 +11,7 @@
                        
                         <%=gravatar_for(current_doctor) %>
                      <%else%>
-                      <%= image_tag(current_doctor.photo.url, class: "gravatar")%>
+                      <%= image_tag(current_doctor.photo.url(:large), class: "gravatar")%>
                         
                   <%end%> 
                   <span class="title">

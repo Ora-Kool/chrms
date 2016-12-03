@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161202112720) do
+ActiveRecord::Schema.define(version: 20161203131157) do
 
   create_table "doctors", force: :cascade do |t|
     t.string   "name"
@@ -128,6 +128,7 @@ ActiveRecord::Schema.define(version: 20161202112720) do
     t.string   "initiating_facility_address"
     t.string   "referral_status"
     t.string   "patient_token"
+    t.integer  "doctor_id"
   end
 
   create_table "staffs", force: :cascade do |t|

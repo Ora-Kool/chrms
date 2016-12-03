@@ -10,7 +10,7 @@ class ReferralForm < ApplicationRecord
     	validates	:patient_age, presence: true
     	validates	:patient_gender, presence: true
     	validates	:patient_address, presence: true
-    	
+    	validates :patient_token, presence: true
     	validates	:patient_clinical_history, presence: true
     	validates	:findings, presence: true
     	validates	:treatment_given, presence: true
@@ -33,8 +33,9 @@ class ReferralForm < ApplicationRecord
 
 
 
-	def self.search(keyword, doctor)
-    where("patient_token LIKE ?", "%#{keyword.upcase}%")
+	def self.search(token, doctor_id)
+    string = doctor_id.to_i
+    where("patient_token LIKE ?", "%#{token}%")
 	end
 	def self.my_referrals(current_user)
 		where("referred_facility_doctors_name LIKE ?", "%#{current_user}%")

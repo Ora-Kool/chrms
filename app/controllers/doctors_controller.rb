@@ -93,7 +93,8 @@ class DoctorsController < ApplicationController
 
   def total_referrals_made
     if params[:search2]
-      @referrals = ReferralForm.search(params[:search2], "#{current_doctor.surname} #{current_doctor.given_names}").order("created_at DESC").paginate(page: params[:page], per_page: 6)
+      @result = ReferralForm.find_by(patient_token: params[:search2])
+      @result = ReferralForm.find_by(patient_identity_number: params[:search2])
       @mades = ReferralForm.total_referrals_made_by_current_doctor("#{current_doctor.surname} #{current_doctor.given_names}")
 
     else
