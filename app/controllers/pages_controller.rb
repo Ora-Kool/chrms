@@ -18,6 +18,12 @@ class PagesController < ApplicationController
   end
   def login
   end
+  def terms_n_conditions
+    
+  end
+  def privacy_policy
+    
+  end
   private 
   def message_params
     params.require(:message).permit(:name, :subject, :content)

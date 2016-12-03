@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161201123814) do
+ActiveRecord::Schema.define(version: 20161202112720) do
 
   create_table "doctors", force: :cascade do |t|
     t.string   "name"
@@ -99,6 +99,7 @@ ActiveRecord::Schema.define(version: 20161201123814) do
     t.string   "on_date"
     t.text     "referral_back_slip_message"
     t.string   "patient_full_names"
+    t.string   "patient_identity_number"
   end
 
   create_table "referral_forms", force: :cascade do |t|

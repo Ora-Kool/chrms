@@ -1,8 +1,8 @@
 class ReferralForm < ApplicationRecord
-		validates 	:type_of_referral, presence: true
-    	validates	:initiating_facility_name, presence: true
-        validates   :initiating_facility_address, presence: true
-    	validates	:date_of_referral, presence: true
+  		validates 	:type_of_referral, presence: true
+      validates	:initiating_facility_name, presence: true
+      validates   :initiating_facility_address, presence: true
+      validates	:date_of_referral, presence: true
     	validates	:referring_doctors_name, presence: true
     	validates	:referring_doctors_speciality, presence: true
     	validates	:referring_doctors_mobile_number, presence: true
@@ -17,16 +17,17 @@ class ReferralForm < ApplicationRecord
     	validates	:reasons_for_referral, presence: true
     	validates	:referred_facility_name, presence: true
     	validates	:address_of_referred_facility, presence: true
-        validates   :optional_message, presence: false
+      validates   :optional_message, presence: false
     	validates	:referred_facility_doctors_name, presence: true
 
-        VALID_ID_CARD_REGEX = /\d\d\d\d\d\d\d\d\d/
+      VALID_ID_CARD_REGEX = /\d\d\d\d\d\d\d\d\d/
 
-        validate :validate_phone
+      validate :validate_phone
 
-        validates   :patient_identity_number, presence: true, length: {minimum: 9, maximum: 9},
+      validates   :patient_identity_number, presence: true, length: {minimum: 9, maximum: 9},
                                         format: { with: VALID_ID_CARD_REGEX, message: 'is invalid'}
 
+      
         
 
 

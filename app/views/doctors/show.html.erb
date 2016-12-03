@@ -32,7 +32,13 @@
          </td>
       </tr>
       <tr>
-         <td><%= link_to 'Referrals Made', doctor_dashboard_total_referrals_made_path %><i class="badge float-right alert"><%=@mades.count%></i></td>
+         <td><%= link_to 'Referrals Made', doctor_dashboard_total_referrals_made_path %>
+           <% if @mades.count == 0 %>
+
+            <%else%>
+              <i class="badge float-right alert"><%=@mades.count%></i>
+           <%end%>
+         </td>
       </tr>
    
 	</table>

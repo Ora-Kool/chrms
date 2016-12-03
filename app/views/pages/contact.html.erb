@@ -1,21 +1,22 @@
 <%provide(:title, 'Contact Us - CHRMS') %>
 <div class="row">
 <div class="large-12 columns">
-	<h1 class="text-center" style="color: #828282">
+	<h1 class="text-center chrms-font" style="color: #828282">
 		Contact Us
 	</h1>
-	<h4>
-		Need help with CHRMS application? Find an answer by sending us a message or call us .
-		If your question is more tricky, you will find many ways to get in touch 
+	<hr class="horizontal-line"/>
+	<h4 style="margin-bottom: 2rem">
+		Need help or want to use ing CHRMS application? Find an answer by sending us a message or calling us.
+		If your question is more tricky, you will find many ways to get in touch.
 	</h4>
 </div>
-<hr class="horizontal-line"/>
+
 </div>
 
 
-<div class="row">
+<div class="row" style="margin-bottom: 3rem">
 	<div class="large-5 columns">
-	<h3>We are waiting...</h3>
+	<h3 class="chrms-font">We are waiting...</h3>
 	<div class="row">
 		<div class="large-12 columns">
 			<%= render "contact_us_form" %>
@@ -26,16 +27,23 @@
 	<div class="large-6 columns">
 	<div class="row">
 		<div class="large-12 columns">
-			<h1>By Phone</h1>
-			
+			<h1 class="chrms-font text-center">
+				By Phone
+				<hr class="horizontal-line">
+			</h1>
+			<div class="row text-center">
+				<div class="large-12 columns">
+					<p> (+237) <strong style="letter-spacing: .4rem; margin-left: .1rem"> XXX-XXX-XXX</strong> </p>
+				</div>
+			</div>
 		</div>
 	</div>
 		
 	</div>
 </div>
-<div class="row">
+<!--<div class="row">
 		<div class="large-12 columns">
-		<h1>F.A.Q.</h1>
+		<h1 class="chrms-font">F.A.Q.</h1>
 		<ul class="accordion" data-accordion data-allow-all-closed="true">
 		  <li class="accordion-item" data-accordion-item>
 		    <a href="#" class="accordion-title">Question 1</a>
@@ -113,4 +121,4 @@
 		  </li>
 		</ul>
 	</div>
-	</div>
+	</div>-->

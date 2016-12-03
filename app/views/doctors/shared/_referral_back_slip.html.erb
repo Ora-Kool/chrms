@@ -1,109 +1,17 @@
 <%= form_for(@patient_referral_back_slip, url: doctor_dashboard_read_referral_patient_referral_back_slip_path(current_doctor)) do |f| %>
 	<%= render "layouts/shared/error_messages", object: @patient_referral_back_slip %>
 	
-<!--<table style="margin-bottom: 0">
-		
-			<tr>
-				<td>
-					<label>
-						Received facility name
-					</label>
-					<%=f.text_field :received_facility_name %>
-				</td>
-				<td>
-					<label>
-						Recieved Doctors number
-					</label>
-					<%=f.text_field :received_doctors_number %>
-				</td>
-
-			</tr>
-</table>-->
-<!--<table style="margin-top: 0">
-			<tr>
-				<td>
-					<label>
-						Doctors replying name
-					</label>
-					<%=f.text_field :doctor_replying_names %>
-				</td>
-				<td>
-					<label>
-						Doctors speciality
-					</label>
-					<%=f.text_field :doctors_speciality %>
-				</td>
-				<td>
-					<label>
-						Replying date
-					</label>
-					<%=f.text_field :replying_date %>
-				</td>
-			</tr>
-</table>-->
-<!--<table>
-		<h5><strong>To Initiated Facility</strong></h5>
-			<tr>
-				<td>
-					<label>Initiated facility name</label>
-					<%=f.text_field :initiated_facility_name %>
-				</td>
-				<td>
-					<label>Initiated facility address</label>
-					<%= f.text_field :initiated_facility_address %>
-				</td>
-
-			</tr>
-</table>-->
-<h5><strong>Doctor's name</strong></h5>
-<!--<table style="margin: 0">
-		
-			<tr>
-				<td>
-					<label>Patient Identity number</label>
-					<%=f.text_field :patient_identity_number %>
-				</td>
-				<td>
-					<label>Patient Age</label>
-					<%=f.text_field :patient_age %>
-				</td>
-				<td>
-					<label>Patient gender</label>
-					<%=f.text_field :patient_gender %>
-				</td>
-			</tr>
-</table>-->
-<!--<table style="margin: 0">
-			<tr>
-				<td>
-					<label>Patient Address</label>
-					<%=f.text_field :patient_address %>
-				</td>
-			</tr>
-</table>-->
-<table style="margin-top: 0" class="large-5">
-			<tr>
-				<td>
-					<label>Patient was seen by</label>
-					<%=f.text_field :patient_was_seen_by %>
-				</td>
-				<!--<td>
-					<label>On Date</label>
-					<%=f.text_field :when_patient_was_seen %>
-				</td>-->
-			</tr>
-</table>
 <table style="margin-bottom: 0">
-		<h5><strong>Report by specialist hospital</strong></h5>
+		<h5 class="chrms-font"><strong>Report by specialist hospital</strong></h5>
 			<tr>
 				<td>
-					<label>Special investigation</label>
+					<label class="chrms-font">Special investigation</label>
 					<%=f.trix_editor :special_investigation, size: "5x5"%>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<label>Findings</label>
+					<label class="chrms-font">Findings</label>
 					<%=f.trix_editor :special_findings, size: "5x5" %>
 				</td>
 			</tr>
@@ -111,7 +19,7 @@
 <table style="margin: 0">
 			<tr>
 				<td>
-					<label>Diagnosis</label>
+					<label class="chrms-font">Diagnosis</label>
 					<%=f.trix_editor :diagnosis, size: "5x5" %>
 				</td>
 
@@ -120,14 +28,14 @@
 <table style="margin: 0">
 			<tr>
 				<td>
-					<label>Operation</label>
-					<%=f.select :operation, ["Yes", "No"], prompt: "select choice"%>
+					<label class="chrms-font">Operation</label>
+					<%=f.select :operation, ["Yes", "No"], prompt: "Select choice"%>
 				</td>
 
 			</tr>
 			<tr>
 				<td>
-					<label>Treatments</label>
+					<label class="chrms-font">Treatments</label>
 					<%=f.trix_editor :treatments, size: "5x5" %>
 				</td>
 			</tr>
@@ -135,7 +43,7 @@
 <table style="margin: 0">
 			<tr>
 				<td>
-					<label>Medications prescribed</label>
+					<label class="chrms-font">Medications prescribed</label>
 					<%=f.trix_editor :medications_prescribed, size: "5x5" %>
 				</td>
 				
@@ -144,27 +52,16 @@
 <table style="margin: 0">
 			<tr>
 				<td>
-					<label>Please continue with(meds, Rx, follow-up, care)</label>
+					<label class="chrms-font">Please continue with(meds, Rx, follow-up, care)</label>
 					<%=f.trix_editor :please_continue_with %>
 				</td>
 			</tr>
 </table>
-<!--<table style="margin-top: 0">
-			<tr>
-				<td>
-					<label>Refer back to</label>
-					<%=f.text_field :refer_back_to %>
-				</td>
-				<td>
-					<label>on date</label>
-					<%=f.text_field :on_date%>
-				</td>
-			</tr>
-</table>-->
+
 <table>
 			<tr>
 				<td>
-					<label>Referral back slip message</label>
+					<label class="chrms-font">Referral back slip message</label>
 					<%=f.text_area :referral_back_slip_message, size: "5x5", placeholder: "Message accompaning this referral back slip"%>
 				</td>
 			</tr>

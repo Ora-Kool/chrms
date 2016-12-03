@@ -136,6 +136,7 @@ class DoctorsController < ApplicationController
      @patient_referral_back_slip.patient_address = @patient.patient_address
      @patient_referral_back_slip.refer_back_to = @patient.referring_doctors_name
      @patient_referral_back_slip.patient_full_names = @patient.patient_full_names
+     @patient_referral_back_slip.patient_was_seen_by = "#{ current_doctor.name }"
 
 
      if @patient_referral_back_slip.save

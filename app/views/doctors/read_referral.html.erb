@@ -1,7 +1,7 @@
 <%provide(:title, "Patient Referral Details - CHRMS") %>
 <div class="row">
 	<div class="large-12 columns">
-		<h4 style="text-decoration: underline">Initiated Facility Name: <strong><%= @patient.initiating_facility_name %></strong></h4>
+		<h4 class="chrms-font" style="text-decoration: underline">Initiated Facility Name: <strong><%= @patient.initiating_facility_name %></strong></h4>
 		<h4>by : Dr. <%= @patient.referring_doctors_name%></h4>
 
 		<table>
@@ -58,7 +58,7 @@
 		<table>
 			<tr>
 				<td>
-					<h5>
+					<h5 class="chrms-font" >
 						<strong>Patient Clinical History</strong>
 						
 					</h5>
@@ -72,7 +72,7 @@
 		<table>
 			<tr>
 				<td>
-					<h5>
+					<h5 class="chrms-font" >
 						<strong>Patient Findings</strong>
 					</h5>
 
@@ -116,7 +116,11 @@
 								 								 						<%tags17.each do |tags| %>
 								 								 							<%tags18 = tags.split('</div>') %>
 								 								 							<%tags18.each do |tags| %>
-								 								 							<li><%= tags%></li>
+								 								 							<%tags19 = tags.split("&nbsp;")%>
+								 								 							<%tags19.each do |tags| %>
+								 								 								<li><%= tags%></li>
+								 								 							
+								 								 									<%end%>
 								 								 								<%end%> 
 								 								 							<%end%>
 								 								 						<%end%>
@@ -141,7 +145,10 @@
 								<%divs.each do |div|%>
 									<%divs = div.split("</div>") %>
 									 <%divs.each do |div| %>
+									 <%divs = div.split("&nbsp;")%>
+									 <%divs.each do |div| %>
 									 	<li><%= div %> </li>
+									 	<%end%>
 									 <%end%>
 								<%end%>
 								</ul>
@@ -199,7 +206,16 @@
 								 								 					<%tags15.each do |tags| %>
 								 								 						<% tags16 = tags.split("</pre>") %>
 								 								 						<%tags16.each do |tags| %>
-								 								 							<li><%= tags%></li>
+								 								 						 <%tags17 = tags.split("<div>")%>
+								 								 						 <%tags17.each do |tags| %>
+								 								 						 <%tags18 = tags.split("</div>")%>
+								 								 						 <%tags18.each do |tags| %>
+								 								 						 <%tags19 = tags.split("&nbsp;")%>
+								 								 						 <%tags19.each do |tags| %>
+								 								 						 <li><%= tags%></li>
+								 								 						 			<%end%>
+								 								 						 		<%end%>
+								 								 						 	<%end%>
 								 								 						<%end%>
 								 								 					<%end%>
 								 								 				<%end%>
@@ -222,7 +238,10 @@
 								<%divs.each do |div|%>
 									<%divs = div.split("</div>") %>
 									 <%divs.each do |div| %>
+									 <%divs = div.split("&nbsp;") %>
+									 <%divs.each do |div| %>
 									 	<li><%= div %> </li>
+										 <%end%>
 									 <%end%>
 								<%end%>
 								</ul>
@@ -239,7 +258,7 @@
 		<table>
 			<tr>
 				<td>
-					<h5>
+					<h5 class="chrms-font">
 						<strong>Reasons For This Referral</strong>
 					</h5>
 					<% tag = @patient.reasons_for_referral.downcase.include?("<ul>") ? "ul" : "ol" %>
@@ -278,7 +297,14 @@
 								 								 					<%tags15.each do |tags| %>
 								 								 						<% tags16 = tags.split("</pre>") %>
 								 								 						<%tags16.each do |tags| %>
+								 								 						<%tags17 = tags.split("<div>")%>
+								 								 						<%tags17.each do |tags| %>
+								 								 							<%tags18 = tags.split("</div>") %>
+								 								 							<%tags19 = tags.split('&nbsp;')%>
+								 								 							<%tags19.each do |tags| %>
 								 								 							<li><%= tags%></li>
+								 								 								<%end%>
+								 								 							<%end%>
 								 								 						<%end%>
 								 								 					<%end%>
 								 								 				<%end%>
@@ -301,7 +327,11 @@
 								<%divs.each do |div|%>
 									<%divs = div.split("</div>") %>
 									 <%divs.each do |div| %>
+									 <%divs = div.split("&nbsp;") %>
+
+									 <%divs.each do |div| %>
 									 	<li><%= div %> </li>
+									 	<%end%>
 									 <%end%>
 								<%end%>
 								</ul>
@@ -318,7 +348,7 @@
 		<table>
 			<tr>
 				<td>
-					<h5>
+					<h5 class="chrms-font">
 						<strong>Message from Dr. <%="#{@patient.referring_doctors_name}" %></strong>
 					</h5>
 					<%=@patient.optional_message %>
@@ -332,7 +362,7 @@
 					This patient has being referred back to <%= @patient.initiating_facility_name %>
 					<%=link_to "View Referral Back Slip", '', class: 'back', style: "color: #4e7799" %>
 				<%else%>
-				Note to receiving facility: On completion of patient management please fill in the referral back slip below and submit.</strong>
+				Note: On completion of patient management please fill in the referral back slip below and submit.</strong>
 			<%end%>
 			
 		</p>

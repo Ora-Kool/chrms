@@ -58,6 +58,8 @@ Rails.application.routes.draw do
   get '/about', to: 'pages#about'
   get '/login-panel', to: 'pages#login'
   get '/contact', to: 'pages#contact'
+  get '/terms&conditions_of_use', to: 'pages#terms_n_conditions', as: 'terms_n_conditions'
+  get '/privacy_policy', to: 'pages#privacy_policy'
 
 
   root 'pages#home'
