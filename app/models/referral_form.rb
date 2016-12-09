@@ -27,6 +27,10 @@ class ReferralForm < ApplicationRecord
       validates   :patient_identity_number, presence: true, length: {minimum: 9, maximum: 9},
                                         format: { with: VALID_ID_CARD_REGEX, message: 'is invalid'}
 
+      before_save {
+        self.patient_full_names = capitalize_name(patient_full_names)
+      }
+
       
         
 
@@ -35,7 +39,7 @@ class ReferralForm < ApplicationRecord
 
 	def self.search(token, doctor_id)
     string = doctor_id.to_i
-    where("patient_token LIKE ?", "%#{token}%")
+    where("patient_token  ?", "%#{token}%")
 	end
 	def self.my_referrals(current_user)
 		where("referred_facility_doctors_name LIKE ?", "%#{current_user}%")

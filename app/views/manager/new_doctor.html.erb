@@ -1,20 +1,8 @@
 <%provide(:title, 'New Doctor - Manager') %>
 <%provide(:button_text, 'Create') %>
-<div>
-      <div class="large-4 columns">
-         <h1 class="chrms-font">/new doctor</h1>
-         
-         <ul class="menu vertical">
-            <li><%= link_to 'Add New Doctor', manager_dashboard_doctor_add_path, class: "site-links"%></li>
-            <li><%= link_to 'Add New Staff', manager_dashboard_staff_add_path,class: "site-links"%></li>
-         </ul>
-         
-   </div>
-</div>
 <div class="row">
-	<div class="large-8  columns">
-		<h2 class="chrms-font">Fill</h2>
-		Themes let you apply a consistent tone to an app. The theme specifies the darkness of the surfaces, level of shadow, and appropriate opacity of ink elements. To promote greater consistency between apps, light and dark themes are available to choose from.
+	<div class="large-6 large-offset-3 columns">
+		<h2 class="chrms-font text-center">Fill</h2>
 		<%= render "manager/shared/D_form" %>
 	</div>
 </div>

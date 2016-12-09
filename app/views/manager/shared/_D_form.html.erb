@@ -1,14 +1,18 @@
 <%= form_for(@doctor, url: manager_dashboard_doctor_add_path) do |f| %>
-<%= render 'layouts/shared/error_messages', object: @doctor %>
-<%= f.label "doctor's name" %>
-<%= f.text_field :name %>
+	<%= render 'layouts/shared/error_messages', object: @doctor %>
+	<%= f.label "doctor's name" %>
+	<%= f.text_field :name %>
 
-<%= f.label "doctor's password" %>
-<%= f.password_field :password %>
+	<%= f.label "doctor's password" %>
+	<%= f.password_field :password %>
 
-<%= f.label "password confirmation" %>
-<%= f.password_field :password_confirmation %>
-
-<%= f.submit yield(:button_text), class: "button chrms radius large-4" %>
+	<%= f.label "password confirmation" %>
+	<%= f.password_field :password_confirmation %>
+<div class="row">
+	<div class="large-12 large-offset-3 columns">
+		<%= f.submit yield(:button_text), class: "button chrms radius large-4" %>
+	</div>
+</div>
+	
 
 <%end%>

@@ -9,12 +9,12 @@
 				<div class="row">
 
 			<div class="collapse-incomplete">
-			<h5 class="text-center" style="margin-bottom: 1rem; margin-top: 1.1rem">
+			<h5 class="text-center chrms-font" style="margin-bottom: 1rem; margin-top: 1.1rem">
 				Just a step to complete your registration
 			</h5>
 			<hr class="horizontal-line">
 				<div class="row">
-					<h6><strong>Personal Information</strong></h6>
+					<h6 class="chrms-font"><strong>Personal Information</strong></h6>
 						<div class="large-12 columns">
 							<%=f.label :surname %>
 							<%=f.text_field :surname %>
@@ -37,35 +37,38 @@
 				</div>
 						<hr class="horizontal-line">
 						<div class="row">
-						<h6><strong>Professional Profile</strong></h6>
-							<div class="large-4 columns">
+						
+							<div class="large-6 columns">
+							<h6 class="chrms-font"><strong>Professional Profile</strong></h6>
+								<%=f.label :speciality %>
+								<%=f.select :speciality, ["Option A", "Option B", "Option C", "Option D"], prompt: "Select speciality" %>
+							</div>
+							<!--<div class="large-4 columns">
 								<%=f.label "education level" %>
 								<%=f.text_field :education %>
-							</div>
-							<div class="large-4 columns">
-								<%=f.label :speciality %>
-								<%=f.text_field :speciality %>
-							</div>
-							<div class="large-12 columns">
+							</div>-->
+							<!--<div class="large-12 columns">
 								<%=f.label :educational_summary %>
 								<%=f.text_area :educational_summary, size: '6x6' %>
-							</div>
+							</div>-->
 						</div>
 						
 						<hr class="horizontal-line">
 						<div class="row">
-								<h6><strong>Contact Details</strong></h6>
-							<div class="large-4 columns">
+						<div class="large-12 columns">
+								<h6 class="chrms-font"><strong>Contact Details</strong></h6>
+						</div>
+							<!--<div class="large-4 columns">
 								<%=f.label :country %>
 								<%=f.select :country, ["Cameroon"], prompt: "select country" %>
-							</div>
-							<div class="large-4 columns">
+							</div>-->
+							<div class="large-6 columns">
 								<%=f.label :region %>
-								<%=f.select :region, ["Adamawa", "Centre", "East", "Littoral","Far North","North","Northwest","South","Southwest","West"], prompt: 'select region' %>
+								<%=f.select :region, ["Adamawa", "Centre", "East", "Far North", "Littoral","North", "Northwest","South","Southwest","West"], prompt: 'Select region' %>
 							</div>
-							<div class="large-4 columns">
+							<div class="large-6 columns">
 								<%=f.label "city" %>
-								<%=f.select :city, ["Yaounde", "Douala", "Buea"], prompt: "select city" %>
+								<%=f.select :city, ["Buea", "Douala", "Yaounde", ], prompt: "Select city" %>
 							</div>
 						</div>
 
@@ -97,18 +100,25 @@
 				
 		<%end%>
 		<div class="large-4 columns">
-	 	
-		<h4 style="margin-top: 1rem">Why complete your registration?</h4>
-		<hr class="horizontal-line">
-		<p><strong>CHRMS</strong> doesnot assume his users information by so doing he ask you to provide the information for yourself by completing the form at the <strong>LEFT</strong> side of the screen so he can better understand you and ease the communication with your colleague.
-		Without you completing this process.
-		</p>
-		<ul>
-			<li>You can't get to your dashboard</li>
-			<li>You can't view you account setting / update your record</li>
-			<li>You can't refer patients since you don't have access to the dashboard</li>
-		</ul>
-		<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+	 	<div class="row">
+	 		<div class="large-12 columns">
+	 			<h4 style="margin-top: 1rem">Why complete your registration?</h4>
+					<hr class="horizontal-line">
+					<p><strong>CHRMS</strong> doesnot assume his users information by so doing we ask you to provide the information for yourself by completing the form at the <strong>LEFT</strong> side of the screen so we can better understand you and ease the communication with your colleagues.
+					Without you completing this registration.
+					</p>
+					<ul>
+						<li>You can't get to your dashboard</li>
+						<li>You can't view you account setting / update your record</li>
+						<li>You can't refer patients since you don't have access to the dashboard</li>
+					</ul>
+		
+	 		</div>
+	 		<div class="large-12 columns">
+	 			<h4 class="text-center chrms-font">Advert</h4>
+	 		</div>
+	 	</div>
+		
  
 	 </div>
     </div>

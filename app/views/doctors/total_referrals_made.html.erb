@@ -25,14 +25,27 @@
          </td>
 		</tr>
       <tr>
-         <td><%= link_to 'Dashboard', doctor_dashboard_path %></td>
-      </tr>
-      <tr>
-         <td><%= link_to 'Referred Doctors', doctor_dashboard_request_referral_hospitals_path %>
+         <td><%= link_to 'Dashboard Referrals', doctor_dashboard_path %>
+           <%if @sum == 0 %>
+
+            <%else%>
+            <i class="badge float-right alert2"><%=@sum%></i>
+            <%end%>
          </td>
       </tr>
       <tr>
-         <td><%= link_to 'Referrals Made', doctor_dashboard_total_referrals_made_path %><i class="badge float-right alert"><%=@mades.count%></i></td>
+         <td><%= link_to 'Available Doctors', doctor_dashboard_request_referral_hospitals_path %>
+         </td>
+      </tr>
+      <tr>
+         <td>
+          <%= link_to 'Referrals Made', doctor_dashboard_total_referrals_made_path %>
+         <% if @mades == 0 %>
+
+          <%else%>
+           <i class="badge float-right alert2"><%=@mades%></i>
+         <%end%>
+         </td>
       </tr>
       
       
@@ -47,14 +60,15 @@
    			<div class="large-12 columns">
    				<div class="row">
    					<div class="large-9 columns">
-   						<h4 style="text-decoration: underline">Referrals Made</h4>
+   						<h4 style="text-decoration: underline" class="chrms-font">Referrals Made</h4>
    					</div>
 
    					<div class="large-3 columns">
                      <!-- Search box rendering here-->
                      <% if @referrals.present? %>
                      <%= render "doctors/shared/search2" %>
-                     <%else%>
+                     <%elsif @result.present?%>
+                      <%= render "doctors/shared/search2" %>
                      <%end%>
 
    					</div>
@@ -378,9 +392,12 @@
                      </div>
    					<% end %>
             </table>
-   					
+   					  <%= will_paginate @referrals, renderer: BootstrapPagination::Rails %>
+
    					<%elsif params[:search2].present?%>
+
                 <%if @result.present? %>
+
                  <p style="font-family: courier; margin-bottom: 0; color: #294f42">Result found for <%=params[:search2]%></p>
                 <table>
                   <tr>
@@ -392,29 +409,30 @@
                        <th>Date Sent</th>
               
                   </tr>
+                  <%@result.each do |result| %>
                   <tr>
-                <td><%= "#{@result.referred_facility_doctors_name}" %>
-                        <br>Tel: (+237) <%= "#{@result.referring_doctors_mobile_number}"%>
+                <td><%= "#{result.referred_facility_doctors_name}" %>
+                        <br>Tel: (+237) <%= "#{result.referring_doctors_mobile_number}"%>
                         </td>
                 <td>
                            
-                       <a data-open="patient_<%= @result.id %>"> <%="#{@result.patient_full_names}"%><br><span>click to view</span></a>
+                       <a data-open="patient_<%= result.id %>"> <%="#{result.patient_full_names}"%><br><span>click to view</span></a>
                                
                          
                 </td>
                         <td>
-                           <%= @result.patient_identity_number%>
+                           <%= result.patient_identity_number%>
                         </td>
                 <td>
-                           <%=@result.type_of_referral %><br>
+                           <%=result.type_of_referral %><br>
                 </td>
                 <td>
-                    <% if @result.referral_status == "pending" %>
+                    <% if result.referral_status == "pending" %>
                       <label><a class="pending">Pending</a></label>
-                    <% elsif @result.referral_status == "received" %>
+                    <% elsif result.referral_status == "received" %>
                           <label><a class="received">Received</a></label>
                     <%else%>
-                      <%if @result.patient_identity_number.present? %>
+                      <%if result.patient_identity_number.present? %>
                           <label><%= link_to "Completed", "", class: "completed " %><i class="fi-check"></i></label>
                       <%else %>
                           <label><%= link_to "Completed", "", class: "completed " %><i class="fi-check"></i></label>
@@ -423,23 +441,23 @@
                            
                 </td>
                 <td>
-                    <%= @result.created_at.strftime("%B %d, %Y") %>         
+                    <%= result.created_at.strftime("%B %d, %Y") %>         
                 </td>
               </tr>
-              <div class="reveal large" id="patient_<%=@result.id %>" data-reveal data-deep-link="true">
-                                <h1 class="text-center">Patient ID: <%= @result.patient_identity_number %> Details</h1>
+              <div class="reveal large" id="patient_<%=result.id %>" data-reveal data-deep-link="true">
+                                <h1 class="text-center">Patient ID: <%= result.patient_identity_number %> Details</h1>
                                  <hr class="horizontal-line">
                                  
                                 <button class="close-button" data-close aria-label="Close modal" type="button">
                                   <span aria-hidden="true" class="float-right">&times;</span>
                                 </button>
                                  <h5 style="text-decoration: underline">Finding(s)</h5>
-                                 <% tag = @result.findings.downcase.include?("<ul>") ? "ul" : "ol" %>
+                                 <% tag = result.findings.downcase.include?("<ul>") ? "ul" : "ol" %>
                                  <% close_tag = tag.include?("ul") ? "/ul" : "/ol" %>
-                        <%if @result.findings.downcase.include?("<ul>") || @result.findings.downcase.include?("<ol>")%>
+                        <%if result.findings.downcase.include?("<ul>") || result.findings.downcase.include?("<ol>")%>
                            
                            
-                              <%tags1 = @result.findings.split("<li>") %>
+                              <%tags1 = result.findings.split("<li>") %>
 
                            <<%="#{tag}"%>>
                               <% tags1.each do |tags| %>
@@ -490,9 +508,9 @@
                                     <%end%>
                                   <%end%>
                               <%end%>
-                              <%elsif @result.treatment_given.include?("<div>")%>
+                              <%elsif result.treatment_given.include?("<div>")%>
                                  <ul>
-                                    <%divs = @result.treatment_given.split("<div>") %>
+                                    <%divs = result.treatment_given.split("<div>") %>
                                     <%divs.each do |div|%>
                                        <%divs = div.split("</div>") %>
                                         <%divs.each do |div| %>
@@ -504,7 +522,7 @@
                                     <%end%>
                                  </ul>
                               <%else%>
-                              <li><%= @result.treatment_given %> </li>
+                              <li><%= result.treatment_given %> </li>
 
                            <<%= close_tag%>>
 
@@ -512,12 +530,12 @@
                            <br>
                            
                         <h5 style="text-decoration: underline">Treatment(s) Given</h5>
-                                 <% tag = @result.treatment_given.downcase.include?("<ul>") ? "ul" : "ol" %>
+                                 <% tag = result.treatment_given.downcase.include?("<ul>") ? "ul" : "ol" %>
                                  <% close_tag = tag.include?("ul") ? "/ul" : "/ol" %> 
-                        <%if @result.treatment_given.downcase.include?("<ul>") || @result.treatment_given.downcase.include?("<ol>")%>
+                        <%if result.treatment_given.downcase.include?("<ul>") || result.treatment_given.downcase.include?("<ol>")%>
                            
                            
-                              <%tags1 = @result.treatment_given.split("<li>") %>
+                              <%tags1 = result.treatment_given.split("<li>") %>
 
                            <<%="#{tag}"%>>
                               <% tags1.each do |tags| %>
@@ -577,9 +595,9 @@
                                     <%end%>
                                   <%end%>
                               <%end%>
-                               <%elsif @result.treatment_given.include?("<div>")%>
+                               <%elsif result.treatment_given.include?("<div>")%>
                                  <ul>
-                                    <%divs = @result.treatment_given.split("<div>") %>
+                                    <%divs = result.treatment_given.split("<div>") %>
                                     <%divs.each do |div|%>
                                        <%divs = div.split("</div>") %>
                                         <%divs.each do |div| %>
@@ -591,7 +609,7 @@
                                     <%end%>
                                  </ul>
                               <%else%>
-                              <li><%= @result.treatment_given %> </li>
+                              <li><%= result.treatment_given %> </li>
 
                            <<%=close_tag%>>
 
@@ -599,12 +617,12 @@
                         
                         <br/>
                         <h5 style="text-decoration: underline">Referral Reasons</h5>
-                                 <% tag = @result.reasons_for_referral.downcase.include?("<ul>") ? "ul" : "ol" %>
+                                 <% tag = result.reasons_for_referral.downcase.include?("<ul>") ? "ul" : "ol" %>
                                  <% close_tag = tag.include?("ul") ? "/ul" : "/ol" %> 
-                        <%if @result.reasons_for_referral.downcase.include?("<ul>") || @result.reasons_for_referral.downcase.include?("<ol>")%>
+                        <%if result.reasons_for_referral.downcase.include?("<ul>") || result.reasons_for_referral.downcase.include?("<ol>")%>
                            
                            
-                              <%tags1 = @result.reasons_for_referral.split("<li>") %>
+                              <%tags1 = result.reasons_for_referral.split("<li>") %>
 
                            <<%="#{tag}"%>>
                               <% tags1.each do |tags| %>
@@ -664,9 +682,9 @@
                                     <%end%>
                                   <%end%>
                               <%end%>
-                               <%elsif @result.reasons_for_referral.include?("<div>")%>
+                               <%elsif result.reasons_for_referral.include?("<div>")%>
                                  <ul>
-                                    <%divs = @result.reasons_for_referral.split("<div>") %>
+                                    <%divs = result.reasons_for_referral.split("<div>") %>
                                     <%divs.each do |div|%>
                                        <%divs = div.split("</div>") %>
                                         <%divs.each do |div| %>
@@ -678,7 +696,7 @@
                                     <%end%>
                                  </ul>
                               <%else%>
-                              <li><%= @result.reasons_for_referral %> </li>
+                              <li><%= result.reasons_for_referral %> </li>
 
                            <<%=close_tag%>>
 
@@ -687,11 +705,13 @@
                            <br/>
                            <h5 style="text-decoration: underline">Message</h5>
                         <p>
-                           <%=@result.optional_message %>
+                           <%=result.optional_message %>
                         </p>
                      </div>
-
+                     <%end%>
                 </table>
+                  <%= will_paginate @result, renderer: BootstrapPagination::Rails %>
+
                 <%= link_to 'View All', doctor_dashboard_total_referrals_made_path, class: "button chrms radius large-2"%>
                   
 
@@ -702,7 +722,27 @@
                      
             <%else%>
    					
-                     <h1>No referrals made by you</h1>
+                     <h1 class="chrms-font">No referrals made by you</h1>
+                     <div class="callout primary2" data-closable>
+                              <h5 class="chrms-font">Title</h5>
+                               <%if current_doctor.photo_file_name.nil?%>
+                              <p>Please <strong>CHANGE</strong> the default profile picture on the left side using this link <%=link_to "upload profile picture", doctor_dashboard_edit_path(current_doctor.name)%></p>
+                              <%end%>
+                              <p>Account settings gives you the power to change what other hospitals and doctors sees. You can upload your profile picture inside account settings, edit you surname, given names if you made errors when completing your registration process. You can also see your account summary inside account settings</p>
+                             <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                               <span aria-hidden="true">&times;</span>
+                             </button>
+                      </div>
+                      <div class="callout primary2" data-closable>
+                              <h5 class="chrms-font">Title</h5>
+                               <%if current_doctor.photo_file_name.nil?%>
+                              <p>Please <strong>CHANGE</strong> the default profile picture on the left side using this link <%=link_to "upload profile picture", doctor_dashboard_edit_path(current_doctor.name)%></p>
+                              <%end%>
+                              <p>Account settings gives you the power to change what other hospitals and doctors sees. You can upload your profile picture inside account settings, edit you surname, given names if you made errors when completing your registration process. You can also see your account summary inside account settings</p>
+                             <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                               <span aria-hidden="true">&times;</span>
+                             </button>
+                      </div>
                                
    					<%end%>
    		</div>

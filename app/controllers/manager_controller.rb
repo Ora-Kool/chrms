@@ -1,4 +1,5 @@
 class ManagerController < ApplicationController
+  before_action :set_cache_headers, only: [:show, :new_doctor, :create_doctor]
 	before_action :logged_in_manager, only: [:show, :new_doctor, :create_doctor,
 		:new_staff, :create_staff]
   def show
@@ -15,10 +16,10 @@ class ManagerController < ApplicationController
     @doctor.hospital_id = current_manager.hospital.id
     #@doctor.city = current_manager.hospital.hospital_city
     if @doctor.save
-        flash[:secondary] = "Doctor successfully added"
+        flash[:secondary] = "Dr. #{@doctor.name} account was added successfully."
         redirect_to manager_dashboard_path
     else
-       render 'new_doctor'
+       render "new_doctor"
     end
 
   end
@@ -53,5 +54,11 @@ class ManagerController < ApplicationController
    		flash[:warning] = "Access denied!"
    		redirect_to root_path
    	end
+  end
+
+  def set_cache_headers
+    response.headers["Cache-Control"] = "no-cache, no-store"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
   end
 end

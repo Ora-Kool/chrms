@@ -71,9 +71,22 @@ module LoginSessionsHelper
   def store_location
     session[:forwarding_url] = request.original_url if request.get?
   end
-  def token(size = 6, patient_name)
-      charset = %w{ C H R M S } + patient_name.gsub(/\s+/, '').upcase.split("")
+  def token_generator(size = 2, patient_name)
+      #charset = %w{ C H R M S } + patient_name.gsub(/\s+/, '').upcase.split("")
+      charset = patient_name.gsub(/\s+/, '').upcase.split("")
       (0...size).map{ charset.to_a[rand(charset.size)] }.join
   end
+
+  def token(name)
+    token = "CHRMS" + token_generator(name) + Date.today.month.to_s
+  end
+
+  def isnumeric?(object)
+      true if Integer(object) rescue false
+   end
+
+   def capitalize_name(string)
+     string.split(' ').map { |word| word.capitalize  }.join(' ')
+   end
  
 end

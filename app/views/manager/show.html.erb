@@ -1,67 +1,119 @@
 <%provide(:title, "Manager's - Dashboard") %>
-<div>
-      <div class="large-3 columns">
-         <h1 class="chrms-font">Left Links</h1>
-         
-         <ul class="menu vertical">
-            <li><%= link_to 'Add new doctor', manager_dashboard_doctor_add_path, class: "site-links" %></li>
-            <li><%= link_to 'Add new staff', manager_dashboard_staff_add_path, class: "site-links"%></li>
-         </ul>
-         
-   </div>
-</div> 
-   
-<div class="row">
-   
-   <div class="large-5 columns">
-   		<table>
-            <tr>
-               <th>Doctor's Names </th>
-               <th>Contact</th>
-
-            </tr>
-              <% if @doctors.present? %>
-
-              <% @doctors.each do |doctor| %>
-                <tr>
-                     <td><%= doctor.name %></td>
-                      <td>No contact</td>
-                </tr>
-              <% end %>
-                
-              <%else%>
-               
-              <tr>
-                    
-                  <td>No doctor</td>
-                  <td>No contact</td>
-
-                </tr>
-            <%end%>
+<%provide(:button_text, 'Create') %>
+<div class="large-12">
+    <div class="row" style="margin-left: 0em; min-width: 100%;">
+      <div class="large-3  columns" style="padding: 0; background: #0f6352; height: 50rem">
+      <div class="row">
+        <div class="large-4 small-4 columns">
+          <h5 style="margin-left: .7rem;">
+            <%=image_tag('profile.svg')%>
+          </h5>
+        </div>
+          <div class="large-7 small-7 columns profile">
+            <h5 class="chrms-font" style="padding-top: .1rem">
+              <%= current_manager.name.capitalize %>
+            </h5>
+            <p style="color: white"><i><%= image_tag('rec.svg', size: 10)%></i> online</p>
+          </div>
+          <div class="large-12 columns">
+            <ul class="tabs vertical" data-tabs id="target" style="margin-top: 0; background: #0f6352">
+            <li class="tabs-title is-active"><a href="#dashboard" aria-selected="true" style="color: #6bce70">DASHBOARD</a></li>
+            <li class="tabs-title"><a href="#hospitals" style="color: #6bce70">HOSPITALS</a></li>
+            <li class="tabs-title"><a href="#doctors" style="color: #6bce70">DOCTORS</a></li>
+            <li class="tabs-title"><a href="#settings" style="color: #6bce70">SETTINGS</a></li>
             
+          </ul>
+          </div>
+         
+      </div>
+        
+           
+     </div>
+      <div class="large-9 columns">
+         <div class="tabs-content" data-tabs-content="target">
+          <div class="tabs-panel is-active" id="dashboard">
+            <div class="row">
+               <div class="large-12">
+              <h1 style="margin-bottom: 0" class="chrms-font">Dashboard</h1>
+              <hr style="margin-top: 0">
+             </div>
+            </div>
+          
+           <div class="row">
+               <div class="large-12 notification">
+               <!--This place here will be changing depending on different stuffs-->
+                 <p style="color: #58a5c9"> <i class="fi-folder"> </i> <strong> Hello !</strong> Welcome Back <strong ><%= current_manager.name.capitalize %> </strong> <i class="fi-pencil"></i> <%= pluralize(@doctors.count, "Doctor") %>  account(s) are pending to be for complete registration 
+                 </p>
+               </div>
+            </div>
+           <div class="row">
+                <div class="large-4 small-12 columns calendar">
+                  <p><i class="fi-calendar"></i>  <strong><%= ReferralForm.count %></strong> Referrals Request Made</p>
+                  <p style="margin-left: 4em">This month</p>
+                </div> 
+                <div class="large-4 small-12 columns doctors">
+                <i class="doctor"><%=image_tag('doctor.svg') %></i>
+                  <p>  <strong><%= pluralize(Doctor.count, "Doctor") %></strong></p>
+                </div>
+                <div class="large-4 small-12 columns hospitals">
+                  <p><i class="fi-mail"></i><strong><%= pluralize(Hospital.count, 'Hospital') %></strong> </p>
+                </div>
+                 <div class="row">
+                    <div class="large-12 columns">
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                      </p>
+                  </div>
+          </div>
+          </div>
+         
 
-         </table>
-   </div>
-   <div class="large-4 columns">
-         <table>
-            <tr>
-               <th>Staffs Names</th>
-            </tr>
-            <% if @staffs.present? %>
-               <% @staffs.each do |staff| %>
-                <tr>
-                     <td><%= staff.name %></td>
-                </tr>
-              <% end %>
-            <%else%>
-              
-              <tr>
-                  <td>no staff</td>
-              </tr>
-                
+          </div>
+          <div class="tabs-panel" id="hospitals">
+          <div class="row">
+            <div class="large-12 columns">
+            <h1 class="chrms-font" style="margin-bottom: 0">Hospitals</h1>
+            <hr style="margin-top: 0">
+            </div>
+          </div>
+          
+            <p>Suspendisse dictum feugiat nisl ut dapibus.  Vivamus hendrerit arcu sed erat molestie vehicula. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor.  Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.</p>
+          </div>
 
-            <% end %>   
 
-         </table>
-   </div>
+          <div class="tabs-panel" id="doctors">
+            <div class="row">
+              <div class="large-12 columns">
+                  <h1 class="chrms-font" style="margin-bottom: 0">Doctors</h1>
+                  <hr style="margin-top: 0">
+                  <p>Suspendisse dictum feugiat nisl ut dapibus.  Vivamus hendrerit arcu sed erat molestie vehicula. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor.  Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.</p>
+              </div>
+              <div class="large-12 columns">
+                <%= render "manager/shared/doctors" %>
+              </div>
+            </div>
+            
+          </div>
+
+
+          <div class="tabs-panel" id="settings">
+          <div class="row">
+              <div class="large-12 columns">
+                  <h1 class="chrms-font" style="margin-bottom: 0">Settings</h1>
+                  <hr style="margin-top: 0">
+              </div>
+            </div>
+            <p>Suspendisse dictum feugiat nisl ut dapibus.  Vivamus hendrerit arcu sed erat molestie vehicula. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor.  Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.</p>
+          </div>
+
+
+        </div>
+     </div>
+      </div>    
 </div>
+      

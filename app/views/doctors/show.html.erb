@@ -25,23 +25,31 @@
 			</td>
 		</tr>
       <tr>
-         <td><%= link_to 'Dashboard', doctor_dashboard_path %></td>
+         <td><%= link_to 'Dashboard Referrals', doctor_dashboard_path %>
+           <%if @sum == 0 %>
+
+           <%else%>
+            <i class="badge float-right alert2"><%=@sum%></i>
+           <%end%>
+
+         </td>
       </tr>
       <tr>
-         <td><%= link_to 'Referred Doctors', doctor_dashboard_request_referral_hospitals_path %>
+         <td><%= link_to 'Available Doctors', doctor_dashboard_request_referral_hospitals_path %>
          </td>
       </tr>
       <tr>
          <td><%= link_to 'Referrals Made', doctor_dashboard_total_referrals_made_path %>
-           <% if @mades.count == 0 %>
+           <% if @mades == 0 %>
 
             <%else%>
-              <i class="badge float-right alert"><%=@mades.count%></i>
+              <i class="badge float-right alert2"><%=@mades%></i>
            <%end%>
          </td>
       </tr>
    
 	</table>
+
 
 </div>
 <div class="row">
@@ -50,10 +58,10 @@
    			<div class="large-12 columns">
    				<div class="row">
    					<div class="large-9 columns">
-                  <% if @referrals.present?%>
-                  <h4 class="chrms-font" style="text-decoration: underline">Referrals Inbox</h4>
+                  <% if @sum != 0%>
+                    <h4 class="chrms-font" style="text-decoration: underline">Referrals Inbox</h4>
                      <%else%>
-                        <h4 class="chrms-font" style="text-decoration: underline; color: #878787">Referrals Dashboard Is Empty</h4>
+                        <h4 class="chrms-font" style="text-decoration: underline; color: #878787">Referrals Dashboard Is Empty!</h4>
 
                      <%end%>
    						
@@ -127,13 +135,16 @@
    						</tr>
    						
    					<% end %>
+            </table>
 
+            <%= will_paginate @referrals, renderer: BootstrapPagination::Rails %>
 
    					
    					<%elsif params[:search].present?%>
 
-                    <%if @results.present? %>
+                    <%if @result.present? %>
                      <%= render "doctors/shared/results" %>
+                     <%= link_to 'View All', doctor_dashboard_path, class: "button chrms radius large-2"%>
 
                         <%else%>
                            <%= render 'doctors/shared/view_all' %>
@@ -147,7 +158,6 @@
 
    					<%end%>
 
-   				</table>
               
    			
    		</div>

@@ -1,0 +1,39 @@
+<%if @doctors.present?%>
+<table>
+
+	<tr>
+		<th>User name</th>
+		<th>Surname</th>
+		<th>Given names</th>
+		<th>Contact number</th>
+		<th>Organisation</th>
+		<th>Speciality</th>
+		<th>City</th>
+	</tr>
+	<% @doctors.each do |doctor| %>
+	<tr>
+		<td>
+			<%= capitalize_name(doctor.name) %>
+		</td>
+		<td>
+			<%=doctor.surname %>
+		</td>
+		<td>
+			<%=doctor.given_names %>
+		</td>
+		<td>
+			<%=doctor.mobile_number %>
+		</td>
+		<td>
+			<%= doctor.hospital.hospital_name%>
+		</td>
+		<td>
+			<%= doctor.speciality %>
+		</td>
+		<td>
+			<%= doctor.city %>
+		</td>
+	</tr>
+	<%end%>
+</table>
+<%end%>

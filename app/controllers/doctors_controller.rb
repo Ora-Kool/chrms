@@ -11,15 +11,20 @@ class DoctorsController < ApplicationController
                                           :create_referral, :referral_confirmation,
                                           :edit, :incomplete, :incomplete_update, :hospitals]
   def show
+    @sum = ReferralForm.my_referrals("#{current_doctor.surname} #{current_doctor.given_names}").count
+    @mades = ReferralForm.total_referrals_made_by_current_doctor("#{current_doctor.surname} #{current_doctor.given_names}").count
     if (current_doctor.surname.nil? || current_doctor.given_names.nil? || current_doctor.email.nil? || current_doctor.mobile_number.nil?)
       redirect_to  doctor_dashboard_incomplete_path(current_doctor.name)
     
     elsif params[:search]
-        @results = ReferralForm.search(params[:search], "#{current_doctor.surname} #{current_doctor.given_names}").order("created_at DESC").paginate(page: params[:page], per_page: 6)
-        @mades = ReferralForm.total_referrals_made_by_current_doctor("#{current_doctor.surname} #{current_doctor.given_names}")
+        
+        @made = ReferralForm.where(referred_facility_doctors_name: "#{current_doctor.surname} #{current_doctor.given_names}")
+        @result = @made.where("patient_token LIKE ? OR patient_identity_number LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%").paginate(page: params[:page], per_page: 6)
+        #@result = @made.where(patient_identity_number: params[:search])
+
        else
         @referrals = ReferralForm.my_referrals("#{current_doctor.surname} #{current_doctor.given_names}").order("created_at DESC").paginate(page: params[:page], per_page: 6)
-        @mades = ReferralForm.total_referrals_made_by_current_doctor("#{current_doctor.surname} #{current_doctor.given_names}")
+        
 
       end
 
@@ -31,7 +36,7 @@ class DoctorsController < ApplicationController
 
   def incomplete_update
     #@doctor = Doctor.find_by(name: params[:name])
-
+      @doctor.country = "Cameroon"
     if @doctor.update_attributes(doctor_update)
       #DoctorMailer.account_activation(@doctor).deliver_now
       @doctor.send_activation_email
@@ -70,13 +75,14 @@ class DoctorsController < ApplicationController
 
     @referral.referred_facility_doctors_name = "#{@referred_doctor.surname} #{@referred_doctor.given_names}"
     @referral.initiating_facility_name = current_doctor.hospital.hospital_name
+    @referral.initiating_facility_address = current_doctor.hospital.hospital_address
     @referral.date_of_referral = Date.today
     @referral.referring_doctors_name = "#{current_doctor.surname} #{current_doctor.given_names}"
     @referral.referring_doctors_speciality = current_doctor.speciality
     @referral.referring_doctors_mobile_number = current_doctor.mobile_number
     @referral.referred_facility_name = @referred_doctor.hospital.hospital_name
     @referral.address_of_referred_facility = current_doctor.hospital.hospital_address
-    @referral.patient_token = token(6, @referral.patient_full_names)
+    @referral.patient_token = token(@referral.patient_full_names)
 
     if @referral.save
       @referral.update_pending
@@ -92,14 +98,16 @@ class DoctorsController < ApplicationController
   end
 
   def total_referrals_made
+    @sum = ReferralForm.where(referred_facility_doctors_name: "#{current_doctor.surname} #{current_doctor.given_names}").count
+    @mades = ReferralForm.total_referrals_made_by_current_doctor("#{current_doctor.surname} #{current_doctor.given_names}").count
     if params[:search2]
-      @result = ReferralForm.find_by(patient_token: params[:search2])
-      @result = ReferralForm.find_by(patient_identity_number: params[:search2])
-      @mades = ReferralForm.total_referrals_made_by_current_doctor("#{current_doctor.surname} #{current_doctor.given_names}")
+      @made = ReferralForm.total_referrals_made_by_current_doctor("#{current_doctor.surname} #{current_doctor.given_names}")
+      @result = @made.where("patient_token LIKE ? OR patient_identity_number LIKE ?", "%#{params[:search2]}%", "%#{params[:search2]}%").paginate(page: params[:page], per_page: 6)
+      #@result = @made.where(patient_identity_number: params[:search2]).paginate(page: params[:page], per_page: 2)
 
     else
-      @referrals = ReferralForm.total_referrals_made_by_current_doctor("#{current_doctor.surname} #{current_doctor.given_names}")
-      @mades = ReferralForm.total_referrals_made_by_current_doctor("#{current_doctor.surname} #{current_doctor.given_names}")
+      @referrals = ReferralForm.total_referrals_made_by_current_doctor("#{current_doctor.surname} #{current_doctor.given_names}").paginate(page: params[:page], per_page: 2)
+      #@mades = ReferralForm.total_referrals_made_by_current_doctor("#{current_doctor.surname} #{current_doctor.given_names}")
 
     end
 
@@ -169,8 +177,7 @@ class DoctorsController < ApplicationController
   private
 
   def referrals_params
-    params.require(:referral_form).permit(:type_of_referral,                                        
-                                           :initiating_facility_address,                            
+    params.require(:referral_form).permit(:type_of_referral,                                                                    
                                            :patient_full_names,
                                            :patient_identity_number,
                                            :patient_age,
@@ -196,7 +203,6 @@ class DoctorsController < ApplicationController
                                    :city,
                                    :educational_summary,
                                    :speciality,
-                                   :country,
                                    :region,
                                    :mobile_number,
                                    :mobile_number2,

@@ -9,12 +9,13 @@ class Doctor < ApplicationRecord
   validates :country, presence: true, allow_nil: true
   validates :region, presence: true, allow_nil: true
   validates :gender, presence: true, allow_nil: true
-  validates :education, presence: true, allow_nil: true
+  validates :education, presence: true, allow_blank: true
   validates :speciality, presence: true, allow_nil: true
-  validates :educational_summary, presence: true, allow_nil: true
+  validates :educational_summary, presence: true, allow_blank: true
   validate  :validate_phone1
 
   before_save { self.name = name.downcase }
+ 
 
   
   validates :mobile_number2, phone: { possible: false, allow_blank: true, types: [:mobile] },
@@ -155,6 +156,10 @@ class Doctor < ApplicationRecord
       #create the token and digest here
       self.activation_token = Doctor.new_token
       self.activation_digest = Doctor.digest(activation_token)
+   end
+
+   def capitalize_name(string)
+     string.split(' ').map { |word| word.capitalize  }.join(' ')
    end
 
    

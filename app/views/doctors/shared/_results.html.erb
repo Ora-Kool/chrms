@@ -9,7 +9,7 @@
                      </tr>
               <p style="font-family: courier; margin-bottom: 0; color: #294f42">Result found for token: <strong><%= params[:search] %></strong></p>
                                    
-   					<% @results.each do |referral| %>
+   					<% @result.each do |referral| %>
 
             <tr>
                 <td>
@@ -51,3 +51,5 @@
    						
    					<% end %>
 </table>
+
+<%= will_paginate @result, renderer: BootstrapPagination::Rails %>
