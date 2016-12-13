@@ -1,0 +1,24 @@
+<%if @hospitals.present?%>
+<table>
+
+	<tr>
+		<th>Hospital Name</th>
+		<th>Hospital Address</th>
+		<th>Hospital City</th>
+	</tr>
+	<% @hospitals.each do |hospital| %>
+	<tr>
+		<td>
+			<%= capitalize_name(hospital.hospital_name) %>
+		</td>
+		<td>
+			<%=hospital.hospital_address %>
+		</td>
+		<td>
+			<%=hospital.hospital_city %>
+		</td>
+		
+	</tr>
+	<%end%>
+</table>
+<%end%>

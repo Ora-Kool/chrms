@@ -3,6 +3,7 @@ class ManagerController < ApplicationController
 	before_action :logged_in_manager, only: [:show, :new_doctor, :create_doctor,
 		:new_staff, :create_staff]
   def show
+    @hospitals = Hospital.all
     @doctors = Doctor.all
     @staffs = Staff.all
   end
