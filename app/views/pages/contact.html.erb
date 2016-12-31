@@ -1,13 +1,12 @@
 <%provide(:title, 'Contact Us - CHRMS') %>
 <div class="row">
-<div class="large-12 columns">
+<div class="large-12 columns" style="padding-top: 2rem">
 	<h1 class="text-center chrms-font" style="color: #828282">
-		Contact Us
+		<%=t('pages.contact.header') %>
 	</h1>
 	<hr class="horizontal-line"/>
-	<h4 style="margin-bottom: 2rem">
-		Need help or want to use ing CHRMS application? Find an answer by sending us a message or calling us.
-		If your question is more tricky, you will find many ways to get in touch.
+	<h4 style="margin-bottom: 2rem; font-size: 1.2em; text-align: center">
+		<%=t('pages.contact.header_desc') %>
 	</h4>
 </div>
 
@@ -16,7 +15,10 @@
 
 <div class="row" style="margin-bottom: 3rem">
 	<div class="large-5 columns">
-	<h3 class="chrms-font">We are waiting...</h3>
+	<h3 class="chrms-font">
+		<%=t('pages.contact.message_option') %>
+			
+	</h3>
 	<div class="row">
 		<div class="large-12 columns">
 			<%= render "contact_us_form" %>
@@ -27,9 +29,9 @@
 	<div class="large-6 columns">
 	<div class="row">
 		<div class="large-12 columns">
-			<h1 class="chrms-font text-center">
-				By Phone
-				<hr class="horizontal-line">
+			<h1 class="chrms-font text-center" style="font-size: 2em; margin-bottom: 0">
+				<%=t('pages.contact.phone_option') %>
+				<hr class="horizontal-line" style="margin-top: 0">
 			</h1>
 			<div class="row text-center">
 				<div class="large-12 columns">

@@ -2,7 +2,9 @@
 <div class="row">
 	<div class="row">
 		<div class="large-12 columns text-center" style="margin-bottom: 2rem">
-			<h1 class="chrms-font">Login Panel CHRMS</h1>
+			<h1 class="chrms-font">
+				<%=t('pages.login.login_caption') %>
+			</h1>
 		</div>
 	</div>
 <div class="row">
@@ -10,9 +12,9 @@
 		<div class="card">
           <div class="content">
           	<p style="font-size: 1.2rem">
-            	All doctors who have accounts in the system should login here
+            	<%=t('.login_doctors') %>
             </p>
-            <h1 class="chrms-font"><%= link_to 'DOCTORS', login_panel_doctors_login_path %></h1>
+            <h1 class="chrms-font"><%= link_to t('.doctors'), login_panel_doctors_login_path %></h1>
           </div><!--end card class here-->
 
         </div>

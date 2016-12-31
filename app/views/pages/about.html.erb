@@ -1,31 +1,30 @@
 <%provide(:title, "About - CHRMS") %>
-<div class="row">
-<div class="large-12 columns">
-	 <h2 class="text-center chrms-font">ABOUT US
-	 		<hr class="horizontal-line"/>
-	 </h2>
+	<div class="row">
+		<div class="large-12 columns" style="padding-top: 2rem">
+			 <h2 class="text-center chrms-font"s tyle="color: #828282">
+			 	<%=t('pages.about.header') %> 
+			 		<hr class="horizontal-line"/>
+			 </h2>
 
-</div>
-</div>
-
-<div class="row">
-	<div class="large-6 columns">
-		<h3 class="chrms-font">WE</h3>
-		<p>
-			
-			CHRMS is nothing more than helping doctors keep track of their patient history online, track their patients treatments, refer their patients to other facilities for advance investigation and follow the patient activity online. We provide this easy track of referral here so that doctors don't loss the patient they refer to any hospital, given doctors update about the status of the patient referred
-		</p>
-	</div>
-</div>
-<div class="row">
-		<div class="large-12 columns">
-		 <h3 class="chrms-font">
-		 	Why Hospitals should start online referrals ?
-		 </h3>
-		 <p>
-		 	With the rapid growth in technology, hospitals going online is a big step in record keeping and easy record retriving. CHRMS provide hosptials with the means to take their paper written referrals to online written referral, with is technology, doctors have easy means to get update fast with the patient details, telling doctors if the patient has being recieved or not, if the investigations as being completed, you get all this live on the CHRMS. Furthermore CHRMS tells you if your referral was unapproved by your referred hospital.
-
-		 </p>
 		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-6 columns">
+			<h3 class="chrms-font"><%=t('pages.about.we')%></h3>
+			<p>
+				<%=t('pages.about.we_desc') %>
+			</p>
+		</div>
+	</div>
+	<div class="row" style="padding-bottom: 4rem">
+			<div class="large-12 columns">
+			 <h3 class="chrms-font">
+			 	<%=t('pages.about.why_online') %>
+			 </h3>
+			 <p>
+			 	<%= t('pages.about.why_online_desc') %>
+			 </p>
+			</div>
 	</div>
 </div>

@@ -67,6 +67,9 @@ class ReferralForm < ApplicationRecord
         ReferralForm.count
     end
    
+   def capitalize_name(string)
+     string.split(' ').map { |word| word.capitalize  }.join(' ')
+   end
     private
     def validate_phone
      phone = patient_mobile_number

@@ -11,24 +11,35 @@
       <%= image_tag('clinic.jpg', class: 'orbit-image', alt: "clinic") %>
 
         <figcaption class="orbit-caption">
-        <h4 class="chrms-font">Clinic Aid</h4>
-        <p>Providing a means by which clinic will have direct aid from others clinic / specialised facility</p>
+        <h4 class="chrms-font"><%= t('pages.slide_show.clinic') %></h4>
+        <p>
+          <%=t('pages.slide_show.caption') %>
+        </p>
         </figcaption>
       </li>
 
       <li class="orbit-slide">
         <%= image_tag('referral.jpg', class: "orbit-image", alt: "Space") %>
         <figcaption class="orbit-caption">
-        <h4 class="chrms-font">Simplicity and Efficiency</h4>
-        <p>This is what makes CHRMS what is it, we make your referral processes very simple </p>
+        <h4 class="chrms-font">
+        <%= t('pages.slide_show.simplicity') %>
+        
+        </h4>
+        <p>
+            <%=t('pages.slide_show.caption_simplicity') %>
+        </p>
         </figcaption>
       </li>
 
       <li class="orbit-slide">
         <%= image_tag("network.jpg", class: "orbit-image", alt: "network") %>
         <figcaption class="orbit-caption">
-          <h4 class="chrms-font">Network Of Doctors</h4>
-          <p>We provide a network of physicians all around Cameroon, to come together and solve medical problems</p>
+          <h4 class="chrms-font">
+            <%=t('pages.slide_show.network') %>
+          </h4>
+          <p>
+            <%=t('pages.slide_show.caption_network') %>
+          </p>
         </figcaption>
       </li>
 

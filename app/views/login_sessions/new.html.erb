@@ -1,8 +1,10 @@
 <%provide(:title, "Login Doctor - CHRMS") %>
-<%provide(:button_text, 'Login') %>
+<%provide(:button_text, t('.login')) %>
 <div class="row">
 	<div class="large-6 large-offset-3 columns">
-		<h1 class="text-center chrms-font">Login</h1>
+		<h1 class="text-center chrms-font">
+			<%=t('.login') %>
+		</h1>
 		<%= render 'login_sessions/shared/login_form' %>
 	</div>
 </div>

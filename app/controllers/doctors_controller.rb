@@ -1,4 +1,4 @@
-class DoctorsController < ApplicationController
+  class DoctorsController < ApplicationController
   before_action :set_cache_headers, only: [:show, :edit, :update]
   before_action :find_doctor, only: [:incomplete, :create_referral,
                                      :incomplete_update, :edit, :update]
@@ -54,7 +54,7 @@ class DoctorsController < ApplicationController
 
   def update
     if @doctor.update_attributes(doctor_update)
-      flash[:secondary] = "Thanks for updating your profile"
+      flash[:secondary] = "Profile updated successfully!"
       redirect_to doctor_dashboard_path
     else
       render 'edit'

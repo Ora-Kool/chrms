@@ -1,0 +1,262 @@
+fr:
+  layouts:
+    shared:
+      main_header:
+        about:            "À Propos De Nous"
+        contact:          "Contactez Nous"
+        dashboard:        "Tableau De Bord"
+        login:            "Se Connecter"
+      header:
+        about:            "À Propos De Nous"
+        contact:          "Contactez Nous"
+        dashboard:        "Tableau De Bord"
+        login:            "Se Connecter"
+      footer:
+        links:            "Des Liens"
+        about:            "À Propos De Nous"
+        contact:          "Contactez Nous"
+        privacy:          "Politique de Confidentialité"
+        terms:            "Termes et Conditions"
+        english:          "Anglais"
+        french:           "Français"
+        sponsors:         "Sponsors"
+        sponsors_title:   "Merci à certaines organisations d'inspiration et d'aide."
+        social:           "Nous sommes sociaux"
+        social_desc:      "Comme nous sur les médias sociaux et ne manquez pas
+         toute nouvelle ou mise à jour liée à notre blog et produits."
+  
+  pages:
+    home:
+      what_we_do:         "Pourquoi utiliser CHRMS?"
+      we_believe_in:         "Nous Croyons en L'unité"
+      believe_desc:       "Connecter les médecins est notre vision.
+       Les médecins connaissent d'autres médecins, mais connaissant des informations de base sur l'autre médecin a un problème quand il s'agit de renvoyer les patients à ces médecins.
+       CHRMS comme entrent pour créer ce lien afin que les médecins auront des informations complètes sur les autres médecins,
+       quel hôpital et quelle ville les médecins sont,
+       ce qui rend très simple et spécifique lors de la référence d'un patient à d'autres hôpitaux et le département que le patient doit aller.
+       Avec tout cela, les médecins ont la capacité de vérifier régulièrement le statut de leur patient référé. Tout cela est géré par CHRMS."
+      quality_referals: "Référence de haute qualité"
+      quality_desc:       "Être compétent à la référence est juste un aspect de soins de haute qualité. Traiter votre
+       les patients avec respect, en prenant le temps de répondre à leurs questions, et de vérifier sur eux après
+       le traitement construit votre réputation en tant que fournisseur qui se soucie. CHRMS vous aide à obtenir
+       que compentency en vous fournissant régulièrement des patients renvois check ups et de notifier
+       le médecin désigné s'il a oublié le cas."
+      processing:         "Processus de référence simple"
+      processing_desc:    "En référant les patients à d'autres hôpitaux ou à d'autres médecins
+       par des notes écrites est vraiment consommatrice de ressources et inefficace quand il s'agit
+       À suivre l'état du patient.
+       Avec les formulaires de traitement de référence simple de CHRMS,
+       Vous obtenez d'écrire ce que vous voulez le plus de l'autre installation.
+       Nous traitons la charge pour vous et gardons un suivi de vos références et par
+       de vous mettre à jour lorsque votre patient a été reçu par l'établissement.
+       Le processus de renvoi et de retour de votre patient
+       CHRMS très simple. Les médecins n'ont pas à s'inquiéter de la référence qu'ils ont fait,
+       parce que CHRMS fait tout ce qui vous inquiète."
+      primary:             "Primaire - Tertiaire HC"
+      primary_desc:        "Une forte proportion de patients vus dans les établissements de santé tertiaires est due à ce qu'ils ne sont pas référés.
+       Il en résulte une surpopulation des établissements de santé tertiaires avec des problèmes qui peuvent être gérés aux niveaux inférieurs.
+       La main-d'œuvre et les équipements hautement qualifiés sont gaspillés sur des problèmes de santé nécessitant moins de ressources à résoudre.
+       Dans CHRMS, chaque patient doit être référé et "
+      r_token:              " R-TOKEN "
+      primary_desc2:        " à transporter lors de la visite de l'établissement de santé tertiaire, avec cela la question des patients allant à tertiaire
+       les établissements de santé et l'encombrement seront réduits."
+      aim:                  "Avoir Pour But"
+      aim_desc:             "Faire des centres de santé primaires (CSPs) le point de premier contact des patients."
+    contact_us_form:
+    slide_show:
+      clinic:             "Aide clinique"
+      caption:            "Fournir un moyen par lequel la clinique aura l'aide directe d'autres clinique / installation spécialisée"
+      simplicity:         "Simplicité et Efficacité"
+      caption_simplicity: "C'est ce qui rend CHRMS ce que c'est, nous rendons vos processus de parrainage très simple"
+      network:            "Réseau des médecins"
+      caption_network:    "Nous fournissons un réseau de médecins partout au Cameroun, pour nous rencontrer et résoudre des problèmes médicaux"
+    about:
+      header:             "À PROPOS DE NOUS"
+      we:                 "NOUS"
+      we_desc:              "CHRMS n'est rien de plus que d'aider les médecins à garder une trace de leur histoire de patient en ligne,
+       suivre leurs patients traitements, de renvoyer leurs patients à d'autres installations pour une enquête préalable et de suivre
+       l'activité du patient en ligne. Nous fournissons cette piste facile de référence ici afin que les médecins ne perdez pas le patient
+       ils se réfèrent à n'importe quel hôpital, donné médecins mise à jour sur le statut du patient référé."
+      why_online:           "Pourquoi les hôpitaux devraient-ils commencer les références en ligne?"
+      why_online_desc:      "Avec la croissance rapide de la technologie, les hôpitaux en ligne est un grand pas en avant
+       garde et enregistrement facile retriving. Les CHRMS fournissent aux hosptials les moyens de prendre leur
+       références à la référence en ligne écrit, avec cette technologie, les médecins ont des moyens faciles pour obtenir la mise à jour
+       rapide avec les détails du patient, dire aux médecins si le patient a été reçu ou non,
+       Si les enquêtes sont terminées, vous obtenez tout cela en direct sur le CHRMS. En outre
+       CHRMS vous informe si votre renvoi n'a pas été approuvé par votre hôpital."
+    contact:
+      header:                 "CONTACTEZ NOUS"
+      header_desc:            "Besoin d'aide ou souhaitez utiliser une application CHRMS?,
+       trouvez une réponse en nous envoyant un message ou en nous appelant.
+       Si votre question est plus délicate, vous trouverez de nombreuses façons d'entrer en contact."
+      message_option:                 "Nous attendons..." 
+      phone_option:                   "Par téléphone"
+      send:                           "Envoyer"
+    login:
+      login_caption:                  "Panneau de connexion CHRMS"
+      login_doctors:                  "Tous les médecins qui ont des comptes dans le système doivent se connecter ici" 
+      doctors:                         "MÉDECINS"
+    privacy_policy:
+      privacy:                        "Politique de Confidentialité de CHRMS" 
+      purpose:                        "But de cette politique"
+      purpose_desc:                   "CHRMS recueille les renseignements personnels (y compris les renseignements sur la santé) 
+      des patients et des fournisseurs de services. Les renseignements personnels recueillis dépendront de la nature de la relation 
+      de l'individu ou de son interaction avec les services et son personnel. CHRMS recueillera uniquement des renseignements personnels 
+      lorsque cela est raisonnablement nécessaire ou directement lié à une ou plusieurs de ses fonctions ou activités. Cette politique 
+      de confidentialité explique comment CHRMS protège les informations personnelles des personnes avec lesquelles nous travaillons et 
+      nous entretenons. En particulier, cette politique vise à s'assurer que le personnel de CHRMS respecte en tout temps la confidentialité 
+      et la confidentialité du patient et comprend les obligations qui lui incombent en vertu des lois pertinentes. La politique porte sur la collecte, 
+      le stockage des renseignements personnels dans toutes les parties de CHRMS. La politique de confidentialité de CHRMS est la suivante: 
+      CHRMS s'engage à protéger la confidentialité et la confidentialité d'un patient." 
+      personal_info:                "Types de renseignements personnels que nous recueillons"
+      personal_info_desc:         "CHRMS recueille des informations sur les patients afin de donner correctement 
+      d'autres installations beaucoup de détails pour mener des enquêtes et de fournir un traitement approprié 
+      et d'améliorer la santé. Chaque patient de CHRMS a un dossier patient qui est mis à jour à chaque présence. 
+      Le type d'information recueillie comprend (mais n'est pas limité à):"
+      patient:                   "Patient"
+      patient_list_1:             "Coordonnées (nom, adresse, numéro de téléphone, numéro d'identification);"            
+      patient_list_2:             "Âge, sexe, état matrimonial;"
+      patient_list_3:             "Numéro d'assurance-maladie;"
+      patient_list_4:             "Antécédents médicaux, dossiers de traitement, antécédents médicaux familiaux;"
+      patient_list_5:             "Les renvois vers d'autres praticiens et leurs rapports."
+      visitors:                   "Visiteurs du site"
+      visitors_desc:              "Pour les visiteurs de notre site Web, nous collectons des informations telles que votre adresse IP, 
+      votre fournisseur d'accès Internet, la page web qui vous dirige vers notre site Web et votre activité sur notre site Web. 
+      Ces informations sont généralement anonymes et nous ne les utilisons pas pour identifier les individus. 
+      Cependant, en raison de la nature des protocoles Internet, ces informations peuvent contenir des détails qui vous identifient."
+      health_providers:                "Fournisseurs de soins de santé"    
+      health_providers_desc:            "Nous recueillons des renseignements personnels concernant les fournisseurs de soins de santé 
+      (par exemple, les pratiques générales, les fournisseurs de soins de santé connexes, les organismes gouvernementaux) 
+      et leurs employés afin de mieux comprendre et améliorer le système de santé."
+      info_collected:                 "Le type d'information recueillie peut comprendre:"
+      name: "nom;"
+      contact:    "détails du contact;"
+      role: "rôle / services de santé fournis; et"
+      connection: "Connexion avec CHARMS."
+      method_of_collecting: "Comment nous recueillons vos informations"
+      desc_method:      "CHRMS recueillera uniquement les renseignements médicaux nécessaires à l'exercice de ses fonctions."
+      staff_collecting_data:      "Le personnel s'efforcera toujours de recueillir des renseignements de façon équitable, 
+      légale et non intrusive. Dans la mesure du possible, le personnel recueille des informations directement auprès 
+      du patient (lorsqu'il est raisonnable et pratique de le faire) plutôt que par des tiers."
+      third_parties:      "Si des renseignements sont recueillis auprès d'un tiers, tous les efforts seront faits pour 
+      informer le patient. Des renseignements seront fournis aux patients pour les informer de la raison pour laquelle 
+      nous recueillons des renseignements, des lois qui exigent que l'information soit recueillie, des organisations 
+      ou des types d'organismes auxquels nous divulguons habituellement les informations et des conséquences de ne pas fournir d'information."
+      patients:               "Les Patients"
+      patients_info:          "Les CHRMS recueillent habituellement des renseignements personnels directement des 
+      personnes et de leurs représentants, à moins qu'il ne soit déraisonnable ou impossible de le faire. 
+      Nous recueillons de la santé et des informations sensibles avec votre consentement de manière juste et discrète."
+      patient_data:     "Nous recueillons également des informations sur les patients de:"
+      data_list_1:        "Les patients et leurs représentants au moyen de formulaires;"
+      data_list_2:         "Les référents et les tiers (par exemple les installations spécialisées); et"
+      data_list_3:          "Sources d'information accessibles au public."
+      visitors_3_2:            "Visiteurs du site"
+      visitors_3_2_desc:        "Nous recueillons des données de notre site Web en utilisant diverses technologies, 
+      y compris les cookies. Un cookie est un fichier texte que notre site Web envoie à votre navigateur et qui 
+      est stocké sur votre ordinateur sous forme d'étiquette identifiant votre ordinateur. Vous pouvez configurer 
+      votre navigateur pour désactiver les cookies. Cependant, certaines parties de notre site Web peuvent ne pas 
+      fonctionner correctement (ou du tout) si les cookies sont désactivés."
+      health_providers_3_3:       "Fournisseurs de soins de santé"
+      health_providers_3_3_desc:      "Nous recueillons généralement des renseignements personnels directement
+       auprès des particuliers. Toutefois, pour certains fournisseurs de soins de santé, nous pouvons recueillir
+        vos renseignements personnels auprès de vos collègues ou d'autres fournisseurs de soins de santé ou clients."
+      collection_reason:        "Objet de la collecte"
+      collection_desc:        "En règle générale, nous n'utilisons que des renseignements personnels pour le 
+      but principal pour lequel nous recueillons les renseignements, les fins précisées ci-dessous ou un objectif 
+      secondaire lié au but principal auquel vous vous attendriez raisonnablement à utiliser les renseignements recueillis."
+      collection_desc_2:      "Nous vous informerons de la raison pour laquelle nous recueillons vos informations en 
+      vous informant de toutes les questions pertinentes de cette collection."
+      collection_desc_3:          "Nous n'utiliserons pas vos informations pour un objectif secondaire indépendant, 
+      sauf si nous obtenons votre consentement écrit ou s'il est impossible d'obtenir votre consentement 
+      et nous croyons que la collecte, l'utilisation ou la divulgation de vos renseignements est nécessaire 
+      pour atténuer une menace sérieuse pour la vie, sécurité de toute personne."
+      patient_4_1:        "Les patients"
+      patient_4_1_desc_1:       "Nous recueillons et utilisons des renseignements personnels et de santé dans 
+      le but principal de fournir des services de santé et des conditions diagnostiques."
+      patient_4_1_desc_2:         "Voici quelques exemples précis de la façon dont nous 
+      recueillons et utilisons vos renseignements personnels:"
+      data_list_4:        "de prendre rendez-vous et d'envoyer des avis de rappel;"    
+      data_list_5:        "de conserver vos renseignements personnels, nos dossiers de clients et d'autres registres médicaux;"
+      data_list_6:        "divulguer vos renseignements médicaux aux paramédics et aux professionnels de la santé en cas d'urgence médicale;"
+      data_list_7:          "utiliser des renseignements non identifiés pour modéliser ou prévoir la demande de services;"
+      data_list_8:          "improve our services through quality improvement activities, audits, surveys and program evaluations."
+      visitors_4_2:           "Visiteurs du site"
+      visitors_4_2_data:        "Nous utilisons des informations concernant les visites de sites Web aux fins que nous avons recueillies.
+       Nous pouvons également utiliser vos informations pour personnaliser la visite de votre site Web ou activer la fonctionnalité de site Web de remarketing."
+      health_providers_4_3:       "Fournisseurs de soins de santé"
+      health_providers_4_3_data:        "Nous recueillons des renseignements personnels concernant les employés, 
+      les bénévoles et les agents de nos fournisseurs de soins de santé:"
+      health_providers_4_3_data_list_1:       "à poursuivre des projets de collaboration et des questions d'intérêt commun (p. Ex., 
+      Aiguillage, soins de maternité partagés et programmes de sensibilisation communautaire);"   
+      health_providers_4_3_data_list_2:       "dans le cadre de la passation de marchés avec eux ou de la prestation de services de santé pour les clients; et"
+      health_providers_4_3_data_list_3:       "de diffuser des informations sur nos activités et nos publications par voie de communication directe /
+       marketing pour améliorer notre système de santé et la santé de nos clients."
+      health_providers_4_3_data_more:           "Nous pouvons recueillir des renseignements personnels concernant vos intérêts afin de personnaliser vos interactions avec nous."
+      securing_data:            "Sécurité et rétention des données"
+      securing_data_1:          "Les renseignements personnels conservés en version électronique et papier sont contrôlés, surveillés et réservés au personnel 
+      concerné et aux utilisateurs externes autorisés. Des mesures de sécurité sont en place pour
+      Protégé contre toute perte, modification, divulgation, accès non autorisé ou utilisation abusive."
+      securing_data_2:      "Les entrepreneurs externes sont tenus, dans le cadre de leurs conditions contractuelles, de se conformer à la Politique de confidentialité de CHRMS. 
+      Tous les entrepreneurs de services extérieurs doivent démontrer qu'ils respectent les lois sur la protection des renseignements personnels des États et du Commonwealth."
+      securing_data_3:      "Tous les documents contenant des renseignements personnels doivent être détruits de manière définitive et de manière confidentielle."
+      sharing_data:       "Rendre l'information accessible à un autre fournisseur de services de santé"
+      sharing_data_1:       "Les renseignements sur la santé d'un particulier peuvent être communiqués à un autre fournisseur de services de santé 
+      lorsque celui-ci a demandé directement à CHRMS de fournir les renseignements ou a autorisé un autre fournisseur de services de santé à obtenir les renseignements de CHRMS."
+      data_infringementation:          "Infractions à la vie privée"
+      data_infringementation_1:       "Toutes les infractions présumées à la vie privée feront l'objet d'une enquête approfondie. 
+      Des mesures disciplinaires seront prises dans les cas où des enquêtes ou des atteintes présumées à la vie privée sont prouvées."
+      access:     "Accès et correction"
+      access_desc:      "Les renseignements personnels détenus par CHRMS peuvent être consultés à tout moment, 
+      sur demande écrite. Nous répondrons dans un délai raisonnable après la demande et donnerons accès 
+      à l'information de la manière demandée par vous, à moins qu'il ne soit pas possible de le faire. 
+      Nous avons le droit de vous facturer des frais administratifs raisonnables pour 
+      vous donner accès aux informations demandées."
+    terms:
+
+  login_sessions:
+    new:
+      login:                          "S'identifier"
+    shared:
+      login_form:
+        select_option:                 "Sélectionner un hôpital"
+        placeholder_name:   "Nom d'utilisateur"
+        name:             "Nom d'utilisateur du médecin"
+        password:         "Mot de passe"
+        forgot_password:     "(mot de passe oublié)"
+        placeholder_pw:       "Mot de passe"
+        remember_me:          "Se souvenir de moi sur cet ordinateur"
+        caution:              "*Nous espérons que vous respectez l'utilisation de cette application*."
+        login:                "S'identifier"
+
+
+
+  activerecord:
+    models:
+    attributes:
+      message:
+        name:     "Vos noms"
+        subject:   "Objet du message"
+        content:   "Message"
+      
+
+
+  
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

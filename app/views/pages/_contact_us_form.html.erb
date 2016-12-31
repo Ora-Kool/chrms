@@ -5,8 +5,8 @@
 	<%= f.text_field :name %>
 	<%= f.label :subject %>
 	<%= f.text_field :subject %>
-	<%= f.label 'Message' %>
+	<%= f.label :content %>
 	<%= f.text_area :content, size: '4x4'%>
-	<%= f.submit "Submit", class: "button chrms large-3 radius" %>
+	<%= f.submit t('pages.contact.send'), class: "button chrms large-3 radius" %>
 <%end%>
 </div>

@@ -5,7 +5,6 @@ class ManagerSessionsController < ApplicationController
   def create
     manager = Manager.find_by(name: params[:session][:name].downcase)
     if manager && manager.authenticate(params[:session][:password])
-      flash[:secondary] = "Welcome back!"
       log_manager(manager)
       params[:session][:remember_me] == '1' ? remember(manager) : forget(manager)
       redirect_to manager_dashboard_path

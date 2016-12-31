@@ -53,7 +53,7 @@ Rails.application.routes.draw do
 
 
   
-
+  get '/change_locale/:locale', to: 'settings#change_locale', as: :change_locale
 
   get '/about', to: 'pages#about'
   get '/login-panel', to: 'pages#login'
