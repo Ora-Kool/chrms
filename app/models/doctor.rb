@@ -162,6 +162,9 @@ class Doctor < ApplicationRecord
      string.split(' ').map { |word| word.capitalize  }.join(' ')
    end
 
+   def country
+     
+   end
    
    
 end
