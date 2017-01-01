@@ -15,7 +15,7 @@
                         
                   <%end%> 
                   <span class="title">
-                     <%= link_to 'Account Settings', doctor_dashboard_edit_path(current_doctor.name), class: 'account-settings' %><%= link_to "", doctor_dashboard_edit_path(current_doctor.name), class: "fi-widget spin" %>
+                     <%= link_to t('.account_settings'), doctor_dashboard_edit_path(current_doctor.name), class: 'account-settings' %><%= link_to "", doctor_dashboard_edit_path(current_doctor.name), class: "fi-widget spin" %>
                   </span>
                   
                </div>
@@ -25,7 +25,7 @@
 			</td>
 		</tr>
       <tr>
-         <td><%= link_to 'Dashboard Referrals', doctor_dashboard_path %>
+         <td><%= link_to t('.dashboard_referrals'), doctor_dashboard_path %>
            <%if @sum == 0 %>
 
            <%else%>
@@ -35,11 +35,11 @@
          </td>
       </tr>
       <tr>
-         <td><%= link_to 'Available Doctors', doctor_dashboard_request_referral_hospitals_path %>
+         <td><%= link_to t('.available_doctors') , doctor_dashboard_request_referral_hospitals_path %>
          </td>
       </tr>
       <tr>
-         <td><%= link_to 'Referrals Made', doctor_dashboard_total_referrals_made_path %>
+         <td><%= link_to t('.referrals_made'), doctor_dashboard_total_referrals_made_path %>
            <% if @mades == 0 %>
 
             <%else%>
@@ -57,11 +57,11 @@
    		<div class="row">
    			<div class="large-12 columns">
    				<div class="row">
-   					<div class="large-9 columns">
+   					<div class="large-9 columns" style="margin-top: 1rem">
                   <% if @sum != 0%>
-                    <h4 class="chrms-font" style="text-decoration: underline">Referrals Inbox</h4>
+                    <h4 class="chrms-font" style="text-decoration: underline"><%=t('.referral_inbox')%> </h4>
                      <%else%>
-                        <h4 class="chrms-font" style="text-decoration: underline; color: #878787">Referrals Dashboard Is Empty!</h4>
+                        <h4 class="chrms-font" style="text-decoration: underline; color: #878787"><%=t('.empty_dashboard')%> </h4>
 
                      <%end%>
    						
@@ -84,16 +84,16 @@
    			   <% if @referrals.present? %>
    				  <table class="large-12 columns">
    					<tr>
-   						<th>Referral Request from</th>
-                     <th>Patient Names</th>
-   						<th>Patient ID No</th>
-                     <th>Referral Type</th>
-   						<th>Referral Status</th>
-                     <th>Date received</th>
+   						<th><%=t('.referral_request_form') %> </th>
+                     <th><%=t('.patient_names')%> </th>
+   						<th><%=t('.patient_id_number')%> </th>
+                     <th><%= t('.patient_blood_group') %></th>
+   						<th><%=t('.referral_status')%> </th>
+                     <th><%=t('.date_received')%> </th>
    						
    					</tr>
    					
-                    <p style="font-family: courier; margin-bottom: 0; color: #294f42">All results found</p>
+                    <p style="font-family: courier; margin-bottom: 0; color: #294f42"><%=t('.search_notification') %> </p>
                      
    					<% @referrals.each do |referral| %>
 
@@ -105,25 +105,25 @@
    							<td>
                            
       								 <%= link_to "#{referral.patient_full_names}", doctor_dashboard_read_referrals_patient_referral_details_path(referral.id)%><br>
-                               <span>click to view</span>
+                               <span><%=t('.click_to_view')%> </span>
                          
    							</td>
                         <td>
                            <%= referral.patient_identity_number%>
                         </td>
    							<td>
-                           <%=referral.type_of_referral %><br>
+                           <%=referral.blood_group %><br>
                         </td>
                         <td>
                             <% if referral.referral_status == "pending" %>
-                              <label><%= link_to "Pending", doctor_dashboard_read_referrals_patient_referral_details_path(referral.id), class: "pending" %></label>
+                              <label><%= link_to t('.pending') , doctor_dashboard_read_referrals_patient_referral_details_path(referral.id), class: "pending" %></label>
                             <% elsif referral.referral_status == "received" %>
-                                 <label><%= link_to "Checked", doctor_dashboard_read_referrals_patient_referral_details_path(referral.id), class: "received" %> </label>
+                                 <label><%= link_to t('.checked') , doctor_dashboard_read_referrals_patient_referral_details_path(referral.id), class: "received" %> </label>
                             <%else%>
                               <%if referral.patient_identity_number.present? %>
-                                 <label><%= link_to "Replied", doctor_dashboard_submitted_back_slips_patient_path(referral.patient_identity_number), class: "completed " %><i class="fi-check"></i></label>
+                                 <label><%= link_to t('.replied') , doctor_dashboard_submitted_back_slips_patient_path(referral.patient_identity_number), class: "completed " %><i class="fi-check"></i></label>
                               <%else %>
-                                  <label><%= link_to "Completed", doctor_dashboard_submitted_back_slips_patient_path(referral.patient_full_names), class: "completed " %><i class="fi-check"></i></label>
+                                  <label><%= link_to t('.completed') , doctor_dashboard_submitted_back_slips_patient_path(referral.patient_full_names), class: "completed " %><i class="fi-check"></i></label>
                               <%end%>
                             <%end%>
                            
@@ -144,7 +144,7 @@
 
                     <%if @result.present? %>
                      <%= render "doctors/shared/results" %>
-                     <%= link_to 'View All', doctor_dashboard_path, class: "button chrms radius large-2"%>
+                     <%= link_to t('.view_all') , doctor_dashboard_path, class: "button chrms radius large-2"%>
 
                         <%else%>
                            <%= render 'doctors/shared/view_all' %>

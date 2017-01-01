@@ -272,7 +272,10 @@ en:
         bi_faith:       "Bahá'í Faith"
         others:     "Others"
       results:
+        search_result_header_1: "Result found for token:"
+
       search:
+        search_placeholder: "Search Patient Token"
       search2:
       view_all:
       welcome:
@@ -295,6 +298,25 @@ en:
       and know how to help your patient."
       button_submit:          "Submit"
     show:
+      account_settings:     "Account Settings"
+      dashboard_referrals:            "Dashboard Referrals"
+      available_doctors:  "Available Doctors"
+      referrals_made:  "Referrals Made"
+      referral_inbox: "Referrals Inbox"
+      empty_dashboard:   "Referrals Dashboard Is Empty!"
+      referral_request_form: "Referral Request from"
+      patient_names:    "Patient Names"
+      patient_id_number:  "Patient ID No"
+      patient_blood_group:   "Groupe sanguin patient"
+      referral_status:      "Referral Status"
+      date_received:    "Date received"
+      search_notification:      "All results found"
+      click_to_view:        "click to view"
+      pending:              "Pending"
+      checked:    "Checked"
+      replied:      "Replied"
+      completed:    "Completed"
+      view_all:   "View All"
     submitted_back_slip:
     total_referrals_made:
 

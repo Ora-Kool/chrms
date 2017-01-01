@@ -101,7 +101,7 @@ ActiveRecord::Schema.define(version: 20170101011735) do
     t.string   "on_date"
     t.text     "referral_back_slip_message"
     t.string   "patient_full_names"
-    # t.string   "patient_identity_number"
+    t.string   "patient_identity_number"
   end
 
   create_table "referral_forms", force: :cascade do |t|

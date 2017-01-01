@@ -283,6 +283,25 @@ fr:
       afin que l'établissement récepteur puisse mieux comprendre et savoir comment aider votre patient."
       button_submit:          "Soumettre"
     show:
+      account_settings:     "Paramètres du compte"
+      dashboard_referrals:            "Renvois de tableau de bord"
+      available_doctors:  "Médecins disponibles"
+      referrals_made:  "Références faites"
+      referral_inbox: "Références"
+      empty_dashboard:   "Le tableau de bord des références est vide!"
+      referral_request_form: "Demande de référence de"
+      patient_names:    "Noms des patients"
+      patient_id_number:  "No d'identification du patient"
+      patient_blood_group:   "Groupe sanguin patient"
+      referral_status:      "État du renvoi"
+      date_received:    "Date de réception"
+      search_notification:      "Tous les résultats trouvés"
+      click_to_view:        "clique pour voir"
+      pending:              "En attendant"
+      checked:    "Vérifié"
+      replied:      "Répondre"
+      completed:    "Terminé"
+      view_all:   "Voir tout"
     submitted_back_slip:
     total_referrals_made:
 
