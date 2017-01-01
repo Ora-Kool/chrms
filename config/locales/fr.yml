@@ -5,7 +5,8 @@ fr:
         about:            "À Propos De Nous"
         contact:          "Contactez Nous"
         dashboard:        "Tableau De Bord"
-        login:            "Se Connecter"
+        login:            "Connecter"
+        logout:            "Déconnecter"
       header:
         about:            "À Propos De Nous"
         contact:          "Contactez Nous"
@@ -227,6 +228,63 @@ fr:
         remember_me:          "Se souvenir de moi sur cet ordinateur"
         caution:              "*Nous espérons que vous respectez l'utilisation de cette application*."
         login:                "S'identifier"
+  
+  doctors:
+    shared:
+      details_profile:
+        surname:        "Nom de famille:"
+        full_names:      "Noms complets:"
+        gender:           "Le genre:"
+        e_level:          "Niveau d'éducation:"
+        speciality:       "Spécialité:"
+        organisation:     "Organisation:"
+      edit_form:
+      referral_back_slip:
+      referral_form:
+        referral_form_heading:      "Formulaire de référence"
+        blood_prompt:       "Sélection du groupe sanguin"
+        p_information:      "Information pour les patients"
+        ethnic_prompt:        "Sélectionnez un groupe ethnique"
+        gender_prompt:        "Sélectionnez le sexe"
+        message_caption:       "Message à l'établissement visé"
+        message_placeholder:      "Note à l'installation de réception: 
+        À la fin de la gestion des patients s'il vous plaît remplir le dossier 
+        de renvoi joint et soumettre la réponse."
+        button_cancel:            "Annuler"
+        male:           "Masculin"
+        female:          "Féminin"
+        christian:    "Christian"
+        catholic:     "Catholique"
+        islamic:      "Islamique"
+        j_withness:     "Les Témoins de Jéhovah"
+        bi_faith:     "Foi bahá'íe"
+        others:     "Autres"
+      results:
+      search:
+      search2:
+      view_all:
+      welcome:
+    edit:
+    hospital:
+    incomplete:
+    patients:
+    read_referral:
+    referral_back_slip:
+    referral_confirmation:
+    request_referral:
+      note:       "REMARQUE"
+      this:       "Ce"
+      referral_form:      "FORMULAIRE DE RÉFÉRENCE"
+      next_para:          "est très important de remplir correctement parce que l'envoi d'informations non valides à des 
+      installations spéculées pourrait les amener à mener une enquête sur une mauvaise cause. Nous vous conseillons 
+      donc au médecin traitant de prendre beaucoup de causalité et de soins lors du remplissage de ce formulaire. 
+      Soyez précis sur ce que vous voulez que l'établissement enquête pour vous."
+      referral_form_data_2:  "Veuillez prendre votre temps pour remplir ce formulaire 
+      afin que l'établissement récepteur puisse mieux comprendre et savoir comment aider votre patient."
+      button_submit:          "Soumettre"
+    show:
+    submitted_back_slip:
+    total_referrals_made:
 
 
 
@@ -237,6 +295,32 @@ fr:
         name:     "Vos noms"
         subject:   "Objet du message"
         content:   "Message"
+      referral_form:
+        initiating_facility_name:     "Facilité demandant l'aiguillage"
+        initiating_facility_address:   "Installation demandant une adresse de référence"
+        date_of_referral:              "Date de saisine"
+        referring_doctors_name:        "Médecin demandant un nom de référence"
+        referring_doctors_speciality:   "Médecin demandant une spécialité de référence"
+        referring_doctors_mobile_number:  "Docteur demandant le numéro de téléphone de référence"
+        patient_full_names:               "Nom complet du patient tel qu'identifié"
+        patient_age:                      "Âge du patient"
+        patient_gender:             "Sexe du patient"
+        patient_address:  "Adresse du patient"
+        patient_token:      "Patient R-TOKEN"
+        patient_clinical_history:   "Histoire clinique du patient"
+        findings:                   "Résultats de laboratoire"
+        diagnosis:          "Diagnostic hospitalier"
+        treatment_given:     "Traitement donné"
+        reasons_for_referral: "Raisons de l'aiguillage"
+        referred_facility_name: "Nom de l'établissement mentionné"
+        address_of_referred_facility:   "Adresse de l'établissement visé"
+        optional_message:       "Message facultatif"
+        referred_facility_doctors_name:     "Nom du médecin de l'établissement"
+        blood_group:    "Groupe sanguin du patient"
+        ethnic:         "Ethnie"
+        patient_identity_number:      "Numéro d'identification du patient"
+        patient_mobile_number:        "Numéro de téléphone du patient"
+
       
 
 

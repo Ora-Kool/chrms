@@ -243,6 +243,61 @@ en:
         caution:                  "*We hope you respect the use of this application*."
         login:                    "Login"
 
+  doctors:
+    shared:
+      details_profile:
+        surname:        "Surname:"
+        full_names:      "Full Names:"
+        gender:           "Gender:"
+        e_level:          "Educational Level:"
+        speciality:       "Speciality:"
+        organisation:     "Organization:"
+      edit_form:
+      referral_back_slip:
+      referral_form:
+        referral_form_heading:    "Referral Form"
+        blood_prompt:       "Select blood group"
+        p_information:      "Patient Information"
+        ethnic_prompt:        "Select ethnic group"
+        gender_prompt:        "Select gender"
+        message_caption:       "Message to referred facility"
+        message_placeholder:     "Note to receiving facility: On completion of patient management please fill referral back slip  attached and  submit reply."
+        button_cancel:            "Cancel"
+        male:             "Male"
+        female:           "Female"
+        christian:    "Christian"
+        catholic:     "Roman Catholic"
+        islamic:      "Islamic"
+        j_withness:     "Jehovah's Witnesses"
+        bi_faith:       "Bahá'í Faith"
+        others:     "Others"
+      results:
+      search:
+      search2:
+      view_all:
+      welcome:
+    edit:
+    hospital:
+    incomplete:
+    patients:
+    read_referral:
+    referral_back_slip:
+    referral_confirmation:
+    request_referral:
+      note:   "NOTE"
+      this:       "This"
+      referral_form:      "REFERRAL FORM"
+      next_para:          "is very important to fill correctly
+      because sending invalid information to specailized facilities could lead them to carry investigation
+      on wrong cause. So we advice you the referring doctor to take much caustion and care when filling this form. 
+      Be specific on what you want the facility to investigate for you."
+      referral_form_data_2:  "Please take your time to fill this form so that the receiving facility will better understand
+      and know how to help your patient."
+      button_submit:          "Submit"
+    show:
+    submitted_back_slip:
+    total_referrals_made:
+
 
 
 
@@ -254,7 +309,32 @@ en:
         name:                     "Your names"
         subject:                  "Message subject"
         content:                  "Message"
-
+      referral_form:
+        initiating_facility_name:     "Facility requesting referral"
+        initiating_facility_address:   "Facility requesting referral address"
+        date_of_referral:              "Date of referral"
+        referring_doctors_name:        "Doctor requesting referral name"
+        referring_doctors_speciality:   "Doctor requesting referral speciality"
+        referring_doctors_mobile_number:  "Doctor requesting referral mobile number"
+        patient_full_names:               "Full names of patient as on ID"
+        patient_age:                      "Patient age"
+        patient_gender:             "Patient gender"
+        patient_address:  "Patient address"
+        patient_token:      "Patient R-TOKEN"
+        patient_clinical_history:   "Patient clinical history"
+        findings:                   "Laboratory findings"
+        diagnosis:          "Hospital diagnosis"
+        treatment_given:     "Treatment given"
+        reasons_for_referral: "Reasons for referral"
+        referred_facility_name: "Referred facility name"
+        address_of_referred_facility:   "Address of the referred facility"
+        optional_message:       "Optional message"
+        referred_facility_doctors_name:     "Referred facility doctors name"
+        blood_group:    "Blood group of patient"
+        ethnic:         "Ethnic group"
+        patient_identity_number:      "Patient ID number"
+        patient_mobile_number:        "Patient mobile number"
+        
       
 
 

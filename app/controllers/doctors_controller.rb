@@ -177,8 +177,9 @@
   private
 
   def referrals_params
-    params.require(:referral_form).permit(:type_of_referral,                                                                    
+    params.require(:referral_form).permit(:blood_group,                                                                    
                                            :patient_full_names,
+                                           :ethnic,
                                            :patient_identity_number,
                                            :patient_age,
                                            :patient_gender,
@@ -186,6 +187,7 @@
                                            :patient_mobile_number,
                                            :patient_clinical_history,
                                            :findings,
+                                           :diagnosis,
                                            :treatment_given,
                                            :reasons_for_referral,
                                            :optional_message)

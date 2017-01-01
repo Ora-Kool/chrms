@@ -1,19 +1,16 @@
 <%provide(:title, "Request Referral - CHRMS")%>
-<%provide(:button_text, "Submit") %>
+<%provide(:button_text, t('.button_submit') ) %>
 <div class="row">
 	<div class="large-8 columns">
 		<%= render "doctors/shared/referral_form" %>
 	</div>
-	<div class="large-4 columns">
-		<h5 class="text-center chrms-font" >NOTE</h5>
+	<div class="large-4 columns" style="margin-top:1rem">
+		<h5 class="text-center chrms-font" ><%=t('.note')%> </h5>
 		<p>
-			This <strong>REFERRAL FORM</strong> is very important to fill correctly
-			because sending invalid information to specailized facilities could lead them to carry investigation
-			on wrong cause. So we advice you the referring doctor to take much caustion and care when filling this form. Be specific on what you want the facility to investigate for you.
+			<%=t('.this')%> <strong><%=t('.referral_form') %></strong> <%=t('.next_para')%>
 		</p>
 		<p>
-			Please take your time to fill this form so that the receiving facility will better understand
-			and know how to help your patient.
+			<%=t('.referral_form_data_2')%>
 		</p>
 	
 	</div>

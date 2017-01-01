@@ -1,13 +1,13 @@
 <%= form_for(@referral, url: doctor_dashboard_request_referral_hospitals_doctors_path(@referred_doctor.id)) do |f| %>
-<h2 class="text-center chrms-font">Referral Form</h2>
+<h2 class="text-center chrms-font" style="margin-top: 1rem"><%=t('.referral_form_heading')%> </h2>
 		<%= render "layouts/shared/error_messages", object: @referral %>
 			<div class="row">
 			<table>
 				<tr>
 					<td>
-						<label>Type of referral</label>
+						<%= f.label :blood_group %>
 						<div class="large-6">
-							<%=f.select :type_of_referral, ["Option A", "Option B", "Option C"], prompt: "select type" %>
+							<%=f.select :blood_group, ["A", "B", "AB", "O"], prompt: t('.blood_prompt') %>
 
 						</div>
 						
@@ -20,41 +20,48 @@
 			</table>
 			
 			<table style="margin-bottom: 0">
-			<h5 class="chrms-font"><strong>Patient Information</strong></h5>
+			<h5 class="chrms-font"><strong><%=t('.p_information') %></strong></h5>
 				<tr>
 					<td>
-						<label>Patient full names</label>
-						<div class="large-6">
+						<%= f.label :patient_full_names %>
+						<div class="large-12">
 							<%=f.text_field :patient_full_names%>
 						</div>
-						
 					</td>
+					<td>
+						<%= f.label :ethnic %>
+						<div class="large-12">
+							<%=f.select :ethnic, [t('.christian'), t('.catholic'), t('.islamic') ,t('.j_withness') ,t('.bi_faith') , t('.others') ], prompt: t('.ethnic_prompt') %>
+						</div>
+					</td>
+
 				</tr>
+
 			</table>
 			<table style="margin: 0">
 				<tr>				
 					<td>
-						<label>Identity Number</label>
+						<%= f.label :patient_identity_number %>
 						<%=f.text_field :patient_identity_number %>
 					</td>
 					<td>
-						<label>Age</label>
+						<%= f.label :patient_age %>
 						<%=f.text_field :patient_age%>
 					</td>
 					<td>
-						<label>Sex</label>
-						<%=f.select :patient_gender, ["Male", "Female"], prompt: "select sex"%>
+						<%= f.label :patient_gender %>
+						<%=f.select :patient_gender, [t('.male'), t('.female') ], prompt: t('.gender_prompt')%>
 					</td>
 				</tr>
 			</table>
 			<table style="margin: 0">
 				<tr>
 					<td>
-						<label>Patient Address</label>
+						<%= f.label :patient_address %>
 						<%=f.text_field :patient_address %>
 					</td>
 					<td>
-						<label>Patient mobile number</label>
+						<%= f.label :patient_mobile_number %>
 						<%=f.text_field :patient_mobile_number %>
 					</td>
 				</tr>
@@ -62,35 +69,42 @@
 			<table style="margin: 0">
 				<tr>
 					<td>
-						<label>Patient clinical history</label>
+						<%= f.label :patient_clinical_history %>
 						<%=f.text_area :patient_clinical_history, size: '5x5' %>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<label>Findings</label>
+						<%= f.label :findings %>
 						<%=f.trix_editor :findings, size: '10x5' %>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<label>Treatment given</label>
+						<%= f.label :diagnosis %>
+						<%=f.trix_editor :diagnosis, size: '5x5' %>
+					</td>
+					
+				</tr>
+				<tr>
+					<td>
+						<%= f.label :treatment_given %>
 						<%=f.trix_editor :treatment_given, size: '5x5' %>
 					</td>
 					
 				</tr>
 				<tr>
 					<td>
-						<label>Reason for referral</label>
+						<%= f.label :reasons_for_referral %>
 						<%=f.trix_editor :reasons_for_referral, size: '5x5' %>
 					</td>
 					
 				</tr>
 			</table>
 		
-			<h5 class="chrms-font" style="margin-top: 1rem">Message to referred facility</h5>
+			<h5 class="chrms-font" style="margin-top: 1rem"><%=t('.message_caption') %></h5>
 			<%= f.text_area :optional_message, size: "2x2",
-			 placeholder: "Note to receiving facility: On completion of patient management please fill referral back slip  attached and  submit reply."
+			 placeholder: t('.message_placeholder')
 			  %>
 			<!--<p>
 				Note to receiving facility: On completion of patient management please fill in and print the referral back slip and send with patient or simple just reply.
@@ -104,7 +118,7 @@
 				</div>
 
 				<div class="large-4 columns">
-					<%= link_to 'Cancel', doctor_dashboard_request_referral_hospitals_path, class: "button alert large-12 small-12 radius"%>
+					<%= link_to t('.button_cancel'), doctor_dashboard_request_referral_hospitals_path, class: "button alert large-12 small-12 radius"%>
 				</div>
 			</div>
 			</div>
