@@ -254,8 +254,11 @@ en:
         organisation:     "Organization:"
       edit_form:
         needed_info:    "Personal Information"
-        photo:          "Profile picture"
+        photo:          "Profile image"
         surname:        "Surname"
+        given_names:     "Given names"
+        gender:         "Gender"
+        Id_number:      "ID card number"
 
       referral_back_slip:
       referral_form:
