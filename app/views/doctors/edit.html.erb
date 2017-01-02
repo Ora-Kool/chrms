@@ -4,15 +4,15 @@
 <!-- left site navigation that houses the links-->
 
 	<ul class="tabs vertical" style="margin-bottom: 0;" id="target" data-tabs>
-		<li class="tabs-title" style="border-bottom: 1px solid #e0e0e0"><a href="#account-summary" aria-selected="false">Account Summary</a></li>
+		<li class="tabs-title" style="border-bottom: 1px solid #e0e0e0"><a href="#account-summary" aria-selected="false"><%=t('.account_summary')%> </a></li>
 
-		<li class="tabs-title is-active"><%=link_to 'Account Settings', '#profile-settings'%></li>
+		<li class="tabs-title is-active"><%=link_to t('doctors.show.account_settings') , '#profile-settings'%></li>
 		
 	</ul>
 	<table style="margin-top: 0; border-top: 0">
 		<tr>
 			<td class="back">
-				<%=link_to 'Dashboard', doctor_dashboard_path %>
+				<%=link_to t('.dashboard') , doctor_dashboard_path %>
 			</td>
 		</tr>
 	</table>
@@ -26,8 +26,8 @@
 		    <div class="large-12 columns">
 			    <div class="tabs-content vertical" data-tabs-content="target">
 			      	<div class="tabs-panel" id="account-summary">
-			      		<h4>Account Summary</h>
-				        	<p class="rules">Account summary gives you details of all your personal information, and can help you to edit where there is a mistake.</p>
+			      		<h4><%=t('.account_summary')%></h>
+				        	<p class="rules"><%=t('.summary_caption') %> </p>
 				        	<hr class="horizontal-line">
 				        	
 				        	<div class="row">
@@ -48,17 +48,17 @@
 				        	</div>
 				        	<div class="row">
 				        		<div class="large-12 columns content">
-				        			<h5>Mobile Number: <strong>(+237) <%=@doctor.mobile_number %></strong></h5>
+				        			<h5><%=t('.mobile_number')%> <strong>(+237) <%=@doctor.mobile_number %></strong></h5>
 				        			<%if @doctor.mobile_number2.nil? %>
-				        				<h5>Mobile Number 2: <strong>(+237) <%=@doctor.mobile_number2%></strong></h5>
+				        				<h5><%=t('.mobile_number_2')%> <strong>(+237) <%=@doctor.mobile_number2%></strong></h5>
 				        				<%else%>
 
 				        			<%end%>
-				        			<h5>Country: <strong><%=@doctor.country %></strong></h5>
-				        			<h5>Region: <strong><%=@doctor.region %></strong></h5>
-				        			<h5>City: <strong><%=@doctor.city %></strong></h5>
-				        			<h5>Email Address: <strong><%=@doctor.email %></strong></h5>
-				        			<h5>Educational summary</h5>
+				        			<h5><%=t('.country')%> <strong><%=@doctor.country %></strong></h5>
+				        			<h5><%=t('.region')%> <strong><%=@doctor.region %></strong></h5>
+				        			<h5><%=t('.city')%> <strong><%=@doctor.city %></strong></h5>
+				        			<h5><%=t('.email')%> <strong><%=@doctor.email %></strong></h5>
+				        			<h5><%=t('.ed_summary')%> </h5>
 				        			<div style="border-top: 1px solid #2199e8">
 					        			<h6>
 					        				<%= @doctor.educational_summary %>
@@ -69,12 +69,11 @@
 			      	</div>
 			      
 			      <div class="tabs-panel is-active" id="profile-settings">
-			      	<h4>Account Settings</h4>
+			      	<h4><%=t('.account_summary')%></h4>
 			      	 <p class="rules">
-			        	Control your account information, both what other colleagues see. 
-			        	To understand what's acceptable to display on profile, please see 
-			        	<a data-open="rule">these rule.</a> 
-			        	<strong>Note</strong> that is a Medical Software Application, We will appreciate if you state your <strong>VALID</strong> information as a doctor, any <strong>INVALID</strong> information entered here will lead to <span style="text-decoration: line-through">account deactivation</span>.
+			        	<%=t('.rule_1')%>
+			        	<a data-open="rule"><%=t('.rule_2')%> </a> 
+			        	<strong><%=t('.note')%> </strong> <%=t('.rule_3')%> <strong><%=t('.valid_1')%> </strong> <%=t('.rule_4')%> <strong><%=t('.valid_2')%> </strong> <%=t('.rule_5')%><span style="text-decoration: line-through"> <%=t('.account_deactivation')%> </span>.
 			        <div class="reveal" id="rules" data-reveal>
 						<h1>Information Needed.</h1>
 						<hr class="horizontal-line">

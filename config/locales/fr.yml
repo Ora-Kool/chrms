@@ -232,13 +232,20 @@ fr:
   doctors:
     shared:
       details_profile:
-        surname:        "Nom de famille:"
-        full_names:      "Noms complets:"
-        gender:           "Le genre:"
-        e_level:          "Niveau d'éducation:"
-        speciality:       "Spécialité:"
-        organisation:     "Organisation:"
+        surname:        "Nom de famille: "
+        full_names:      "Noms complets: "
+        gender:           "Le genre: "
+        e_level:          "Niveau d'éducation: "
+        speciality:       "Spécialité: "
+        organization:     "Organisation: "
       edit_form:
+        needed_info:    "Informations requises"
+        photo:          "Image de profil"
+        surname:        "Nom de famille"
+        given_names:     "Noms complets"
+        gender:         "Le genre"
+        Id_number:      "No d'identification"
+
       referral_back_slip:
       referral_form:
         referral_form_heading:      "Formulaire de référence"
@@ -265,6 +272,30 @@ fr:
       view_all:
       welcome:
     edit:
+      account_summary:      "Relevé de compte"
+      dashboard:        "Tableau de bord"
+      summary_caption:     "Le récapitulatif de compte vous donne des détails sur toutes 
+      vos informations personnelles, et peut vous aider à éditer en cas d'erreur."
+      mobile_number:      "Numéro de portable: "
+      mobile_number_2:    "Numéro mobile 2: "
+      country:      "Pays: "
+      region: "Région: "
+      city: "Ville: "
+      email: "Adresse e-mail: "
+      ed_summary: "Récapitulatif de l'enseignement"
+      rule_1: "Contrôlez les informations de votre compte, à la fois ce que d'autres collègues voient. 
+      Pour comprendre ce qui est acceptable pour afficher sur le profil, s'il vous plaît voir"
+      rule_2:   " cette règle."
+      note:   "Notez"
+      rule_3: "que c'est une application de logiciel médical. Nous apprécierons si vous indiquez votre information" 
+      valid_1: "VALIDE"
+      rule_4: "en tant que médecin, toute information"
+      valid_2: "INVALIDE"
+      rule_5:  "saisie ici entraînera la"
+      account_deactivation: "désactivation du compte."
+      
+
+
     hospital:
     incomplete:
     patients:
@@ -339,6 +370,11 @@ fr:
         ethnic:         "Ethnie"
         patient_identity_number:      "Numéro d'identification du patient"
         patient_mobile_number:        "Numéro de téléphone du patient"
+
+    doctor:
+      photo:    "Profile image fr"
+      speciality:       "Spécialité: "
+
 
       
 

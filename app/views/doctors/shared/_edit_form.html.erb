@@ -1,28 +1,28 @@
 <%= form_for(@doctor, url: doctor_dashboard_edit_path(current_doctor.name), html: { multipart: true}) do |f| %>
 	<%= render "layouts/shared/error_messages", object: @doctor %>
 		<div class="row">
-		<h6><strong>Personal Information</strong></h6>
+		<h6><strong><%=t('.needed_info') %> </strong></h6>
 		
 			<div class="large-12 columns">
-					<%=f.label "Profile picture" %>
+					<%=f.label t('.photo') %>
 					<%=f.file_field :photo %>
 			</div>
 			<div class="large-6 columns">
-					<%=f.label :surname %>
+					<%=f.label t('.surname') %>
 					<%=f.text_field :surname %>
 			</div>
 			
 			<div class="large-6 columns">
-				<%=f.label :given_names %>
+				<%=f.label t('.given_names') %>
 				<%=f.text_field :given_names %>
 			</div>
 			<div class="large-4 columns">
-				<%=f.label :id_card_number %>
+				<%=f.label t('.Id_number') %>
 				<%=f.text_field :id_card_number %>
 			</div>
 			
 			<div class="large-4 columns float-left">
-				<%=f.label :gender %>
+				<%=f.label t('.gender') %>
 				<%=f.select :gender, ['Male', 'Female'], prompt: "Select gender"%>
 			</div>
 			

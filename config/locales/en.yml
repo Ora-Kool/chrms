@@ -253,6 +253,10 @@ en:
         speciality:       "Speciality:"
         organisation:     "Organization:"
       edit_form:
+        needed_info:    "Personal Information"
+        photo:          "Profile picture"
+        surname:        "Surname"
+
       referral_back_slip:
       referral_form:
         referral_form_heading:    "Referral Form"
@@ -280,6 +284,28 @@ en:
       view_all:
       welcome:
     edit:
+      account_summary:      "Account Summary"
+      dashboard:        "Dashboard"
+      summary_caption:     "Account summary gives you details of all your personal information, 
+      and can help you to edit where there is a mistake."
+      mobile_number:      "Mobile number:"
+      mobile_number_2:    "Mobile number 2:"
+      country:      "Country:"
+      region: "Region"
+      city: "City"
+      email: "Email:"
+      ed_summary: "Educational summary"
+      rule_1: "Control your account information, both what other colleagues see. To understand what's acceptable to display on profile, please see"
+      rule_2:   " these rule."
+      note:   "Note"
+      rule_3: "that is a Medical Software Application, We will appreciate if you state your" 
+      valid_1: "VALID"
+      rule_4: "information as a doctor, any"
+      valid_2: "INVALID"
+      rule_5:  "information entered here will lead to"
+      account_deactivation: "account deactivation."
+      
+
     hospital:
     incomplete:
     patients:
@@ -356,6 +382,12 @@ en:
         ethnic:         "Ethnic group"
         patient_identity_number:      "Patient ID number"
         patient_mobile_number:        "Patient mobile number"
+
+    doctor:
+      photo:      "Profile image"
+      surname:        "Surname"
+      speciality:       "Speciality "
+
         
       
 
