@@ -1,24 +1,23 @@
 <%provide(:title, "Referral Back Slip - CHRMS") %>
-<%provide(:button_text, "Submit") %>
+<%provide(:button_text, t('.submit')) %>
 <div class="row">
 	<div class="large-8 columns">
-		<h4 class="text-center chrms-font" style="font-size: 2rem; margin: 1.4rem 0 1.4rem 0">Referral Back Slip</h4>
+		<h4 class="text-center chrms-font" style="font-size: 2rem; margin: 1.4rem 0 1.4rem 0"><%=t('.caption')%> </h4>
 		<%= render "doctors/shared/referral_back_slip" %>
 	</div>
 	<div class="large-4 columns">
 	<div class="row">
 		<div class="large-12 columns">
 			<h5 class="chrms-font text-center" style="margin: 1rem 0 0 0">
-			Help
+			<%=t('.help')%>
 			<hr class="horizontal-line">
 		</h5>
 		<p>
-			This form contains functions that can help you style your report, it has functions like creating a list where you can either report your findings in buttets (points notations) or in numbers (numbers notations).
-			To get more information about the functions just point your mouse or pointer on the element, you will have more information about what the element is for.
+			<%=t('.description')%>
 		</p>
 		</div>
 		<div class="medium-12 columns">
-			<h4 class="text-center">ADVERT</h4>
+			<h4 class="text-center"><%=t('.advert')%> </h4>
 		</div>
 	</div>
 	</div>

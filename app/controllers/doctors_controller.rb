@@ -3,11 +3,11 @@
   before_action :find_doctor, only: [:incomplete, :create_referral,
                                      :incomplete_update, :edit, :update]
 
-	before_action :logged_in_doctor, only: [:show, :request_referral,
+	before_action :logged_in_doctor, only: [:show, :request_referral, :total_referrals_made,
                                           :create_referral, :referral_confirmation,
                                           :edit, :incomplete, :incomplete_update, :hospitals]
 
-  before_action :correct_doctor, only: [:edit, :update, :show,:request_referral,
+  before_action :correct_doctor, only: [:edit, :update, :show,:request_referral, :total_referrals_made,
                                           :create_referral, :referral_confirmation,
                                           :edit, :incomplete, :incomplete_update, :hospitals]
   def show
@@ -39,9 +39,9 @@
       @doctor.country = "Cameroon"
     if @doctor.update_attributes(doctor_update)
       #DoctorMailer.account_activation(@doctor).deliver_now
-      @doctor.send_activation_email
+      #@doctor.send_activation_email
       #flash[:secondary] = "Welcome onboard, we hope you enjoy using our services"
-      flash[:alert] = "Please check your email to activate your account."
+      #flash[:alert] = "Please check your email to activate your account."
       redirect_to doctor_dashboard_path
     else
       render 'incomplete'
@@ -54,7 +54,7 @@
 
   def update
     if @doctor.update_attributes(doctor_update)
-      flash[:secondary] = "Profile updated successfully!"
+      flash[:secondary] = t('.updated_ok')
       redirect_to doctor_dashboard_path
     else
       render 'edit'
@@ -77,7 +77,7 @@
     @referral.initiating_facility_name = current_doctor.hospital.hospital_name
     @referral.initiating_facility_address = current_doctor.hospital.hospital_address
     @referral.date_of_referral = Date.today
-    @referral.referring_doctors_name = "#{current_doctor.surname} #{current_doctor.given_names}"
+    @referral.referring_doctors_name = capitalize_name("#{current_doctor.surname} #{current_doctor.given_names}")
     @referral.referring_doctors_speciality = current_doctor.speciality
     @referral.referring_doctors_mobile_number = current_doctor.mobile_number
     @referral.referred_facility_name = @referred_doctor.hospital.hospital_name
@@ -86,11 +86,16 @@
 
     if @referral.save
       @referral.update_pending
-      flash[:secondary] = "Your request has being submitted"
+      
       redirect_to doctor_dashboard_request_referral_confirmation_path(@referral)
     else
       render "request_referral"
     end
+  end
+
+  def confirmed
+      flash[:secondary] = t('create_referral.request_submitted')
+      redirect_to :action => :show
   end
 
   def referral_confirmation
@@ -146,11 +151,15 @@
      @patient_referral_back_slip.refer_back_to = @patient.referring_doctors_name
      @patient_referral_back_slip.patient_full_names = @patient.patient_full_names
      @patient_referral_back_slip.patient_was_seen_by = "#{ current_doctor.name }"
+     @patient_referral_back_slip.back_slip_token = back_token(@patient.patient_full_names)
+
 
 
      if @patient_referral_back_slip.save
-         @patient.update_completed
-        flash[:secondary] = "Thanks for sending #{@patient.patient_full_names} back for follow up"
+        if @patient.referral_status == 'received'
+           @patient.update_completed
+        end
+        flash[:secondary] = t('submit_referral.follow_up')
         redirect_to doctor_dashboard_path
      else
         render 'referral_back_slip'
@@ -170,6 +179,9 @@
       @doctors = Doctor.where(hospital_id: @hospital_id).paginate(page: params[:page], per_page: 6)
     end
     
+  end
+  def special_facility_report
+    @patient = ReferralBackSlip.find_by(id: params[:id]) 
   end
 
 
@@ -201,6 +213,7 @@
                                    :gender,
                                    :given_names,  
                                    :id_card_number,
+                                   :languages,
                                    :education,
                                    :city,
                                    :educational_summary,
@@ -226,7 +239,7 @@
 
   def logged_in_doctor
   	unless logged_doctor?
-   		flash[:warning] = "Access denied!"
+   		flash[:warning] = t('flash.back_click.denied')
    		redirect_to login_panel_doctors_login_path
    	end
   end

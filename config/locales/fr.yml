@@ -1,4 +1,12 @@
 fr:
+  flash:
+    back_click:
+      denied:       "Accès refusé!"
+  create_referral:
+    request_submitted:      "Demande soumise"
+  submit_referral:
+    follow_up:      "Merci d'envoyer le patient de retour pour le suivi"
+
   layouts:
     shared:
       main_header:
@@ -215,6 +223,8 @@ fr:
     terms:
 
   login_sessions:
+    create:
+      errors: "Accès refusé / utilisateur introuvable"
     new:
       login:                          "S'identifier"
     shared:
@@ -230,6 +240,14 @@ fr:
         login:                "S'identifier"
   
   doctors:
+    logged_in_doctor:
+      denied:     "hello"
+    update:
+      updated_ok:     "Profil mis à jour avec succès"
+      request_submitted:      "Votre demande a été soumise"
+      
+    
+
     shared:
       details_profile:
         surname:        "Nom de famille: "
@@ -245,8 +263,28 @@ fr:
         given_names:     "Noms complets"
         gender:         "Le genre"
         Id_number:      "No d'identification"
+        contact_details:     "Détails du contact"
+        p_details:        "Profil professionnel"
+        select_region:        "choisissez une région"
+        select_city:          "Sélectionnez une ville"
+        mobile_number2:       "Numéro mobile 2 (facultatif)"
+
+
+
 
       referral_back_slip:
+        report_header:      "Rapport d'un hôpital spécialisé"
+        special_investigation:      "Enquête spéciale"
+        special_findings:       "Conclusions spéciales"
+        diagnosis:      "Diagnostic spécial"
+        operation:      "Opération"
+        treatments:     "Traitements"
+        medications_prescribed:   "Médicaments prescrits"
+        advise:   "Veuillez continuer avec"
+        message:      "Message de renvoi"
+        message_holder:     "Message accompagnant cette fiche de renvoi"
+        back:     "Arrière"
+
       referral_form:
         referral_form_heading:      "Formulaire de référence"
         blood_prompt:       "Sélection du groupe sanguin"
@@ -268,9 +306,67 @@ fr:
         others:     "Autres"
       results:
       search:
+        search_placeholder:       "R-TOKEN, carte d'identité"
       search2:
       view_all:
       welcome:
+        welcome:    "bienvenue à CHRMS"
+        p_1:    "Nous vous donnerons une visite autour de la demande depuis que vous êtes
+         nouveau et vous n'avez pas de renvois fait"
+        p_2:    "par d'autres à vous en ce moment"
+        half_sentence:      "Veuillez noter que chaque patient que vous avez reçu / renvoyé le plus 
+        a une carte d'identité ou un jeton de référence de patient (R-Token)."
+        completed_sentence:     "mais nous pouvons voir que vous avez"
+        patient:      "patient"
+        patients:      "les patients"
+        note:   "Dans"
+        chrms:   "CHRMS,"
+        complete_note:   "vous trouverez."
+        account_settings:     "Paramètres des comptes"
+        dashboard:      "Tableau de bord de référence"
+        referred_doctors:     "Médecins référés"
+        referrals_made:     "Références faites"
+        change_1:     "Veuillez"
+        change_2:     "CHANGER" 
+        change_3:    "l'image de profil par défaut sur le côté gauche en utilisant ce lien" 
+        link:     "télécharger l'image"
+        account_info:       "Les paramètres de compte vous donnent le pouvoir de changer ce que les
+         autres hôpitaux et les médecins voient. Vous pouvez télécharger votre image de profil 
+         dans les paramètres de compte, modifier votre nom de famille, prénom si vous avez fait
+          des erreurs lorsque vous avez terminé votre processus d'inscription. Vous pouvez 
+          également consulter le résumé de votre compte dans les paramètres de compte"
+        dashboard_info:   "Tableau de bord vous montre toute demande de renvoi faite par d'autres médecins,
+         vous pouvez également rechercher des patients par leur numéro d'identité ou R-Token
+          (jeton patient est donné par les médecins de renvoyer au patient) sur votre tableau de bord.
+        La recherche peut être identifiée par cette"
+        search_icon:   "icône"
+        dashboard_info_2:  "par défaut la recherche est cachée, pour l'ouvrir il suffit de cliquer sur 
+        l'icône et la recherche sera révélée. Le plus grand nombre de jetons doit être montré par 
+        le patient ou ils doivent fournir le numéro de carte d'identité pour prouver qu'ils sont référés 
+        par d'autres hôpitaux. Il existe différentes notifications que vous verrez sous "
+        referral_status:      "Statut de référence"
+        complete:     "ces messages sont"
+        pending:    "EN ATTENDANT"
+        checked:      "VÉRIFIÉ"
+        and:        "et"
+        completed:      "TERMINÉ"
+        pending_quide:  "Cela vous indique qu'un médecin vous a envoyé une 
+        demande de renvoi et que vous ne l'avez pas lu."
+        checked_guide:      "Vérifié vous avertira simplement que vous avez lu la 
+        demande, mais n'ont pas envoyé un renvoi de renvoi."
+        completed_guide:      "Comme vous pouvez le constater à partir du mot, 
+        il vous indique simplement que vous avez complété le cercle d'un 
+        médecin demandant un renvoi et que vous transporter l'enquête et 
+        de répondre au médecin par le biais d'un feuillet de renvoi."
+        guide:      "Les médecins référencés montrent les médecins par
+         leur hôpital dans lequel ils travaillent actuellement, vous pouvez
+        choisir les médecins que vous voulez voir en sélectionnant le filtre
+        par l'hôpital. Cela vous donnera seulement des médecins qui sont
+        dans l'hôpital choosen, vous faisant pour être précis quand vous
+        Souhaitez référer vos patients"
+        guide_2:   "Ici vous obtiendrez un mettre aux abois de toutes les demandes que vous 
+        avez faites, vous pouvez également consulter les détails de chaque patient que vous avez référé."
+    
     edit:
       account_summary:      "Relevé de compte"
       dashboard:        "Tableau de bord"
@@ -293,15 +389,91 @@ fr:
       valid_2: "INVALIDE"
       rule_5:  "saisie ici entraînera la"
       account_deactivation: "désactivation du compte."
+      update_button:      "Mettre à jour"
       
 
 
-    hospital:
+    hospitals:
+      referral_doctors:     "Médecins de référence"
+      dashboard:    "Tableau de bord"
+      hospitals:      "Hôpitaux"
+      all_hospitals:    "Tous les hôpitaux"
+      no_doctors:       "Aucun médecin disponible pour le moment"
+      displaying_all:     "Affichage de tous les médecins"
+      details:        "Détails"
+      hospital_label:     "Hôpital"
+      speciality:         "Spécialité"
+      current_city:       "Ville actuelle"
+      re_referral:      "Demande de référence"
+      search_result:    "Afficher les résultats trouvés pour "
     incomplete:
+      male:     "masculin"
+      female:     "féminin"
+      gender_prompt:      "sélectionnez le sexe"
+      prof_profile:       "Profil professionnel"
+      personal_info:      "Informations personnelles"
+      incomplete_caption:     "Juste une étape pour compléter votre inscription"
+      speciality_prompt:        "sélectionner une spécialité"
+      contact_details:    "Détails du contact"
+      region_prompt:      "choisissez une région"
+      city_prompt:        "sélectionnez la ville"
+      mobile_number2:       "Numéro mobile 2 (facultatif)"
+      update_button:        "Mettre à jour"
+      why_complete_reg:     "Pourquoi remplir votre inscription?"
+      chrms:       "CHRMS"
+      body_reason:  "n'assume pas l'information de ses utilisateurs en le faisant, nous vous demandons de vous fournir les informations par vous-même en remplissant le formulaire à "
+      left: "GAUCHE"
+      body_reason2: "de l'écran afin que nous puissions mieux vous comprendre et faciliter la communication avec vos collègues. Sans vous compléter cette inscription."
+      reason_1:     "Vous ne pouvez pas accéder à votre tableau de bord"
+      reason_2:     "Vous ne pouvez pas afficher votre compte de configuration / mettre à jour votre enregistrement"
+      reason_3:     "Vous ne pouvez pas référer les patients car vous n'avez pas accès au tableau de bord"
+      advert_block:     "Publicité"
+      language:         "language spoken (fr)"
+      select_language:     "select language spoken (fr) "
     patients:
+
     read_referral:
+      read_caption:       "Nom de l'établissement"
+      by:           "par"
+      patient_name:   "Noms des patients"
+      patient_no:   "Numéro de téléphone du patient"
+      patient_gender:   "Sexe du patient"
+      patient_age:      "Âge du patient"
+      patient_address:      "Adresse du patient"
+      patient_clinical_history:     "Patient Histoire clinique"
+      patient_lab_findings:     "Résultats de laboratoire"
+      hospital_diagnosis:       "Diagnostic hospitalier"
+      treatment_given:      "Traitement donné"
+      referral_reason:    "Raisons de cette référence"
+      message:       "Message de "
+      patient_referred_back:        "Ce patient est renvoyé à "
+      note:       "Remarque: À la fin de la prise en charge des patients, veuillez remplir le formulaire ci-dessous et le soumettre."
+      back_slip_view:       "Afficher le dossier de renvoi"
+      back:     "Arrière"
+      referral_back_slip:     "Cliquez ici pour un rappel"
+
     referral_back_slip:
+      caption:      "Dossier de renvoi"
+      help:       "Aidez"
+      description:      "Ce formulaire contient des fonctions qui peuvent vous aider à concevoir votre rapport,
+       il a des fonctions telles que la création d'une liste où 
+       vous pouvez soit déclarer vos résultats en buttets (notations de points) 
+       ou en chiffres (notations de chiffres). Pour obtenir plus d'informations sur 
+       les fonctions pointez simplement votre souris ou pointeur sur l'élément, 
+       vous aurez plus d'informations sur ce que l'élément est pour."
+      advert:     "PUBLICITÉ"
+      submit:       "Soumettre"
+
+
     referral_confirmation:
+      referral_details:     "Détails du renvoi"
+      note:     "Veuillez ne pas confirmer ceci sans le jeton donné au patient"
+      token:        "Jeton"
+      patient_id:     "ID patient"
+      patient_name:   "Noms des patients"
+      visiting_hospital:    "Hôpital de visite"
+      address_of_hospital:      "Adresse de l'hôpital visiteur"
+      confirm:      "Confirmé"
     request_referral:
       note:       "REMARQUE"
       this:       "Ce"
@@ -333,8 +505,53 @@ fr:
       replied:      "Répondre"
       completed:    "Terminé"
       view_all:   "Voir tout"
+
     submitted_back_slip:
     total_referrals_made:
+      account_settings:     "Paramètres du compte"
+      dashboard_referrals:    "Renvois de tableau de bord"
+      available_doctors:        "Médecins disponibles"
+      referrals_made:       "Références faites"
+      doctor_contact:       "Nom / contact du médecin"
+      patient_name:       "Nom du patient"
+      patient_id:     "ID patient"
+      group:    "Groupe"
+      blood_group:    "Groupe sanguin"
+      referral_status:    "État du renvoi"
+      date_sent:        "Date d'envoi"
+      search_results:     "Résultats trouvés"
+      click:      "clique pour voir"
+      pending:      "en attendant"
+      received:       "Reçu"
+      completed:      "Terminé"
+      details:        "Détails"
+      lab_findings:     "Labs Recherche (s)"
+      doctor_diagnosis:     "Mon diagnostic"
+      treatment_given:      "Traitement (s) donné (s)"
+      referral_reason:    "Raisons de recommandation"
+      message:    "Message"
+      search_results:     "Résultat trouvé pour"
+      view_all:     "Voir tout"
+      no_results:     "Aucun enregistrement trouvé pour patient ID"
+      no_referral_made: "Aucune référence faite par vous"
+      inside_account:           "À l'intérieur de vos paramètres de compte"
+      change_1:     "Veuillez"
+      change_2:     "CHANGER" 
+      change_3:    "l'image de profil par défaut sur le côté gauche en utilisant ce lien" 
+      link:     "télécharger l'image"
+      total_account_info:     "Les paramètres de compte vous donnent le pouvoir de changer
+       ce que les autres hôpitaux et les médecins voient. Vous pouvez télécharger
+        votre image de profil dans les paramètres de compte, modifier votre nom
+         de famille, prénom si vous avez fait des erreurs lorsque vous avez
+          terminé votre processus d'inscription. Vous pouvez également consulter
+           le résumé de votre compte dans les paramètres de compte"
+      connectivity:     "Connectivité"
+      connectivity_info:      "Le pouvoir de la connectivité dans le domaine médical
+       entraîne une résolution complexe des problèmes. CHRMS rend cette connectivité
+        beaucoup plus simple en vous fournissant d'autres contacts médecins afin que
+         vous puissiez les appeler ou leur envoyer un message si vous êtes confronté
+          à un problème ou votre clinique n'a pas les équipements qui peuvent être
+           utilisés sur un cas particulier."
 
 
 
@@ -371,9 +588,23 @@ fr:
         patient_identity_number:      "Numéro d'identification du patient"
         patient_mobile_number:        "Numéro de téléphone du patient"
 
-    doctor:
-      photo:    "Profile image fr"
-      speciality:       "Spécialité: "
+      doctor:
+        photo:    "Photo de profil"
+        speciality:       "Spécialité"
+        education:        "Éducation"
+        educational_summary:      "Récapitulatif de l'enseignement"
+        country:        "Pays"
+        region:         "Région"
+        city:         "ville"
+        mobile_number:    "Numéro de portable"
+        mobile_number2:   "Numéro de portable 2"
+        email:        "Adresse e-mail"
+        surname:        "nom de famille"
+        given_names:    "prénoms"
+        id_card_number:   "Votre numéro de carte d'identité"
+        gender:   "le genre"
+
+
 
 
       

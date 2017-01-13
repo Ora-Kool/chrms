@@ -1,20 +1,19 @@
 <%provide(:title, "Confirm Referral Submission - CHRMS")%>
 <div class="row">
 	<div class="large-6 large-offset-3 card columns" style="margin-top: 2rem">
-		<h2 class="text-center">Referrals Details</h2>
+		<h2 class="text-center"><%=t('.referral_details') %></h2>
 		<hr class="horizontal-line">
-		<sapn style="font-size: 1.2rem"> &#8220; </span>Please do not confirm this without given the token to the patient <span style="font-size: 1.2rem"> &#8221;</span>
+		<sapn style="font-size: 1.2rem"> &#8220; </span><%=t('.note') %> <span style="font-size: 1.2rem"> &#8221;</span>
 		<div class="content">
-			<h1 style="margin-bottom: 2rem; text-decoration: underline;" class="text-center">Token: <strong ><%= @referral.patient_token%> </strong></h1>
-			<p>Referral Type: <strong><%=@referral.type_of_referral %></strong></p>
-			<p>Patient ID: <strong><%=@referral.patient_identity_number%></strong></p>
-			<p>Patient Names: <strong><%=@referral.patient_full_names%></strong></p>
-			<p>Visiting Hospital: <strong><%=@referral.referred_facility_name%></strong></p>
-			<p>Hospital Address: <strong><%=@referral.address_of_referred_facility%></strong></p>
+			<h1 style="margin-bottom: 2rem; text-decoration: underline;" class="text-center"><%=t('.token')%> : <strong ><%= @referral.patient_token%> </strong></h1>
+			<p><%=t('.patient_id') %>: <strong><%=@referral.patient_identity_number%></strong></p>
+			<p><%=t('.patient_name')%> : <strong><%=@referral.patient_full_names%></strong></p>
+			<p><%=t('.visiting_hospital')%> : <strong><%=@referral.referred_facility_name%></strong></p>
+			<p><%=t('.address_of_hospital')%> : <strong><%=@referral.address_of_referred_facility%></strong></p>
 		</div>
 		
       
-		<p class="text-center" style="margin-top: 1rem"><%= link_to "Confirmed", doctor_dashboard_path,  class: "button chrms radius large-4" %></p>
+		<p class="text-center" style="margin-top: 1rem"><%= link_to t('.confirm'), confirmation_path,  class: "button chrms radius large-4" %></p>
 		
 
 	</div>

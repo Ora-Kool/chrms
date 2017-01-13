@@ -99,20 +99,27 @@
 
    						<tr>
    							<td>
-                         Dr. <%= "#{referral.referring_doctors_name}" %>
+                 <%  @referring_doc = capitalize_name(referral.referring_doctors_name) %>
+                         Dr. <%= @referring_doc %>
                         <br>Tel: (+237) <%= "#{referral.referring_doctors_mobile_number}"%>
                         </td>
-   							<td>
-                           
-      								 <%= link_to "#{referral.patient_full_names}", doctor_dashboard_read_referrals_patient_referral_details_path(referral.id)%><br>
+   							<td style="text-align: left">
+                           <% if referral.referral_status == "completed" %>
+                                    <a><%=referral.patient_full_names %></a><br>
                                <span><%=t('.click_to_view')%> </span>
+
+                              <%else%>
+                                <%= link_to "#{referral.patient_full_names}", doctor_dashboard_read_referrals_patient_referral_details_path(referral.id)%><br>
+                               <span><%=t('.click_to_view')%> </span>
+                           <%end%>
+      								 
                          
    							</td>
-                        <td>
+                        <td style="text-align: center">
                            <%= referral.patient_identity_number%>
                         </td>
-   							<td>
-                           <%=referral.blood_group %><br>
+   							<td style="text-align: center">
+                           Group <%=referral.blood_group %>
                         </td>
                         <td>
                             <% if referral.referral_status == "pending" %>

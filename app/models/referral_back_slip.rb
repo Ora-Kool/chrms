@@ -9,4 +9,5 @@ class ReferralBackSlip < ApplicationRecord
     	validates :please_continue_with, presence: true
     	validates :patient_full_names, presence: true
     	validates :referral_back_slip_message, presence: false
+        validates :back_slip_token, presence: true
 end

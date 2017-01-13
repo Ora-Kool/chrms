@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170101011735) do
+ActiveRecord::Schema.define(version: 20170112070258) do
 
   create_table "doctors", force: :cascade do |t|
     t.string   "name"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20170101011735) do
     t.datetime "reset_sent_at"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "languages"
     t.index ["email"], name: "index_doctors_on_email", unique: true
     t.index ["hospital_id"], name: "index_doctors_on_hospital_id"
   end
@@ -102,6 +103,7 @@ ActiveRecord::Schema.define(version: 20170101011735) do
     t.text     "referral_back_slip_message"
     t.string   "patient_full_names"
     t.string   "patient_identity_number"
+    t.string   "back_slip_token"
   end
 
   create_table "referral_forms", force: :cascade do |t|

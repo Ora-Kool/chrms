@@ -2,7 +2,7 @@
 <%= form_tag doctor_dashboard_total_referrals_made_path, :method => 'get', id: "demo-2" do %>
 						  <p style="margin-top: 5px">
 						    <%= text_field_tag :search2, params[:search2],
-						     placeholder: "R-Token, ID Card", type: "search"%>
+						     placeholder: t('.search_placeholder') , type: "search"%>
 						  </p>
 <% end %>
 </div>

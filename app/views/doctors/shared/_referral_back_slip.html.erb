@@ -2,16 +2,16 @@
 	<%= render "layouts/shared/error_messages", object: @patient_referral_back_slip %>
 	
 <table style="margin-bottom: 0">
-		<h5 class="chrms-font"><strong>Report by specialist hospital</strong></h5>
+		<h5 class="chrms-font"><strong><%= t('.report_header') %></strong></h5>
 			<tr>
 				<td>
-					<label class="chrms-font">Special investigation</label>
+					<label class="chrms-font"><%=t('.special_investigation') %></label>
 					<%=f.trix_editor :special_investigation, size: "5x5"%>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<label class="chrms-font">Findings</label>
+					<label class="chrms-font"><%=t('.special_findings') %></label>
 					<%=f.trix_editor :special_findings, size: "5x5" %>
 				</td>
 			</tr>
@@ -19,7 +19,7 @@
 <table style="margin: 0">
 			<tr>
 				<td>
-					<label class="chrms-font">Diagnosis</label>
+					<label class="chrms-font"><%=t('.diagnosis') %></label>
 					<%=f.trix_editor :diagnosis, size: "5x5" %>
 				</td>
 
@@ -28,14 +28,14 @@
 <table style="margin: 0">
 			<tr>
 				<td>
-					<label class="chrms-font">Operation</label>
+					<label class="chrms-font"><%=t('.operation') %></label>
 					<%=f.select :operation, ["Yes", "No"], prompt: "Select choice"%>
 				</td>
 
 			</tr>
 			<tr>
 				<td>
-					<label class="chrms-font">Treatments</label>
+					<label class="chrms-font"><%=t('.treatments') %></label>
 					<%=f.trix_editor :treatments, size: "5x5" %>
 				</td>
 			</tr>
@@ -43,7 +43,7 @@
 <table style="margin: 0">
 			<tr>
 				<td>
-					<label class="chrms-font">Medications prescribed</label>
+					<label class="chrms-font"><%=t('.medications_prescribed') %></label>
 					<%=f.trix_editor :medications_prescribed, size: "5x5" %>
 				</td>
 				
@@ -52,7 +52,7 @@
 <table style="margin: 0">
 			<tr>
 				<td>
-					<label class="chrms-font">Please continue with(meds, Rx, follow-up, care)</label>
+					<label class="chrms-font"><%=t('.advise') %></label>
 					<%=f.trix_editor :please_continue_with %>
 				</td>
 			</tr>
@@ -61,8 +61,8 @@
 <table>
 			<tr>
 				<td>
-					<label class="chrms-font">Referral back slip message</label>
-					<%=f.text_area :referral_back_slip_message, size: "5x5", placeholder: "Message accompaning this referral back slip"%>
+					<label class="chrms-font"><%=t('.message') %></label>
+					<%=f.text_area :referral_back_slip_message, size: "5x5", placeholder: t('.message_holder') %>
 				</td>
 			</tr>
 </table>
@@ -71,7 +71,7 @@
 			<%= f.submit yield(:button_text), class: "button chrms large-12 small-12 radius"%>
 		</div>
 		<div class="large-2 columns">	
-			<%= link_to 'Back', doctor_dashboard_read_referrals_patient_referral_details_path(@patient.id), class: "button alert large-12  small-12 large-offset-2 radius"%>
+			<%= link_to t('.back') , doctor_dashboard_read_referrals_patient_referral_details_path(@patient.id), class: "button alert large-12  small-12 large-offset-2 radius"%>
 		</div>
 	</div>
 <%end%>

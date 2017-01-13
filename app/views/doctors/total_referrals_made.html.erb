@@ -15,7 +15,7 @@
                         
                   <%end%> 
                   <span class="title">
-                     <%= link_to 'Account Settings', doctor_dashboard_edit_path(current_doctor.name), class: 'account-settings' %><%= link_to "", doctor_dashboard_edit_path(current_doctor.name), class: "fi-widget spin" %>
+                     <%= link_to t('.account_settings') , doctor_dashboard_edit_path(current_doctor.name), class: 'account-settings' %><%= link_to "", doctor_dashboard_edit_path(current_doctor.name), class: "fi-widget spin" %>
                   </span>
                   
                </div>
@@ -25,7 +25,7 @@
          </td>
 		</tr>
       <tr>
-         <td><%= link_to 'Dashboard Referrals', doctor_dashboard_path %>
+         <td><%= link_to t('.dashboard_referrals') , doctor_dashboard_path %>
            <%if @sum == 0 %>
 
             <%else%>
@@ -34,12 +34,12 @@
          </td>
       </tr>
       <tr>
-         <td><%= link_to 'Available Doctors', doctor_dashboard_request_referral_hospitals_path %>
+         <td><%= link_to t('.available_doctors') , doctor_dashboard_request_referral_hospitals_path %>
          </td>
       </tr>
       <tr>
          <td>
-          <%= link_to 'Referrals Made', doctor_dashboard_total_referrals_made_path %>
+          <%= link_to t('.referrals_made') , doctor_dashboard_total_referrals_made_path %>
          <% if @mades == 0 %>
 
           <%else%>
@@ -60,7 +60,7 @@
    			<div class="large-12 columns">
    				<div class="row">
    					<div class="large-9 columns">
-   						<h4 style="text-decoration: underline" class="chrms-font">Referrals Made</h4>
+   						<h4 style="text-decoration: underline" class="chrms-font"><%=t('.referrals_made')%> </h4>
    					</div>
 
    					<div class="large-3 columns">
@@ -80,44 +80,43 @@
    			   <% if @referrals.present? %>
    				<table class="large-12 columns">
    					<tr>
-   						<th>Doctor's Name / Contact</th>
-                     <th>Patient Name</th>
-   						<th>Patient ID</th>
-                     <th>Referral Type</th>
-   						<th>Referral Status</th>
-                     <th>Date Sent</th>
+   						<th><%=t('.doctor_contact')%> </th>
+                     <th style="text-align: center"><%=t('.patient_name')%> </th>
+   						<th><%=t('.patient_id')%> </th>
+                     <th><%=t('.blood_group')%> </th>
+   						<th><%=t('.referral_status')%> </th>
+                     <th style="text-align: center"><%=t('.date_sent')%> </th>
    						
    					</tr>
    					
-                  <p style="font-family: courier; margin-bottom: 0; color: #294f42">Results found</p>
+                  <p style="font-family: courier; margin-bottom: 0; color: #294f42"><%=t('.search_results')%> </p>
    					<% @referrals.each do |referral| %>
    						<tr>
-   							<td><%= "#{referral.referred_facility_doctors_name}" %>
+                <% @referred_doc = capitalize_name(referral.referred_facility_doctors_name) %>
+   							<td><%=  @referred_doc %>
                         <br>Tel: (+237) <%= "#{referral.referring_doctors_mobile_number}"%>
                         </td>
    							<td>
-                           
-      								 <a data-open="patient_<%= referral.id %>"> <%="#{referral.patient_full_names}"%><br><span>click to view</span></a>
+                           <% @patient_names = capitalize_name(referral.patient_full_names) %>
+      								 <a data-open="patient_<%= referral.id %>"> <%= @patient_names %><br><span><%=t('.click')%> </span></a>
                                
                          
    							</td>
-                        <td>
+                        <td style="text-align: center">
                            <%= referral.patient_identity_number%>
                         </td>
-   							<td>
-                           <%=referral.type_of_referral %><br>
+   							<td style="text-align: center">
+                           <%=t('.group') %> <%=referral.blood_group %><br>
                         </td>
                         <td>
                             <% if referral.referral_status == "pending" %>
-                              <label><a class="pending">Pending</a></label>
+                              <label><a class="pending"><%=t('.pending')%> </a></label>
                             <% elsif referral.referral_status == "received" %>
-                                 <label><a class="received">Received</a></label>
+                                 <label><a class="received"><%=t('.received')%> </a></label>
                             <%else%>
-                              <%if referral.patient_identity_number.present? %>
-                                 <label><%= link_to "Completed", "", class: "completed " %><i class="fi-check"></i></label>
-                              <%else %>
-                                  <label><%= link_to "Completed", "", class: "completed " %><i class="fi-check"></i></label>
-                              <%end%>
+                              
+                                  <label><%= link_to t('.completed') , doctor_dashboard_patient_special_investigations_path(referral.id), class: "completed " %><i class="fi-check"></i></label>
+                              
                             <%end%>
                            
                         </td>
@@ -127,13 +126,13 @@
                         </td>
    						</tr>
    						<div class="reveal large" id="patient_<%=referral.id %>" data-reveal data-deep-link="true">
-                                <h1 class="text-center">Patient ID: <%= referral.patient_identity_number %> Details</h1>
+                                <h1 class="text-center"><%=t('.patient_id')%> : <%= referral.patient_identity_number %> <%=t('.Details')%> </h1>
                                  <hr class="horizontal-line">
                                  
                                 <button class="close-button" data-close aria-label="Close modal" type="button">
                                   <span aria-hidden="true" class="float-right">&times;</span>
                                 </button>
-                                 <h5 style="text-decoration: underline">Finding(s)</h5>
+                                 <h5 style="text-decoration: underline"><%=t('.lab_findings')%> </h5>
                                  <% tag = referral.findings.downcase.include?("<ul>") ? "ul" : "ol" %>
                                  <% close_tag = tag.include?("ul") ? "/ul" : "/ol" %>
                         <%if referral.findings.downcase.include?("<ul>") || referral.findings.downcase.include?("<ol>")%>
@@ -190,9 +189,93 @@
                                     <%end%>
                                   <%end%>
                               <%end%>
-                              <%elsif referral.treatment_given.include?("<div>")%>
+                              <%elsif referral.findings.include?("<div>")%>
                                  <ul>
-                                    <%divs = referral.treatment_given.split("<div>") %>
+                                    <%divs = referral.findings.split("<div>") %>
+                                    <%divs.each do |div|%>
+                                       <%divs = div.split("</div>") %>
+                                        <%divs.each do |div| %>
+                                          <%divs = div.split("&nbsp;")%>
+                                            <%divs.each do |div| %>
+                                            <%divs = div.split("<strong>")%>
+                                            <%divs.each do |div| %>
+                                            <%divs = div.split("</strong>")%>
+                                            <%divs.each do |div| %>
+                                             <li><%= div %> </li>
+                                             <%end%>
+                                             <%end%>
+                                            <%end%>
+                                        <%end%>
+                                    <%end%>
+                                 </ul>
+                              <%else%>
+                              <li><%= referral.findings %> </li>
+
+                           <<%= close_tag%>>
+
+                        <%end%>
+                           <br>
+
+                           <h5 style="text-decoration: underline"><%=t('.doctor_diagnosis')%> </h5>
+                                 <% tag = referral.diagnosis.downcase.include?("<ul>") ? "ul" : "ol" %>
+                                 <% close_tag = tag.include?("ul") ? "/ul" : "/ol" %>
+                        <%if referral.diagnosis.downcase.include?("<ul>") || referral.diagnosis.downcase.include?("<ol>")%>
+                           
+                           
+                              <%tags1 = referral.diagnosis.split("<li>") %>
+
+                           <<%="#{tag}"%>>
+                              <% tags1.each do |tags| %>
+                                 <% tags2 = tags.split("</li>") %>
+                                  <% tags2.each do |tags| %>
+                                    <%tags3 = tags.split("<ul>") %>
+                                    <%tags3.each do |tags| %>
+                                       <% tags4 = tags.split("</ul>") %>
+                                       <% tags4.each do |tags| %>
+                                          <% tags5 = tags.split("<strong>") %>
+                                          <% tags5.each do |tags| %>
+                                             <%tags6 = tags.split("</strong>") %>
+                                             <%tags6.each do |tags| %>
+                                                <% tags7 = tags.split("<div>")%>
+                                                <% tags7.each do |tags|%>
+                                                   <%tags8 = tags.split("</div>") %>
+                                                   <%tags8.each do |tags| %>
+                                                      <%tags9 = tags.split("<br>") %>
+                                                      <%tags9.each do |tags| %>
+                                                         <%tags10 = tags.split("&nbsp;") %>
+                                                         <%tags10.each do |tags| %>
+                                                          <%tags11 = tags.split("<ol>") %>
+                                                            <%tags11.each do |tags| %>
+                                                               <% tags12 = tags.split("</ol>")%>
+                                                               <% tags12.each do |tags| %>
+                                                                  <%tags13 = tags.split("<em>")%>
+                                                                  <%tags13.each do |tags| %>
+                                                                     <% tags14 = tags.split("</em>") %>
+                                                                     <%tags14.each do |tags| %>
+                                                                        <% tags15 = tags.split("<pre>") %>
+                                                                        <%tags15.each do |tags| %>
+                                                                           <% tags16 = tags.split("</pre>") %>
+                                                                           <%tags16.each do |tags| %>
+                                                                              <li><%= tags%></li>
+                                                                           <%end%>
+                                                                        <%end%>
+                                                                     <%end%>
+                                                                  <%end%>
+                                                               <%end%>
+                                                            <%end%>
+                                                         <%end%>
+                                                      <%end%>
+                                                   <%end%>
+                                                <%end%>
+                                             <%end%>
+                                          <%end%>
+                                       <%end%>
+                                    <%end%>
+                                  <%end%>
+                              <%end%>
+                              <%elsif referral.diagnosis.include?("<div>")%>
+                                 <ul>
+                                    <%divs = referral.diagnosis.split("<div>") %>
                                     <%divs.each do |div|%>
                                        <%divs = div.split("</div>") %>
                                         <%divs.each do |div| %>
@@ -204,14 +287,14 @@
                                     <%end%>
                                  </ul>
                               <%else%>
-                              <li><%= referral.treatment_given %> </li>
+                              <li><%= referral.diagnosis %> </li>
 
                            <<%= close_tag%>>
 
                         <%end%>
                            <br>
                            
-                        <h5 style="text-decoration: underline">Treatment(s) Given</h5>
+                        <h5 style="text-decoration: underline"><%=t('.treatment_given')%> </h5>
                                  <% tag = referral.treatment_given.downcase.include?("<ul>") ? "ul" : "ol" %>
                                  <% close_tag = tag.include?("ul") ? "/ul" : "/ol" %> 
                         <%if referral.treatment_given.downcase.include?("<ul>") || referral.treatment_given.downcase.include?("<ol>")%>
@@ -298,7 +381,7 @@
                         <%end%>
                         
                         <br/>
-                        <h5 style="text-decoration: underline">Referral Reasons</h5>
+                        <h5 style="text-decoration: underline"><%=t('.referral_reason')%> </h5>
                                  <% tag = referral.reasons_for_referral.downcase.include?("<ul>") ? "ul" : "ol" %>
                                  <% close_tag = tag.include?("ul") ? "/ul" : "/ol" %> 
                         <%if referral.reasons_for_referral.downcase.include?("<ul>") || referral.reasons_for_referral.downcase.include?("<ol>")%>
@@ -385,7 +468,7 @@
                         <%end%>
                            
                            <br/>
-                           <h5 style="text-decoration: underline">Message</h5>
+                           <h5 style="text-decoration: underline"><%=t('.message')%> </h5>
                         <p>
                            <%=referral.optional_message %>
                         </p>
@@ -398,15 +481,15 @@
 
                 <%if @result.present? %>
 
-                 <p style="font-family: courier; margin-bottom: 0; color: #294f42">Result found for <%=params[:search2]%></p>
+                 <p style="font-family: courier; margin-bottom: 0; color: #294f42"><%=t('.search_results') %> <%=params[:search2]%></p>
                 <table>
                   <tr>
-                        <th>Doctor's Name / Contact</th>
-                               <th>Patient Name</th>
-                        <th>Patient ID</th>
-                               <th>Referral Type</th>
-                        <th>Referral Status</th>
-                       <th>Date Sent</th>
+                        <th><%=t('.doctor_contact')%> </th>
+                               <th><%=t('.patient_name')%> </th>
+                        <th><%=t('.patient_id')%> </th>
+                               <th><%=t('.blood_group')%> </th>
+                        <th><%=t('.referral_status')%> </th>
+                       <th><%=t('.date_sent')%> </th>
               
                   </tr>
                   <%@result.each do |result| %>
@@ -424,18 +507,18 @@
                            <%= result.patient_identity_number%>
                         </td>
                 <td>
-                           <%=result.type_of_referral %><br>
+                           <%=result.blood_group %><br>
                 </td>
                 <td>
                     <% if result.referral_status == "pending" %>
-                      <label><a class="pending">Pending</a></label>
+                      <label><a class="pending"><%=t('.pending')%> </a></label>
                     <% elsif result.referral_status == "received" %>
-                          <label><a class="received">Received</a></label>
+                          <label><a class="received"><%=t('.received')%> </a></label>
                     <%else%>
                       <%if result.patient_identity_number.present? %>
-                          <label><%= link_to "Completed", "", class: "completed " %><i class="fi-check"></i></label>
+                          <label><%= link_to t('.completed') , "", class: "completed " %><i class="fi-check"></i></label>
                       <%else %>
-                          <label><%= link_to "Completed", "", class: "completed " %><i class="fi-check"></i></label>
+                          <label><%= link_to t('.completed') , "", class: "completed " %><i class="fi-check"></i></label>
                       <%end%>
                     <%end%>
                            
@@ -445,13 +528,13 @@
                 </td>
               </tr>
               <div class="reveal large" id="patient_<%=result.id %>" data-reveal data-deep-link="true">
-                                <h1 class="text-center">Patient ID: <%= result.patient_identity_number %> Details</h1>
+                                <h1 class="text-center"><%=t('.patient_id') %> <%= result.patient_identity_number %> <%=t('.details') %></h1>
                                  <hr class="horizontal-line">
                                  
                                 <button class="close-button" data-close aria-label="Close modal" type="button">
                                   <span aria-hidden="true" class="float-right">&times;</span>
                                 </button>
-                                 <h5 style="text-decoration: underline">Finding(s)</h5>
+                                 <h5 style="text-decoration: underline"><%=t('.lab_findings')%> </h5>
                                  <% tag = result.findings.downcase.include?("<ul>") ? "ul" : "ol" %>
                                  <% close_tag = tag.include?("ul") ? "/ul" : "/ol" %>
                         <%if result.findings.downcase.include?("<ul>") || result.findings.downcase.include?("<ol>")%>
@@ -508,9 +591,9 @@
                                     <%end%>
                                   <%end%>
                               <%end%>
-                              <%elsif result.treatment_given.include?("<div>")%>
+                              <%elsif result.findings.include?("<div>")%>
                                  <ul>
-                                    <%divs = result.treatment_given.split("<div>") %>
+                                    <%divs = result.findings.split("<div>") %>
                                     <%divs.each do |div|%>
                                        <%divs = div.split("</div>") %>
                                         <%divs.each do |div| %>
@@ -522,14 +605,92 @@
                                     <%end%>
                                  </ul>
                               <%else%>
-                              <li><%= result.treatment_given %> </li>
+                              <li><%= result.findings %> </li>
+
+                           <<%= close_tag%>>
+
+                        <%end%>
+                           <br>
+
+                           <h5 style="text-decoration: underline"><%=t('.doctor_diagnosis')%> </h5>
+                                 <% tag = result.diagnosis.downcase.include?("<ul>") ? "ul" : "ol" %>
+                                 <% close_tag = tag.include?("ul") ? "/ul" : "/ol" %>
+                        <%if result.diagnosis.downcase.include?("<ul>") || result.diagnosis.downcase.include?("<ol>")%>
+                           
+                           
+                              <%tags1 = result.diagnosis.split("<li>") %>
+
+                           <<%="#{tag}"%>>
+                              <% tags1.each do |tags| %>
+                                 <% tags2 = tags.split("</li>") %>
+                                  <% tags2.each do |tags| %>
+                                    <%tags3 = tags.split("<ul>") %>
+                                    <%tags3.each do |tags| %>
+                                       <% tags4 = tags.split("</ul>") %>
+                                       <% tags4.each do |tags| %>
+                                          <% tags5 = tags.split("<strong>") %>
+                                          <% tags5.each do |tags| %>
+                                             <%tags6 = tags.split("</strong>") %>
+                                             <%tags6.each do |tags| %>
+                                                <% tags7 = tags.split("<div>")%>
+                                                <% tags7.each do |tags|%>
+                                                   <%tags8 = tags.split("</div>") %>
+                                                   <%tags8.each do |tags| %>
+                                                      <%tags9 = tags.split("<br>") %>
+                                                      <%tags9.each do |tags| %>
+                                                         <%tags10 = tags.split("&nbsp;") %>
+                                                         <%tags10.each do |tags| %>
+                                                          <%tags11 = tags.split("<ol>") %>
+                                                            <%tags11.each do |tags| %>
+                                                               <% tags12 = tags.split("</ol>")%>
+                                                               <% tags12.each do |tags| %>
+                                                                  <%tags13 = tags.split("<em>")%>
+                                                                  <%tags13.each do |tags| %>
+                                                                     <% tags14 = tags.split("</em>") %>
+                                                                     <%tags14.each do |tags| %>
+                                                                        <% tags15 = tags.split("<pre>") %>
+                                                                        <%tags15.each do |tags| %>
+                                                                           <% tags16 = tags.split("</pre>") %>
+                                                                           <%tags16.each do |tags| %>
+                                                                              <li><%= tags%></li>
+                                                                           <%end%>
+                                                                        <%end%>
+                                                                     <%end%>
+                                                                  <%end%>
+                                                               <%end%>
+                                                            <%end%>
+                                                         <%end%>
+                                                      <%end%>
+                                                   <%end%>
+                                                <%end%>
+                                             <%end%>
+                                          <%end%>
+                                       <%end%>
+                                    <%end%>
+                                  <%end%>
+                              <%end%>
+                              <%elsif result.diagnosis.include?("<div>")%>
+                                 <ul>
+                                    <%divs = result.diagnosis.split("<div>") %>
+                                    <%divs.each do |div|%>
+                                       <%divs = div.split("</div>") %>
+                                        <%divs.each do |div| %>
+                                          <%divs = div.split("&nbsp;")%>
+                                            <%divs.each do |div| %>
+                                             <li><%= div %> </li>
+                                            <%end%>
+                                        <%end%>
+                                    <%end%>
+                                 </ul>
+                              <%else%>
+                              <li><%= result.diagnosis %> </li>
 
                            <<%= close_tag%>>
 
                         <%end%>
                            <br>
                            
-                        <h5 style="text-decoration: underline">Treatment(s) Given</h5>
+                        <h5 style="text-decoration: underline"><%=t('.treatment_given')%> </h5>
                                  <% tag = result.treatment_given.downcase.include?("<ul>") ? "ul" : "ol" %>
                                  <% close_tag = tag.include?("ul") ? "/ul" : "/ol" %> 
                         <%if result.treatment_given.downcase.include?("<ul>") || result.treatment_given.downcase.include?("<ol>")%>
@@ -616,7 +777,7 @@
                         <%end%>
                         
                         <br/>
-                        <h5 style="text-decoration: underline">Referral Reasons</h5>
+                        <h5 style="text-decoration: underline"><%=t('.referral_reason')%> </h5>
                                  <% tag = result.reasons_for_referral.downcase.include?("<ul>") ? "ul" : "ol" %>
                                  <% close_tag = tag.include?("ul") ? "/ul" : "/ol" %> 
                         <%if result.reasons_for_referral.downcase.include?("<ul>") || result.reasons_for_referral.downcase.include?("<ol>")%>
@@ -703,7 +864,7 @@
                         <%end%>
                            
                            <br/>
-                           <h5 style="text-decoration: underline">Message</h5>
+                           <h5 style="text-decoration: underline"><%=t('.message')%> </h5>
                         <p>
                            <%=result.optional_message %>
                         </p>
@@ -712,33 +873,30 @@
                 </table>
                   <%= will_paginate @result, renderer: BootstrapPagination::Rails %>
 
-                <%= link_to 'View All', doctor_dashboard_total_referrals_made_path, class: "button chrms radius large-2"%>
+                <%= link_to t('.view_all') , doctor_dashboard_total_referrals_made_path, class: "button chrms radius large-2"%>
                   
 
                   <%else%>
-                    <p style="font-family: courier; color: red">No records found for patient ID : <%=params[:search2]   %></p>
-                     <%= link_to 'View All', doctor_dashboard_total_referrals_made_path, class: "button chrms radius large-2"%>
+                    <p style="font-family: courier; color: red"><%=t('.no_results') %> : <%=params[:search2]   %></p>
+                     <%= link_to t('.view_all') , doctor_dashboard_total_referrals_made_path, class: "button chrms radius large-2"%>
                 <%end%>
                      
             <%else%>
    					
-                     <h1 class="chrms-font">No referrals made by you</h1>
+                     <h1 class="chrms-font"><%=t('.no_referral_made') %></h1>
                      <div class="callout primary2" data-closable>
-                              <h5 class="chrms-font">Title</h5>
+                              <h5 class="chrms-font"><%=t('.inside_account') %></h5>
                                <%if current_doctor.photo_file_name.nil?%>
-                              <p>Please <strong>CHANGE</strong> the default profile picture on the left side using this link <%=link_to "upload profile picture", doctor_dashboard_edit_path(current_doctor.name)%></p>
+                              <p><%=t('.change_1') %> <strong><%=t('.change_2')%> </strong> <%=t('.change_3') %> <%=link_to t('.link') , doctor_dashboard_edit_path(current_doctor.name)%></p>
                               <%end%>
-                              <p>Account settings gives you the power to change what other hospitals and doctors sees. You can upload your profile picture inside account settings, edit you surname, given names if you made errors when completing your registration process. You can also see your account summary inside account settings</p>
+                              <p><%=t('.total_account_info')%> </p>
                              <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
                                <span aria-hidden="true">&times;</span>
                              </button>
                       </div>
                       <div class="callout primary2" data-closable>
-                              <h5 class="chrms-font">Title</h5>
-                               <%if current_doctor.photo_file_name.nil?%>
-                              <p>Please <strong>CHANGE</strong> the default profile picture on the left side using this link <%=link_to "upload profile picture", doctor_dashboard_edit_path(current_doctor.name)%></p>
-                              <%end%>
-                              <p>Account settings gives you the power to change what other hospitals and doctors sees. You can upload your profile picture inside account settings, edit you surname, given names if you made errors when completing your registration process. You can also see your account summary inside account settings</p>
+                              <h5 class="chrms-font"><%=t('.connectivity') %></h5>
+                              <p><%=t('.connectivity_info')%> </p>
                              <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
                                <span aria-hidden="true">&times;</span>
                              </button>

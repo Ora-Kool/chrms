@@ -1,52 +1,54 @@
-      <h3 class="chrms-font" style="color: #878787">Dr. <%= current_doctor.surname%>, you are welcome to CHRMS</h3>
+      <h3 class="chrms-font" style="color: #878787">Dr. <%= current_doctor.surname%>, <%=t('.welcome') %></h3>
                            <p>
-                              We will give you a tour around the application since you are new and you don't have any referrals made<br> by others to you at the moment
+                              <%=t('.p_1') %><br> <%=t('.p_2') %>
                               <%if @mades == 0 %>
-                              . Please note that every patient you received / referred most have either an identity card or patient referral token (R-Token).<br>
-                               <%else%>
-                               but we can see that you have referred <%=pluralize(@mades, 'patient')%>. <br>
+                              . <%=t('.half_sentence') %><br>
+                               <%elsif @mades >= 2 %>
+                               <%=t('.completed_sentence') %> <%=pluralize(@mades, t('.patients') )%>. <br>
+                               <% else %>
+                                  <%=t('.completed_sentence') %> <%=pluralize(@mades, t('.patient') )%>
+                              . <br>
                               <%end%>
                               
-                              In <strong>CHRMS</strong>, you will find.
+                              <%=t('.note')%> <strong><%=t('.chrms') %></strong><%=t('.complete_note') %>
                            </p>
                            <ol>
-                              <li>Accounts Settings</li>
-                              <li>Dashboard</li>
-                              <li>Referred Doctors</li>
-                              <li>Referrals Made</li>
+                              <li><%=t('.account_settings')%> </li>
+                              <li><%=t('.dashboard')%> </li>
+                              <li><%=t('.referred_doctors')%></li>
+                              <li><%=t('.referrals_made')%> </li>
                               <!--<li>Unapproved Request</li>-->
                            </ol>
 
                            
                            <div class="callout primary2" data-closable>
-                              <h5 class="chrms-font">Accounts Settings</h5>
+                              <h5 class="chrms-font"><%=t('.account_settings') %></h5>
                                <%if current_doctor.photo_file_name.nil?%>
-                              <p>Please <strong>CHANGE</strong> the default profile picture on the left side using this link <%=link_to "upload profile picture", doctor_dashboard_edit_path(current_doctor.name)%></p>
+                              <p><%=t('.change_1') %> <strong><%= t('.change_2')%></strong> <%=t('.change_3') %> <%=link_to t('.link') , doctor_dashboard_edit_path(current_doctor.name)%></p>
                               <%end%>
-                              <p>Account settings gives you the power to change what other hospitals and doctors sees. You can upload your profile picture inside account settings, edit you surname, given names if you made errors when completing your registration process. You can also see your account summary inside account settings</p>
+                              <p><%=t('.account_info') %></p>
                              <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
                                <span aria-hidden="true">&times;</span>
                              </button>
                            </div>
 
                            <div class="callout primary2" data-closable>
-                              <h5 class="chrms-font">Dashboard Referrals</h5>
+                              <h5 class="chrms-font"><%=t('.dashboard') %></h5>
                               <p>
-                                 Dashboard shows you all referral request made by other doctors, you can also search patients by their identity number or R-Token (patient token is given by referring doctors to patient) on your dashboard. The search can be identify by this <i class="fi-magnifying-glass"></i> icon, by default the search is hidden, to open it you just click on the the icon and the search will be revealed. Token most be show by patient or they should provide identity card number to prove that they where referred by other hospitals.
-                                 There are diferent messages your will see under <strong>Referral Status</strong>, this messages are <strong class="pending">PENDING</strong>, <strong class="received">CHECKED</strong> and <strong class="replied">COMPLETED</strong>.
+                                 <%=t('.dashboard_info') %> <i class="fi-magnifying-glass"></i> <%=t('.icon') %>, <%=t('.dashboard_info_2') %> <strong><%=t('.referral_status') %></strong>, <%=t('.complete') %> <strong class="pending"><%=t('.pending')%> </strong>, <strong class="received"><%=t('.checked')%> </strong> <%=t('.and')%>  <strong class="replied"><%=t('.completed')%> </strong>.
                               </p>
                               <ul>
                                   <li>
-                                    <p class="pending" style="margin-bottom: 0;">PENDING</p>
-                                    <p style="margin-top: 0; margin-bottom: 0">This tells you that a doctor as sent you a referral request and you haven't read it.</p>
+                                    <p class="pending" style="margin-bottom: 0;"><%=t('.pending')%> </p>
+                                    <p style="margin-top: 0; margin-bottom: 0"><%=t('.pending_quide') %> </p>
                                   </li>
                                   <li>
-                                    <p class="received" style="margin-bottom: 0">CHECKED</p>
-                                    <p style="margin-top: 0; margin-bottom: 0">Checked will simply alert you that you have read the request but haven't send a referral back slip.</p>
+                                    <p class="received" style="margin-bottom: 0"><%=t('.checked') %> </p>
+                                    <p style="margin-top: 0; margin-bottom: 0"><%= t('.checked_guide') %> </p>
                                   </li>
                                   <li>
-                                    <p class="replied" style="margin-bottom: 0">COMPLETED</p>
-                                    <p style="margin-top: 0; margin-bottom: 0">As you can tell from the word, it simply tells you that you have completed the circle of a doctor requesting a referral and you carrying investigation and replying back to the doctor via a referral back slip.</p>
+                                    <p class="replied" style="margin-bottom: 0"><%=t('.completed')%> </p>
+                                    <p style="margin-top: 0; margin-bottom: 0"><%=t('.completed_guide') %> </p>
                                   </li>
                               </ul>
                              <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
@@ -55,10 +57,9 @@
                            </div>
 
                             <div class="callout primary2" data-closable>
-                              <h5 class="chrms-font">Referred Doctors</h5>
+                              <h5 class="chrms-font"><%=t('.referred_doctors') %> </h5>
                               <p>
-                                 Referred Doctors shows doctors by their hospital in which they are currently, you can choose which doctor your want to see by selecting filter by hospital.
-                                 This will give you only doctors which are in the choosen hospital, making you to be specific when you want to refer your patient
+                                 <%=t('.guide') %>
                               </p>
                              <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
                                <span aria-hidden="true">&times;</span>
@@ -66,9 +67,9 @@
                            </div>
 
                               <div class="callout primary2" data-closable>
-                              <h5 class="chrms-font">Referrals Made</h5>
+                              <h5 class="chrms-font"><%=t('.referrals_made')%> </h5>
                               <p>
-                                 Here you will get a run down of all the request you have made, you can also view the details of each patient your referred.
+                                 <%=t('.guide_2') %> 
                               </p>
                              <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
                                <span aria-hidden="true">&times;</span>

@@ -20,7 +20,7 @@ class LoginSessionsController < ApplicationController
       #end
 
     else
-      flash.now[:warning] = 'Access denied / wrong credentials'
+      flash.now[:warning] = t('.errors')
       render 'new'
     end
 

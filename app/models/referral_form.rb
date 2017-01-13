@@ -31,9 +31,9 @@ class ReferralForm < ApplicationRecord
       validates   :patient_identity_number, presence: true, length: {minimum: 9, maximum: 9},
                                         format: { with: VALID_ID_CARD_REGEX, message: 'is invalid'}
 
-      before_save {
-        self.patient_full_names = capitalize_name(patient_full_names)
-      }
+      # before_save {
+      #   self.patient_full_names = capitalize_name(patient_full_names)
+      # }
 
       
         
@@ -71,7 +71,7 @@ class ReferralForm < ApplicationRecord
         ReferralForm.count
     end
    
-   def capitalize_name(string)
+   def self.capitalize_name(string)
      string.split(' ').map { |word| word.capitalize  }.join(' ')
    end
     private

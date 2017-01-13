@@ -29,9 +29,9 @@
 		</div>
 		<hr class="horizontal-line">
 		<div class="row">
-		<h6><strong>Professional Profile</strong></h6>
+		<h6><strong><%=t('.p_details')%> </strong></h6>
 			<div class="large-4 columns">
-				<%=f.label "education level" %>
+				<%=f.label :education %>
 				<%=f.text_field :education %>
 			</div>
 			<div class="large-4 columns">
@@ -45,18 +45,18 @@
 		</div>
 		<hr class="horizontal-line">
 		<div class="row">
-				<h6><strong>Contact Details</strong></h6>
+				<h6><strong><%=t('.contact_details') %> </strong></h6>
 			<div class="large-4 columns">
 				<%=f.label :country %>
 				<%=f.text_field :country %>
 			</div>
 			<div class="large-4 columns">
 				<%=f.label :region %>
-				<%=f.select :region, ["Adamawa","Centre","East", "Littoral","Far North","North","Northwest","South","Southwest","West"], prompt: 'select region' %>
+				<%=f.select :region, ["Adamawa","Centre","East", "Littoral","Far North","North","Northwest","South","Southwest","West"], prompt: t('.select_region') %>
 			</div>
 			<div class="large-4 columns">
-				<%=f.label "city" %>
-				<%=f.select :city, ["Buea","Yaounde", "Douala"] %>
+				<%=f.label :city %>
+				<%=f.select :city, ["Buea","Yaounde", "Douala"], prompt: t('.select_city') %>
 			</div>
 		</div>
 		<div class="row">
@@ -65,7 +65,7 @@
 				<%=f.text_field :mobile_number%>
 			</div>
 			<div class="large-4 columns">
-				<%=f.label "Mobile number 2 (optional)" %>
+				<%=f.label t('.mobile_number2') %>
 				<%=f.text_field :mobile_number2, placeholder: '560394323'%>
 			</div>
 			<div class="large-4 columns">
