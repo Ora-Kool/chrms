@@ -20,6 +20,13 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  flash:
+    back_click:
+      denied:       "Access denied!"
+  create_referral:
+    request_submitted:   "Referral submitted"
+  submit_referral:
+    follow_up:       "Thanks for sending the patient back for follow up"
   layouts:
     shared:
       main_header:
@@ -40,6 +47,8 @@ en:
         sponsors_title:   "Thanks to some inspiring and helping organisations."
         social:           "We are social"
         social_desc:      "Like us on social media and don't miss any news or update related to our blog and products."
+      alert:
+        updated_successfully: "Profile updated successfully"
   
   pages:
     home:
@@ -75,7 +84,7 @@ en:
       In CHRMS every patient needs to be reffered and given an "
       r_token:              " R-TOKEN "
       primary_desc2:        " to carry along when visiting the tertiary health facility, with this the issue of patients going to tertiary 
-      health facilities and crowding it will be reduced. in fr"
+      health facilities and crowding it will be reduced."
       aim:                  "AIM"
       aim_desc:             "To make primary health centers (PHCs) be the point of first contact of patients."
     contact_us_form:
@@ -229,6 +238,8 @@ en:
 
     terms:
   login_sessions:
+    create:
+      errors:       "access denied / user not found"
     new:
       login:                    "Login"
     shared:
@@ -243,6 +254,310 @@ en:
         caution:                  "*We hope you respect the use of this application*."
         login:                    "Login"
 
+  doctors:
+    update:
+      updated_ok: "Profile successfully updated"
+      request_submitted:      "Your request has being submitted"
+      
+    create_referral:
+      request_submitted:      "Your request has being submitted"
+
+
+    shared:
+      details_profile:
+        surname:        "Surname:"
+        full_names:      "Full Names:"
+        gender:           "Gender:"
+        e_level:          "Educational Level:"
+        speciality:       "Speciality:"
+        organisation:     "Organization:"
+      edit_form:
+        needed_info:    "Personal Information"
+        photo:          "Profile image"
+        surname:        "Surname"
+        given_names:     "Given names"
+        gender:         "Gender"
+        Id_number:      "ID card number"
+        contact_details:     "Contact Details"
+        p_details:          "Professional Profile"
+        select_region:      "Select region"
+        select_city:      "Select city"
+        mobile_number:      "Mobile number"
+        mobile_number2:     "Mobile number 2 (optional)"
+
+
+      referral_back_slip:
+        report_header:      "Report by specialist hospital"
+        special_investigation:      "Special investigation"
+        special_findings:       "Special findings"
+        diagnosis:      "Special diagnosis"
+        operation:      "Operation"
+        treatments:     "Treatments"
+        medications_prescribed:   "Medications prescribed"
+        advise:   "Please continue with"
+        message:      "Referral back slip message"
+        message_holder:     "Message accompaning this referral back slip"
+        back:     "Back"
+      referral_form:
+        referral_form_heading:    "Referral Form"
+        blood_prompt:       "Select blood group"
+        p_information:      "Patient Information"
+        ethnic_prompt:        "Select ethnic group"
+        gender_prompt:        "Select gender"
+        message_caption:       "Message to referred facility"
+        message_placeholder:     "Note to receiving facility: On completion of patient management please fill referral back slip  attached and  submit reply."
+        button_cancel:            "Cancel"
+        male:             "Male"
+        female:           "Female"
+        christian:    "Christian"
+        catholic:     "Roman Catholic"
+        islamic:      "Islamic"
+        j_withness:     "Jehovah's Witnesses"
+        bi_faith:       "Bahá'í Faith"
+        others:     "Others"
+      results:
+        search_result_header_1: "Result found for token:"
+
+      search:
+        search_placeholder: "R-TOKEN, ID card"
+      search2:
+      view_all:
+      welcome:
+        welcome:      "you are welcome to CHRMS"
+        p_1:      "We will give you a tour around the application since 
+        you are new and you don't have any referrals made"
+        p_2:    "by others to you at the moment"
+        half_sentence:      "Please note that every patient you received / referred most have either an identity card or patient referral token (R-Token)."
+        completed_sentence:       "but we can see that you have referred"
+        patient:      "patient"
+        patients:      "patient"
+        note:     "In"
+        chrms:      "CHRMS,"
+        complete_note:    "you will find. "
+        account_settings:   "Accounts Settings"
+        dashboard:      "Referral Dashboard"
+        referred_doctors:     "Referred Doctors"
+        referrals_made:     "Referrals Made"
+        change_1:   "Please" 
+        change_2:  "CHANGE" 
+        change_3:   "the default profile picture on the left side using this link"
+        link:       "upload image"
+
+        account_info:     "Account settings gives you the power to change what other hospitals and doctors sees. 
+        You can upload your profile picture inside account settings, edit you surname, 
+        given names if you made errors when completing your registration process.
+         You can also see your account summary inside account settings"
+
+        dashboard_info:   "Dashboard shows you all referral request made by other doctors,
+         you can also search patients by their identity number or R-Token (patient token is
+        given by referring doctors to patient) on your dashboard. The search can be identify by this "
+        search_icon:   "icon"
+
+        dashboard_info_2:  "by default the search is hidden, to open it you just click on the the icon and the search will be revealed.
+         Token most be shown by patient or they should provide identity card number to prove that they where referred by other hospitals.
+         There are diferent messages your will see under"
+
+        referral_status:      "Referral Status"
+        complete:     "this messages are"
+        pending:    "PENDING"
+        checked:      "CHECKED"
+        and:      "and"
+        completed:      "COMPLETED"
+        pending_quide:    "This tells you that a doctor as sent you a referral request and you haven't read it."
+        checked_guide:      "Checked will simply alert you that you have read the request but haven't send a referral back slip."
+
+        completed_guide:      "As you can tell from the word, it simply tells you that you have completed the circle of a 
+        doctor requesting a referral and you carrying investigation and replying back to the doctor via a referral back slip."
+        
+        guide:      "Referred Doctors shows doctors by their hospital in which they are currently 
+        working in, you can choose which doctors you want to see by selecting filter by hospital.
+        This will give you only doctors which are in the choosen hospital,
+        making you to be specific when you want to refer your patients"
+        
+        guide_2:      "Here you will get a run down of all the request you have made,
+         you can also view the details of each patient your referred."
+
+    edit:
+      account_summary:      "Account Summary"
+      dashboard:        "Dashboard"
+      summary_caption:     "Account summary gives you details of all your personal information, 
+      and can help you to edit where there is a mistake."
+      mobile_number:      "Mobile number:"
+      mobile_number_2:    "Mobile number 2:"
+      country:      "Country:"
+      region: "Region"
+      city: "City"
+      email: "Email:"
+      ed_summary: "Educational summary"
+      rule_1: "Control your account information, both what other colleagues see. To understand what's acceptable to display on profile, please see"
+      rule_2:   " these rule."
+      note:   "Note"
+      rule_3: "that is a Medical Software Application, We will appreciate if you state your" 
+      valid_1: "VALID"
+      rule_4: "information as a doctor, any"
+      valid_2: "INVALID"
+      rule_5:  "information entered here will lead to"
+      account_deactivation: "account deactivation."
+      update_button:        "Update"
+      
+
+    hospitals:
+      referral_doctors:   "Referral Doctors"
+      dashboard:        "Dashboard"
+      hospitals:    "Hospitals"
+      all_hospitals:      "All Hospitals"
+      no_doctors:         "Not available at the moment"
+      displaying_all:       "Displaying all doctors"
+      details:          "Details"
+      hospital_label:     "Hospital"
+      speciality:       "Speciality"
+      current_city:      "Current city"
+      re_referral:        "Request Referral"
+      search_result:        "Displaying results found for "
+    incomplete:
+      male:     "male"
+      female:     "female"
+      gender_prompt:      "select gender"
+      prof_profile:     "Professional Profile"
+      personal_info:      "Personal Information"
+      incomplete_caption:   "Just a step to complete your registration"
+      speciality_prompt:        "select speciality"
+      contact_details:    "Contact Details"
+      region_prompt:      "select region"
+      city_prompt:      "select city"
+      mobile_number2:      "Mobile number 2 (optional)"
+      update_button:        "Update"
+      why_complete_reg:       "Why complete your registration?"
+      chrms:       "CHRMS"
+      body_reason:    "doesnot assume his users information by so doing we 
+      ask you to provide the information for yourself by completing the form at the"
+      left:     "LEFT"
+      body_reason2:   "side of the screen so we can better understand you and ease the 
+      communication with your colleagues. Without you completing this registration."
+      reason_1:   "You can't get to your dashboard"
+      reason_2:   "You can't view you account setting / update your record"
+      reason_3:   "You can't refer patients since you don't have access to the dashboard"
+      advert_block:     "Advert"
+      language:       "Language spoken"
+      select_language:      "select language spoken"
+    patients:
+    read_referral:
+      read_caption:     "Initiated Facility Name"
+      by:         "by"
+      patient_name:   "Patient Names"
+      patient_no:   "Patient Mobile Number"
+      patient_gender:   "Patient gender"
+      patient_age:      "Patient age"
+      patient_address:      "Patient address"
+      patient_clinical_history:     "Patient Clinical History"
+      patient_lab_findings:     "Patient Lab Findings"
+      hospital_diagnosis:       "Hospital Diagnosis"
+      treatment_given:      "Treatment(s) Givens"
+      referral_reason:    "Reasons For This Referral"
+      message:       "Message from "
+      patient_referred_back:        "This patient has being referred back to "
+      note:       "Note: On completion of patient management please fill in the referral back slip below and submit."
+      back_slip_view:       "View Referral Back Slip"
+      back:     "Back"
+      referral_back_slip:     "Click Here To For a Referral Back Slip"
+
+    referral_back_slip:
+      caption:      "Referral Back Slip"
+      help:       "Help"
+      description:      "This form contains functions that can help you style your report,
+       it has functions like creating a list where you can either report your findings in
+        buttets (points notations) or in numbers (numbers notations).
+      To get more information about the functions just point your mouse
+       or pointer on the element, you will have more information about what the element is for."
+      advert:     "ADVERT"
+      submit:     "Submit"
+    referral_confirmation:
+      referral_details:       "Referrals Details"
+      note:     "Please do not confirm this without given the token to the patient"
+      token:  "Token"
+      patient_id:   "Patient ID"
+      patient_name:       "Patient Names"
+      visiting_hospital:    "Visiting Hospital"
+      address_of_hospital:      "Visiting Hospital Address"
+      confirm:      "Confirmed"
+    request_referral:
+      note:   "NOTE"
+      this:       "This"
+      referral_form:      "REFERRAL FORM"
+      next_para:          "is very important to fill correctly
+      because sending invalid information to specailized facilities could lead them to carry investigation
+      on wrong cause. So we advice you the referring doctor to take much caustion and care when filling this form. 
+      Be specific on what you want the facility to investigate for you."
+      referral_form_data_2:  "Please take your time to fill this form so that the receiving facility will better understand
+      and know how to help your patient."
+      button_submit:          "Submit"
+    show:
+      account_settings:     "Account Settings"
+      dashboard_referrals:            "Dashboard Referrals"
+      available_doctors:  "Available Doctors"
+      referrals_made:  "Referrals Made"
+      referral_inbox: "Referrals Inbox"
+      empty_dashboard:   "Referrals Dashboard Is Empty!"
+      referral_request_form: "Referral Request from"
+      patient_names:    "Patient Names"
+      patient_id_number:  "Patient ID No"
+      patient_blood_group:   "Groupe sanguin patient"
+      referral_status:      "Referral Status"
+      date_received:    "Date received"
+      search_notification:      "All results found"
+      click_to_view:        "click to view"
+      pending:              "Pending"
+      checked:    "Checked"
+      replied:      "Replied"
+      completed:    "Completed"
+      view_all:   "View All"
+
+    submitted_back_slip:
+    total_referrals_made:
+      account_settings:       "Account Settings"
+      dashboard_referrals:      "Dashboard Referrals"
+      available_doctors: "Available Doctors"
+      referrals_made:       "Referrals Made"
+      doctor_contact:       "Doctor's Name / Contact"
+      patient_name:       "Patient Name"
+      patient_id:       "Patient ID"
+      blood_group:        "Blood group"
+      group:        "Group"
+      referral_status:      "Referral Status"
+      date_sent:        "Date Sent"
+      search_results:     "Results found"
+      click:      "click to view"
+      pending:     "Pending"
+      received:     "Received"
+      completed:      "Completed"
+      details:      "Details"
+      lab_findings:     "Labs Finding(s)"
+      doctor_diagnosis:     "My diagnosis(s)"
+      treatment_given:    "Treatment(s) Given"
+      referral_reason:      "Referral Reasons"
+      message:      "Message"
+      search_results:     "Result found for"
+      view_all:     "View All"
+      no_results:     "No records found for patient ID"
+      no_referral_made:     "No referrals made by you"
+      inside_account:       "Inside you account settings"
+      change_1:   "Please" 
+      change_2:  "CHANGE" 
+      change_3:   "the default profile picture on the left side using this link"
+      link:       "upload image"
+      total_account_info:     "Account settings gives you the power to change what
+       other hospitals and doctors sees. You can upload your profile picture
+        inside account settings, edit you surname, given names if you made
+         errors when completing your registration process. You can also see
+          your account summary inside account settings"
+      connectivity:   "Connectivity"
+      connectivity_info:      "The power of connectivity in the medical field 
+      brings about complex problem solving. CHRMS makes this connectivity 
+      much more simple by providing you with other doctors contacts so 
+      you can call them or send them a message if you are facing any 
+      problem or your clinic does not have the equipements 
+      that can be used on a particular case."
+
 
 
 
@@ -254,7 +569,50 @@ en:
         name:                     "Your names"
         subject:                  "Message subject"
         content:                  "Message"
+      referral_form:
+        initiating_facility_name:     "Facility requesting referral"
+        initiating_facility_address:   "Facility requesting referral address"
+        date_of_referral:              "Date of referral"
+        referring_doctors_name:        "Doctor requesting referral name"
+        referring_doctors_speciality:   "Doctor requesting referral speciality"
+        referring_doctors_mobile_number:  "Doctor requesting referral mobile number"
+        patient_full_names:               "Full names of patient as on ID"
+        patient_age:                      "Patient age"
+        patient_gender:             "Patient gender"
+        patient_address:  "Patient address"
+        patient_token:      "Patient R-TOKEN"
+        patient_clinical_history:   "Patient clinical history"
+        findings:                   "Laboratory findings"
+        diagnosis:          "Hospital diagnosis"
+        treatment_given:     "Treatment given"
+        reasons_for_referral: "Reasons for referral"
+        referred_facility_name: "Referred facility name"
+        address_of_referred_facility:   "Address of the referred facility"
+        optional_message:       "Optional message"
+        referred_facility_doctors_name:     "Referred facility doctors name"
+        blood_group:    "Blood group of patient"
+        ethnic:         "Religion"
+        patient_identity_number:      "Patient ID number"
+        patient_mobile_number:        "Patient mobile number"
 
+      doctor:
+        photo:      "Profile image"
+        surname:        "Surname"
+        speciality:       "Speciality "
+        education:      "Education"
+        educational_summary:      "Educational summary"
+        country:        "Country"
+        region:       "Region"
+        city:         "City"
+        mobile_number:     "Mobile number"
+        mobile_number2:     "Mobile number 2"
+        email:          "Email address"
+        id_card_number:   "Your ID card no"
+        gender:     "gender"
+
+
+
+        
       
 
 

@@ -80,6 +80,9 @@ module LoginSessionsHelper
   def token(name)
     token = "CHRMS" + token_generator(name) + Date.today.month.to_s
   end
+  def back_token(name)
+    token = "CHRMS" + token_generator(name) + Date.today.month.to_s + "BS"
+  end
 
   def isnumeric?(object)
       true if Integer(object) rescue false

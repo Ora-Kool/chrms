@@ -1,13 +1,13 @@
  <table class="large-12 columns">
             <tr>
-              <th>Referral Request from</th>
-                     <th>Patient Names</th>
-              <th>Patient ID No</th>
-                     <th>Referral Type</th>
-              <th>Referral Status</th>
-                     <th>Date received</th>
+              <th><%=t('doctors.show.referral_request_form')%> </th>
+                     <th><%=t('doctors.show.patient_names')%> </th>
+              <th><%=t('doctors.show.patient_id_number')%></th>
+                     <th><%= t('doctors.show.patient_blood_group')%></th>
+              <th><%=t('.doctors.show.referral_status') %></th>
+                     <th><%=t('doctors.show.date_received') %></th>
                      </tr>
-              <p style="font-family: courier; margin-bottom: 0; color: #294f42">Result found for token: <strong><%= params[:search] %></strong></p>
+              <p style="font-family: courier; margin-bottom: 0; color: #294f42"><%=t('.search_result_header_1')%> <strong><%= params[:search] %></strong></p>
                                    
    					<% @result.each do |referral| %>
 
@@ -19,25 +19,25 @@
                 <td>
                            
                        <%= link_to "#{referral.patient_full_names}", doctor_dashboard_read_referrals_patient_referral_details_path(referral.id)%><br>
-                               <span>click to view</span>
+                               <span><%=t('doctors.show.click_to_view') %> </span>
                          
                 </td>
                         <td>
                            <%= referral.patient_identity_number%>
                         </td>
                 <td>
-                           <%=referral.type_of_referral %><br>
+                           <%=referral.blood_group %><br>
                         </td>
                         <td>
                             <% if referral.referral_status == "pending" %>
-                              <label><%= link_to "Pending", doctor_dashboard_read_referrals_patient_referral_details_path(referral.id), class: "pending" %></label>
+                              <label><%= link_to t('doctors.show.pending') , doctor_dashboard_read_referrals_patient_referral_details_path(referral.id), class: "pending" %></label>
                             <% elsif referral.referral_status == "received" %>
-                                 <label><%= link_to "Checked", doctor_dashboard_read_referrals_patient_referral_details_path(referral.id), class: "received" %> </label>
+                                 <label><%= link_to t('doctors.show.checked'), doctor_dashboard_read_referrals_patient_referral_details_path(referral.id), class: "received" %> </label>
                             <%else%>
                               <%if referral.patient_identity_number.present? %>
-                                 <label><%= link_to "Replied", doctor_dashboard_submitted_back_slips_patient_path(referral.patient_identity_number), class: "completed " %><i class="fi-check"></i></label>
+                                 <label><%= link_to t('doctors.show.replied'), doctor_dashboard_submitted_back_slips_patient_path(referral.patient_identity_number), class: "completed " %><i class="fi-check"></i></label>
                               <%else %>
-                                  <label><%= link_to "Completed", doctor_dashboard_submitted_back_slips_patient_path(referral.patient_full_names), class: "completed " %><i class="fi-check"></i></label>
+                                  <label><%= link_to t('doctors.show.completed'), doctor_dashboard_submitted_back_slips_patient_path(referral.patient_full_names), class: "completed " %><i class="fi-check"></i></label>
                               <%end%>
                             <%end%>
                            

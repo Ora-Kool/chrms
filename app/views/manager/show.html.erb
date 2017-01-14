@@ -92,6 +92,7 @@
                   <h1 class="chrms-font" style="margin-bottom: 0">Doctors</h1>
                   <hr style="margin-top: 0">
                   <p>List of doctors registered with CHRMS.</p>
+                  <%= link_to "Register a doctor", manager_dashboard_doctor_add_path, style: 'color: white', class: 'button chrms radius' %>
               </div>
               <div class="large-12 columns">
                 <%= render "manager/shared/doctors" %>

@@ -1,9 +1,13 @@
 <div class="content">
-	<h5>Surname: <strong><%= @doctor.surname %></strong></h5>
-	<h5>Full Names: <strong><%= "#{@doctor.surname} #{@doctor.given_names}" %></strong></h5>
-	<h5>Gender: <strong><%= @doctor.gender %></strong></h5>
-	<h5>Educational Level: <strong><%= @doctor.education %></strong></h5>
-	<h5>Speciality: <strong><%=@doctor.speciality.capitalize %></strong></h5>
-	<h5>Organization: <strong><%=@doctor.hospital.hospital_name %></strong></h5>
+	<h5><%= t('.surname')%>: <strong><%= @doctor.surname %></strong></h5>
+	<h5><%= t('.full_names')%> <strong><%= "#{@doctor.surname} #{@doctor.given_names}" %></strong></h5>
+	<h5><%=t('.gender')%> <strong><%= @doctor.gender.capitalize %></strong></h5>
+	<% if @doctor.education.nil?%>
+	  <%else%>
+	  	<h5><%= t('.e_level') %> <strong><%= @doctor.education %></strong></h5>
+	<%end%>
+	<h5><%=t('.speciality') %><strong><%=@doctor.speciality.capitalize %></strong></h5>
+	<h5><%=t('.organization') %> <strong><%=@doctor.hospital.hospital_name.capitalize %></strong></h5>
+	<h5><%=t('.language_spoken') %> <strong><%=@doctor.languages %></strong></h5>
 </div>
 

@@ -1,5 +1,5 @@
 <%provide(:title, "Complete Registeration - CHRMS") %>
-<%provide(:button_text, "Update") %>
+<%provide(:button_text, t('.update_button')) %>
  <div class="row">
     <div class="large-8 columns">
     
@@ -10,11 +10,11 @@
 
 			<div class="collapse-incomplete">
 			<h5 class="text-center chrms-font" style="margin-bottom: 1rem; margin-top: 1.1rem">
-				Just a step to complete your registration
+				<%=t('.incomplete_caption')%>
 			</h5>
 			<hr class="horizontal-line">
 				<div class="row">
-					<h6 class="chrms-font"><strong>Personal Information</strong></h6>
+					<h6 class="chrms-font" style="padding-left: 20px"><strong><%=t('.personal_infos') %></strong></h6>
 						<div class="large-12 columns">
 							<%=f.label :surname %>
 							<%=f.text_field :surname %>
@@ -29,24 +29,49 @@
 							<%=f.text_field :id_card_number %>
 						</div>
 						
-						<div class="large-4 columns float-left">
+						<div class="large-6 columns float-left">
 							<%=f.label :gender %>
-							<%=f.select :gender, ['Male', 'Female'], prompt: "Select gender"%>
+							<%=f.select :gender, [ t('.male') , t('.female') ], prompt: t('.gender_prompt') %>
 						</div>
+						<div class="large-6 columns">
+								<%=f.label t('.language') %>
+								<%=f.select :languages, ['English', 'French', 'French & English'], prompt: t('.select_language') %>
+							</div>
 						
 				</div>
 						<hr class="horizontal-line">
 						<div class="row">
 						
 							<div class="large-6 columns">
-							<h6 class="chrms-font"><strong>Professional Profile</strong></h6>
+							<h6 class="chrms-font"><strong><%=t('.prof_profile') %></strong></h6>
 								<%=f.label :speciality %>
-								<%=f.select :speciality, ["Option A", "Option B", "Option C", "Option D"], prompt: "Select speciality" %>
+								<%=f.select :speciality,
+								 ["Allergy and immunology",
+								 "Allergology",
+								 "Anaesthesiology",
+								 "Pathology",
+								 "Pharmacology",
+								 "Plastic surgery",
+								 "Cardiology",
+								 "Clinical neurophysiology",
+								 "Gastroenterology",
+								 "General practice",
+								 "Nephrology",
+								 "Neurology",
+								 "Neurosurgery",
+								 "Paediatrics",
+								 "Radiology",
+								 "Neuroradiology",
+								 "Radiotherapy",
+								 "Rheumatology",
+								 "General surgery",
+								 "Urology",
+								 "Vascular surgery",
+								 "Tropical medicine",
+								 "Thoracic surgery",
+								 ], prompt: t('.speciality_prompt') %>
 							</div>
-							<!--<div class="large-4 columns">
-								<%=f.label "education level" %>
-								<%=f.text_field :education %>
-							</div>-->
+							
 							<!--<div class="large-12 columns">
 								<%=f.label :educational_summary %>
 								<%=f.text_area :educational_summary, size: '6x6' %>
@@ -56,7 +81,7 @@
 						<hr class="horizontal-line">
 						<div class="row">
 						<div class="large-12 columns">
-								<h6 class="chrms-font"><strong>Contact Details</strong></h6>
+								<h6 class="chrms-font"><strong><%=t('.contact_details') %></strong></h6>
 						</div>
 							<!--<div class="large-4 columns">
 								<%=f.label :country %>
@@ -64,21 +89,21 @@
 							</div>-->
 							<div class="large-6 columns">
 								<%=f.label :region %>
-								<%=f.select :region, ["Adamawa", "Centre", "East", "Far North", "Littoral","North", "Northwest","South","Southwest","West"], prompt: 'Select region' %>
+								<%=f.select :region, ["Adamawa", "Centre", "East", "Far North", "Littoral","North", "Northwest","South","Southwest","West"], prompt: t('.region_prompt') %>
 							</div>
 							<div class="large-6 columns">
 								<%=f.label "city" %>
-								<%=f.select :city, ["Buea", "Douala", "Yaounde", ], prompt: "Select city" %>
+								<%=f.select :city, ["Buea", "Douala", "Yaounde", ], prompt: t('.city_prompt') %>
 							</div>
 						</div>
 
 						<div class="row">
 							<div class="large-4 columns">
-								<%=f.label "Mobile number" %>
+								<%=f.label :mobile_number %>
 								<%=f.text_field :mobile_number %>
 							</div>
 							<div class="large-4 columns">
-								<%=f.label "Mobile number 2 (optional)" %>
+								<%=f.label t('.mobile_number2') %>
 								<%=f.text_field :mobile_number2 %>
 							</div>
 							<div class="large-4 columns"></div>
@@ -102,20 +127,19 @@
 		<div class="large-4 columns">
 	 	<div class="row">
 	 		<div class="large-12 columns">
-	 			<h4 style="margin-top: 1rem">Why complete your registration?</h4>
+	 			<h4 style="margin-top: 1rem"><%=t('.why_complete_reg') %></h4>
 					<hr class="horizontal-line">
-					<p><strong>CHRMS</strong> doesnot assume his users information by so doing we ask you to provide the information for yourself by completing the form at the <strong>LEFT</strong> side of the screen so we can better understand you and ease the communication with your colleagues.
-					Without you completing this registration.
+					<p><strong><%=t('.chrms') %></strong> <%=t('.body_reason') %> <strong><%=t('.left') %></strong> <%=t('.body_reason2') %>
 					</p>
 					<ul>
-						<li>You can't get to your dashboard</li>
-						<li>You can't view you account setting / update your record</li>
-						<li>You can't refer patients since you don't have access to the dashboard</li>
+						<li><%=t('.reason_1') %></li>
+						<li><%=t('.reason_2')%> </li>
+						<li><%=t('.reason_3')%> </li>
 					</ul>
 		
 	 		</div>
 	 		<div class="large-12 columns">
-	 			<h4 class="text-center chrms-font">Advert</h4>
+	 			<h4 class="text-center chrms-font"><%=t('.advert_block')%> </h4>
 	 		</div>
 	 	</div>
 		

@@ -6,7 +6,7 @@
 					<li><%= link_to t('layouts.shared.footer.about'), about_path %></li>
 					<li><%= link_to t('layouts.shared.footer.contact'), contact_path%></li>
 					<li><%= link_to t('layouts.shared.footer.privacy'), privacy_policy_path %></li>
-					<li><%= link_to t('layouts.shared.footer.terms'), terms_n_conditions_path %></li>
+					<!-- <li><%= link_to t('layouts.shared.footer.terms'), terms_n_conditions_path %></li> -->
 					<% if cookies[:chrms_locale] == 'fr' %>
 					<li><%= link_to t('layouts.shared.footer.english'), change_locale_path(:en) %></li>
 					<li><%= link_to t('layouts.shared.footer.french'), change_locale_path(:fr), class: 'active' %></li>

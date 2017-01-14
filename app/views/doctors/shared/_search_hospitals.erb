@@ -1,0 +1,9 @@
+<div>
+<%= form_tag doctor_dashboard_request_referral_hospitals_path, :method => 'get' do %>
+						  <p style="margin-top: 5px">
+						    <%= text_field_tag :hospital, params[:hospital],
+						     placeholder: t('doctors.edit.city') %>
+						  </p>
+<% end %>
+</div>
+

@@ -13,6 +13,7 @@ class Doctor < ApplicationRecord
   validates :speciality, presence: true, allow_nil: true
   validates :educational_summary, presence: true, allow_blank: true
   validate  :validate_phone1
+  validates :languages, presence: true, allow_nil: true
 
   before_save { self.name = name.downcase }
  
@@ -55,7 +56,7 @@ class Doctor < ApplicationRecord
     validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/
 
     has_secure_password
-  	validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+  	validates :password, presence: true, length: { minimum: 5 }, allow_nil: true
 
 
   	# Returns the hash digest of the given string.
@@ -109,6 +110,8 @@ class Doctor < ApplicationRecord
   def password_reset_expired?
     reset_sent_at < 2.hours.ago
   end
+
+  
 
   
 

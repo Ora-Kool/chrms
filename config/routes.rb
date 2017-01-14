@@ -49,6 +49,11 @@ Rails.application.routes.draw do
   get 'doctor/dashboard/total_referrals_made', to: "doctors#total_referrals_made", 
   as: 'doctor/dashboard/total_referrals_made'
 
+  get 'doctor/dashboard/patient_special_investigations/:id/chrms', to: 'doctors#special_facility_report',
+  as:   'doctor/dashboard/patient_special_investigations'
+
+  get 'referral_confirmation/submit', to: 'doctors#confirmed', as: 'confirmation'
+
   post '/contact', to: "pages#send_message"
 
 

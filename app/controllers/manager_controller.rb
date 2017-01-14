@@ -15,6 +15,9 @@ class ManagerController < ApplicationController
   def create_doctor
     @doctor = Doctor.new(doctors_params)
     @doctor.hospital_id = current_manager.hospital.id
+    @doctor.password = "chrms"
+    @doctor.password_confirmation  = "chrms"
+
     #@doctor.city = current_manager.hospital.hospital_city
     if @doctor.save
         flash[:secondary] = "Dr. #{@doctor.name} account was added successfully."
@@ -43,7 +46,7 @@ class ManagerController < ApplicationController
   private
 
   def doctors_params
-    params.require(:doctor).permit(:name, :password, :password_confirmation, :email)
+    params.require(:doctor).permit(:name, :email)
   end
 
   def staffs_params

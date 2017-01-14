@@ -1,29 +1,35 @@
 <%provide(:title, "Referred Doctors - CHRMS") %>
 <div class="large-2 columns">
 	<table>
-		<td><h6>Referral Doctors</h6></td>
+		<td><h6><%=t('.referral_doctors')%> </h6></td>
 		<tr>
 			<td>
-				<%= link_to "Dashboard", doctor_dashboard_path, style: "padding-left: .3rem"%>
+				<%= link_to t('.dashboard') , doctor_dashboard_path, style: "padding-left: .3rem"%>
 			</td>
 		</tr>
-		<tr>
+		<tr class="hide-for-small-only">
 			<td>
 				<ul class="hospital_filter dropdown menu" data-dropdown-menu data-disable-hover="true" data-click-open="true">
   					<li>
-  						<a style="background: inherit; padding-left: .1rem" class="large-12">Hospitals</a>
+  						<a style="background: inherit; padding-left: .1rem" class="large-12"><%=t('.hospitals')%> </a>
   						<ul class="menu">
-  							<li><%= link_to "All Hospitals",doctor_dashboard_request_referral_hospitals_path  %></li>
+  							<li><%= link_to t('.all_hospitals') ,doctor_dashboard_request_referral_hospitals_path  %></li>
   							<% Hospital.all.each do |hospital| %>
   								<li><%= link_to "#{hospital.hospital_name}", doctor_dashboard_request_referral_hospitals_path(hospital: "#{hospital.hospital_name}")%></li>
   							<%end%>
-      						
       						
     					</ul>
   					</li>
  						
 				</ul>
+				
 			</td>
+		</tr>
+		<tr class="show-for-small-only">
+			<td>
+				<%= render 'doctors/shared/search_hospitals'%>
+			</td>
+			
 		</tr>
 		
 		
@@ -35,9 +41,9 @@
 		<div class="text-center">
 			<%if params[:hospital].blank? %>
 				<%if @doctors.count - 1 == 0 %>
-					<p>No Doctors available at the moment</p>
+					<p><%= t('.no_doctors')%> </p>
 				 <%else%>
-					<p>Displaying all doctors </p>
+					<p><%=t('.displaying_all')%> </p>
 				<%end%>
 
 			<% @doctors.each do  |doctor| %>
@@ -65,7 +71,7 @@
                         <span class="title">
 		                  	
 		                    <strong>
-		                    	Dr. <%=doctor.given_names %>		                    		
+		                    	Dr. <%=capitalize_name(doctor.given_names)%>		                    		
 		                    </strong>
 		                  		
                     	</span>
@@ -73,26 +79,26 @@
                       </div>
 
                       <div class="content">
-	                      <h4 style="padding-bottom: 0">Details</h4>
+	                      <h4 style="padding-bottom: 0"><%=t('.details')%> </h4>
 	                      <hr class="horizontal-line" style="margin-top: 0; margin-bottom: .6rem">
 	                        <p style="padding-top: 0">
-	                          Hospital: <strong><%= doctor.hospital.hospital_name %></strong> 
+	                          <%=t('.hospital_label') %> : <strong><%= doctor.hospital.hospital_name %></strong> 
 	                        </p>
 
 	                        <p>
-	                          Speciality: <strong><%=doctor.speciality %></strong>
+	                          <%=t('.speciality') %>: <strong><%=doctor.speciality %></strong>
 	                        </p>
 	                        <p>
-	                          Current city: <strong><%=doctor.city %></strong>
+	                          <%=t('.current_city') %>: <strong><%=doctor.city %></strong>
 	                        </p>
 
-	                       <!-- <p>
-	                          Contact: <strong><%= doctor.mobile_number%></strong>
-	                        </p> -->
+	                       <p>
+	                          Language: <strong><%= doctor.languages%></strong>
+	                       </p>
                       </div>
 
                       <div class="action">
-							<%= link_to 'Request Referral', doctor_dashboard_request_referral_hospitals_doctors_path(doctor.id), class: "button success radius", style: "margin-left: 1rem" %>
+							<%= link_to t('.re_referral') , doctor_dashboard_request_referral_hospitals_doctors_path(doctor.id), class: "button success radius", style: "margin-left: 1rem" %>
                       </div>
 
                     </div>
@@ -129,7 +135,7 @@
 				
 				<%else%>
 					<%if @doctors.present?%>
-						<p>Displaying results found for <strong><u><%= params[:hospital] %></u></strong></p>
+						<p><%=t('.search_result')%> <strong><u><%= params[:hospital] %></u></strong></p>
 						<% @doctors.each do  |doctor| %>
 					
 					
@@ -163,23 +169,23 @@
 	                      </div>
 
 	                      <div class="content">
-		                      <h4 style="padding-bottom: 0">Details</h4>
+		                      <h4 style="padding-bottom: 0"><%=t('.details')%> </h4>
 		                      <hr class="horizontal-line" style="margin-top: 0; margin-bottom: .6rem">
 		                        <p style="padding-top: 0">
-		                          Hospital: <strong><%= doctor.hospital.hospital_name %></strong> 
+		                          <%=t('.hospital_label')%> : <strong><%= doctor.hospital.hospital_name %></strong> 
 		                        </p>
 
 		                        <p>
-		                          Speciality: <strong><%= doctor.speciality%></strong>
+		                          <%=t('.speciality')%>: <strong><%= doctor.speciality%></strong>
 		                        </p>
 
 		                        <p>
-		                          Current city: <strong><%= doctor.city %></strong>
+		                          <%=t('.current_city')%>: <strong><%= doctor.city %></strong>
 		                        </p>
 	                      </div>
 
 	                      <div class="action">
-								<%= link_to 'Request Referral', doctor_dashboard_request_referral_hospitals_doctors_path(current_doctor.id) , class: "button success radius", style: "margin-left: 1rem"%>
+								<%= link_to t('.re_referral') , doctor_dashboard_request_referral_hospitals_doctors_path(current_doctor.id) , class: "button success radius", style: "margin-left: 1rem"%>
 	                      </div>
 
 	                    </div>
@@ -212,7 +218,7 @@
 
 				<%end%>
 					<%else%>
-							<p style="color: #ce181b">No doctors found at <strong><u><%= params[:hospital] %></u></strong></p>
+							<p style="color: #ce181b"><%=t('.no_doctors')%> <strong><u></u></strong></p>
 					<%end%>
 
 			<%end%>
