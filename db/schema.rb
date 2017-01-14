@@ -44,10 +44,8 @@ ActiveRecord::Schema.define(version: 20170112070258) do
     t.datetime "reset_sent_at"
     t.float    "latitude"
     t.float    "longitude"
-<<<<<<< HEAD
-=======
+
     t.string   "languages"
->>>>>>> master
     t.index ["email"], name: "index_doctors_on_email", unique: true
     t.index ["hospital_id"], name: "index_doctors_on_hospital_id"
   end
