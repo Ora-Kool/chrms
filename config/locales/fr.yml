@@ -289,7 +289,7 @@ fr:
         referral_form_heading:      "Formulaire de référence"
         blood_prompt:       "Sélection du groupe sanguin"
         p_information:      "Information pour les patients"
-        ethnic_prompt:        "Sélectionnez un groupe ethnique"
+        ethnic_prompt:        "Choisir la religion"
         gender_prompt:        "Sélectionnez le sexe"
         message_caption:       "Message à l'établissement visé"
         message_placeholder:      "Note à l'installation de réception: 
@@ -398,7 +398,7 @@ fr:
       dashboard:    "Tableau de bord"
       hospitals:      "Hôpitaux"
       all_hospitals:    "Tous les hôpitaux"
-      no_doctors:       "Aucun médecin disponible pour le moment"
+      no_doctors:       "Non disponible pour le moment"
       displaying_all:     "Affichage de tous les médecins"
       details:        "Détails"
       hospital_label:     "Hôpital"
@@ -584,7 +584,7 @@ fr:
         optional_message:       "Message facultatif"
         referred_facility_doctors_name:     "Nom du médecin de l'établissement"
         blood_group:    "Groupe sanguin du patient"
-        ethnic:         "Ethnie"
+        ethnic:         "Religion"
         patient_identity_number:      "Numéro d'identification du patient"
         patient_mobile_number:        "Numéro de téléphone du patient"
 

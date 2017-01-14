@@ -190,20 +190,30 @@
                                   <%end%>
                               <%end%>
                               <%elsif referral.findings.include?("<div>")%>
+                              <% @array1 = Array.new %>
                                  <ul>
                                     <%divs = referral.findings.split("<div>") %>
                                     <%divs.each do |div|%>
                                        <%divs = div.split("</div>") %>
                                         <%divs.each do |div| %>
-                                          <%divs = div.split("&nbsp;")%>
                                             <%divs.each do |div| %>
-                                            <%divs = div.split("<strong>")%>
-                                            <%divs.each do |div| %>
-                                            <%divs = div.split("</strong>")%>
-                                            <%divs.each do |div| %>
-                                             <li><%= div %> </li>
+                                            <%divs = div.split("&nbsp;")%>
+                                            <% if referral.findings.include?("<strong>")%>
+                                             <% divs.each do |div| %>
+                                              <% divs = div.split("<strong>")%>
+                                              <%divs.each do |div| %>
+                                                <% @array1 << div.split("</strong>") %>
+                                              <%end%>
                                              <%end%>
-                                             <%end%>
+                                             <p><%=@array1.join(" ")%> </p>
+                                            <%else%>
+                                             <% divs.each do |div| %>
+                                                 <%if div == " " %>
+                                                 <%else%>
+                                                    <li><%= div %> </li>
+                                                    <%end%>
+                                                <%end%>
+                                              <%end%>  
                                             <%end%>
                                         <%end%>
                                     <%end%>
@@ -274,14 +284,22 @@
                                   <%end%>
                               <%end%>
                               <%elsif referral.diagnosis.include?("<div>")%>
+                               <% @array2 = Array.new %>
                                  <ul>
                                     <%divs = referral.diagnosis.split("<div>") %>
                                     <%divs.each do |div|%>
                                        <%divs = div.split("</div>") %>
                                         <%divs.each do |div| %>
-                                          <%divs = div.split("&nbsp;")%>
+                                        <%divs = div.split("&nbsp;") %>
+                                         <%divs.each do |div| %>
+                                          <%divs = div.split("<strong>")%>
                                             <%divs.each do |div| %>
-                                             <li><%= div %> </li>
+                                            <%divs = div.split("</strong>")%>
+                                              <%divs.each do |div| %>
+                                              <% @array2 << div %>
+                                              <%end%>
+                                             <%end%>
+                                             <p><%=@array2.join(" ") %></p>
                                             <%end%>
                                         <%end%>
                                     <%end%>
@@ -361,6 +379,7 @@
                                   <%end%>
                               <%end%>
                                <%elsif referral.treatment_given.include?("<div>")%>
+                               <%@array3 = Array.new %>
                                  <ul>
                                     <%divs = referral.treatment_given.split("<div>") %>
                                     <%divs.each do |div|%>
@@ -368,7 +387,14 @@
                                         <%divs.each do |div| %>
                                           <%divs = div.split("&nbsp;")%>
                                             <%divs.each do |div| %>
-                                             <li><%= div %> </li>
+                                            <%divs = div.split("<strong>")%>
+                                            <%divs.each do |div| %>
+                                            <%divs = div.split("</strong>")%>
+                                            <%divs.each do |div| %>
+                                              <% @array3 << div %>
+                                              <%end%>
+                                             <%end%>
+                                             <p><%=@array3.join(" ") %></p>
                                             <%end%>
                                         <%end%>
                                     <%end%>
@@ -448,6 +474,7 @@
                                   <%end%>
                               <%end%>
                                <%elsif referral.reasons_for_referral.include?("<div>")%>
+                               <%@array4 = Array.new %>
                                  <ul>
                                     <%divs = referral.reasons_for_referral.split("<div>") %>
                                     <%divs.each do |div|%>
@@ -455,7 +482,15 @@
                                         <%divs.each do |div| %>
                                           <%divs = div.split("&nbsp;")%>
                                             <%divs.each do |div| %>
-                                             <li><%= div %> </li>
+                                            <%divs = div.split("<strong>")%>
+                                            <%divs.each do |div| %>
+                                            <%divs = div.split("</strong>")%>
+                                            <%divs.each do |div| %>
+                                             <%@array4 << div %>
+                                              <%= div %>
+                                              <%end%>
+                                             <%end%>
+                                             <p><%=@array4.join(" ")%> </p>
                                             <%end%>
                                         <%end%>
                                     <%end%>

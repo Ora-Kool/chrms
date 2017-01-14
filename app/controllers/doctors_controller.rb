@@ -175,7 +175,7 @@
     if params[:hospital].blank?
       @doctors = Doctor.all.paginate(page: params[:page], per_page: 6)
     else
-      @hospital_id = Hospital.find_by(hospital_name: params[:hospital])
+      @hospital_id = Hospital.find_by(hospital_name: params[:hospital]) || Hospital.find_by(hospital_city: params[:hospital])
       @doctors = Doctor.where(hospital_id: @hospital_id).paginate(page: params[:page], per_page: 6)
     end
     

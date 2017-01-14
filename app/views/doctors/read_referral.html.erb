@@ -139,19 +139,31 @@
 								 	<%end%>
 								 <%end%>
 							<%end%>
-							<%elsif @patient.findings.include?("<div>")%>
+							<%elsif @patient.findings.include?("<div>") %>
+							<%@array2 = Array.new %>
 								<ul>
 								<%divs = @patient.findings.split("<div>") %>
 								<%divs.each do |div|%>
 									<%divs = div.split("</div>") %>
 									 <%divs.each do |div| %>
 									 <%divs = div.split("&nbsp;")%>
-									 <%divs.each do |div| %>
-									 	<%divs = div.split("<strong>")%>
-									 	 <%divs.each do |div| %>
-									 	 	<li><%= div %> </li>
-									 	 <%end%>
-									 	<%end%>
+									 <% if @patient.findings.include?("<strong>")%>
+                                             <% divs.each do |div| %>
+                                              <% divs = div.split("<strong>")%>
+                                              <%divs.each do |div| %>
+                                                <% @array2 << div.split("</strong>") %>
+                                              <%end%>
+                                             <%end%>
+                                             <p><%=@array2.join(" ")%> </p>
+                                            <%else%>
+                                             <% divs.each do |div| %>
+                                                   <%if div == " " %>
+                                                   <%else%>
+                                                      <li><%= div %> </li>
+                                                    <%end%>
+                                                <%end%>
+                                              <%end%> 
+										
 									 <%end%>
 								<%end%>
 								</ul>
@@ -235,6 +247,7 @@
 								 <%end%>
 							<%end%>
 							<%elsif @patient.diagnosis.include?("<div>")%>
+							<% @array3 = Array.new %>
 								<ul>
 								<%divs = @patient.diagnosis.split("<div>") %>
 								<%divs.each do |div|%>
@@ -242,7 +255,14 @@
 									 <%divs.each do |div| %>
 									 <%divs = div.split("&nbsp;")%>
 									 <%divs.each do |div| %>
-									 	<li><%= div %> </li>
+									 	<%divs = div.split("<strong>")%>
+									 	 <%divs.each do |div| %>
+									 	 <%divs = div.split("</strong>")%>
+									 	  <%divs.each do |div| %>
+									 	    <% @array3 << div %>
+									 	 	<%end%>
+									 	 <%end%>
+									 	 <p><%= @array3.join(" ")%> </p>
 									 	<%end%>
 									 <%end%>
 								<%end%>
@@ -328,6 +348,7 @@
 								 <%end%>
 							<%end%>
 							<%elsif @patient.treatment_given.include?("<div>")%>
+							<% @array4 = Array.new %>
 								<ul>
 								<%divs = @patient.treatment_given.split("<div>") %>
 								<%divs.each do |div|%>
@@ -335,8 +356,15 @@
 									 <%divs.each do |div| %>
 									 <%divs = div.split("&nbsp;") %>
 									 <%divs.each do |div| %>
-									 	<li><%= div %> </li>
-										 <%end%>
+									 	<%divs = div.split("<strong>")%>
+									 	 <%divs.each do |div| %>
+									 	 <%divs = div.split("</strong>")%>
+									 	  <%divs.each do |div| %>
+									 	    <% @array4 << div %>
+									 	 	<%end%>
+									 	 <%end%>
+									 	 <p><%= @array4.join(" ")%></p>
+									 	<%end%>
 									 <%end%>
 								<%end%>
 								</ul>
@@ -417,15 +445,22 @@
 								 <%end%>
 							<%end%>
 							<%elsif @patient.reasons_for_referral.include?("<div>")%>
+							<% @array5 = Array.new %>
 								<ul>
 								<%divs = @patient.reasons_for_referral.split("<div>") %>
 								<%divs.each do |div|%>
 									<%divs = div.split("</div>") %>
 									 <%divs.each do |div| %>
 									 <%divs = div.split("&nbsp;") %>
-
-									 <%divs.each do |div| %>
-									 	<li><%= div %> </li>
+									 	<%divs.each do |div| %>
+									 	<%divst = div.split("<strong>")%>
+									 	 <%divst.each do |div| %>
+									 	 <%divs = div.split("</strong>")%>
+									 	 	<% divs.each do |div| %>
+									 	 	 <% @array5 << div %>
+									 	 	<%end%>
+									 	 <%end%>
+									 	  <p><%= @array5.join(" ") %></p>
 									 	<%end%>
 									 <%end%>
 								<%end%>

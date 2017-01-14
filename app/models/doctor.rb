@@ -113,6 +113,8 @@ class Doctor < ApplicationRecord
 
   
 
+  
+
   #forget a user when logged out
   def forget
     update_attribute(:remember_digest, nil)
