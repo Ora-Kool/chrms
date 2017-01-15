@@ -305,7 +305,7 @@ en:
         ethnic_prompt:        "Select ethnic group"
         gender_prompt:        "Select gender"
         message_caption:       "Message to referred facility"
-        message_placeholder:     "Note to receiving facility: On completion of patient management please fill referral back slip  attached and  submit reply."
+        message_placeholder:     "Note to receiving facility:"
         button_cancel:            "Cancel"
         male:             "Male"
         female:           "Female"
@@ -466,7 +466,7 @@ en:
       help:       "Help"
       description:      "This form contains functions that can help you style your report,
        it has functions like creating a list where you can either report your findings in
-        buttets (points notations) or in numbers (numbers notations).
+        bullets (points notations) or in numbers (numbers notations).
       To get more information about the functions just point your mouse
        or pointer on the element, you will have more information about what the element is for."
       advert:     "ADVERT"
@@ -501,7 +501,7 @@ en:
       referral_request_form: "Referral Request from"
       patient_names:    "Patient Names"
       patient_id_number:  "Patient ID No"
-      patient_blood_group:   "Groupe sanguin patient"
+      patient_blood_group:   "Blood Group"
       referral_status:      "Referral Status"
       date_received:    "Date received"
       search_notification:      "All results found"

@@ -59,7 +59,7 @@
    				<div class="row">
    					<div class="large-9 columns" style="margin-top: 1rem">
                   <% if @sum != 0%>
-                    <h4 class="chrms-font" style="text-decoration: underline"><%=t('.referral_inbox')%> </h4>
+                    <h4 class="chrms-font" style="text-decoration: underline; text-align: center"><%=t('.referral_inbox')%> </h4>
                      <%else%>
                         <h4 class="chrms-font" style="text-decoration: underline; color: #878787"><%=t('.empty_dashboard')%> </h4>
 
@@ -98,19 +98,19 @@
    					<% @referrals.each do |referral| %>
 
    						<tr>
-   							<td>
+   							<td style="color: green">
                  <%  @referring_doc = capitalize_name(referral.referring_doctors_name) %>
-                         Dr. <%= @referring_doc %>
-                        <br>Tel: (+237) <%= "#{referral.referring_doctors_mobile_number}"%>
+                         <i>Dr.</i> <i style="font-size: .9em"><%= @referring_doc %></i>
+                        <br><i>Tel:</i> <span style="color: black">(+237) <%= "#{referral.referring_doctors_mobile_number}"%></span>
                         </td>
    							<td style="text-align: left">
                            <% if referral.referral_status == "completed" %>
                                     <a><%=referral.patient_full_names %></a><br>
-                               <span><%=t('.click_to_view')%> </span>
+                               <span style="text-align: center"><%=t('.click_to_view')%> </span>
 
                               <%else%>
                                 <%= link_to "#{referral.patient_full_names}", doctor_dashboard_read_referrals_patient_referral_details_path(referral.id)%><br>
-                               <span><%=t('.click_to_view')%> </span>
+                               <span style="text-align: center; padding-left: 1em"><%=link_to t('.click_to_view'), doctor_dashboard_read_referrals_patient_referral_details_path(referral.id), style: "color: #004D40"%> </span>
                            <%end%>
       								 
                          

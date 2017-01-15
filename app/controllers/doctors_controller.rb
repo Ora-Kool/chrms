@@ -10,6 +10,9 @@
   before_action :correct_doctor, only: [:edit, :update, :show,:request_referral, :total_referrals_made,
                                           :create_referral, :referral_confirmation,
                                           :edit, :incomplete, :incomplete_update, :hospitals]
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
+
+
   def show
     @sum = ReferralForm.my_referrals("#{current_doctor.surname} #{current_doctor.given_names}").count
     @mades = ReferralForm.total_referrals_made_by_current_doctor("#{current_doctor.surname} #{current_doctor.given_names}").count
@@ -258,4 +261,9 @@
   def find_doctor
         @doctor = Doctor.find_by(name: params[:name])
   end
+
+  def invalid_cart
+       logger.error "Attempt to access item #{params[:id]} which doesn't exist"
+       redirect_to doctor_dashboard_path, notice: "error"
+    end
 end

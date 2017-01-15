@@ -292,9 +292,7 @@ fr:
         ethnic_prompt:        "Choisir la religion"
         gender_prompt:        "Sélectionnez le sexe"
         message_caption:       "Message à l'établissement visé"
-        message_placeholder:      "Note à l'installation de réception: 
-        À la fin de la gestion des patients s'il vous plaît remplir le dossier 
-        de renvoi joint et soumettre la réponse."
+        message_placeholder:      "Note à l'installation de réception:"
         button_cancel:            "Annuler"
         male:           "Masculin"
         female:          "Féminin"
@@ -457,7 +455,7 @@ fr:
       help:       "Aidez"
       description:      "Ce formulaire contient des fonctions qui peuvent vous aider à concevoir votre rapport,
        il a des fonctions telles que la création d'une liste où 
-       vous pouvez soit déclarer vos résultats en buttets (notations de points) 
+       vous pouvez soit déclarer vos résultats en bullets (notations de points) 
        ou en chiffres (notations de chiffres). Pour obtenir plus d'informations sur 
        les fonctions pointez simplement votre souris ou pointeur sur l'élément, 
        vous aurez plus d'informations sur ce que l'élément est pour."
