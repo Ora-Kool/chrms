@@ -4,7 +4,8 @@ class ManagerSessionsController < ApplicationController
 
   def create
     manager = Manager.find_by(name: params[:session][:name].downcase)
-    if manager && manager.authenticate(params[:session][:password])
+    role = Manager.find_by(hospital_id: params[:session][:hospital_id])
+    if manager && manager.authenticate(params[:session][:password])  && role
       log_manager(manager)
       params[:session][:remember_me] == '1' ? remember(manager) : forget(manager)
       redirect_to manager_dashboard_path

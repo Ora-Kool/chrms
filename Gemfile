@@ -35,6 +35,7 @@ gem 'geocoder'
 gem 'will_paginate-bootstrap'
 gem 'phonelib'
 gem 'rails-i18n' # used for translation
+gem 'newrelic_rpm'
 
 
 
