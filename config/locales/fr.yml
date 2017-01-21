@@ -3,85 +3,77 @@ fr:
     back_click:
       denied:       "Accès refusé!"
   create_referral:
-    request_submitted:      "Demande soumise"
+    request_submitted:   "Référence  soumise"
   submit_referral:
-    follow_up:      "Merci d'envoyer le patient de retour pour le suivi"
-
+    follow_up:       "Merci d'avoir renvoyé le malade pour le suivi"
   layouts:
     shared:
       main_header:
-        about:            "À Propos De Nous"
-        contact:          "Contactez Nous"
-        dashboard:        "Tableau De Bord"
-        login:            "Connecter"
-        logout:            "Déconnecter"
+        about:            "à propos de"
+        contact:          "Contacter nous"
+        dashboard:        "tableau de bord"
+        login:            "S'identifier"
       header:
-        about:            "À Propos De Nous"
-        contact:          "Contactez Nous"
-        dashboard:        "Tableau De Bord"
-        login:            "Se Connecter"
+        about:            "à propos de nous"
+        contact:          "Contacter nous"
+        dashboard:        "tableau de bord"
+        login:            "S'identifier"
       footer:
-        links:            "Des Liens"
-        about:            "À Propos De Nous"
-        contact:          "Contactez Nous"
-        privacy:          "Politique de Confidentialité"
-        terms:            "Termes et Conditions"
-        english:          "Anglais"
-        french:           "Français"
+        links:            "Liens"
+        privacy:          "Privacy Policy"
+        terms:            "Politique de confidentialité"
         sponsors:         "Sponsors"
-        sponsors_title:   "Merci à certaines organisations d'inspiration et d'aide."
-        social:           "Nous sommes sociaux"
-        social_desc:      "Comme nous sur les médias sociaux et ne manquez pas
-         toute nouvelle ou mise à jour liée à notre blog et produits."
+        sponsors_title:   "Merci à  certains orginizations qui inspirent et aident"
+        social:           "Nous sommes social"
+        social_desc:      "Nous aimer sur les réseaux sociaux et ne manquez aucune nouvelle et mise à jour liée à notre blog et  produits"
+      alert:
+        updated_successfully: "Mise à jour du profil réussi"
   
   pages:
     home:
-      what_we_do:         "Pourquoi utiliser CHRMS?"
-      we_believe_in:         "Nous Croyons en L'unité"
-      believe_desc:       "Connecter les médecins est notre vision.
-       Les médecins connaissent d'autres médecins, mais connaissant des informations de base sur l'autre médecin a un problème quand il s'agit de renvoyer les patients à ces médecins.
-       CHRMS comme entrent pour créer ce lien afin que les médecins auront des informations complètes sur les autres médecins,
-       quel hôpital et quelle ville les médecins sont,
-       ce qui rend très simple et spécifique lors de la référence d'un patient à d'autres hôpitaux et le département que le patient doit aller.
-       Avec tout cela, les médecins ont la capacité de vérifier régulièrement le statut de leur patient référé. Tout cela est géré par CHRMS."
-      quality_referals: "Référence de haute qualité"
-      quality_desc:       "Être compétent à la référence est juste un aspect de soins de haute qualité. Traiter votre
-       les patients avec respect, en prenant le temps de répondre à leurs questions, et de vérifier sur eux après
-       le traitement construit votre réputation en tant que fournisseur qui se soucie. CHRMS vous aide à obtenir
-       que compentency en vous fournissant régulièrement des patients renvois check ups et de notifier
-       le médecin désigné s'il a oublié le cas."
-      processing:         "Processus de référence simple"
-      processing_desc:    "En référant les patients à d'autres hôpitaux ou à d'autres médecins
-       par des notes écrites est vraiment consommatrice de ressources et inefficace quand il s'agit
-       À suivre l'état du patient.
-       Avec les formulaires de traitement de référence simple de CHRMS,
-       Vous obtenez d'écrire ce que vous voulez le plus de l'autre installation.
-       Nous traitons la charge pour vous et gardons un suivi de vos références et par
-       de vous mettre à jour lorsque votre patient a été reçu par l'établissement.
-       Le processus de renvoi et de retour de votre patient
-       CHRMS très simple. Les médecins n'ont pas à s'inquiéter de la référence qu'ils ont fait,
-       parce que CHRMS fait tout ce qui vous inquiète."
-      primary:             "Primaire - Tertiaire HC"
-      primary_desc:        "Une forte proportion de patients vus dans les établissements de santé tertiaires est due à ce qu'ils ne sont pas référés.
-       Il en résulte une surpopulation des établissements de santé tertiaires avec des problèmes qui peuvent être gérés aux niveaux inférieurs.
-       La main-d'œuvre et les équipements hautement qualifiés sont gaspillés sur des problèmes de santé nécessitant moins de ressources à résoudre.
-       Dans CHRMS, chaque patient doit être référé et "
+      what_we_do:         "Pourquoi devez vous utiliser CHRMS"
+      we_believe_in:         "Nous croyons en unité"
+      believe_desc:       "Connecter les médecins c'est notre vision". 
+      Les médecins connaisent les autres médecins, mais connaitre les informations de base concernant les autres médecins a tojours été un problème, surtout quand il s'agit de leur réferer les malades.
+      CHRMS est venu pour créer ce lien entre les médecins pour que les médecins puissent avoir l'informations complèt sur leur confrères,
+      les structures sanitaires et les villes où ils se trouvent, ainsi rendant très façile la tache de réferer les malades de façon efficace et spécifique. 
+       
+      Les médecins auront aussi la possibilité de vérifier l'évolution des malades qui ont été réferé de façon régulière.  Tout ça est rendu possible par CHRMS."
+      quality_referals:   "Référence de haute qualité"
+      quality_desc:       "Etre capable de bien réferer les malades n'est qu'un aspet des soins de bonne qualité. Respecter les malades,     
+      prendre du temps pour répondre à leur questions, suivre leur évolution après le traitement vous donne la bonne réputation d'un soignant qui s'occupe bien de ses malades.
+      CHRMS vous aide à acquérir 
+      cette compétence en vous fournissant régulièrement les références et suivis des malades et notifications des médecins à qui ces malades  ont été réferés, à fin qu'ils n'oublient pas les malades qui leur ont été réferés." 
+     
+      processing:         "Traitement de référence simple"
+      processing_desc:    "Référer les malades à d'autres formations sanitaires/médecins avec les lettres de référence est un processus qui est non seulement long mais aussi inefficace  
+      quand il s'agit de suivre l'évolution des malades
+    
+      Avec les fiches de traitement des référence de CHRMS, vous avez la possibilité de préciser ce que vous voulez de l'autre formation sanitaire 
+    
+      Nous nous occupons de cette charge pour vous et nous gardons aussi la trace de vos références. Nous vous mettons aussi au courrant de quand exactement votre malade référé est réçu par l'autre formation sanitaire.
+       
+      CHRMS rends la référence et contre référence de vos malades assez simple. Les médecins ne doivent plus s'inquiéter des références qui ont été faites, puisque CHRMS s'occupe de tous ces inquiétudes." 
+    
+      primary:             "Les soins de santé de niveau Primaire - Tertiaire"
+      primary_desc:        "Beaucoup des patients qu'on rencontre dans les formations sanitaire de niveau tertiaire sont là à cause d'un système de référence et contre référence mal développé. 
+      Par conséquent, les formations sanitaires de niveau tertiaire sont inondés des malades qui peuvent se faire soigner au niveau primaire ou secondaire. 
+      Chez nous à CHRMS, chaque malade à référer a droit à un " 
       r_token:              " R-TOKEN "
-      primary_desc2:        " à transporter lors de la visite de l'établissement de santé tertiaire, avec cela la question des patients allant à tertiaire
-       les établissements de santé et l'encombrement seront réduits."
-      aim:                  "Avoir Pour But"
-      aim_desc:             "Faire des centres de santé primaires (CSPs) le point de premier contact des patients."
+      primary_desc2:        " Pour emporter lors de la visite à la formation sanitaire de référence. Ainsi le nombre des malades qui se rendent aux formations sanitaires tertiaires séra diminué."
+      aim:                  "BUT"
+      aim_desc:             "Rendre les formations sanitaires de niveau primaire les lieux de premier contact des malades."
     contact_us_form:
     slide_show:
       clinic:             "Aide clinique"
-      caption:            "Fournir un moyen par lequel la clinique aura l'aide directe d'autres clinique / installation spécialisée"
-      simplicity:         "Simplicité et Efficacité"
-      caption_simplicity: "C'est ce qui rend CHRMS ce que c'est, nous rendons vos processus de parrainage très simple"
+      caption:            "Fournir les moyens par lesquels les formations sanitaires auront l'aide des autres formations sanitaires/centres spécialisés"
+      simplicity:         "Simplicité and Efficacité"
+      caption_simplicity: "Voici ce qui rends CHRMS ce qu'il est, nous rendons votre processus de référence/contre référence très simple"
       network:            "Réseau des médecins"
-      caption_network:    "Nous fournissons un réseau de médecins partout au Cameroun, pour nous rencontrer et résoudre des problèmes médicaux"
+      caption_network:    "Nous fournissons aux médicins partout au Cameroun un réseau à travers lequel ils peuvent se rencontrer et résoudre les problèmes médicaux" 
     about:
-      header:             "À PROPOS DE NOUS"
-      we:                 "NOUS"
+      header:              "A PROPOS DE NOUS"
+      we:                  "NOUS"
       we_desc:              "CHRMS n'est rien de plus que d'aider les médecins à garder une trace de leur histoire de patient en ligne,
        suivre leurs patients traitements, de renvoyer leurs patients à d'autres installations pour une enquête préalable et de suivre
        l'activité du patient en ligne. Nous fournissons cette piste facile de référence ici afin que les médecins ne perdez pas le patient

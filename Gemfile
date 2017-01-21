@@ -35,7 +35,7 @@ gem 'geocoder'
 gem 'will_paginate-bootstrap'
 gem 'phonelib'
 gem 'rails-i18n' # used for translation
-gem 'newrelic_rpm'
+
 
 
 
@@ -60,6 +60,7 @@ end
 
 group :production do
 	gem 'pg'
+  gem 'newrelic_rpm'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
