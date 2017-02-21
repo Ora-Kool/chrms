@@ -30,7 +30,7 @@ en:
   layouts:
     shared:
       main_header:
-        about:            "About"
+        about:            "About Us"
         contact:          "Contact Us"
         dashboard:        "Dashboard"
         login:            "Login"
@@ -41,8 +41,12 @@ en:
         login:            "Login"
       footer:
         links:            "Links"
+        about:            "About Us"
+        contact:          "Contact Us"
         privacy:          "Privacy Policy"
         terms:            "Terms and Conditions"
+        english:          "English"
+        french:           "French"
         sponsors:         "Sponsors"
         sponsors_title:   "Thanks to some inspiring and helping organisations."
         social:           "We are social"
